@@ -19,18 +19,18 @@
 var config = {
     detailedErrors: false,
     hostname: null,
-    port: 4000,
+    port: 80,
     model: {
         defaultAdapter: 'mongo'
     },
     db: {
         mongo: {
-            username: null,
-            dbname: 'production',
+            username: 'deepakkghosh',
+            dbname: 'streadsprod',
             prefix: null,
-            password: null,
-            host: 'localhost',
-            port: 27017
+            password: 'deepakkghoshpass',
+            host: 'dharma.mongohq.com',
+            port: 10053
         }
     }
 };

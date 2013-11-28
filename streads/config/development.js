@@ -14,21 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
-*/
+ */
 
 var config = {
-  detailedErrors: true
-, debug: true
-, hostname: null
-, port: 4000
-, model: {
-    defaultAdapter: 'filesystem'
-  }
-, sessions: {
-    store: 'memory'
-  , key: 'sid'
-  , expiry: 14 * 24 * 60 * 60
-  }
+    detailedErrors: true,
+    debug: true,
+    hostname: null,
+    port: 4000,
+    model: {
+        defaultAdapter: 'mongo'
+    },
+    db: {
+        mongo: {
+            username: 'deepakkghosh',
+            dbname: 'streadsdev',
+            prefix: null,
+            password: 'deepakkghoshpass',
+            host: 'dharma.mongohq.com',
+            port: 10029
+        }
+    }
 };
 
 module.exports = config;

@@ -1,6 +1,6 @@
 var assert = require('assert')
   , tests
-  , controller = geddy.controller.create('Things');
+  , controller = geddy.controller.create('AuthenticatedUsers');
 
 tests = {
   'test stub, replace with your own passing test': function () {

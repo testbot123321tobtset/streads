@@ -20,7 +20,8 @@
 var router = new geddy.RegExpRouter();
 
 // We default to index.html in public directory, so we can load Sencha Touch
-// router.get('/').to('Main.index');
+router.get('/').
+        to('Main.index');
 
 // Basic routes
 // router.match('/moving/pictures/:id', 'GET').to('Moving.pictures');
@@ -39,4 +40,43 @@ var router = new geddy.RegExpRouter();
 //   this.resource('countries');
 //   this.get('/print(.:format)').to('Hemispheres.print');
 // });
+// 
+// r.resource('SnowDogs');
+// is equivalent to the following:
+// r.match('/snow_dogs(.:format)','GET').to({controller: 'SnowDogs', action: 'index'});
+// The 'add' action loads the Web form that POSTs to the 'create' endpoint
+// If you're only using Geddy as an API backend, 'add' action is probably not relevant to you
+// r.match('/snow_dogs/add(.:format)','GET').to({controller: 'SnowDogs', action: 'add'});
+// r.match('/snow_dogs/:id(.:format)','GET').to({controller: 'SnowDogs', action: 'show'});
+// The 'edit' action loads the Web form that PUTs to the 'update' endpoint
+// If you're only using Geddy as an API backend, 'edit' action is probably not relevant to you
+// r.match('/snow_dogs/:id/edit(.:format)','GET').to({controller: 'SnowDogs', action: 'edit'});
+// r.match('/snow_dogs(.:format)','POST').to({controller: 'SnowDogs', action: 'create'});
+// r.match('/snow_dogs/:id(.:format)','PUT').to({controller: 'SnowDogs', action: 'update'});
+// r.match('/snow_dogs/:id(.:format)','DELETE').to({controller: 'SnowDogs', action: 'remove'});
+
+router.get('/login').
+        to('Main.login');
+router.get('/logout').
+        to('Main.logout');
+
+router.post('/auth/local').
+        to('Auth.local');
+router.get('/auth/twitter').
+        to('Auth.twitter');
+router.get('/auth/twitter/callback').
+        to('Auth.twitterCallback');
+router.get('/auth/facebook').
+        to('Auth.facebook');
+router.get('/auth/facebook/callback').
+        to('Auth.facebookCallback');
+router.get('/auth/yammer').
+        to('Auth.yammer');
+router.get('/auth/yammer/callback').
+        to('Auth.yammerCallback');
+
+router.resource('users');
+
+router.resource('authenticated_users');
+
 exports.router = router;

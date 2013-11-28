@@ -1,8 +1,11 @@
-var CreateThings = function () {
+var CreateUsers = function () {
   this.up = function (next) {
     var def = function (t) {
-          t.column('title', 'string');
-          t.column('description', 'string');
+          t.column('username', 'string');
+          t.column('password', 'string');
+          t.column('familyName', 'string');
+          t.column('givenName', 'string');
+          t.column('email', 'string');
         }
       , callback = function (err, data) {
           if (err) {
@@ -12,7 +15,7 @@ var CreateThings = function () {
             next();
           }
         };
-    this.createTable('thing', def, callback);
+    this.createTable('users', def, callback);
   };
 
   this.down = function (next) {
@@ -24,8 +27,8 @@ var CreateThings = function () {
             next();
           }
         };
-    this.dropTable('thing', callback);
+    this.dropTable('users', callback);
   };
 };
 
-exports.CreateThings = CreateThings;
+exports.CreateUsers = CreateUsers;

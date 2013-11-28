@@ -1,20 +1,20 @@
 var assert = require('assert')
   , tests
-  , Thing = geddy.model.Thing;
+  , AuthenticatedUser = geddy.model.AuthenticatedUser;
 
 tests = {
 
   'after': function (next) {
     // cleanup DB
-    Thing.remove({}, function (err, data) {
+    AuthenticatedUser.remove({}, function (err, data) {
       if (err) { throw err; }
       next();
     });
   }
 
 , 'simple test if the model saves without a error': function (next) {
-    var thing = Thing.create({});
-    thing.save(function (err, data) {
+    var authenticateduser = AuthenticatedUser.create({});
+    authenticateduser.save(function (err, data) {
       assert.equal(err, null);
       next();
     });
