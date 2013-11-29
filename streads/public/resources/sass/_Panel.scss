@@ -1,0 +1,128 @@
+/*
+Blur Code:
+http://codepen.io/rikschennink/pen/zvcgx
+http://compass-style.org/reference/compass/css3/filter/
+
+.x-tabbar {
+    z-index: 2;
+}
+
+.x-tabbar-inner {
+    @include filter(blur(10px));
+    z-index: 1;
+    opacity: .35;
+}*/
+
+.x-tabbar {
+    background-color: transparent;
+    &.x-docked-top {
+        padding: 0px;
+        min-height: 0em;
+        border-width: 0px;
+        .x-tab {
+            padding: 0px;
+            @include border-radius(0px);
+            border: 0px solid transparent;
+
+            .x-button-label {
+                color: #929292;
+                font-size: 30px;
+                line-height: 45px;
+                font-weight: 100;
+                padding: 0px
+            }
+
+            border-bottom: 1px solid #CCC;
+            &.x-tab-active {
+                border-bottom: 1px solid $ios7-blue;
+            }
+        }
+        .x-tab:first-child, .x-tab:last-child {
+            @include border-radius(0px);
+        }
+    }
+    .x-tab {
+        .x-button-icon {
+            display: none !important;
+            width: 0em;
+            height: 0em;
+
+            .x-button-icon.x-hidden {
+                display: none !important;
+            }
+
+            &:before {
+                color: #949494;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+                font-size: 1.4em;
+                line-height: 1.15em;
+            }
+        }
+        .x-button-label {
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 100;
+            padding: 0px 1px;
+        }
+    }
+}
+
+.fullscreen-textarea-tabpanel {
+    .x-tabbar {
+        .x-tab {
+            background-color: $ios7-green !important;
+            border-color: $ios7-green !important;
+        }
+    }
+    textarea {
+        border: 0px solid transparent !important;
+        padding: 0.5em;
+    }
+    .x-field-input {
+        border: 0px solid transparent !important;
+    }
+}
+
+.x-panel.x-floating,
+.x-form.x-floating {
+    @include border-radius(0px);
+}
+
+.x-toolbar.x-docked-top {
+    @include border-top-radius(0px);
+}
+
+.x-container.x-floating > .x-dock > .x-toolbar.x-docked-bottom,
+.x-panel.x-floating > .x-dock > .x-toolbar.x-docked-bottom {
+    @include border-bottom-radius(0px);
+}
+
+.highlighted-header-panel, .section-highlighted-separated-panel {
+    font-size: 2.5em;
+    font-weight: 100;
+    color: $ios7-blue;
+    text-align: center;
+    padding: 0.3em;
+}
+
+.section-highlighted-separated-panel {
+    font-size: 1.5em;
+    padding: 0.5em;
+    background: $white-98;
+    border-top: 1px solid $silver;
+    border-bottom: 1px solid $silver;
+}
+
+.bottom-bordered-section-panel {
+    border-bottom: 1px solid $silver;
+}
+
+.highlighted-label-panel {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 1em;
+    padding-left: 1.3em;
+    color: #555555;
+    font-weight: 400;
+    font-size: .8em;
+}

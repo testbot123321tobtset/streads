@@ -1,0 +1,379 @@
+Ext.define('X.controller.Users', {
+    extend: 'X.controller.Main',
+    requires: [
+        'X.model.validation.UserLogin',
+        'X.view.plugandplay.UserAccountInfoNestedList'
+    ],
+    config: {
+        models: [
+            'User',
+            'AuthenticatedUser'
+        ],
+        stores: [
+            'Users',
+            'AuthenticatedUser'
+        ],
+        before: {
+            showLogin: ['checkLoginAndResumeIfNotExistsOrRedirectIfExists'],
+            showAuthenticated: ['checkLoginAndResumeIfExistsOrRedirectIfNotExists'],
+            showAuthenticatedMoreAccountInformation: ['checkLoginAndResumeIfExistsOrRedirectIfNotExists'],
+            showAuthenticatedMoreLogoutInformation: ['checkLoginAndResumeIfExistsOrRedirectIfNotExists']
+        },
+        routes: {
+            // Unauthenticated
+            'user/login': 'showLogin',
+            // Authenticated
+            'user/': 'showAuthenticated',
+            'user/profile': 'showAuthenticated',
+            'user/profile/news': 'showAuthenticated',
+            'user/profile/more/account': 'showAuthenticatedMoreAccountInformation',
+            'user/profile/more/logout': 'showAuthenticatedMoreLogoutInformation'
+        },
+        control: {
+            // Login
+            pageLogin: {
+                activeitemchange: 'onPageLoginTabPanelActiveItemChange'
+            },
+            userLoginFormSubmitButton: {
+                tap: 'doLogin'
+            },
+            // User profile root page - this comes after authentication
+            pageUserRoot: {
+                activeitemchange: 'onPageUserRootTabPanelPanelActiveItemChange'
+            },
+            userMoreTabPanel: {
+                activeitemchange: 'onUserMoreTabPanelPanelActiveItemChange'
+            },
+            //Logout
+            logoutButton: {
+                tap: 'doLogout'
+            }
+        },
+        refs: {
+            // Login
+            pageLogin: '#pageLogin',
+            userLoginFormPanel: '#userLoginFormPanel',
+            userLoginFormSubmitButton: '#userLoginFormPanel #submitButton',
+            // User profile root page - this comes after authentication
+            pageUserRoot: '#pageUserRoot',
+            userMoreTabPanel: '#userMoreTabPanel',
+            userAccountInfoPanel: '#userMoreTabPanel #userAccountInfoPanel',
+            // Logout
+            userLogoutPanel: '#userMoreTabPanel #userLogout',
+            logoutButton: '#userMoreTabPanel #userLogout #logoutButton'
+        }
+    },
+    // DIRECT EVENT HANDLERS
+    onPageLoginTabPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
+        var me = this;
+        var urlHash = me.getUrlHash();
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onPageLoginTabPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash);
+        }
+        if (activeItem.getItemId() === 'userLogin' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_LOGIN_PAGE()) {
+            me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
+        }
+        return me;
+    },
+    onPageUserRootTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
+        var me = this;
+        var urlHash = me.getUrlHash();
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash);
+        }
+        if (activeItem.getItemId() === 'userNews' && urlHash !== 'user/profile/news') {
+            me.redirectTo('user/profile/news');
+        }
+        else if (activeItem.getItemId() === 'userGallery' && urlHash !== 'user/profile/gallery') {
+            me.redirectTo('user/profile/gallery');
+        }
+        else if (activeItem.getItemId() === 'userMore' && urlHash !== 'user/profile/more/account') {
+            me.redirectTo('user/profile/more/account');
+        }
+        return me;
+    },
+    onUserMoreTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
+        var me = this;
+        var urlHash = me.getUrlHash();
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onUserMoreTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash);
+        }
+        if (activeItem.getItemId() === 'userAccount' && urlHash !== 'user/profile/more/account') {
+            me.redirectTo('user/profile/more/account');
+        }
+        else if (activeItem.getItemId() === 'userLogout' && urlHash !== 'user/profile/more/logout') {
+            me.redirectTo('user/profile/more/logout');
+        }
+        return me;
+    },
+    checkLoginAndResumeIfNotExistsOrRedirectIfExists: function(action) {
+        var me = this;
+        me.checkIfAuthenticatedUserExists({
+            // Callback if authenticated user exists
+            fn: function() {
+                if (me.getUrlHash() !== X.XConfig.getDEFAULT_USER_PAGE()) {
+                    if (me.getDebug()) {
+                        console.log('Debug: X.controller.Users.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE()');
+                    }
+                    me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+                }
+            },
+            scope: me
+        },
+        {
+            // Callback if authenticated user does not exist
+            fn: function() {
+                me.loadAuthenticatedUserStore({
+                    // Callback if authenticated user exists
+                    fn: function() {
+                        if (me.getUrlHash() !== X.XConfig.getDEFAULT_USER_PAGE()) {
+                            if (me.getDebug()) {
+                                console.log('Debug: X.controller.Users.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE()');
+                            }
+                            me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+                        }
+                    },
+                    scope: me
+                },
+                {
+                    // Callback if authenticated user does not exist
+                    fn: function() {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user does not exist. Will do action.resume()');
+                        }
+                        action.resume();
+                    },
+                    scope: me
+                });
+            },
+            scope: me
+        });
+    },
+    checkLoginAndResumeIfExistsOrRedirectIfNotExists: function(action) {
+        var me = this;
+        me.checkIfAuthenticatedUserExists({
+            // Callback if authenticated user exists
+            fn: function() {
+                if (me.getDebug()) {
+                    console.log('Debug: X.controller.Users.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume()');
+                }
+                action.resume();
+            },
+            scope: me
+        },
+        {
+            // Callback if authenticated user does not exist
+            fn: function() {
+                me.loadAuthenticatedUserStore({
+                    // Callback if authenticated user exists
+                    fn: function() {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume()');
+                        }
+                        action.resume();
+                    },
+                    scope: me
+                },
+                {
+                    // Callback if authenticated user does not exist
+                    fn: function() {
+                        if (me.getUrlHash() !== X.XConfig.getDEFAULT_LOGIN_PAGE()) {
+                            if (me.getDebug()) {
+                                console.log('Debug: X.controller.Users.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user does not exist. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_LOGIN_PAGE()');
+                            }
+                            me.redirectTo(X.XConfig.getDEFAULT_LOGIN_PAGE());
+                        }
+                    },
+                    scope: me
+                });
+            },
+            scope: me
+        });
+    },
+    // Show login form
+    showLogin: function() {
+        var me = this;
+        if (!Ext.isObject(me.getPageLogin()) || me.getPageLogin().isHidden() || !Ext.isObject(me.getPageLogin().getActiveItem()) || me.getPageLogin().getActiveItem().getItemId() !== 'userLogin') {
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.showLogin(): Current active item is not userLogin. Will call generateAndFillViewportWithUserLoginWindow()');
+            }
+            return me.generateAndFillViewportWithUserLoginWindow();
+        }
+        return me;
+    },
+    // Validate login form on submit and initiate login over ajax
+    doLogin: function(button, e, eOpts) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.doLogin()');
+        }
+        var formPanel = button.up('coreformpanel');
+        var formData = formPanel.getValues();
+        var modelValidationUserLogin = Ext.create('X.model.validation.UserLogin', {
+            usernameEmail: formData.usernameEmail,
+            password: formData.password
+        });
+        var errors = modelValidationUserLogin.validate();
+        if (!errors.isValid()) {
+            me.generateInvalidAuthenticationWindow({
+                message: errors.getAt(0).getMessage()
+            });
+            return false;
+        }
+        else {
+            me.xhrLogin(formPanel);
+        }
+        return me;
+    },
+    // Ajax login
+    xhrLogin: function(form) {
+        var me = this;
+        form.submit({
+            success: function(form, action) {
+                if (me.getDebug()) {
+                    console.log('Debug: X.controller.Users.xhrLogin(): Successful');
+                }
+                me.loadAuthenticatedUserStore({
+                    // Callback if authenticated user exists
+                    fn: function() {
+                        Ext.getStore('AuthenticatedUserStore').removeAll();
+                        me.resetAuthenticatedEntity();
+                        Ext.create('Ext.util.DelayedTask', function() {
+                            me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+                        }).delay(500);
+                    },
+                    scope: me
+                });
+            },
+            failure: function(form, serverResponse) {
+                if (me.getDebug()) {
+                    console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received serverResponse:');
+                    console.log(serverResponse);
+                }
+                var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
+                var serverResponseMessage = Ext.isString(serverResponse.message) ? serverResponse.message : false;
+                var serverResponseResult = Ext.isObject(serverResponse.result) ? serverResponse.result : false;
+                if (!serverResponseSuccess) {
+                    if (!serverResponseMessage) {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received no failure message from server');
+                        }
+                    }
+                    else {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received failure message from server: ' + serverResponseMessage);
+                        }
+                    }
+                    me.generateFailedAuthenticationWindow({
+                        fn: function() {
+                            me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
+                        },
+                        scope: me
+                    });
+                }
+                else {
+                    if (!serverResponseResult) {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrLogin(): Succeeded. But, no authenticated user object was found');
+                        }
+                        me.generateFailedAuthenticationWindow({
+                            fn: function() {
+                                me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
+                            },
+                            scope: me
+                        });
+                    }
+                    else {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrLogin(): Succeeded');
+                        }
+                        Ext.getStore('AuthenticatedUserStore').removeAll();
+                        me.resetAuthenticatedEntity();
+                        Ext.create('Ext.util.DelayedTask', function() {
+                            me.redirectTo(X.config.Config.getDEFAULT_USER_PAGE());
+                        }).delay(500);
+                    }
+                }
+            }
+        });
+        return me;
+    },
+    show: function(id) {
+        var me = this;
+        if (X.XConfig.getDEBUG()) {
+            console.log('Debug: X.controller.Users.show()');
+        }
+        return me;
+    },
+    authenticate: function(action) {
+        var me = this;
+        if (X.XConfig.getDEBUG()) {
+            console.log('Debug: X.controller.Users.authenticate()');
+        }
+        action.resume();
+    },
+    // AUTHENTICATED FUNCTIONS
+    // Show authenticated user
+    showAuthenticated: function(id) {
+        var me = this;
+        // When you write this function, make sure you check where this is already showing the view. This might get double-called, so avoid rendering same view twice
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.showAuthenticated()');
+        }
+        return me.generateAndFillViewportWithUserRootNewsWindow();
+    },
+    showAuthenticatedMoreAccountInformation: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.showAuthenticatedMoreAccountInformation()');
+        }
+        me.generateAndFillViewportWithUserRootMoreAccountWindow();
+        var userAccountInfoPanel = me.getUserAccountInfoPanel();
+        userAccountInfoPanel.down('#userDisplayName').setRecord(X.authenticatedEntity);
+        return me;
+    },
+    showAuthenticatedMoreLogoutInformation: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.showAuthenticatedMoreLogoutInformation()');
+        }
+        return me.generateAndFillViewportWithUserRootMoreLogoutWindow();
+    },
+    // Logout
+    doLogout: function(button, e, eOpts) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.doLogout()');
+        }
+        Ext.Ajax.request({
+            url: X.XConfig.getDEFAULT_USER_LOGOUT_PAGE(),
+            success: function(response) {
+                if (me.getDebug()) {
+                    console.log('Debug: X.controller.Users.doLogout(): User successfully logged out. Will redirect to X.XConfig.getDEFAULT_USER_LOGIN_PAGE(). Response received from server:');
+                    console.log(response.responseText);
+                }
+                Ext.getStore('AuthenticatedUserStore').removeAll();
+                me.resetAuthenticatedEntity();
+                Ext.create('Ext.util.DelayedTask', function() {
+                    me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
+                }).delay(500);
+            }
+        });
+        return me;
+    },
+    init: function() {
+        var me = this;
+        me.setDebug(X.config.Config.getDEBUG());
+        me.setBootupDebug(X.config.Config.getBOOTUP_DEBUG());
+        me.setDetailedDebug(X.config.Config.getDETAILED_DEBUG());
+        if (me.getDebug() && me.getBootupDebug()) {
+            console.log("Debug: X.controller.Users.init()");
+        }
+    },
+    launch: function() {
+        var me = this;
+        if (me.getDebug() && me.getBootupDebug()) {
+            console.log("Debug: X.controller.Users.launch()");
+        }
+    }
+});

@@ -10,6 +10,8 @@ var SUPPORTED_SERVICES = [
     'twitter', 'facebook', 'yammer'
 ];
 
+var AH = require('../application');
+
 SUPPORTED_SERVICES.forEach(function(item) {
     var hostname = geddy.config.fullHostname || '',
             config = {
@@ -42,9 +44,7 @@ var actions = new (function() {
             req.session = this.session.data;
             passport.authenticate(authType)(req, resp);
         };
-    }
-
-    ,
+    },
             _createCallback = function(authType) {
                 return function(req, resp, params) {
                     var self = this,
@@ -98,7 +98,7 @@ var actions = new (function() {
         var self = this,
                 usernameEmail = params.usernameEmail,
                 password = params.password;
-        
+
         geddy.model.User.first({
             usernameEmail: usernameEmail
         }, {
@@ -108,7 +108,7 @@ var actions = new (function() {
         }, function(err, user) {
             var crypted, redirect;
             if (err) {
-                self.redirect(failureRedirect);
+                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('userAuthenticationFailed')));
             }
             if (user) {
                 if (!cryptPass) {
@@ -116,31 +116,16 @@ var actions = new (function() {
                 }
 
                 if (bcrypt.compareSync(password, user.password)) {
-                    redirect = self.session.get('successRedirect');
-
-                    // If there was a session var for an previous attempt
-                    // to hit an auth-protected page, redirect there, and
-                    // remove the session var so they don't keep going to
-                    // that page for infinity
-                    if (redirect) {
-                        self.session.unset('successRedirect');
-                    }
-                    // Otherwise use the default redirect
-                    else {
-                        redirect = successRedirect;
-                    }
-
                     self.session.set('userId', user.id);
                     self.session.set('authType', 'local');
                     // No third-party auth tokens
                     self.session.set('authData', {});
-
-                    self.redirect(redirect);
+                    self.respond(AH.getSuccessResponseObject(params, user));
                 } else {
-                    self.redirect(failureRedirect);
+                    self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('userAuthenticationFailed')));
                 }
             } else {
-                self.redirect(failureRedirect);
+                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('noAuthenticatedUserFound')));
             }
         });
     };

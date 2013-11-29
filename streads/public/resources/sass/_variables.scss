@@ -1,0 +1,34 @@
+/* Dark to light colors (black & white) */
+$lead: #191919;
+$tungsten: #333333;
+$iron: #4C4C4C;
+$black-32: #515151;
+$black-35: #595959;
+$black-38: #606060;
+$steel: #666666;
+$nickel: #808080;
+$aluminum: #999999;
+$magnesium: #B3B3B3;
+$silver: #CCCCCC;
+$mercury: #E6E6E6;
+$white-94: #EFEFEF;
+$white-96: #F5F5F5;
+$white-98: #F9F9F9;
+$facebook-blue: #4c66a4;
+$facebook-blue-lighten: lighten($facebook-blue, 30%);
+
+$default-font-weight: 200;
+$default-font-ultralight-weight: 100;
+$default-font-color: $nickel;
+$default-button-radius: 0px;
+$ios7-blue: #157efb;
+$ios7-red: #fc3e39;
+$ios7-orange: #F92E32;
+$ios7-green: #53d769;
+$ios7-blue-lighten: lighten($ios7-blue, 30%);
+$ios7-red-lighten: lighten($ios7-red, 30%);
+$ios7-orange-lighten: lighten($ios7-orange, 30%);
+$ios7-green-lighten: lighten($ios7-green, 30%);
+
+$default-absolute-top-margin: 20px;
+$default-button-margin: 1em;

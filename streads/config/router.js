@@ -20,8 +20,8 @@
 var router = new geddy.RegExpRouter();
 
 // We default to index.html in public directory, so we can load Sencha Touch
-router.get('/').
-        to('Main.index');
+// router.get('/').
+//        to('Main.index');
 
 // Basic routes
 // router.match('/moving/pictures/:id', 'GET').to('Moving.pictures');
@@ -43,10 +43,12 @@ router.get('/').
 // 
 // r.resource('SnowDogs');
 // is equivalent to the following:
+// index doesn't need an id; it displays all items
 // r.match('/snow_dogs(.:format)','GET').to({controller: 'SnowDogs', action: 'index'});
 // The 'add' action loads the Web form that POSTs to the 'create' endpoint
 // If you're only using Geddy as an API backend, 'add' action is probably not relevant to you
 // r.match('/snow_dogs/add(.:format)','GET').to({controller: 'SnowDogs', action: 'add'});
+// show needs an id; it displays only the requested item
 // r.match('/snow_dogs/:id(.:format)','GET').to({controller: 'SnowDogs', action: 'show'});
 // The 'edit' action loads the Web form that PUTs to the 'update' endpoint
 // If you're only using Geddy as an API backend, 'edit' action is probably not relevant to you
@@ -55,11 +57,8 @@ router.get('/').
 // r.match('/snow_dogs/:id(.:format)','PUT').to({controller: 'SnowDogs', action: 'update'});
 // r.match('/snow_dogs/:id(.:format)','DELETE').to({controller: 'SnowDogs', action: 'remove'});
 
-router.get('/login').
-        to('Main.login');
-router.get('/logout').
-        to('Main.logout');
-
+router.post('/login').
+        to('Auth.local');
 router.post('/auth/local').
         to('Auth.local');
 router.get('/auth/twitter').
@@ -76,7 +75,15 @@ router.get('/auth/yammer/callback').
         to('Auth.yammerCallback');
 
 router.resource('users');
-
-router.resource('authenticated_users');
+router.match('/user', 'GET').
+        to({
+            controller: 'Users',
+            action: 'showMe'
+        });
+router.match('/logout', 'GET').
+        to({
+            controller: 'Users',
+            action: 'logout'
+        });
 
 exports.router = router;

@@ -1,0 +1,17 @@
+.x-button {
+    &.facebook-login-button {
+        background-color: $facebook-blue;
+        border-color: $facebook-blue;
+        
+        &.x-button-pressing {
+            border-color: $facebook-blue-lighten;
+
+            // My addition
+            background-color: $facebook-blue-lighten;
+
+            .x-button-label {
+                color: white;
+            }
+        }
+    }
+}
