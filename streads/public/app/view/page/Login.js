@@ -1,7 +1,8 @@
 Ext.define('X.view.page.Login', {
     extend: 'Ext.tab.Panel',
     requires: [
-        'X.view.plugandplay.UserLoginFormPanel'
+        'X.view.plugandplay.UserLoginFormPanel',
+        'X.view.plugandplay.UserSignupFormPanel'
     ],
     xtype: 'pagelogin',
     id: 'pageLogin',
@@ -26,6 +27,28 @@ Ext.define('X.view.page.Login', {
                     },
                     {
                         xtype: 'userloginformpanel',
+                        flex: 1,
+                        scrollable: null
+                    }
+                ]
+            },
+            {
+                layout: {
+                    type: 'vbox',
+                    pack: 'center',
+                    align: 'stretch'
+                },
+                itemId: 'userSignup',
+                cls: 'user-signup',
+                title: 'Sign up',
+                items: [
+                    {
+                        flex: 1,
+                        html: 'Logo Placeholder',
+                        scrollable: null
+                    },
+                    {
+                        xtype: 'usersignupformpanel',
                         flex: 1,
                         scrollable: null
                     }

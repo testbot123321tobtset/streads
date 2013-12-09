@@ -38,68 +38,73 @@ SUPPORTED_SERVICES.forEach(function(item) {
 var actions = new (function() {
     var self = this;
 
+    self.respondsWith = [
+        'json'
+    ];
+
     var _createInit = function(authType) {
         return function(req, resp, params) {
             var self = this;
             req.session = this.session.data;
             passport.authenticate(authType)(req, resp);
         };
-    },
-            _createCallback = function(authType) {
-                return function(req, resp, params) {
-                    var self = this,
-                            handler = function(err, profile) {
-                                if (!profile) {
-                                    self.redirect(failureRedirect);
-                                } else {
-                                    try {
-                                        user.lookupByPassport(authType, profile, function(err, user) {
-                                            var redirect = self.session.get('successRedirect');
-                                            if (err) {
-                                                self.error(err);
-                                            } else {
-                                                // If there was a session var for an previous attempt
-                                                // to hit an auth-protected page, redirect there, and
-                                                // remove the session var so they don't keep going to
-                                                // that page for infinity
-                                                if (redirect) {
-                                                    self.session.unset('successRedirect');
-                                                }
-                                                // Otherwise use the default redirect
-                                                else {
-                                                    redirect = successRedirect;
-                                                }
-                                                // Local account's userId
-                                                self.session.set('userId', user.id);
-                                                // Third-party auth type, e.g. 'facebook'
-                                                self.session.set('authType', authType);
-                                                // Third-party auth tokens, may include 'token', 'tokenSecret'
-                                                self.session.set('authData', profile.authData);
+    };
+    var _createCallback = function(authType) {
+        return function(req, resp, params) {
+            var self = this,
+                    handler = function(err, profile) {
+                        if (!profile) {
+                            self.redirect(failureRedirect);
+                        } else {
+                            try {
+                                user.lookupByPassport(authType, profile, function(err, user) {
+                                    var redirect = self.session.get('successRedirect');
+                                    if (err) {
+                                        self.error(err);
+                                    } else {
+                                        // If there was a session var for an previous attempt
+                                        // to hit an auth-protected page, redirect there, and
+                                        // remove the session var so they don't keep going to
+                                        // that page for infinity
+                                        if (redirect) {
+                                            self.session.unset('successRedirect');
+                                        }
+                                        // Otherwise use the default redirect
+                                        else {
+                                            redirect = successRedirect;
+                                        }
+                                        // Local account's userId
+                                        self.session.set('userId', user.id);
+                                        // Third-party auth type, e.g. 'facebook'
+                                        self.session.set('authType', authType);
+                                        // Third-party auth tokens, may include 'token', 'tokenSecret'
+                                        self.session.set('authData', profile.authData);
 
-                                                self.redirect(redirect);
-                                            }
-                                        });
-                                    } catch (e) {
-                                        self.error(e);
+                                        self.redirect(redirect);
                                     }
-                                }
-                            },
-                            next = function(e) {
-                                if (e) {
-                                    self.error(e);
-                                }
-                            };
-                    req.session = this.session.data;
-                    passport.authenticate(authType, handler)(req, resp, next);
-                };
-            };
+                                });
+                            } catch (e) {
+                                self.error(e);
+                            }
+                        }
+                    },
+                    next = function(e) {
+                        if (e) {
+                            self.error(e);
+                        }
+                    };
+            req.session = this.session.data;
+            passport.authenticate(authType, handler)(req, resp, next);
+        };
+    };
 
     this.local = function(req, resp, params) {
         var self = this,
                 usernameEmail = params.usernameEmail,
                 password = params.password;
 
-        geddy.model.User.first({
+        var User = geddy.model.User;
+        User.first({
             usernameEmail: usernameEmail
         }, {
             nocase: [
@@ -108,7 +113,7 @@ var actions = new (function() {
         }, function(err, user) {
             var crypted, redirect;
             if (err) {
-                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('userAuthenticationFailed')));
+                self.respond(AH.getFailureResponseObject(false, err, AH.getResponseMessage('userAuthenticationFailed')));
             }
             if (user) {
                 if (!cryptPass) {
@@ -120,12 +125,12 @@ var actions = new (function() {
                     self.session.set('authType', 'local');
                     // No third-party auth tokens
                     self.session.set('authData', {});
-                    self.respond(AH.getSuccessResponseObject(params, user));
+                    self.respond(AH.getSuccessResponseObject(false));
                 } else {
-                    self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('userAuthenticationFailed')));
+                    self.respond(AH.getFailureResponseObject(false, err, AH.getResponseMessage('userAuthenticationFailed')));
                 }
             } else {
-                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('noAuthenticatedUserFound')));
+                self.respond(AH.getFailureResponseObject(false, err, AH.getResponseMessage('noAuthenticatedUserFound')));
             }
         });
     };

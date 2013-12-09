@@ -11,12 +11,10 @@ var User = function() {
             type: 'string'
         },
         firstName: {
-            type: 'string',
-            required: true
+            type: 'string'
         },
         lastName: {
-            type: 'string',
-            required: true
+            type: 'string'
         }
     });
 

@@ -79,16 +79,6 @@ var Users = function() {
             }
         });
     };
-    
-    // Unauthenticated: logs a uder out
-    this.logout = function(req, resp, params) {
-        var self = this;
-        
-        var session = self.session;
-        session.unset('userId');
-        session.unset('authType');
-        self.respond(AH.getSuccessResponseObject(params, false, AH.getResponseMessage('authenticatedUserSuccessfullyLoggedOut')));
-    };
 
     // Basically, you won't need index, because when you show authenticated user, you will send
     // all her associations with the authenticated user response object. For now, since we are
@@ -119,6 +109,22 @@ var Users = function() {
                 }
             });
         }
+    };
+    
+    // Authenticated: logs a user in
+    me.login = function(req, resp, params) {
+        var self = this;
+        
+        console.log(passport.actions.local(req, resp, params));
+    };
+    // Authenticated: logs a user out
+    me.logout = function(req, resp, params) {
+        var self = this;
+        
+        var session = self.session;
+        session.unset('userId');
+        session.unset('authType');
+        self.respond(AH.getSuccessResponseObject(params, false, AH.getResponseMessage('authenticatedUserSuccessfullyLoggedOut')));
     };
 
     // Authenticated: display me
@@ -218,7 +224,6 @@ var Users = function() {
             }
         });
     };
-
 };
 
 exports.Users = Users;

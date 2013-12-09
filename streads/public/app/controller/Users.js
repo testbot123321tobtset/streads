@@ -14,6 +14,7 @@ Ext.define('X.controller.Users', {
             'AuthenticatedUser'
         ],
         before: {
+            showSignup: ['checkLoginAndResumeIfNotExistsOrRedirectIfExists'],
             showLogin: ['checkLoginAndResumeIfNotExistsOrRedirectIfExists'],
             showAuthenticated: ['checkLoginAndResumeIfExistsOrRedirectIfNotExists'],
             showAuthenticatedMoreAccountInformation: ['checkLoginAndResumeIfExistsOrRedirectIfNotExists'],
@@ -21,6 +22,7 @@ Ext.define('X.controller.Users', {
         },
         routes: {
             // Unauthenticated
+            'user/signup': 'showSignup',
             'user/login': 'showLogin',
             // Authenticated
             'user/': 'showAuthenticated',
@@ -33,6 +35,9 @@ Ext.define('X.controller.Users', {
             // Login
             pageLogin: {
                 activeitemchange: 'onPageLoginTabPanelActiveItemChange'
+            },
+            userSignupFormSubmitButton: {
+                tap: 'doSignup'
             },
             userLoginFormSubmitButton: {
                 tap: 'doLogin'
@@ -52,6 +57,8 @@ Ext.define('X.controller.Users', {
         refs: {
             // Login
             pageLogin: '#pageLogin',
+            userSignupFormPanel: '#userSignupFormPanel',
+            userSignupFormSubmitButton: '#userSignupFormPanel #submitButton',
             userLoginFormPanel: '#userLoginFormPanel',
             userLoginFormSubmitButton: '#userLoginFormPanel #submitButton',
             // User profile root page - this comes after authentication
@@ -72,6 +79,9 @@ Ext.define('X.controller.Users', {
         }
         if (activeItem.getItemId() === 'userLogin' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_LOGIN_PAGE()) {
             me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
+        }
+        else if (activeItem.getItemId() === 'userSignup' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_SIGNUP_PAGE()) {
+            me.redirectTo(X.XConfig.getDEFAULT_USER_SIGNUP_PAGE());
         }
         return me;
     },
@@ -190,6 +200,119 @@ Ext.define('X.controller.Users', {
             scope: me
         });
     },
+    // Show sign up form
+    showSignup: function() {
+        var me = this;
+        if (!Ext.isObject(me.getPageLogin()) || me.getPageLogin().isHidden() || !Ext.isObject(me.getPageLogin().getActiveItem()) || me.getPageLogin().getActiveItem().getItemId() !== 'userSignup') {
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.showSignup(): Current active item is not userLogin. Will call generateAndFillViewportWithUserLoginWindow()');
+            }
+            return me.generateAndFillViewportWithUserSignupWindow();
+        }
+        return me;
+    },
+    doSignup: function(button) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.doSignup()');
+        }
+        var formPanel = button.up('coreformpanel');
+        var formData = formPanel.getValues();
+        var usernameEmail = formData.usernameEmail;
+        var password = formData.password;
+        var modelValidationUserLogin = Ext.create('X.model.validation.UserLogin', {
+            usernameEmail: usernameEmail,
+            password: password
+        });
+        var errors = modelValidationUserLogin.validate();
+        if (!errors.isValid()) {
+            me.generateInvalidAuthenticationWindow({
+                message: errors.getAt(0).getMessage()
+            });
+            return false;
+        }
+        else {
+            me.xhrSignup(formPanel);
+        }
+        return me;
+    },
+    // Ajax sign up
+    // This assumes that the passed user object is valid
+    xhrSignup: function(form) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.xhrSignup()');
+        }
+        form.submit({
+            method: 'POST',
+            success: function(form, action) {
+                if (me.getDebug()) {
+                    console.log('Debug: X.controller.Users.xhrSignup(): Successful');
+                }
+                form.reset();
+                me.generateSuccessfulUserCreatedWindow({
+                    message: false,
+                    fn: function() {
+                        me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
+                    },
+                    scope: me
+                });
+            },
+            failure: function(form, serverResponse) {
+                if (me.getDebug()) {
+                    console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received serverResponse:');
+                    console.log(serverResponse);
+                    //me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
+                }
+                form.reset();
+                var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
+                var serverResponseMessage = Ext.isString(serverResponse.message) ? serverResponse.message : false;
+                var serverResponseResult = Ext.isObject(serverResponse.result) ? serverResponse.result : false;
+                if (!serverResponseSuccess) {
+                    if (!serverResponseMessage) {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received no failure message from server');
+                        }
+                    }
+                    else {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received failure message from server: ' + serverResponseMessage);
+                        }
+                    }
+                    me.generateFailedAuthenticationWindow({
+                        message: serverResponseMessage
+                    });
+                }
+                else {
+                    if (!serverResponseResult) {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrSignup(): Succeeded. But, no user object was found');
+                        }
+                        me.generateFailedAuthenticationWindow({
+                            message: serverResponseMessage,
+                            fn: function() {
+                                me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
+                            },
+                            scope: me
+                        });
+                    }
+                    else {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.Users.xhrSignup(): Succeeded');
+                        }
+                        me.generateSuccessfulUserCreatedWindow({
+                            message: serverResponseMessage,
+                            fn: function() {
+                                me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
+                            },
+                            scope: me
+                        });
+                    }
+                }
+            }
+        });
+        return me;
+    },
     // Show login form
     showLogin: function() {
         var me = this;
@@ -229,10 +352,12 @@ Ext.define('X.controller.Users', {
     xhrLogin: function(form) {
         var me = this;
         form.submit({
+            method: 'POST',
             success: function(form, action) {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.xhrLogin(): Successful');
                 }
+                form.reset();
                 me.loadAuthenticatedUserStore({
                     // Callback if authenticated user exists
                     fn: function() {
@@ -250,6 +375,7 @@ Ext.define('X.controller.Users', {
                     console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received serverResponse:');
                     console.log(serverResponse);
                 }
+                form.reset();
                 var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
                 var serverResponseMessage = Ext.isString(serverResponse.message) ? serverResponse.message : false;
                 var serverResponseResult = Ext.isObject(serverResponse.result) ? serverResponse.result : false;
@@ -265,6 +391,7 @@ Ext.define('X.controller.Users', {
                         }
                     }
                     me.generateFailedAuthenticationWindow({
+                        message: serverResponseMessage,
                         fn: function() {
                             me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
                         },
@@ -277,6 +404,7 @@ Ext.define('X.controller.Users', {
                             console.log('Debug: X.controller.Users.xhrLogin(): Succeeded. But, no authenticated user object was found');
                         }
                         me.generateFailedAuthenticationWindow({
+                            message: serverResponseMessage,
                             fn: function() {
                                 me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
                             },

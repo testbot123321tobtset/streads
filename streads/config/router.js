@@ -85,5 +85,10 @@ router.match('/logout', 'GET').
             controller: 'Users',
             action: 'logout'
         });
+router.match('/user/logout', 'GET').
+        to({
+            controller: 'Users',
+            action: 'logout'
+        });
 
 exports.router = router;

@@ -3,14 +3,15 @@ Ext.define('X.config.Config', {
     config: {
         // TO DO: Update these URLs when you have the UIs
         DEFAULT_LOGIN_PAGE: 'user/login',
+        DEFAULT_USER_SIGNUP_PAGE: 'user/signup',
         DEFAULT_USER_LOGIN_PAGE: 'user/login',
         DEFAULT_USER_LOGOUT_PAGE: 'user/logout',
         DEFAULT_USER_PAGE: 'user/profile',
         MESSAGES: {
             // Bad news
             ALERT: 'Something seems to be wrong!',
-            INVALID_LOGIN: 'Did you correctly enter your e-mail address? If you are sure you did but continue to face problems, please email us and let us know.',
-            FAILED_AUTHENTICATION: 'We are sorry, but we couldn\'t find you in our records. Did you correctly enter your credentials? If you are sure you did but continue to face problems or if you\'d like to register with us, please email us and let us know.',
+            INVALID_LOGIN: 'Hmm, we couldn\'t log you in. Email us if the problem persists.',
+            FAILED_AUTHENTICATION: 'Hmm, we couldn\'t find you in our system. Email us if the problem persists.',
             FAILED_SAVE: 'The data you requested could not be saved. Let us know if the problem persists.',
             REPORT_BUG: 'Email Us',
             FREE_CLUB_LABEL: 'This club is free for all to join!',

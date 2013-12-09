@@ -7,10 +7,10 @@ exports.getResponseMessage = function(responseMessageType) {
             responseMessage = 'We know this email! Maybe you want to log right in?';
             break;
         case 'userAuthenticationFailed':
-            responseMessage = 'Hmm, we couldn\'t log you in. Email us if the problem persists.';
+            responseMessage = 'Hmm, we couldn\'t log you in. Let us know, and we\'ll take care of it.';
             break;
         case 'noAuthenticatedUserFound':
-            responseMessage = 'Hmm, we couldn\'t find you in our system. Email us if the problem persists.';
+            responseMessage = 'Hmm, we couldn\'t find you in our system. Maybe you\'d want to sign up first?';
             break;
         case 'authenticatedUserSuccessfullyLoggedOut':
             responseMessage = 'We hate to see you go! Please come back!';
@@ -19,13 +19,13 @@ exports.getResponseMessage = function(responseMessageType) {
             responseMessage = 'No logged in user found.';
             break;
         case 'authenticatedUserCouldNotBeCreated':
-            responseMessage = 'Hmm, we couldn\'t create that account. Email us, and we\'ll take care of it.';
+            responseMessage = 'Hmm, we couldn\'t create that account. Let us know, and we\'ll take care of it.';
             break;
         case 'authenticatedUserCouldNotBeUpdated':
-            responseMessage = 'Hmm, we couldn\'t update your account. Email us, and we\'ll take care of it.';
+            responseMessage = 'Hmm, we couldn\'t update your account. Let us know, and we\'ll take care of it.';
             break;
         case 'authenticatedUserCouldNotBeDeleted':
-            responseMessage = 'Hmm, we couldn\'t delete your account. Email us, and we\'ll take care of it.';
+            responseMessage = 'Hmm, we couldn\'t delete your account. Let us know, and we\'ll take care of it.';
             break;
         case 'postCreateDeniedDueToNonOwner':
             responseMessage = 'You cannot create a post that does not belong to you.';
@@ -44,7 +44,7 @@ exports.getResponseMessage = function(responseMessageType) {
 
 exports.getFailureResponseObject = function(params, error, message) {
     var responseObject = {
-        params: params,
+        params: __.isObject(params) ? params : {},
         success: false
     };
     if (__.isObject(error)) {
@@ -58,9 +58,11 @@ exports.getFailureResponseObject = function(params, error, message) {
 };
 exports.getSuccessResponseObject = function(params, result, message) {
     var responseObject = {
-        params: params,
         success: true
     };
+    if (__.isObject(params)) {
+        responseObject.params = params;
+    }
     if (__.isObject(result)) {
         responseObject.result = result;
     }

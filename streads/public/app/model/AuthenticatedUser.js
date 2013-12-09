@@ -34,7 +34,7 @@ Ext.define('X.model.AuthenticatedUser', {
                 name: 'fullName',
                 type: 'string',
                 convert: function(value, record) {
-                    return record.data.firstName + ' ' + record.data.lastName;
+                    return (Ext.isString(record.data.firstName) && Ext.isString(record.data.lastName)) ? record.data.firstName + ' ' + record.data.lastName : null;
                 },
                 persist: false
             }

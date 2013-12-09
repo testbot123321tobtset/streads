@@ -1,7 +1,16 @@
 Ext.define('X.controller.mixin.Factory', {
+    generateFailedWindow: function(callback) {
+        var me = this;
+        var message = Ext.isString(callback.message) ? callback.message : 'Hmm, that failed for some reason. Let is know, and we\'ll take care of it.';
+        Ext.Msg.alert(X.XConfig.getMESSAGES().ALERT, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
     generateFailedAuthenticationWindow: function(callback) {
         var me = this;
-        Ext.Msg.alert(X.XConfig.getMESSAGES().ALERT, X.XConfig.getMESSAGES().FAILED_AUTHENTICATION, function() {
+        var message = Ext.isString(callback.message) ? callback.message : X.XConfig.getMESSAGES().FAILED_AUTHENTICATION;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().ALERT, message, function() {
             me.executeCallback(callback);
         });
         return me;
@@ -14,6 +23,14 @@ Ext.define('X.controller.mixin.Factory', {
         });
         return me;
     },
+    generateSuccessfulUserCreatedWindow: function(callback) {
+        var me = this;
+        var message = Ext.isString(callback.message) ? callback.message : 'Arite! We have you in our system now! Now, let\'s log you in!';
+        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
     generateFailedSaveModelWindow: function(callback) {
         var me = this;
         Ext.Msg.alert(X.XConfig.getMESSAGES().ALERT, X.XConfig.getMESSAGES().FAILED_SAVE, function() {
@@ -21,24 +38,24 @@ Ext.define('X.controller.mixin.Factory', {
         });
         return me;
     },
-    generateAndFillViewportWithBrandLoginWindow: function() {
+    generateAndFillViewportWithUserSignupWindow: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithBrandLoginWindow()');
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserSignupWindow()');
         }
         if (!Ext.isObject(me.getPageLogin())) {
             Ext.Viewport.removeAll(false, true).add(me.createView({
                 xtype: 'pagelogin'
-            }).setActiveItem(1));
+            }).setActiveItem('#userSignup'));
         }
         else {
             if(me.getPageLogin().isHidden()) {
                 Ext.Viewport.removeAll(false, true).add(me.getPageLogin());
                 me.getPageLogin().show();
-                me.getPageLogin().setActiveItem(1);
+                me.getPageLogin().setActiveItem('#userSignup');
             }
             else {
-                me.getPageLogin().setActiveItem(1);
+                me.getPageLogin().setActiveItem('#userSignup');
             }
         }
         return me;
@@ -51,16 +68,16 @@ Ext.define('X.controller.mixin.Factory', {
         if (!Ext.isObject(me.getPageLogin())) {
             Ext.Viewport.removeAll(false, true).add(me.createView({
                 xtype: 'pagelogin'
-            }).setActiveItem(0));
+            }).setActiveItem('#userLogin'));
         }
         else {
             if(me.getPageLogin().isHidden()) {
                 Ext.Viewport.removeAll(false, true).add(me.getPageLogin());
                 me.getPageLogin().show();
-                me.getPageLogin().setActiveItem(0);
+                me.getPageLogin().setActiveItem('#userLogin');
             }
             else {
-                me.getPageLogin().setActiveItem(0);
+                me.getPageLogin().setActiveItem('#userLogin');
             }
         }
         return me;

@@ -2,7 +2,8 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
     extend: 'Ext.Container',
     xtype: 'useraccountinfopanel',
     requires: [
-        'X.view.ux.ToggleableButton'
+        'X.view.ux.ToggleableButton',
+        'X.view.plugandplay.UserAccountFormPanel'
     ],
     id: 'userAccountInfoPanel',
     config: {
@@ -17,41 +18,25 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
             {
                 itemId: 'userDisplayName',
                 cls: 'highlighted-header-panel user-account-display-name-panel',
-                tpl: '{displayName}'
+                tpl: new Ext.XTemplate(
+                        '<tpl if="typeof(fullName) === \'string\'">',
+                        '{fullName} {typeof(fullName)}',
+                        '<tpl else>',
+                        '{usernameEmail}',
+                        '</tpl>'
+                        )
             },
             {
-                itemId: 'creditCardsPanel',
-                cls: 'user-account-credit-cards-panel',
+                itemId: 'profilePanel',
+                cls: 'user-account-profile-panel',
                 items: [
                     {
-                        itemId: 'creditCardsLabelDisplayPanel',
-                        cls: 'section-highlighted-separated-panel credit-cards-label-display-panel',
-                        html: 'Your Credit Cards'
+                        itemId: 'profileLabelDisplayPanel',
+                        cls: 'section-highlighted-separated-panel profile-label-display-panel',
+                        html: 'Your Profile'
                     },
                     {
-                        layout: {
-                            type: 'hbox',
-                            align: 'stretch',
-                            pack: 'center'
-                        },
-                        items: [
-                            {
-                                xtype: 'button',
-                                flex: 1,
-                                itemId: 'addCreditCardButton',
-                                cls: 'add-credit-card-button',
-                                text: 'New',
-                                ui: 'confirm'
-                            },
-                            {
-                                xtype: 'button',
-                                flex: 1,
-                                itemId: 'submitCreditCardsButton',
-                                cls: 'submit-credit-cards-button',
-                                text: 'Save',
-                                ui: 'confirm'
-                            }
-                        ]
+                        xtype: 'useraccountformpanel'
                     }
                 ]
             }
