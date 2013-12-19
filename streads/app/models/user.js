@@ -31,5 +31,9 @@ var User = function() {
 User.fieldExcusionArray = [
     'password'
 ];
+User.fieldUpdateExcusionArray = [
+    // Once a user is created, we don't change email address
+    'usernameEmail'
+];
 
 User = geddy.model.register('User', User);

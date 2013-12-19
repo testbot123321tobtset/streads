@@ -1,25 +1,26 @@
 {
-  "name": "Streads",
-  "version": "0.0.1",
-  "author": "Deepak Ghosh",
-  "dependencies": {
-    "underscore": "1.5.2",
-    "socket.io": "~0.9.16",
-    "mongodb": "1.3.x",
-    "jake": "0.5.x",
-    "passport": "0.1.x",
-    "passport-twitter": "0.1.x",
-    "passport-facebook": "0.1.x",
-    "passport-yammer": "0.1.x",
-    "bcrypt": "0.7.x"
-  },
-  "devDependencies": {},
-  "subdomain": "deepakkghosh.streads",
-  "scripts": {
-    "predeploy": "npm install",
-    "start": "app.js"
-  },
-  "engines": {
-    "node": "0.10.x"
-  }
+    "name": "Streads",
+    "version": "0.0.1-14",
+    "author": "Deepak Ghosh",
+    "dependencies": {
+        "geddy": "0.11.8",
+        "underscore": "1.5.2",
+        "socket.io": "~0.9.16",
+        "jake": "0.5.x",
+        "mongodb": "1.3.23",
+        "passport": "0.1.x",
+        "passport-facebook": "1.0.x",
+        "passport-yammer": "0.1.x",
+        "passport-twitter": "1.0.x",
+        "bcrypt": "0.7.x"
+    },
+    "devDependencies": {},
+    "subdomain": "deepakkghosh.streads",
+    "scripts": {
+        "predeploy": "npm install && cd public && sencha app build",
+        "start": "app.js"
+    },
+    "engines": {
+        "node": "0.10.x"
+    }
 }

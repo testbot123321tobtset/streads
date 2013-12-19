@@ -65,6 +65,7 @@ Ext.define('X.controller.Users', {
             pageUserRoot: '#pageUserRoot',
             userMoreTabPanel: '#userMoreTabPanel',
             userAccountInfoPanel: '#userMoreTabPanel #userAccountInfoPanel',
+            userAccountFormPanel: '#userMoreTabPanel #userAccountFormPanel',
             // Logout
             userLogoutPanel: '#userMoreTabPanel #userLogout',
             logoutButton: '#userMoreTabPanel #userLogout #logoutButton'
@@ -444,7 +445,6 @@ Ext.define('X.controller.Users', {
     // Show authenticated user
     showAuthenticated: function(id) {
         var me = this;
-        // When you write this function, make sure you check where this is already showing the view. This might get double-called, so avoid rendering same view twice
         if (me.getDebug()) {
             console.log('Debug: X.controller.Users.showAuthenticated()');
         }
@@ -457,7 +457,7 @@ Ext.define('X.controller.Users', {
         }
         me.generateAndFillViewportWithUserRootMoreAccountWindow();
         var userAccountInfoPanel = me.getUserAccountInfoPanel();
-        userAccountInfoPanel.down('#userDisplayName').setRecord(X.authenticatedEntity);
+        userAccountInfoPanel.setRecordRecursive(X.authenticatedEntity);
         return me;
     },
     showAuthenticatedMoreLogoutInformation: function() {

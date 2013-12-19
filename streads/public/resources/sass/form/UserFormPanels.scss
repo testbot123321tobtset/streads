@@ -1,5 +1,10 @@
 .user-login-form-panel, .user-signup-form-panel {
     .submit-button {
-        margin: $default-button-margin;
+        margin: 1em;
+    }
+}
+.user-account-form-panel {
+    .x-form-fieldset .x-form-fieldset-inner {
+        border: 0px solid transparent;
     }
 }

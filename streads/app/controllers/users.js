@@ -171,18 +171,18 @@ var Users = function() {
     // Authenticated: update authenticated and in-session user
     me.update = function(req, resp, params) {
         var self = this;
-
+        self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
         else {
             var User = geddy.model.User;
             User.first(params.id, function(err, user) {
-                // Only update password if it's changed
-                var skip = params.password ? [
-                ] : [
-                    'password'
-                ];
+                var skip = User.fieldUpdateExcusionArray;
+                // Update password only if it has changed
+                if(!params.password) {
+                    skip.push('password');
+                }
                 user.updateAttributes(params, {
                     skip: skip
                 });

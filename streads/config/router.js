@@ -80,6 +80,11 @@ router.match('/user', 'GET').
             controller: 'Users',
             action: 'showMe'
         });
+router.match('/user', 'PUT').
+        to({
+            controller: 'Users',
+            action: 'update'
+        });
 router.match('/logout', 'GET').
         to({
             controller: 'Users',

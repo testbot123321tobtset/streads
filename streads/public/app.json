@@ -71,11 +71,11 @@
      *      }
      */
     "css": [
-        {
+        /*{
             "path": "resources/css/cupertino.css",
             "theme": "Cupertino",
             "update": "delta"
-        },
+        },*/
         {
             "path": "resources/css/app.css",
             "theme": "X",

@@ -34,7 +34,7 @@ Ext.define('X.model.User', {
                 name: 'fullName',
                 type: 'string',
                 convert: function(value, record) {
-                    return record.data.firstName + ' ' + record.data.lastName;
+                    return record.get('firstName') + ' ' + record.get('lastName');
                 },
                 persist: false
             }

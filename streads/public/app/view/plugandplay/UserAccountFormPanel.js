@@ -1,4 +1,3 @@
-// NOT USED RIGHT NOW!
 Ext.define('X.view.plugandplay.UserAccountFormPanel', {
     extend: 'X.view.core.FormPanel',
     requires: [
@@ -9,47 +8,67 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
     id: 'userAccountFormPanel',
     config: {
         cls: 'user-account-form-panel',
-        layout: {
-            type: 'fit'
-        },
         items: [
             {
                 xtype: 'fieldset',
                 itemId: 'accountFormFieldSet',
                 cls: 'account-form-fieldset',
                 defaults: {
-                    labelWidth: '35%',
-                    xtype: 'textfield',
-                    readOnly: true
+                    xtype: 'textfield'
                 },
-                title: 'Your Names',
+                title: 'My Account',
                 items: [
-                    {
-                        itemId: 'usernamefield',
-                        cls: 'username-field',
-                        label: 'Id',
-                        name: 'username'
-                    },
                     {
                         itemId: 'firstNameTextfield',
                         cls: 'firstname-textfield',
-                        label: 'First',
+                        placeHolder: 'First Name',
                         name: 'firstName'
                     },
                     {
                         itemId: 'lastNameTextfield',
                         cls: 'lastname-textfield',
-                        label: 'Last',
+                        placeHolder: 'Last Name',
                         name: 'lastName'
                     },
                     {
-                        itemId: 'displayNameTextfield',
-                        cls: 'displayname-textfield',
-                        label: 'Screen',
-                        name: 'displayName'
+                        itemId: 'usernameEmailfield',
+                        cls: 'username-emailfield',
+                        placeHolder: 'Email',
+                        name: 'usernameEmail',
+                        readOnly: true
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onUserRecordChange',
+                event: 'change',
+                delegate: '#firstNameTextfield',
+                buffer: 10
+            },
+            {
+                fn: 'onUserRecordChange',
+                event: 'change',
+                delegate: '#lastNameTextfield',
+                buffer: 10
+            },
+            {
+                fn: 'onUserRecordChange',
+                event: 'change',
+                delegate: '#usernameEmail',
+                buffer: 10
+            }
         ]
+    },
+    onUserRecordChange: function(field, newValue, oldValue, eOpts) {
+        var me = this;
+        var userRecord = me.getRecord();
+        var fieldName = field.getName();
+        var knownFieldValue = X.authenticatedEntity.get(fieldName);
+        if(knownFieldValue !== newValue) {
+            // Authenticated users store will auto sync on set()
+            X.authenticatedEntity.set(fieldName, newValue);
+        }
     }
 });

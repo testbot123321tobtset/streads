@@ -58,6 +58,13 @@ Ext.define('X.model.AuthenticatedUser', {
             reader: {
                 type: 'json',
                 rootProperty: 'result'
+            },
+            exception: function(proxy, response, operation, eOpts) {
+                Ext.Viewport.fireEvent('authenticateduserproxyexception', {
+                    proxy: proxy,
+                    response: response,
+                    operation: operation
+                });
             }
         }
     }

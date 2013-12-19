@@ -1,11 +1,5 @@
 .user-account-info-panel {
     margin: 0 auto;
-    .credit-card-fieldset {
-        border-top-width: 0px;
-    }
-    .highlighted-header-panel + .credit-card-fieldset {
-        border-top-width: 1px;
-    }
     .x-button {
         margin: 0.3em 0.15em;
         &:first-child {

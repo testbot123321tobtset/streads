@@ -16,7 +16,9 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "X": "app"
+  "X": "app",
+  "X.config.Config": "app/config/config.js",
+  "X.override.Component": "app.js"
 });
 Ext.ClassManager.addNameAlternateMappings({
   "Ext.AbstractComponent": [],
@@ -638,7 +640,40 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "X.view.Main": []
+  "X.config.Config": [],
+  "X.controller.Boot": [],
+  "X.controller.Main": [],
+  "X.controller.Users": [],
+  "X.controller.mixin.Factory": [],
+  "X.controller.mixin.Page": [],
+  "X.controller.mixin.User": [],
+  "X.controller.mixin.Util": [],
+  "X.controller.phone.Main": [],
+  "X.model.Application": [],
+  "X.model.AuthenticatedUser": [],
+  "X.model.User": [],
+  "X.model.UserAccountInfoNestedListItem": [],
+  "X.model.validation.UserLogin": [],
+  "X.override.Component": [],
+  "X.profile.Base": [],
+  "X.profile.Phone": [],
+  "X.store.Application": [],
+  "X.store.AuthenticatedUser": [],
+  "X.store.UserAccountInfoNestedList": [],
+  "X.store.Users": [],
+  "X.view.Main": [],
+  "X.view.core.FormPanel": [],
+  "X.view.page.Login": [],
+  "X.view.page.user.Root": [],
+  "X.view.phone.Main": [],
+  "X.view.plugandplay.UserAccountFormPanel": [],
+  "X.view.plugandplay.UserAccountInfoNestedList": [],
+  "X.view.plugandplay.UserAccountInfoPanel": [],
+  "X.view.plugandplay.UserLoginFormPanel": [],
+  "X.view.plugandplay.UserMoreTabPanel": [],
+  "X.view.plugandplay.UserSignupFormPanel": [],
+  "X.view.ux.FullScreenTextArea": [],
+  "X.view.ux.ToggleableButton": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1357,7 +1392,62 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "X.config.Config": [],
+  "X.controller.Boot": [],
+  "X.controller.Main": [],
+  "X.controller.Users": [],
+  "X.controller.mixin.Factory": [],
+  "X.controller.mixin.Page": [],
+  "X.controller.mixin.User": [],
+  "X.controller.mixin.Util": [],
+  "X.controller.phone.Main": [],
+  "X.model.Application": [],
+  "X.model.AuthenticatedUser": [],
+  "X.model.User": [],
+  "X.model.UserAccountInfoNestedListItem": [],
+  "X.model.validation.UserLogin": [],
+  "X.override.Component": [],
+  "X.profile.Base": [],
+  "X.profile.Phone": [],
+  "X.store.Application": [],
+  "X.store.AuthenticatedUser": [],
+  "X.store.UserAccountInfoNestedList": [],
+  "X.store.Users": [],
   "X.view.Main": [
     "widget.main"
+  ],
+  "X.view.core.FormPanel": [
+    "widget.coreformpanel"
+  ],
+  "X.view.page.Login": [
+    "widget.pagelogin"
+  ],
+  "X.view.page.user.Root": [
+    "widget.pageuserroot"
+  ],
+  "X.view.phone.Main": [],
+  "X.view.plugandplay.UserAccountFormPanel": [
+    "widget.useraccountformpanel"
+  ],
+  "X.view.plugandplay.UserAccountInfoNestedList": [
+    "widget.useraccountinfonestedlist"
+  ],
+  "X.view.plugandplay.UserAccountInfoPanel": [
+    "widget.useraccountinfopanel"
+  ],
+  "X.view.plugandplay.UserLoginFormPanel": [
+    "widget.userloginformpanel"
+  ],
+  "X.view.plugandplay.UserMoreTabPanel": [
+    "widget.usermoretabpanel"
+  ],
+  "X.view.plugandplay.UserSignupFormPanel": [
+    "widget.usersignupformpanel"
+  ],
+  "X.view.ux.FullScreenTextArea": [
+    "widget.fullscreentextarea"
+  ],
+  "X.view.ux.ToggleableButton": [
+    "widget.togglebutton"
   ]
 });
