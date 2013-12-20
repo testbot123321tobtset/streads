@@ -19,12 +19,21 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
                 itemId: 'userDisplayName',
                 cls: 'highlighted-header-panel user-account-display-name-panel',
                 tpl: new Ext.XTemplate(
-                        '<tpl if="typeof(fullName) === \'string\'">',
-                        '{firstName} {lastName}',
-                        '<tpl else>',
+                        '<tpl if="typeof(firstName) === \'string\' && firstName !== \'\'">',
+                        '{firstName} ',
+                        '</tpl>',
+                        '<tpl if="typeof(lastName) === \'string\' && lastName !== \'\'">',
+                        '{lastName}',
+                        '</tpl>',
+                        '<tpl if="!this.nameExists(firstName, lastName)">',
                         '{usernameEmail}',
-                        '</tpl>'
-                        )
+                        '</tpl>',
+                        {
+                            nameExists: function(firstName, lastName) {
+                                return (typeof (firstName) === 'string' && firstName !== '') || (typeof (lastName) === 'string' && lastName !== '');
+                            }
+                        }
+                )
             },
             {
                 itemId: 'profilePanel',
@@ -36,11 +45,6 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
                     pack: 'start'
                 },
                 items: [
-//                    {
-//                        itemId: 'profileLabelDisplayPanel',
-//                        cls: 'section-highlighted-separated-panel profile-label-display-panel',
-//                        html: 'Your Profile'
-//                    },
                     {
                         xtype: 'useraccountformpanel',
                         flex: 1

@@ -82,25 +82,25 @@ Ext.define('X.controller.mixin.Factory', {
         }
         return me;
     },
-    generateAndFillViewportWithUserRootNewsWindow: function() {
+    generateAndFillViewportWithUserRootGroupsWindow: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootNewsWindow()');
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootGroupsWindow()');
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
             Ext.Viewport.removeAll(false, true).add(me.createView({
                 xtype: 'pageuserroot'
-            }).setActiveItem('#userNews'));
+            }).setActiveItem('#userGroups'));
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
                 Ext.Viewport.removeAll(false, true).add(pageUserRoot);
                 pageUserRoot.show();
-                pageUserRoot.setActiveItem('#userNews');
+                pageUserRoot.setActiveItem('#userGroups');
             }
             else {
-                pageUserRoot.setActiveItem('#userNews');
+                pageUserRoot.setActiveItem('#userGroups');
             }
         }
         return me;

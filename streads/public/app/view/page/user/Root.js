@@ -8,6 +8,19 @@ Ext.define('X.view.page.user.Root', {
     config: {
         cls: 'page-user-root',
         tabBarPosition: 'bottom',
+        /*
+         * Use this to make the bottom tab bar transparent
+        tabBar: {
+            docked: 'bottom',
+            cls: 'x-stretched x-docked-bottom x-transparent-bottom-tabbbar',
+            bottom: 0,
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            }
+        },
+        */
         items: [
             {
                 layout: {
@@ -15,29 +28,13 @@ Ext.define('X.view.page.user.Root', {
                     pack: 'center',
                     align: 'stretch'
                 },
-                itemId: 'userNews',
-                cls: 'user-news',
-                title: 'News',
+                itemId: 'userGroups',
+                cls: 'user-groups',
+                title: 'Groups',
                 items: [
                     {
                         flex: 1,
-                        html: 'This is the user news feed'
-                    }
-                ]
-            },
-            {
-                layout: {
-                    type: 'vbox',
-                    pack: 'center',
-                    align: 'stretch'
-                },
-                itemId: 'brandGallery',
-                cls: 'brand-gallery',
-                title: 'Gallery',
-                items: [
-                    {
-                        flex: 1,
-                        html: 'This is the brand gallery! Change this!'
+                        html: 'This will list all of the user\'s groups. Clicking on each should take the user to that group\'s stream'
                     }
                 ]
             },

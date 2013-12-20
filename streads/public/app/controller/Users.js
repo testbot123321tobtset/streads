@@ -27,7 +27,7 @@ Ext.define('X.controller.Users', {
             // Authenticated
             'user/': 'showAuthenticated',
             'user/profile': 'showAuthenticated',
-            'user/profile/news': 'showAuthenticated',
+            'user/profile/groups': 'showAuthenticated',
             'user/profile/more/account': 'showAuthenticatedMoreAccountInformation',
             'user/profile/more/logout': 'showAuthenticatedMoreLogoutInformation'
         },
@@ -92,8 +92,8 @@ Ext.define('X.controller.Users', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash);
         }
-        if (activeItem.getItemId() === 'userNews' && urlHash !== 'user/profile/news') {
-            me.redirectTo('user/profile/news');
+        if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups') {
+            me.redirectTo('user/profile/groups');
         }
         else if (activeItem.getItemId() === 'userGallery' && urlHash !== 'user/profile/gallery') {
             me.redirectTo('user/profile/gallery');
@@ -448,7 +448,7 @@ Ext.define('X.controller.Users', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Users.showAuthenticated()');
         }
-        return me.generateAndFillViewportWithUserRootNewsWindow();
+        return me.generateAndFillViewportWithUserRootGroupsWindow();
     },
     showAuthenticatedMoreAccountInformation: function() {
         var me = this;

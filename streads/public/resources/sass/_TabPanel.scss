@@ -37,6 +37,11 @@
             @include border-radius(0px);
         }
     }
+    &.x-transparent-bottom-tabbbar {
+        width: 100% !important;
+        opacity: $default-opacity-on-floating-foreground-element !important;
+        background-color: $default-background-color-on-floating-foreground-element !important;
+    }
     .x-tab {
         margin-left: 0.3em;
         margin-right: 0.3em;
