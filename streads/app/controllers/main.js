@@ -20,7 +20,6 @@ var Main = function() {
     me.index = function(req, resp, params) {
         var self = this, fs = require('fs');
         if (geddy.config.environment == 'production') {
-            console.log('hahahah');
             fs.readFile('./public/build/production/X/index.html', function(err, data) {
                 if (err) {
                     throw err;

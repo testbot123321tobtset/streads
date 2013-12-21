@@ -1,0 +1,75 @@
+[Fri, 29 Nov 2013 07:04:11 GMT] ERROR 127.0.0.1 - - [Fri Nov 29 2013 02:04:11 GMT-0500 (EST)] "GET /login?_dc=1385708651373&usernameEmail=test%40test.com&password=testpass 1.1" 500 2806 "http://localhost:4000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+ReferenceError: ejs:9
+    7|             <span class="i-bar"><i class="icon-chevron-down icon-white"></i></span>
+    8|           </a>
+ >> 9|           <%- linkTo('Geddy App', mainsPath, {class: 'brand'}) %>
+    10|           <div class="nav-collapse">
+    11|             <ul class="nav">
+    12|               <li class="active"><%- linkTo('Home', mainsPath) %></li>
+mainsPath is not defined
+    at handleErr (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:58:15)
+    at Object.rethrow (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:90:41)
+    at eval (eval at <anonymous> (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:88:10), <anonymous>:2:1411)
+    at /usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:101:17
+    at ejs.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/ejs.js:28:10)
+    at Adapter.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/index.js:125:22)
+    at Partial.renderSelf (/usr/local/lib/node_modules/geddy/lib/template/partial.js:126:28)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:99:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+[Fri, 29 Nov 2013 07:05:42 GMT] ERROR 127.0.0.1 - - [Fri Nov 29 2013 02:05:42 GMT-0500 (EST)] "GET /login?_dc=1385708651373&usernameEmail=test%40test.com&password=testpass 1.1" 500 2806 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+ReferenceError: ejs:9
+    7|             <span class="i-bar"><i class="icon-chevron-down icon-white"></i></span>
+    8|           </a>
+ >> 9|           <%- linkTo('Geddy App', mainsPath, {class: 'brand'}) %>
+    10|           <div class="nav-collapse">
+    11|             <ul class="nav">
+    12|               <li class="active"><%- linkTo('Home', mainsPath) %></li>
+mainsPath is not defined
+    at handleErr (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:58:15)
+    at Object.rethrow (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:90:41)
+    at eval (eval at <anonymous> (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:88:10), <anonymous>:2:1411)
+    at /usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:101:17
+    at ejs.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/ejs.js:28:10)
+    at Adapter.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/index.js:125:22)
+    at Partial.renderSelf (/usr/local/lib/node_modules/geddy/lib/template/partial.js:126:28)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:99:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+[Fri, 29 Nov 2013 07:20:23 GMT] ERROR 127.0.0.1 - - [Fri Nov 29 2013 02:20:23 GMT-0500 (EST)] "GET /logout 1.1" 500 2806 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+ReferenceError: ejs:9
+    7|             <span class="i-bar"><i class="icon-chevron-down icon-white"></i></span>
+    8|           </a>
+ >> 9|           <%- linkTo('Geddy App', mainsPath, {class: 'brand'}) %>
+    10|           <div class="nav-collapse">
+    11|             <ul class="nav">
+    12|               <li class="active"><%- linkTo('Home', mainsPath) %></li>
+mainsPath is not defined
+    at handleErr (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:58:15)
+    at Object.rethrow (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:90:41)
+    at eval (eval at <anonymous> (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:88:10), <anonymous>:2:1411)
+    at /usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:101:17
+    at ejs.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/ejs.js:28:10)
+    at Adapter.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/index.js:125:22)
+    at Partial.renderSelf (/usr/local/lib/node_modules/geddy/lib/template/partial.js:126:28)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:99:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+[Fri, 29 Nov 2013 07:24:48 GMT] ERROR Worker 34113 died.
+[Fri, 29 Nov 2013 07:25:05 GMT] ERROR Worker 34114 died.
+[Fri, 29 Nov 2013 07:40:06 GMT] ERROR 127.0.0.1 - - [Fri Nov 29 2013 02:40:05 GMT-0500 (EST)] "GET /logout 1.1" 500 2220 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+No logout action on Main controller.
+    at handleNoAction (/usr/local/lib/node_modules/geddy/lib/app/index.js:355:11)
+    at /usr/local/lib/node_modules/geddy/lib/app/index.js:477:20
+    at b (domain.js:183:18)
+    at Domain.run (domain.js:123:23)
+    at Server.<anonymous> (/usr/local/lib/node_modules/geddy/lib/app/index.js:435:11)
+    at Manager.handleRequest (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:565:28)
+    at Server.<anonymous> (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:119:10)
+    at Server.EventEmitter.emit (events.js:98:17)
+    at HTTPParser.parser.onIncoming (http.js:2045:12)
+    at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:119:23)
+[Fri, 29 Nov 2013 21:15:49 GMT] ERROR Worker 35471 died.
+[Fri, 29 Nov 2013 21:16:13 GMT] ERROR Worker 35472 died.
+[Fri, 29 Nov 2013 21:18:38 GMT] ERROR Worker 35478 died.
+[Fri, 29 Nov 2013 21:19:34 GMT] ERROR Worker 35481 died.

@@ -26,6 +26,9 @@ var User = function() {
     });
 
     me.hasMany('Passports');
+    /*
+    me.hasMany('Groupships');
+    me.hasMany('Groups', {through: 'Groupships'});*/
 };
 
 User.fieldExcusionArray = [

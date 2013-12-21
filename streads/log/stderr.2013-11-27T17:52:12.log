@@ -1,0 +1,25 @@
+[Wed, 27 Nov 2013 20:39:46 GMT] ERROR 127.0.0.1 - - [Wed Nov 27 2013 15:39:46 GMT-0500 (EST)] "GET /login 1.1" 500 2806 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71"
+ReferenceError: ejs:9
+    7|             <span class="i-bar"><i class="icon-chevron-down icon-white"></i></span>
+    8|           </a>
+ >> 9|           <%- linkTo('Geddy App', mainsPath, {class: 'brand'}) %>
+    10|           <div class="nav-collapse">
+    11|             <ul class="nav">
+    12|               <li class="active"><%- linkTo('Home', mainsPath) %></li>
+mainsPath is not defined
+    at handleErr (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:58:15)
+    at Object.rethrow (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:90:41)
+    at eval (eval at <anonymous> (/usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:88:10), <anonymous>:2:1411)
+    at /usr/local/lib/node_modules/geddy/lib/template/engines/ejs.js:101:17
+    at ejs.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/ejs.js:28:10)
+    at Adapter.render (/usr/local/lib/node_modules/geddy/lib/template/adapters/index.js:125:22)
+    at Partial.renderSelf (/usr/local/lib/node_modules/geddy/lib/template/partial.js:126:28)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:99:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+[Wed, 27 Nov 2013 22:20:33 GMT] ERROR Worker 29453 died.
+[Wed, 27 Nov 2013 22:20:48 GMT] ERROR Worker 29455 died.
+[Wed, 27 Nov 2013 22:21:29 GMT] ERROR Worker 29457 died.
+[Wed, 27 Nov 2013 22:23:13 GMT] ERROR Worker 29462 died.
+[Wed, 27 Nov 2013 22:46:18 GMT] ERROR Worker 29500 died.
+[Wed, 27 Nov 2013 22:51:47 GMT] ERROR Worker 29508 died.

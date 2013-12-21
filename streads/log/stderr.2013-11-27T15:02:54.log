@@ -1,0 +1,6 @@
+[Wed, 27 Nov 2013 20:02:36 GMT] ERROR 127.0.0.1 - - [Wed Nov 27 2013 15:02:36 GMT-0500 (EST)] "GET /things 1.1" 500 1794 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71"
+Error: No app-secret found. Must run `geddy gen secret`.
+    at Cookie.read (/usr/local/lib/node_modules/geddy/lib/sessions/stores/cookie.js:38:13)
+    at init (/usr/local/lib/node_modules/geddy/lib/sessions/index.js:89:19)
+    at null._onTimeout (/usr/local/lib/node_modules/geddy/lib/sessions/index.js:60:10)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)

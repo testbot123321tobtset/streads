@@ -1,0 +1,52 @@
+[Wed, 27 Nov 2013 22:52:27 GMT] ERROR Worker 29514 died.
+[Wed, 27 Nov 2013 23:52:22 GMT] ERROR Worker 29629 died.
+[Thu, 28 Nov 2013 00:29:38 GMT] ERROR Worker 29727 died.
+[Thu, 28 Nov 2013 00:29:43 GMT] ERROR Worker 29728 died.
+[Thu, 28 Nov 2013 03:12:19 GMT] ERROR 127.0.0.1 - - [Wed Nov 27 2013 22:12:18 GMT-0500 (EST)] "POST /users 1.1" 500 2531 "http://localhost:4000/users/add" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+TypeError: Cannot read property 'datatype' of undefined
+    at _createComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:185:27)
+    at _createOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:130:41)
+    at Query.initialize (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:298:40)
+    at Query (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:12:19)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:618:15)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:588:18)
+    at create (/Library/WebServer/Documents/myapps/touch/streads/streads/app/controllers/users.js:49:26)
+    at callback [as last] (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at async.AsyncBase.next (/usr/local/lib/node_modules/geddy/node_modules/utilities/lib/async.js:116:12)
+    at controller.BaseController._execFilters (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:229:11)
+[Thu, 28 Nov 2013 03:32:47 GMT] ERROR 127.0.0.1 - - [Wed Nov 27 2013 22:32:47 GMT-0500 (EST)] "POST /auth/local 1.1" 500 2513 "http://localhost:4000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+TypeError: Cannot read property 'datatype' of undefined
+    at _createComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:185:27)
+    at _createOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:130:41)
+    at Query.initialize (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:298:40)
+    at Query (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:12:19)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:618:15)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:588:18)
+    at actions.local (/Library/WebServer/Documents/myapps/touch/streads/streads/app/helpers/passport/actions.js:102:26)
+    at callback (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at controller.BaseController._handleAction (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:295:7)
+    at cb [as callback] (/usr/local/lib/node_modules/geddy/lib/app/index.js:258:36)
+[Thu, 28 Nov 2013 03:37:19 GMT] ERROR 127.0.0.1 - - [Wed Nov 27 2013 22:37:19 GMT-0500 (EST)] "POST /auth/local 1.1" 500 2528 "http://localhost:4000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+TypeError: Cannot call method 'toLowerCase' of undefined
+    at utils.mixin.transformComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:130:21)
+    at /usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:108:27
+    at Array.forEach (native)
+    at forEach (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/operation.js:33:19)
+    at utils.mixin.transformOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:103:12)
+    at utils.mixin.transformConditions (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:89:17)
+    at utils.mixin.load (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:268:25)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:631:25)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:588:18)
+    at actions.local (/Library/WebServer/Documents/myapps/touch/streads/streads/app/helpers/passport/actions.js:102:26)
+[Thu, 28 Nov 2013 03:38:48 GMT] ERROR 127.0.0.1 - - [Wed Nov 27 2013 22:38:47 GMT-0500 (EST)] "POST /auth/local 1.1" 500 2528 "http://localhost:4000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"
+TypeError: Cannot call method 'toLowerCase' of undefined
+    at utils.mixin.transformComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:130:21)
+    at /usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:108:27
+    at Array.forEach (native)
+    at forEach (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/operation.js:33:19)
+    at utils.mixin.transformOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:103:12)
+    at utils.mixin.transformConditions (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:89:17)
+    at utils.mixin.load (/usr/local/lib/node_modules/geddy/node_modules/model/lib/adapters/mongo/index.js:268:25)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:631:25)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:588:18)
+    at actions.local (/Library/WebServer/Documents/myapps/touch/streads/streads/app/helpers/passport/actions.js:102:26)

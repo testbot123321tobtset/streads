@@ -1,0 +1,97 @@
+[Wed, 27 Nov 2013 19:03:15 GMT] INFO Server starting with config: {
+  "environment": "development",
+  "workers": 1,
+  "port": 4000,
+  "spdy": null,
+  "ssl": null,
+  "detailedErrors": true,
+  "flash": {
+    "defaultClass": "alert",
+    "inlineClasses": {
+      "success": "alert alert-success",
+      "alert": "alert",
+      "error": "alert alert-error",
+      "info": "alert alert-info"
+    },
+    "blockClasses": {
+      "success": "alert alert-block alert-success",
+      "alert": "alert alert-block",
+      "error": "alert alert-block alert-error",
+      "info": "alert alert-block alert-info"
+    }
+  },
+  "debug": true,
+  "rotateWorkers": false,
+  "rotationWindow": 7200000,
+  "rotationTimeout": 300000,
+  "logDir": "/Library/WebServer/Documents/myapps/touch/streads/streads/log",
+  "gracefulShutdownTimeout": 30000,
+  "heartbeatInterval": 5000,
+  "heartbeatWindow": 20000,
+  "staticFilePath": "/Library/WebServer/Documents/myapps/touch/streads/streads/public",
+  "cacheControl": {
+    "expires": {
+      "default": 0
+    }
+  },
+  "sessions": {
+    "store": "memory",
+    "key": "sid",
+    "expiry": 1209600
+  },
+  "cookieSessionKey": "sdata",
+  "i18n": {
+    "defaultLocale": "en-us",
+    "loadPaths": [
+      "/Library/WebServer/Documents/myapps/touch/streads/streads/config/locales"
+    ]
+  },
+  "hostname": null,
+  "fullHostname": null,
+  "connectCompatibility": false,
+  "realtime": true,
+  "model": {
+    "defaultAdapter": "filesystem"
+  }
+}
+[Wed, 27 Nov 2013 19:03:15 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:03:18 GMT] INFO Server worker running in development on port 4000 with a PID of: 27954
+[Wed, 27 Nov 2013 19:27:13 GMT] INFO Code changed, killing 27954, cycling ...
+[Wed, 27 Nov 2013 19:27:13 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:27:15 GMT] INFO Server worker running in development on port 4000 with a PID of: 28029
+[Wed, 27 Nov 2013 19:44:05 GMT] INFO Code changed, killing 28029, cycling ...
+[Wed, 27 Nov 2013 19:44:05 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:44:06 GMT] INFO Server worker running in development on port 4000 with a PID of: 28098
+[Wed, 27 Nov 2013 19:44:11 GMT] INFO Code changed, killing 28098, cycling ...
+[Wed, 27 Nov 2013 19:44:11 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:44:11 GMT] INFO Server worker running in development on port 4000 with a PID of: 28099
+[Wed, 27 Nov 2013 19:44:45 GMT] INFO Code changed, killing 28099, cycling ...
+[Wed, 27 Nov 2013 19:44:45 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:44:46 GMT] INFO Server worker running in development on port 4000 with a PID of: 28100
+[Wed, 27 Nov 2013 19:44:55 GMT] INFO Code changed, killing 28100, cycling ...
+[Wed, 27 Nov 2013 19:44:55 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:44:55 GMT] INFO Server worker running in development on port 4000 with a PID of: 28101
+[Wed, 27 Nov 2013 19:45:18 GMT] INFO Code changed, killing 28101, cycling ...
+[Wed, 27 Nov 2013 19:45:18 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:45:18 GMT] INFO Server worker running in development on port 4000 with a PID of: 28103
+[Wed, 27 Nov 2013 19:45:37 GMT] INFO Code changed, killing 28103, cycling ...
+[Wed, 27 Nov 2013 19:45:37 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:45:37 GMT] INFO Server worker running in development on port 4000 with a PID of: 28104
+[Wed, 27 Nov 2013 19:45:40 GMT] INFO Code changed, killing 28104, cycling ...
+[Wed, 27 Nov 2013 19:45:40 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:45:41 GMT] INFO Server worker running in development on port 4000 with a PID of: 28105
+[Wed, 27 Nov 2013 19:47:16 GMT] INFO Code changed, killing 28105, cycling ...
+[Wed, 27 Nov 2013 19:47:16 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:47:18 GMT] INFO Server worker running in development on port 4000 with a PID of: 28107
+[Wed, 27 Nov 2013 19:47:34 GMT] INFO Code changed, killing 28107, cycling ...
+[Wed, 27 Nov 2013 19:47:34 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:47:35 GMT] INFO Server worker running in development on port 4000 with a PID of: 28109
+[Wed, 27 Nov 2013 19:50:24 GMT] INFO Code changed, killing 28109, cycling ...
+[Wed, 27 Nov 2013 19:50:24 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:50:25 GMT] INFO Server worker running in development on port 4000 with a PID of: 28112
+[Wed, 27 Nov 2013 19:50:26 GMT] INFO Code changed, killing 28112, cycling ...
+[Wed, 27 Nov 2013 19:50:26 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:50:26 GMT] INFO Server worker running in development on port 4000 with a PID of: 28113
+[Wed, 27 Nov 2013 19:50:33 GMT] INFO Code changed, killing 28113, cycling ...
+[Wed, 27 Nov 2013 19:50:33 GMT] INFO Creating 1 worker process.
+[Wed, 27 Nov 2013 19:50:33 GMT] INFO Server worker running in development on port 4000 with a PID of: 28116

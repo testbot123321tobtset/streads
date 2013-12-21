@@ -1,0 +1,24 @@
+[Sat, 21 Dec 2013 05:15:50 GMT] ERROR express is not defined
+ReferenceError: express is not defined
+    at Object.init (/Library/WebServer/Documents/myapps/touch/streads/streads/config/init.js:14:18)
+    at Object.exports.init (/usr/local/lib/node_modules/geddy/lib/init/local_app_init.js:40:18)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
+    at module.exports.init (/usr/local/lib/node_modules/geddy/lib/init/helpers.js:55:5)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
+    at loadLocaleData (/usr/local/lib/node_modules/geddy/lib/init/i18n.js:39:11)
+    at module.exports.init (/usr/local/lib/node_modules/geddy/lib/init/i18n.js:44:5)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
+    at module.exports.init (/usr/local/lib/node_modules/geddy/lib/init/controller.js:69:5)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
+[Sat, 21 Dec 2013 05:15:50 GMT] ERROR express is not defined
+ReferenceError: express is not defined
+    at Object.init (/Library/WebServer/Documents/myapps/touch/streads/streads/config/init.js:14:18)
+    at Object.exports.init (/usr/local/lib/node_modules/geddy/lib/init/local_app_init.js:40:18)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
+    at module.exports.init (/usr/local/lib/node_modules/geddy/lib/init/helpers.js:55:5)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
+    at loadLocaleData (/usr/local/lib/node_modules/geddy/lib/init/i18n.js:39:11)
+    at module.exports.init (/usr/local/lib/node_modules/geddy/lib/init/i18n.js:44:5)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
+    at module.exports.init (/usr/local/lib/node_modules/geddy/lib/init/controller.js:69:5)
+    at initItem (/usr/local/lib/node_modules/geddy/lib/init/index.js:23:16)
