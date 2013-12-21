@@ -20,8 +20,8 @@
 var router = new geddy.RegExpRouter();
 
 // We default to index.html in public directory, so we can load Sencha Touch
-// router.get('/').
-//        to('Main.index');
+router.get('/').
+        to('Main.index');
 
 // Basic routes
 // router.match('/moving/pictures/:id', 'GET').to('Moving.pictures');

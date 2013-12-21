@@ -39,6 +39,10 @@
      *      }
      */
     "js": [
+		{
+			"path": "phonegap.js",
+			"remote": true
+		},
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -50,7 +54,7 @@
         {
             "path": "app.js",
             "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
-            "update": "delta"
+            "update": "full"
         }
     ],
 
@@ -79,7 +83,7 @@
         {
             "path": "resources/css/app.css",
             "theme": "X",
-            "update": "delta"
+            "update": "full"
         }
     ],
 
@@ -109,6 +113,7 @@
      * Extra resources to be copied along when build
      */
     "resources": [
+		"config.xml",
         "resources/images",
         "resources/icons",
         "resources/startup"

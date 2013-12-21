@@ -16,6 +16,31 @@
  *
  */
 var Main = function() {
+    var me = this;
+    me.index = function(req, resp, params) {
+        var self = this, fs = require('fs');
+        if (geddy.config.environment == 'production') {
+            console.log('hahahah');
+            fs.readFile('./public/build/production/X/index.html', function(err, data) {
+                if (err) {
+                    throw err;
+                }
+                self.output(200, {
+                    'Content-Type': 'text/html'
+                }, data.toString());
+            });
+        }
+        else {
+            fs.readFile('./public/index.html', function(err, data) {
+                if (err) {
+                    throw err;
+                }
+                self.output(200, {
+                    'Content-Type': 'text/html'
+                }, data.toString());
+            });
+        }
+    };
 };
 
 exports.Main = Main;

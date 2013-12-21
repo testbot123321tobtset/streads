@@ -18,8 +18,8 @@
 
 var config = {
     detailedErrors: false,
-    hostname: null,
-    port: 80,
+    debug: false,
+    port: 4000,
     model: {
         defaultAdapter: 'mongo'
     },
