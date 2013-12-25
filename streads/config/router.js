@@ -96,4 +96,7 @@ router.match('/user/logout', 'GET').
             action: 'logout'
         });
 
+router.resource('friendships');
+router.resource('groupships');
+router.resource('groups');
 exports.router = router;

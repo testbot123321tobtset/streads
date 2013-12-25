@@ -13,4 +13,4 @@ var Passport = function() {
     me.belongsTo('User');
 };
 
-Passport = geddy.model.register('Passport', Passport);
+exports.Passport = Passport;

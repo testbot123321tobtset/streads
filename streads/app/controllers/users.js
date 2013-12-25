@@ -60,7 +60,7 @@ var Users = function() {
                 user = User.create(params);
 
         // Non-blocking uniqueness checks are hard
-        geddy.model.User.first({
+        User.first({
             usernameEmail: user.usernameEmail
         }, function(err, data) {
             if (data) {
@@ -142,7 +142,7 @@ var Users = function() {
     // Authenticated: display a particular user using id from params
     me.show = function(req, resp, params) {
         var self = this;
-
+        
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
@@ -171,6 +171,7 @@ var Users = function() {
     // Authenticated: update authenticated and in-session user
     me.update = function(req, resp, params) {
         var self = this;
+        
         self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
@@ -194,6 +195,26 @@ var Users = function() {
                         self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeUpdated')));
                     }
                     else {
+//                        User.first('C9814392-7103-4F55-9AD5-864C4AA8D8FD', function(err, friend) {
+//                            user.addFriender(friend);
+//                            user.save(function(err, data) {
+//                                user.getFrienders(function(err, data) {
+//                                    console.log(data);
+//                                });
+//                            });
+//                        });
+
+//                        geddy.model.Group.first('884A5293-B489-42D6-A7B0-F52967A6AFF0', function(err, group) {
+//                            console.log(group);
+//                            console.log(user);
+//                            group.addUser(user);
+//                            group.save(function(err, data) {
+//                                group.getUsers(function(err, data) {
+//                                    console.log(data);
+//                                });
+//                            });
+//                        });
+
                         __.each(User.fieldExcusionArray, function(field) {
                             if (__.has(user, field)) {
                                 delete user[field];
