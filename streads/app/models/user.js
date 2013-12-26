@@ -1,3 +1,5 @@
+var AH = require('../helpers/application');
+
 var User = function() {
     var me = this;
 
@@ -50,8 +52,8 @@ var User = function() {
         through: 'Friendships',
         model: 'User'
     });
-    
-    me.hasMany('Groupships');
+
+//    me.hasMany('Groupships');
     me.hasMany('Groups', {
         through: 'Groupships'
     });
@@ -64,5 +66,18 @@ User.fieldUpdateExcusionArray = [
     // Once a user is created, we don't change email address
     'usernameEmail'
 ];
+
+User.includeGroups = function(callback) {
+    var me = this;
+
+    me.groups = [
+    ];
+    me.getGroups(function(err, groups) {
+        if (!err) {
+            me.groups = groups;
+        }
+        AH.executeCallback(callback);
+    });
+};
 
 exports.User = User;

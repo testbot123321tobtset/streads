@@ -1,6 +1,7 @@
 Ext.define('X.view.page.user.Root', {
     extend: 'Ext.tab.Panel',
     requires: [
+        'X.view.plugandplay.UserGroupsTabPanel',
         'X.view.plugandplay.UserMoreTabPanel'
     ],
     xtype: 'pageuserroot',
@@ -34,7 +35,7 @@ Ext.define('X.view.page.user.Root', {
                 items: [
                     {
                         flex: 1,
-                        html: 'This will list all of the user\'s groups. Clicking on each should take the user to that group\'s stream'
+                        xtype: 'usergroupstabpanel'
                     }
                 ]
             },

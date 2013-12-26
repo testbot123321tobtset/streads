@@ -1,36 +1,106 @@
-var Groups = function () {
-  this.respondsWith = ['html', 'json', 'xml', 'js', 'txt'];
+var __ = require('underscore');
+var AH = require('../helpers/application');
 
-  this.index = function (req, resp, params) {
-    this.respond({params: params});
-  };
+var Groups = function() {
+    var me = this;
 
-  this.add = function (req, resp, params) {
-    this.respond({params: params});
-  };
+    me.respondsWith = [
+        'json'
+    ];
 
-  this.create = function (req, resp, params) {
-    // Save the resource, then display index page
-    this.redirect({controller: this.name});
-  };
+    me.error = false;
+    me.message = false;
+    me.authenticatedUser = false;
+    me.checkIfAuthenticatedUserExists = function(next) {
+        var self = this;
 
-  this.show = function (req, resp, params) {
-    this.respond({params: params});
-  };
+        var User = geddy.model.User;
+        User.first({
+            id: self.session.get('userId')
+        }, function(err, user) {
+            me.error = __.isObject(err) ? err : false;
+            if (__.isObject(user)) {
+                // Include groups for authenticated user only
+                user.includeGroups({
+                    fn: function() {
+                        me.authenticatedUser = user;
+                        me.message = false;
+                        __.each(User.fieldExcusionArray, function(field) {
+                            if (__.has(me.authenticatedUser, field)) {
+                                delete me.authenticatedUser[field];
+                            }
+                        });
+                        next();
+                    },
+                    scope: me
+                });
+            }
+            else {
+                me.authenticatedUser = false;
+                me.message = AH.getResponseMessage('noAuthenticatedUserFound');
+            }
+        });
+    };
 
-  this.edit = function (req, resp, params) {
-    this.respond({params: params});
-  };
+    me.before(me.checkIfAuthenticatedUserExists, {
+        async: true
+    });
 
-  this.update = function (req, resp, params) {
-    // Save the resource, then display the item page
-    this.redirect({controller: this.name, id: params.id});
-  };
+    // Authenticated: only the authenticated user can create a group
+    me.create = function(req, resp, params) {
+        var self = this;
 
-  this.remove = function (req, resp, params) {
-    this.respond({params: params});
-  };
+        if (!__.isObject(me.authenticatedUser)) {
+            self.respond(AH.getFailureResponseObject(params, me.error, me.message));
+        }
+        else {
+            var Group = geddy.model.Group,
+                    group = Group.create(params);
+            if (group.isValid()) {
+                group.save(function(err, data) {
+                    if (err) {
+                        self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('groupForAuthenticatedUserCouldNotBeCreated')));
+                    } else {
+                        self.respond(AH.getSuccessResponseObject(params, data));
+                    }
+                });
+            }
+        }
+    };
 
+    me.getMyGroupData = function(req, resp, params) {
+        var self = this;
+        
+        if (!__.isObject(me.authenticatedUser)) {
+            self.respond(AH.getFailureResponseObject(params, me.error, me.message));
+        }
+        else {
+            var id = params.id || false;
+            if (id) {
+                var user = me.authenticatedUser;
+                user.getGroups(function(err, groups) {
+                    if (!err) {
+                        var found = false;
+                        groups.forEach(function(thisGroup) {
+                            if (thisGroup.id === id) {
+                                found = true;
+                                self.respond(AH.getSuccessResponseObject(params, thisGroup));
+                            }
+                        });
+                        if(!found) {
+                            self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
+                        }
+                    }
+                    else {
+                        self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupsFoundForAuthenticatedUser')));
+                    }
+                });
+            }
+            else {
+                self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupIdFoundInRequestForAuthenticatedUser')));
+            }
+        }
+    };
 };
 
 exports.Groups = Groups;

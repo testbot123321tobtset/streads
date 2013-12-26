@@ -1,6 +1,60 @@
-[Wed, 25 Dec 2013 02:51:11 GMT] ERROR Worker 24645 died.
-[Wed, 25 Dec 2013 03:00:59 GMT] ERROR Worker 24683 died.
-[Wed, 25 Dec 2013 03:04:27 GMT] ERROR Worker 24701 died.
-[Wed, 25 Dec 2013 03:08:18 GMT] ERROR Worker 24712 died.
-[Wed, 25 Dec 2013 03:23:42 GMT] ERROR Worker 24764 died.
-[Wed, 25 Dec 2013 03:25:08 GMT] ERROR Worker 24769 died.
+[Wed, 25 Dec 2013 04:51:06 GMT] ERROR Worker 25147 died.
+[Wed, 25 Dec 2013 04:52:22 GMT] ERROR Worker 25151 died.
+[Wed, 25 Dec 2013 04:54:52 GMT] ERROR Worker 25160 died.
+[Wed, 25 Dec 2013 04:55:46 GMT] ERROR Worker 25165 died.
+[Wed, 25 Dec 2013 04:58:08 GMT] ERROR Worker 25175 died.
+[Wed, 25 Dec 2013 04:59:09 GMT] ERROR Worker 25177 died.
+[Wed, 25 Dec 2013 05:00:47 GMT] ERROR Worker 25184 died.
+[Wed, 25 Dec 2013 05:27:02 GMT] ERROR Worker 25273 died.
+[Wed, 25 Dec 2013 06:03:07 GMT] ERROR Worker 25420 died.
+[Wed, 25 Dec 2013 06:03:40 GMT] ERROR Worker 25421 died.
+[Wed, 25 Dec 2013 06:05:36 GMT] ERROR Worker 25426 died.
+[Wed, 25 Dec 2013 08:47:15 GMT] ERROR 127.0.0.1 - - [Wed Dec 25 2013 03:47:15 GMT-0500 (EST)] "GET /groups 1.1" 500 2144 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+Error: Partial template "app/views/groups/index" not found in app/views, app/views/groups and app/views/layouts
+    at Partial.getTemplateData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:85:15)
+    at Partial.render (/usr/local/lib/node_modules/geddy/lib/template/partial.js:95:29)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:136:15
+    at Array.forEach (native)
+    at Partial.renderChildren (/usr/local/lib/node_modules/geddy/lib/template/partial.js:135:16)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:100:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+    at Object.oncomplete (fs.js:107:15)
+[Wed, 25 Dec 2013 09:02:58 GMT] ERROR 127.0.0.1 - - [Wed Dec 25 2013 04:02:58 GMT-0500 (EST)] "GET /user/groups/8A96F2EF-C2CF-4701-A32F-0F149853F4ED 1.1" 500 2227 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+No getGroupData action on Users controller.
+    at handleNoAction (/usr/local/lib/node_modules/geddy/lib/app/index.js:355:11)
+    at /usr/local/lib/node_modules/geddy/lib/app/index.js:477:20
+    at b (domain.js:183:18)
+    at Domain.run (domain.js:123:23)
+    at Server.<anonymous> (/usr/local/lib/node_modules/geddy/lib/app/index.js:435:11)
+    at Manager.handleRequest (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:565:28)
+    at Server.<anonymous> (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:119:10)
+    at Server.EventEmitter.emit (events.js:98:17)
+    at HTTPParser.parser.onIncoming (http.js:2045:12)
+    at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:119:23)
+[Wed, 25 Dec 2013 09:11:42 GMT] ERROR Worker 26001 died.
+[Thu, 26 Dec 2013 04:10:37 GMT] ERROR 127.0.0.1 - - [Wed Dec 25 2013 23:10:37 GMT-0500 (EST)] "GET /user/groups 1.1" 500 2227 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+No showMyGroups action on Users controller.
+    at handleNoAction (/usr/local/lib/node_modules/geddy/lib/app/index.js:355:11)
+    at /usr/local/lib/node_modules/geddy/lib/app/index.js:477:20
+    at b (domain.js:183:18)
+    at Domain.run (domain.js:123:23)
+    at Server.<anonymous> (/usr/local/lib/node_modules/geddy/lib/app/index.js:435:11)
+    at Manager.handleRequest (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:565:28)
+    at Server.<anonymous> (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:119:10)
+    at Server.EventEmitter.emit (events.js:98:17)
+    at HTTPParser.parser.onIncoming (http.js:2045:12)
+    at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:119:23)
+[Thu, 26 Dec 2013 04:16:39 GMT] ERROR 127.0.0.1 - - [Wed Dec 25 2013 23:16:39 GMT-0500 (EST)] "GET /user/groups/954A0E65-99E6-4DAA-90E7-6FF0B7A07369 1.1" 500 2222 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+No logout action on Groups controller.
+    at handleNoAction (/usr/local/lib/node_modules/geddy/lib/app/index.js:355:11)
+    at /usr/local/lib/node_modules/geddy/lib/app/index.js:477:20
+    at b (domain.js:183:18)
+    at Domain.run (domain.js:123:23)
+    at Server.<anonymous> (/usr/local/lib/node_modules/geddy/lib/app/index.js:435:11)
+    at Manager.handleRequest (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:565:28)
+    at Server.<anonymous> (/Library/WebServer/Documents/myapps/touch/streads/streads/node_modules/socket.io/lib/manager.js:119:10)
+    at Server.EventEmitter.emit (events.js:98:17)
+    at HTTPParser.parser.onIncoming (http.js:2045:12)
+    at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:119:23)
+[Thu, 26 Dec 2013 04:27:58 GMT] ERROR Worker 29005 died.

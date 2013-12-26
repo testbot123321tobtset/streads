@@ -11,7 +11,7 @@ var Group = function() {
         }
     });
     
-    me.hasMany('Groupships');
+//    me.hasMany('Groupships');
     me.hasMany('Users', {
         through: 'Groupships'
     });

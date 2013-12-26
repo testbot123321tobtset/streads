@@ -69,6 +69,8 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
         if(knownFieldValue !== newValue) {
             // Authenticated users store will auto sync on set()
             X.authenticatedEntity.set(fieldName, newValue);
+            // Need to commit to unset dirty
+            X.authenticatedEntity.commit();
         }
     }
 });

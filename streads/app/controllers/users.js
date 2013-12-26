@@ -30,19 +30,25 @@ var Users = function() {
         }, function(err, user) {
             me.error = __.isObject(err) ? err : false;
             if (__.isObject(user)) {
-                me.authenticatedUser = user;
-                me.message = false;
-                __.each(User.fieldExcusionArray, function(field) {
-                    if (__.has(me.authenticatedUser, field)) {
-                        delete me.authenticatedUser[field];
-                    }
+                // Include groups for authenticated user only
+                user.includeGroups({
+                    fn: function() {
+                        me.authenticatedUser = user;
+                        me.message = false;
+                        __.each(User.fieldExcusionArray, function(field) {
+                            if (__.has(me.authenticatedUser, field)) {
+                                delete me.authenticatedUser[field];
+                            }
+                        });
+                        next();
+                    },
+                    scope: me
                 });
             }
             else {
                 me.authenticatedUser = false;
                 me.message = AH.getResponseMessage('noAuthenticatedUserFound');
             }
-            next();
         });
     };
 
@@ -203,18 +209,19 @@ var Users = function() {
 //                                });
 //                            });
 //                        });
-
-//                        geddy.model.Group.first('884A5293-B489-42D6-A7B0-F52967A6AFF0', function(err, group) {
-//                            console.log(group);
-//                            console.log(user);
+                        
+//                        geddy.model.Group.first('8A96F2EF-C2CF-4701-A32F-0F149853F4ED', function(err, group) {
 //                            group.addUser(user);
 //                            group.save(function(err, data) {
 //                                group.getUsers(function(err, data) {
 //                                    console.log(data);
 //                                });
+//                                user.getGroups(function(err, data) {
+//                                    console.log(data);
+//                                });
 //                            });
 //                        });
-
+                        
                         __.each(User.fieldExcusionArray, function(field) {
                             if (__.has(user, field)) {
                                 delete user[field];

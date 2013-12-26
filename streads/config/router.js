@@ -43,18 +43,25 @@ router.get('/').
 // 
 // r.resource('SnowDogs');
 // is equivalent to the following:
+// 
 // index doesn't need an id; it displays all items
 // r.match('/snow_dogs(.:format)','GET').to({controller: 'SnowDogs', action: 'index'});
+// 
 // The 'add' action loads the Web form that POSTs to the 'create' endpoint
 // If you're only using Geddy as an API backend, 'add' action is probably not relevant to you
 // r.match('/snow_dogs/add(.:format)','GET').to({controller: 'SnowDogs', action: 'add'});
+// 
 // show needs an id; it displays only the requested item
 // r.match('/snow_dogs/:id(.:format)','GET').to({controller: 'SnowDogs', action: 'show'});
+// 
 // The 'edit' action loads the Web form that PUTs to the 'update' endpoint
 // If you're only using Geddy as an API backend, 'edit' action is probably not relevant to you
 // r.match('/snow_dogs/:id/edit(.:format)','GET').to({controller: 'SnowDogs', action: 'edit'});
+// 
 // r.match('/snow_dogs(.:format)','POST').to({controller: 'SnowDogs', action: 'create'});
+// 
 // r.match('/snow_dogs/:id(.:format)','PUT').to({controller: 'SnowDogs', action: 'update'});
+// 
 // r.match('/snow_dogs/:id(.:format)','DELETE').to({controller: 'SnowDogs', action: 'remove'});
 
 router.post('/login').
@@ -74,7 +81,6 @@ router.get('/auth/yammer').
 router.get('/auth/yammer/callback').
         to('Auth.yammerCallback');
 
-router.resource('users');
 router.match('/user', 'GET').
         to({
             controller: 'Users',
@@ -95,8 +101,20 @@ router.match('/user/logout', 'GET').
             controller: 'Users',
             action: 'logout'
         });
+        
+router.match('/user/groups/:id', 'GET').
+        to({
+            controller: 'Groups',
+            action: 'getMyGroupData'
+        });
+router.match('/user/groups(.:format)', 'POST').
+        to({
+            controller: 'Groups',
+            action: 'create'
+        });
 
-router.resource('friendships');
-router.resource('groupships');
-router.resource('groups');
+router.resource('users');
+//router.resource('friendships');
+//router.resource('groupships');
+//router.resource('groups');
 exports.router = router;

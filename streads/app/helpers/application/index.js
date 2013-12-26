@@ -36,6 +36,18 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'postDestroyDeniedDueToNonOwner':
             responseMessage = 'You cannot delete a post that does not belong to you.';
             break;
+        case 'noGroupIdFoundInRequestForAuthenticatedUser':
+            responseMessage = 'Hmm, we couldn\'t find the group you requested for. Let us know, and we\'ll take care of it.';
+            break;
+        case 'noGroupsFoundForAuthenticatedUser':
+            responseMessage = 'It doesn\'t look like you belong to any group. Why don\'t you create one?!';
+            break;
+        case 'noSuchGroupFoundForAuthenticatedUser':
+            responseMessage = 'Hmm, either this group does not exist or you don\'t belong to it.';
+            break;
+        case 'groupForAuthenticatedUserCouldNotBeCreated':
+            responseMessage = 'Hmm, we couldn\'t create that group for you. Let us know, and we\'ll take care of it.';
+            break;
         default:
             break;
     }
@@ -71,4 +83,17 @@ exports.getSuccessResponseObject = function(params, result, message) {
     }
 
     return responseObject;
+};
+exports.executeCallback = function(callback) {
+    var me = this;
+    callback = __.isObject(callback) ? callback : false;
+    if (callback) {
+        var callbackFn = __.isFunction(callback.fn) ? callback.fn : false;
+        if (callbackFn) {
+            var callbackScope = __.isObject(callback.scope) ? callback.scope : me;
+            return callbackFn.call(callbackScope);
+        }
+    }
+    
+    return false;
 };
