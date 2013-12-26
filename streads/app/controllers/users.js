@@ -28,7 +28,6 @@ var Users = function() {
         User.first({
             id: self.session.get('userId')
         }, function(err, user) {
-            me.error = __.isObject(err) ? err : false;
             if (__.isObject(user)) {
                 // Include groups for authenticated user only
                 user.includeGroups({
@@ -48,6 +47,7 @@ var Users = function() {
             else {
                 me.authenticatedUser = false;
                 me.message = AH.getResponseMessage('noAuthenticatedUserFound');
+                next();
             }
         });
     };
@@ -117,12 +117,6 @@ var Users = function() {
         }
     };
     
-    // Authenticated: logs a user in
-    me.login = function(req, resp, params) {
-        var self = this;
-        
-        console.log(passport.actions.local(req, resp, params));
-    };
     // Authenticated: logs a user out
     me.logout = function(req, resp, params) {
         var self = this;
@@ -136,7 +130,6 @@ var Users = function() {
     // Authenticated: display me
     me.showMe = function(req, resp, params) {
         var self = this;
-
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }

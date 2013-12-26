@@ -105,6 +105,42 @@ Ext.define('X.controller.mixin.Factory', {
         }
         return me;
     },
+    generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow()');
+        }
+        
+        // Make sure pageUserRoot exists
+        var pageUserRoot = me.getPageUserRoot();
+        if(!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
+            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().getPageUserRoot();
+        }
+        pageUserRoot.setActiveItem('#userGroups');
+        
+        // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
+        me.getUserGroupsTabPanel().setActiveItem('#userGroupFeeds');
+        
+        return me;
+    },
+    generateAndFillUserRootGroupsWindowWithUserAddGroupWindow: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithAddUserGroupWindow()');
+        }
+        
+        // Make sure pageUserRoot exists
+        var pageUserRoot = me.getPageUserRoot();
+        if(!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
+            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().getPageUserRoot();
+        }
+        pageUserRoot.setActiveItem('#userGroups');
+        
+        // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
+        me.getUserGroupsTabPanel().setActiveItem('#userAddGroups');
+        
+        return me;
+    },
     generateAndFillViewportWithUserRootMoreWindow: function() {
         var me = this;
         if (me.getDebug()) {

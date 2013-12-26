@@ -6,6 +6,11 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
     xtype: 'usergroupaddformpanel',
     id: 'userGroupAddFormPanel',
     config: {
+        layout: {
+            type: 'vbox',
+            pack: 'center',
+            align: 'stretch'
+        },
         cls: 'user-group-add-form-panel',
         items: [
             {
@@ -23,9 +28,8 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                         name: 'title'
                     },
                     {
-                        xtype: 'textareafield',
-                        itemId: 'descriptionTextareafield',
-                        cls: 'description-textareafield',
+                        itemId: 'descriptionTextfield',
+                        cls: 'description-textfield',
                         placeHolder: 'Description',
                         name: 'description'
                     }
@@ -35,7 +39,7 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                 xtype: 'fieldset',
                 itemId: 'groupAddMembersFormFieldSet',
                 cls: 'group-add-members-form-fieldset',
-                title: 'Add Members',
+                title: 'Select Members',
                 defaults: {
                     xtype: 'textfield'
                 },
@@ -46,7 +50,15 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                         placeHolder: 'List all contacts here',
                         name: 'title'
                     }
-                ]
+                ],
+                flex: 1
+            },
+            {
+                xtype: 'button',
+                itemId: 'submitButton',
+                cls: 'submit-button',
+                text: 'Create Group',
+                ui: 'confirm'
             }
         ]
     },
@@ -62,7 +74,7 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
     },
     resetDescriptionField: function() {
         var me = this;
-        me.down('#descriptionTextareafield').setValue('');
+        me.down('#descriptionTextfield').setValue('');
         return me;
     }
 });

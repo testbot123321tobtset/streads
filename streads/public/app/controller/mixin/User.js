@@ -158,7 +158,7 @@ Ext.define('X.controller.mixin.User', {
                 }
                 else {
                     var rawResponse = authenticatedUserStore.getProxy().getReader().rawData;
-                    if (!rawResponse.success) {
+                    if (Ext.isObject(rawResponse) && !rawResponse.success) {
                         if (me.getDebug()) {
                             console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Message from server: ' + rawResponse.message);
                         }

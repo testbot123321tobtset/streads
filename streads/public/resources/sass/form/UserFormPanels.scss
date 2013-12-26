@@ -1,6 +1,6 @@
 .user-login-form-panel, .user-signup-form-panel {
     .submit-button {
-        margin: 1em;
+        margin: 0.5em;
     }
 }
 .user-account-form-panel {
@@ -12,5 +12,8 @@
     .x-form-fieldset:first-child {
         border-top: 0px solid transparent;
         border-bottom: 0px solid transparent;
+    }
+    .submit-button {
+        margin: 0.5em;
     }
 }

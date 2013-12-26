@@ -289,8 +289,10 @@ Ext.define('X.controller.Users', {
                 me.loadAuthenticatedUserStore({
                     // Callback if authenticated user exists
                     fn: function() {
-                        Ext.getStore('AuthenticatedUserStore').
-                                removeAll();
+                        var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
+                        authenticatedUserStore.setAutoSync(false);
+                        authenticatedUserStore.removeAll();
+                        authenticatedUserStore.setAutoSync(true);
                         me.resetAuthenticatedEntity();
                         Ext.create('Ext.util.DelayedTask', function() {
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
@@ -345,8 +347,10 @@ Ext.define('X.controller.Users', {
                         if (me.getDebug()) {
                             console.log('Debug: X.controller.Users.xhrLogin(): Succeeded');
                         }
-                        Ext.getStore('AuthenticatedUserStore').
-                                removeAll();
+                        var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
+                        authenticatedUserStore.setAutoSync(false);
+                        authenticatedUserStore.removeAll();
+                        authenticatedUserStore.setAutoSync(true);
                         me.resetAuthenticatedEntity();
                         Ext.create('Ext.util.DelayedTask', function() {
                             me.redirectTo(X.config.Config.getDEFAULT_USER_PAGE());
@@ -403,8 +407,10 @@ Ext.define('X.controller.Users', {
                     console.log('Debug: X.controller.Users.doLogout(): User successfully logged out. Will redirect to X.XConfig.getDEFAULT_USER_LOGIN_PAGE(). Response received from server:');
                     console.log(response.responseText);
                 }
-                Ext.getStore('AuthenticatedUserStore').
-                        removeAll();
+                var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
+                authenticatedUserStore.setAutoSync(false);
+                authenticatedUserStore.removeAll(true);
+                authenticatedUserStore.setAutoSync(true);
                 me.resetAuthenticatedEntity();
                 Ext.create('Ext.util.DelayedTask', function() {
                     me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());

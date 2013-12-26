@@ -24,7 +24,7 @@ Ext.define('X.controller.Groups', {
         },
         routes: {
             'user/profile/groups/feed': 'showFeed',
-            'user/profile/groups/add': 'showCreate'
+            'user/profile/groups/create': 'showCreate'
         },
         control: {
             // Group tab panel: contains group feed and add group UIs
@@ -37,6 +37,7 @@ Ext.define('X.controller.Groups', {
             pageUserRoot: '#pageUserRoot',
             // User :: Groups
             userGroupsTabPanel: '#userGroupsTabPanel',
+            userGroupFeeds: '#userGroupsTabPanel #userGroupFeeds',
             userGroupsList: '#userGroupsTabPanel #userGroupFeeds #userGroupsList',
         }
     },
@@ -50,8 +51,8 @@ Ext.define('X.controller.Groups', {
         if (activeItem.getItemId() === 'userGroupFeeds' && urlHash !== 'user/profile/groups/feed') {
             me.redirectTo('user/profile/groups/feed');
         }
-        else if (activeItem.getItemId() === 'userAddGroups' && urlHash !== 'user/profile/groups/add') {
-            me.redirectTo('user/profile/groups/add');
+        else if (activeItem.getItemId() === 'userAddGroups' && urlHash !== 'user/profile/groups/create') {
+            me.redirectTo('user/profile/groups/create');
         }
         return me;
     },
@@ -61,7 +62,7 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showFeed()');
         }
-        me.generateAndFillViewportWithUserRootGroupsWindow().
+        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow().
                 addGroupsListToGroupsFeedTab();
         return me;
     },
@@ -80,16 +81,10 @@ Ext.define('X.controller.Groups', {
     // Show add group form
     showCreate: function() {
         var me = this;
-        if (!Ext.isObject(me.getPageLogin()) || me.getPageLogin().
-                isHidden() || !Ext.isObject(me.getPageLogin().
-                getActiveItem()) || me.getPageLogin().
-                getActiveItem().
-                getItemId() !== 'userSignup') {
-            if (me.getDebug()) {
-                console.log('Debug: X.controller.Groups.showCreate(): Current active item is not userLogin. Will call generateAndFillViewportWithUserLoginWindow()');
-            }
-            return me.generateAndFillViewportWithUserSignupWindow();
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.showCreate()');
         }
+        me.generateAndFillUserRootGroupsWindowWithUserAddGroupWindow();
         return me;
     },
     doSignup: function(button) {
