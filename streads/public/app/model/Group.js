@@ -3,8 +3,7 @@ Ext.define('X.model.Group', {
     config: {
         fields: [
             {
-                name: 'id',
-                type: 'string'
+                name: 'id'
             },
             {
                 name: 'createdAt',
@@ -23,6 +22,10 @@ Ext.define('X.model.Group', {
                 type: 'string'
             },
             {
+                name: 'createdById',
+                type: 'string'
+            },
+            {
                 name: 'description',
                 type: 'string'
             }
@@ -31,18 +34,23 @@ Ext.define('X.model.Group', {
             {
                 type: 'presence',
                 field: 'id'
-            }
-        ],
-        hasMany: [
+            },
             {
-                model: 'X.model.User'
+                type: 'presence',
+                field: 'title',
+                message: 'We need you to, at the very least, give this group a title.'
+            },
+            {
+                type: 'presence',
+                field: 'createdById',
+                message: ''
             }
         ],
         proxy: {
             type: 'rest',
             idParam: 'id',
             appendId: true,
-            url: '/user/group',
+            url: '/user/groups',
             batchActions: true,
             reader: {
                 type: 'json',

@@ -18,15 +18,14 @@ Ext.define('X.store.Application', {
     onBeforeLoad: function() {
         var me = this;
         if (X.config.Config.getDEBUG()) {
-            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onBeforeLoad()');
+            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onBeforeLoad(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-
         return me;
     },
     onLoad: function() {
         var me = this;
         if (X.config.Config.getDEBUG()) {
-            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onLoad(): Found ' + (me.getAllCount() || 'no') + ' records');
+            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onLoad(): Found ' + (me.getAllCount() || 'no') + ' records: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
 
         if (me.mustBeEmptiedOnApplicationShutDown && !me.isLoaded()) {

@@ -2,11 +2,11 @@
  This file is generated and updated by Sencha Cmd. You can edit this file as
  needed for your application, but these edits will have to be merged by
  Sencha Cmd when it performs code generation tasks such as generating new
- models, controllers or views and when running "sencha app upgrade".
+ models, controllers or views and when running 'sencha app upgrade'.
  
  Ideally changes to this file would be limited and most work would be done
  in other places (such as Controllers). If Sencha Cmd cannot merge your
- changes and its generated code, it will produce a "merge conflict" that you
+ changes and its generated code, it will produce a 'merge conflict' that you
  will need to resolve manually.
  */
 
@@ -115,7 +115,8 @@ Ext.application({
         // Easy access to config object
         X.XConfig = X.config.Config;
         if (X.XConfig.getDEBUG() && X.XConfig.getBOOTUP_DEBUG()) {
-            console.log("Debug: Ext.application.launch()");
+            console.log('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
+            alert('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         // Destroy the #appLoadingIndicator element
         Ext.fly('circleG').destroy();
@@ -142,8 +143,8 @@ Ext.application({
     },
     onUpdated: function() {
         Ext.Msg.confirm(
-                "Application Update",
-                "This application has just successfully been updated to the latest version. Reload now?",
+                'Application Update',
+                'This application has just successfully been updated to the latest version. Reload now?',
                 function(buttonId) {
                     if (buttonId === 'yes') {
                         window.location.reload();

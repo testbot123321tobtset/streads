@@ -48,7 +48,7 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                         itemId: 'titleXTextfield',
                         cls: 'title-textfield',
                         placeHolder: 'List all contacts here',
-                        name: 'title'
+                        name: 'titleX'
                     }
                 ],
                 flex: 1
@@ -57,10 +57,11 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                 xtype: 'button',
                 itemId: 'submitButton',
                 cls: 'submit-button',
-                text: 'Create Group',
+                text: 'Create',
                 ui: 'confirm'
             }
-        ]
+        ],
+        url: 'user/groups'
     },
     resetAllFields: function() {
         var me = this;

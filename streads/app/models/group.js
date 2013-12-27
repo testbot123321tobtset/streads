@@ -6,12 +6,15 @@ var Group = function() {
             type: 'string',
             required: true
         },
+        createdById: {
+            type: 'string',
+            required: true
+        },
         description: {
             type: 'text'
         }
     });
     
-//    me.hasMany('Groupships');
     me.hasMany('Users', {
         through: 'Groupships'
     });

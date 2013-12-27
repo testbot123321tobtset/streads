@@ -6,6 +6,9 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'usernameEmailIsAlreadyTaken':
             responseMessage = 'We know this email! Maybe you want to log right in?';
             break;
+        case 'groupTitleIsAlreadyTakenByTheCreator':
+            responseMessage = 'You already have a group with this title. Get creative and pick a new title.';
+            break;
         case 'userAuthenticationFailed':
             responseMessage = 'Hmm, we couldn\'t log you in. Let us know, and we\'ll take care of it.';
             break;
@@ -18,6 +21,7 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'noLoggedInUserFound':
             responseMessage = 'No logged in user found.';
             break;
+            
         case 'authenticatedUserCouldNotBeCreated':
             responseMessage = 'Hmm, we couldn\'t create that account. Let us know, and we\'ll take care of it.';
             break;
@@ -27,6 +31,7 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'authenticatedUserCouldNotBeDeleted':
             responseMessage = 'Hmm, we couldn\'t delete your account. Let us know, and we\'ll take care of it.';
             break;
+            
         case 'postCreateDeniedDueToNonOwner':
             responseMessage = 'You cannot create a post that does not belong to you.';
             break;
@@ -81,7 +86,7 @@ exports.getSuccessResponseObject = function(params, result, message) {
     if (__.isString(message)) {
         responseObject.message = message;
     }
-
+    
     return responseObject;
 };
 exports.executeCallback = function(callback) {
@@ -96,4 +101,43 @@ exports.executeCallback = function(callback) {
     }
     
     return false;
+};
+
+exports.checkIfAuthenticatedUserExists = function(myScope, controller, next) {
+    var self = myScope;
+    controller.error = false;
+    controller.message = false;
+    controller.authenticatedUser = false;
+    var User = geddy.model.User;
+    User.first({
+        id: self.session.get('userId')
+    }, function(err, user) {
+        if (err) {
+            controller.error = err;
+        }
+        else {
+            if (__.isObject(user)) {
+                // Include groups for authenticated user only
+                user.includeGroups({
+                    fn: function() {
+                        __.each(User.fieldExcusionArray, function(field) {
+                            if (__.has(user, field)) {
+                                delete user[field];
+                            }
+                        });
+                        controller.authenticatedUser = user;
+                        controller.message = false;
+                        next();
+                    },
+                    scope: controller
+                });
+            }
+            else {
+                controller.authenticatedUser = false;
+                controller.message = AH.getResponseMessage('noAuthenticatedUserFound');
+                next();
+            }
+        }
+
+    });
 };

@@ -52,24 +52,28 @@ var User = function() {
         through: 'Friendships',
         model: 'User'
     });
-
-//    me.hasMany('Groupships');
+    
     me.hasMany('Groups', {
         through: 'Groupships'
     });
 };
 
-User.fieldExcusionArray = [
+User.fieldShowExclusionArray = [
     'password'
 ];
-User.fieldUpdateExcusionArray = [
+User.fieldShowUnauthenticatedExclusionArray = [
+    'groups'
+];
+User.fieldShowAuthenticatedExclusionArray = [
+];
+User.fieldUpdateExclusionArray = [
     // Once a user is created, we don't change email address
-    'usernameEmail'
+    'usernameEmail',
+    'groups'
 ];
 
 User.includeGroups = function(callback) {
     var me = this;
-
     me.groups = [
     ];
     me.getGroups(function(err, groups) {

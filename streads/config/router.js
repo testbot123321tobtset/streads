@@ -62,7 +62,7 @@ router.get('/').
 // 
 // r.match('/snow_dogs/:id(.:format)','PUT').to({controller: 'SnowDogs', action: 'update'});
 // 
-// r.match('/snow_dogs/:id(.:format)','DELETE').to({controller: 'SnowDogs', action: 'remove'});
+// r.match('/snow_dogs/:id(.:format)','DELETE').to({controller: 'SnowDogs', action: 'destroy'});
 
 router.post('/login').
         to('Auth.local');
@@ -111,6 +111,11 @@ router.match('/user/groups(.:format)', 'POST').
         to({
             controller: 'Groups',
             action: 'create'
+        });
+router.match('/user/groups/:id(.:format)','DELETE').
+        to({
+            controller: 'Groups',
+            action: 'destroy'
         });
 
 router.resource('users');

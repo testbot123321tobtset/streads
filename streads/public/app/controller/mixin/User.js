@@ -6,7 +6,7 @@ Ext.define('X.controller.mixin.User', {
             fn: function() {
                 if (me.getUrlHash() !== X.XConfig.getDEFAULT_USER_PAGE()) {
                     if (me.getDebug()) {
-                        console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE()');
+                        console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE() = ' + X.XConfig.getDEFAULT_USER_PAGE() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                     }
                     me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
                 }
@@ -21,7 +21,7 @@ Ext.define('X.controller.mixin.User', {
                     fn: function() {
                         if (me.getUrlHash() !== X.XConfig.getDEFAULT_USER_PAGE()) {
                             if (me.getDebug()) {
-                                console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE() = ' + X.XConfig.getDEFAULT_USER_PAGE());
+                                console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE() = ' + X.XConfig.getDEFAULT_USER_PAGE() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                             }
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
                         }
@@ -32,7 +32,7 @@ Ext.define('X.controller.mixin.User', {
                     // Callback if authenticated user does not exist
                     fn: function() {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user does not exist. Will do action.resume()');
+                            console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user does not exist. Will do action.resume(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                         action.resume();
                     },
@@ -48,7 +48,7 @@ Ext.define('X.controller.mixin.User', {
             // Callback if authenticated user exists
             fn: function() {
                 if (me.getDebug()) {
-                    console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume()');
+                    console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 action.resume();
             },
@@ -61,7 +61,7 @@ Ext.define('X.controller.mixin.User', {
                     // Callback if authenticated user exists
                     fn: function() {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume()');
+                            console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                         action.resume();
                     },
@@ -72,7 +72,7 @@ Ext.define('X.controller.mixin.User', {
                     fn: function() {
                         if (me.getUrlHash() !== X.XConfig.getDEFAULT_LOGIN_PAGE()) {
                             if (me.getDebug()) {
-                                console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user does not exist. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_LOGIN_PAGE()');
+                                console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user does not exist. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_LOGIN_PAGE() = ' + X.XConfig.getDEFAULT_LOGIN_PAGE() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                             }
                             me.redirectTo(X.XConfig.getDEFAULT_LOGIN_PAGE());
                         }
@@ -128,12 +128,12 @@ Ext.define('X.controller.mixin.User', {
         authenticatedUserStore.load(function(records, successful) {
             if (!successful) {
                 if (me.getDebug()) {
-                    console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Operation failed');
+                    console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Operation failed: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 var rawResponse = authenticatedUserStore.getProxy().getReader().rawData;
                 if (!rawResponse.success) {
                     if (me.getDebug()) {
-                        console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Message from server: ' + rawResponse.message);
+                        console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Message from server: ' + rawResponse.message + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                     }
                 }
                 X.isUser = false;
@@ -143,13 +143,14 @@ Ext.define('X.controller.mixin.User', {
             }
             else {
                 if (me.getDebug()) {
-                    console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Operation succeeded');
+                    console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Operation succeeded: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 if (Ext.isArray(records) && records.length > 0) {
                     var authenticatedUser = records[0];
                     if (me.getDebug()) {
                         console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Authenticated user:');
                         console.log(authenticatedUser);
+                        console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                     }
                     X.isUser = true;
                     X.authenticated = true;
@@ -160,7 +161,7 @@ Ext.define('X.controller.mixin.User', {
                     var rawResponse = authenticatedUserStore.getProxy().getReader().rawData;
                     if (Ext.isObject(rawResponse) && !rawResponse.success) {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Message from server: ' + rawResponse.message);
+                            console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Message from server: ' + rawResponse.message + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                     }
                     X.isUser = false;

@@ -3,8 +3,7 @@ Ext.define('X.model.User', {
     config: {
         fields: [
             {
-                name: 'id',
-                type: 'string'
+                name: 'id'
             },
             {
                 name: 'createdAt',
@@ -37,6 +36,11 @@ Ext.define('X.model.User', {
                     return record.get('firstName') + ' ' + record.get('lastName');
                 },
                 persist: false
+            },
+            {
+                name: 'groups',
+                type: 'auto',
+                persist: false
             }
         ],
         validations: [
@@ -58,6 +62,13 @@ Ext.define('X.model.User', {
             reader: {
                 type: 'json',
                 rootProperty: 'result'
+            },
+            exception: function(proxy, response, operation, eOpts) {
+                Ext.Viewport.fireEvent('userproxyexception', {
+                    proxy: proxy,
+                    response: response,
+                    operation: operation
+                });
             }
         }
     }

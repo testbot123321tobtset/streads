@@ -84,13 +84,13 @@ Ext.define('X.controller.mixin.Util', {
         var xtype = item.xtype,
                 cache = Ext.isArray(X.viewCache) ? X.viewCache : [],
                 ln = cache.length,
-                limit = 20,
+                limit = 10,
                 view, i = 0, j, oldView;
 
         for (; i < ln; i++) {
             if (cache[i].xtype === xtype) {
                 if (X.config.Config.getDEBUG()) {
-                    console.log('Debug: X.controller.mixin.Util.createView(): View fetched from view cache');
+                    console.log('Debug: X.controller.mixin.Util.createView(): View fetched from view cache: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 return cache[i];
             }
@@ -109,11 +109,16 @@ Ext.define('X.controller.mixin.Util', {
         }
 
         if (X.config.Config.getDEBUG()) {
-            console.log('Debug: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype);
+            console.log('Debug: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         view = Ext.create('widget.' + xtype);
         cache.push(view);
-
+        if (X.config.Config.getDEBUG()) {
+            view.on('painted', function() {
+                console.log('Debug: ' + xtype + '.painted: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            });
+        }
+        
         X.viewCache = cache;
 
         return view;

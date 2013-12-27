@@ -7,7 +7,7 @@ Ext.define('X.view.plugandplay.UserGroupsList', {
         itemId: 'userGroupsList',
         itemTpl: '{title}',
         onItemDisclosure: function() {
-            console.log('haha');
+            return false;
         }
     }
 });

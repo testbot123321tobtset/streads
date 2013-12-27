@@ -27,14 +27,13 @@ Ext.define('X.view.plugandplay.UserMoreTabPanel', {
                 layout: {
                     type: 'vbox',
                     pack: 'center',
-                    align: 'center'
+                    align: 'stretch'
                 },
                 itemId: 'userLogout',
                 cls: 'user-logout',
                 title: 'Log out',
                 items: {
                     xtype: 'button',
-                    style: 'width: 80%',
                     itemId: 'logoutButton',
                     cls: 'logout-button',
                     text: 'Log out',
