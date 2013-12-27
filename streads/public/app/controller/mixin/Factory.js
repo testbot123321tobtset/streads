@@ -244,7 +244,7 @@ Ext.define('X.controller.mixin.Factory', {
         userGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
         userGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
         userGroupContainer.getBackButton().setText('Back');
-        userGroupContainer.show(userGroupContainer.getShowAnimationConfig());
+        userGroupContainer.show(X.config.Config.getShowAnimationConfig());
         return me;
     }
 });

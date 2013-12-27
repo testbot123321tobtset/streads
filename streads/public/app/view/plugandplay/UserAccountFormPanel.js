@@ -45,19 +45,19 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
                 fn: 'onUserRecordChange',
                 event: 'change',
                 delegate: '#firstNameTextfield',
-                buffer: 10
+                buffer: 1
             },
             {
                 fn: 'onUserRecordChange',
                 event: 'change',
                 delegate: '#lastNameTextfield',
-                buffer: 10
+                buffer: 1
             },
             {
                 fn: 'onUserRecordChange',
                 event: 'change',
                 delegate: '#usernameEmail',
-                buffer: 10
+                buffer: 1
             }
         ]
     },

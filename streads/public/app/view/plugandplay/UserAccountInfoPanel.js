@@ -51,6 +51,27 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onUserDisplayNameUpdateData',
+                event: 'updatedata',
+                delegate: '#userDisplayName',
+                buffer: 1
+            }
         ]
+    },
+    // We need this because form panel does not update itself when a record
+    // gets updated from elsewhere in the app whereas a simple panel does
+    // So we listen for updatedata event on a simple panel userDisplayName and 
+    // use that to update the form panel
+    // Params to this function if you ever need them: userDisplayNamePanel, newData, eOpts
+    onUserDisplayNameUpdateData: function() {
+        var me = this;
+        var userAccountFormPanel = me.down('useraccountformpanel');
+        if(Ext.isObject(userAccountFormPanel)) {
+            userAccountFormPanel.setRecord(userAccountFormPanel.getRecord());
+        }
+        return me;
     }
 });

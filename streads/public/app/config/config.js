@@ -27,7 +27,36 @@ Ext.define('X.config.Config', {
         CUSTOMER_SERVICE_EMAIL_ADDRESS: 'test@test.com',
         DEBUG: true,
         BOOTUP_DEBUG: false,
-        DETAILED_DEBUG: false
+        DETAILED_DEBUG: false,
+        
+        // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
+        showAnimationConfig: {
+            type: 'slideIn',
+            direction: 'left',
+            easing: 'ease-in',
+            duration: 500
+        },
+        hideAnimationConfig: {
+            type: 'slideOut',
+            direction: 'right',
+            easing: 'ease-out',
+            duration: 500
+        },
+        showAnimationConfigWithNoDirection: {
+            type: 'slideIn',
+            easing: 'ease-in',
+            duration: 500
+        },
+        hideAnimationConfigWithNoDirection: {
+            type: 'slideOut',
+            easing: 'ease-out',
+            duration: 500
+        },
+        animationConfig: {
+            type: 'slide',
+            easing: 'ease-in',
+            duration: 500
+        }
     },
     constructor: function(config) {
         this.initConfig(config);
@@ -39,5 +68,4 @@ Ext.define('X.config.Config', {
         }
         return false;
     }
-
 });

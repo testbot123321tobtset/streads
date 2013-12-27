@@ -46,22 +46,11 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 html: 'This container will have this group\'s feed',
                 flex: 1
             }
-        ],
-        // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
-        showAnimationConfig: {
-            type: 'slideIn',
-            direction: 'left',
-            easing: 'ease-in'
-        },
-        hideAnimationConfig: {
-            type: 'slideOut',
-            direction: 'right',
-            easing: 'ease-out'
-        }
+        ]
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
-        me.hide(me.getHideAnimationConfig());
+        me.hide(X.config.Config.getHideAnimationConfig());
         return me;
     },
     getBackButton: function() {

@@ -139,6 +139,19 @@ Ext.application({
             }
         });
         
+        // Standardize animations across all relevant components
+        Ext.define('X.override.TabPanel', {
+            override: 'Ext.TabPanel',
+            config: {
+                layout: {
+                    type: 'card',
+                    animation: X.config.Config.getAnimationConfig()
+                },
+                showAnimation: X.config.Config.getShowAnimationConfigWithNoDirection(),
+                hideAnimation: X.config.Config.getHideAnimationConfigWithNoDirection()
+            }
+        });
+        
         Ext.Msg.defaultAllowedConfig.width = '100%';
     },
     onUpdated: function() {

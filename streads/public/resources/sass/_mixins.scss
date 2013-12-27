@@ -140,7 +140,7 @@
 }
 
 @mixin mega-left-side-box-shadow {
-    @include box-shadow($default-box-shadow-color -1px 2px 20px);
+    @include box-shadow($default-box-shadow-color -1px 0px 20px);
 }
 
 @mixin mega-depressed-box-shadow {
