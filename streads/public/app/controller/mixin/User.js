@@ -1,4 +1,88 @@
 Ext.define('X.controller.mixin.User', {
+    checkLoginAndResumeIfNotExistsOrRedirectIfExists: function(action) {
+        var me = this;
+        me.checkIfAuthenticatedUserExists({
+            // Callback if authenticated user exists
+            fn: function() {
+                if (me.getUrlHash() !== X.XConfig.getDEFAULT_USER_PAGE()) {
+                    if (me.getDebug()) {
+                        console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE()');
+                    }
+                    me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+                }
+            },
+            scope: me
+        },
+        {
+            // Callback if authenticated user does not exist
+            fn: function() {
+                me.loadAuthenticatedUserStore({
+                    // Callback if authenticated user exists
+                    fn: function() {
+                        if (me.getUrlHash() !== X.XConfig.getDEFAULT_USER_PAGE()) {
+                            if (me.getDebug()) {
+                                console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_USER_PAGE() = ' + X.XConfig.getDEFAULT_USER_PAGE());
+                            }
+                            me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+                        }
+                    },
+                    scope: me
+                },
+                {
+                    // Callback if authenticated user does not exist
+                    fn: function() {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfNotExistsOrRedirectIfExists(): Authenticated user does not exist. Will do action.resume()');
+                        }
+                        action.resume();
+                    },
+                    scope: me
+                });
+            },
+            scope: me
+        });
+    },
+    checkLoginAndResumeIfExistsOrRedirectIfNotExists: function(action) {
+        var me = this;
+        me.checkIfAuthenticatedUserExists({
+            // Callback if authenticated user exists
+            fn: function() {
+                if (me.getDebug()) {
+                    console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume()');
+                }
+                action.resume();
+            },
+            scope: me
+        },
+        {
+            // Callback if authenticated user does not exist
+            fn: function() {
+                me.loadAuthenticatedUserStore({
+                    // Callback if authenticated user exists
+                    fn: function() {
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user exists. Will do action.resume()');
+                        }
+                        action.resume();
+                    },
+                    scope: me
+                },
+                {
+                    // Callback if authenticated user does not exist
+                    fn: function() {
+                        if (me.getUrlHash() !== X.XConfig.getDEFAULT_LOGIN_PAGE()) {
+                            if (me.getDebug()) {
+                                console.log('Debug: X.controller.mixin.User.checkLoginAndResumeIfExistsOrRedirectIfNotExists(): Authenticated user does not exist. Current URL hash - ' + me.getUrlHash() + '. Will redirect to X.XConfig.getDEFAULT_LOGIN_PAGE()');
+                            }
+                            me.redirectTo(X.XConfig.getDEFAULT_LOGIN_PAGE());
+                        }
+                    },
+                    scope: me
+                });
+            },
+            scope: me
+        });
+    },
     getAuthenticatedUser: function() {
         var me = this;
         if (Ext.isBoolean(X.isUser) && X.isUser && Ext.isBoolean(X.authenticated) && X.authenticated && Ext.isObject(X.authenticatedEntity)) {
@@ -74,7 +158,7 @@ Ext.define('X.controller.mixin.User', {
                 }
                 else {
                     var rawResponse = authenticatedUserStore.getProxy().getReader().rawData;
-                    if (!rawResponse.success) {
+                    if (Ext.isObject(rawResponse) && !rawResponse.success) {
                         if (me.getDebug()) {
                             console.log('Debug: X.controller.mixin.User: loadAuthenticatedUserStore(): Message from server: ' + rawResponse.message);
                         }

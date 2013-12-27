@@ -28,21 +28,27 @@ var Users = function() {
         User.first({
             id: self.session.get('userId')
         }, function(err, user) {
-            me.error = __.isObject(err) ? err : false;
             if (__.isObject(user)) {
-                me.authenticatedUser = user;
-                me.message = false;
-                __.each(User.fieldExcusionArray, function(field) {
-                    if (__.has(me.authenticatedUser, field)) {
-                        delete me.authenticatedUser[field];
-                    }
+                // Include groups for authenticated user only
+                user.includeGroups({
+                    fn: function() {
+                        me.authenticatedUser = user;
+                        me.message = false;
+                        __.each(User.fieldExcusionArray, function(field) {
+                            if (__.has(me.authenticatedUser, field)) {
+                                delete me.authenticatedUser[field];
+                            }
+                        });
+                        next();
+                    },
+                    scope: me
                 });
             }
             else {
                 me.authenticatedUser = false;
                 me.message = AH.getResponseMessage('noAuthenticatedUserFound');
+                next();
             }
-            next();
         });
     };
 
@@ -60,7 +66,7 @@ var Users = function() {
                 user = User.create(params);
 
         // Non-blocking uniqueness checks are hard
-        geddy.model.User.first({
+        User.first({
             usernameEmail: user.usernameEmail
         }, function(err, data) {
             if (data) {
@@ -111,12 +117,6 @@ var Users = function() {
         }
     };
     
-    // Authenticated: logs a user in
-    me.login = function(req, resp, params) {
-        var self = this;
-        
-        console.log(passport.actions.local(req, resp, params));
-    };
     // Authenticated: logs a user out
     me.logout = function(req, resp, params) {
         var self = this;
@@ -130,7 +130,6 @@ var Users = function() {
     // Authenticated: display me
     me.showMe = function(req, resp, params) {
         var self = this;
-
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
@@ -142,7 +141,7 @@ var Users = function() {
     // Authenticated: display a particular user using id from params
     me.show = function(req, resp, params) {
         var self = this;
-
+        
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
@@ -171,6 +170,7 @@ var Users = function() {
     // Authenticated: update authenticated and in-session user
     me.update = function(req, resp, params) {
         var self = this;
+        
         self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
@@ -194,6 +194,27 @@ var Users = function() {
                         self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeUpdated')));
                     }
                     else {
+//                        User.first('C9814392-7103-4F55-9AD5-864C4AA8D8FD', function(err, friend) {
+//                            user.addFriender(friend);
+//                            user.save(function(err, data) {
+//                                user.getFrienders(function(err, data) {
+//                                    console.log(data);
+//                                });
+//                            });
+//                        });
+                        
+//                        geddy.model.Group.first('8A96F2EF-C2CF-4701-A32F-0F149853F4ED', function(err, group) {
+//                            group.addUser(user);
+//                            group.save(function(err, data) {
+//                                group.getUsers(function(err, data) {
+//                                    console.log(data);
+//                                });
+//                                user.getGroups(function(err, data) {
+//                                    console.log(data);
+//                                });
+//                            });
+//                        });
+                        
                         __.each(User.fieldExcusionArray, function(field) {
                             if (__.has(user, field)) {
                                 delete user[field];

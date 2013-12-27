@@ -39,10 +39,10 @@
      *      }
      */
     "js": [
-		{
-			"path": "phonegap.js",
-			"remote": true
-		},
+        {
+            "path": "phonegap.js",
+            "remote": true
+        },
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -54,7 +54,7 @@
         {
             "path": "app.js",
             "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
-            "update": "full"
+            "update": "delta"
         }
     ],
 
@@ -75,15 +75,15 @@
      *      }
      */
     "css": [
-        /*{
+        {
             "path": "resources/css/cupertino.css",
             "theme": "Cupertino",
-            "update": "delta"
-        },*/
+            "update": "full"
+        },
         {
             "path": "resources/css/app.css",
             "theme": "X",
-            "update": "full"
+            "update": "delta"
         }
     ],
 

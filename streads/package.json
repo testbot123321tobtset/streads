@@ -1,6 +1,6 @@
 {
     "name": "Streads",
-    "version": "0.0.1-15",
+    "version": "0.0.1-16",
     "author": "Deepak Ghosh",
     "dependencies": {
         "geddy": "0.11.8",
@@ -17,7 +17,7 @@
     "devDependencies": {},
     "subdomain": "deepakkghosh.streads",
     "scripts": {
-        "predeploy": "npm install && cd public && sencha app build",
+        "predeploy": "npm install && cd public && sencha app build production",
         "start": "app.js"
     },
     "engines": {

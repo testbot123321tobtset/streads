@@ -1,3 +1,5 @@
+var AH = require('../helpers/application');
+
 var User = function() {
     var me = this;
 
@@ -27,8 +29,34 @@ var User = function() {
 
     me.hasMany('Passports');
     /*
-    me.hasMany('Groupships');
-    me.hasMany('Groups', {through: 'Groupships'});*/
+     me.hasMany('Groupships');
+     me.hasMany('Groups', {through: 'Groupships'});*/
+
+//    Named associations (http://geddyjs.org/guide#models)
+//    
+//    var User = function() {
+//        this.property('familyName', 'string', {required: true});
+//        this.property('givenName', 'string', {required: true});
+//
+//        this.hasMany('Kids', {model: 'Users'});
+//    };
+//    
+//    The API for this is the same as with normal associations, using the set/add and get, with the appropriate 
+//    association name (not the model name). For example, in the case of Kids, you'd use addKid and getKids.
+
+    me.hasMany('Frienders', {
+        through: 'Friendships',
+        model: 'User'
+    });
+    me.hasMany('Friends', {
+        through: 'Friendships',
+        model: 'User'
+    });
+
+//    me.hasMany('Groupships');
+    me.hasMany('Groups', {
+        through: 'Groupships'
+    });
 };
 
 User.fieldExcusionArray = [
@@ -39,4 +67,17 @@ User.fieldUpdateExcusionArray = [
     'usernameEmail'
 ];
 
-User = geddy.model.register('User', User);
+User.includeGroups = function(callback) {
+    var me = this;
+
+    me.groups = [
+    ];
+    me.getGroups(function(err, groups) {
+        if (!err) {
+            me.groups = groups;
+        }
+        AH.executeCallback(callback);
+    });
+};
+
+exports.User = User;

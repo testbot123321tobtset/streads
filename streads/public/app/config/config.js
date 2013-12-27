@@ -6,7 +6,7 @@ Ext.define('X.config.Config', {
         DEFAULT_USER_SIGNUP_PAGE: 'user/signup',
         DEFAULT_USER_LOGIN_PAGE: 'user/login',
         DEFAULT_USER_LOGOUT_PAGE: 'user/logout',
-        DEFAULT_USER_PAGE: 'user/profile',
+        DEFAULT_USER_PAGE: 'user/profile/groups/feed',
         MESSAGES: {
             // Bad news
             ALERT: 'Something seems to be wrong!',

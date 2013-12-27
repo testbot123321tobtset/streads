@@ -78,16 +78,19 @@ Ext.application({
     ],
     models: [
         'User',
-        'AuthenticatedUser'
+        'AuthenticatedUser',
+        'Group'
     ],
     stores: [
         'Users',
-        'AuthenticatedUser'
+        'AuthenticatedUser',
+        'Groups'
     ],
     controllers: [
         'phone.Main',
         'Boot',
-        'Users'
+        'Users',
+        'Groups'
     ],
     views: [
         'page.Login',

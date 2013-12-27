@@ -37,6 +37,11 @@ Ext.define('X.model.AuthenticatedUser', {
                     return (Ext.isString(record.data.firstName) && Ext.isString(record.data.lastName)) ? record.data.firstName + ' ' + record.data.lastName : null;
                 },
                 persist: false
+            },
+            {
+                name: 'groups',
+                type: 'auto',
+                persist: false
             }
         ],
         validations: [
