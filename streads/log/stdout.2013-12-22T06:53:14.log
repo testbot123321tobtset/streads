@@ -1,4 +1,4 @@
-[Fri, 27 Dec 2013 03:16:59 GMT] INFO Server starting with config: {
+[Sat, 21 Dec 2013 22:52:51 GMT] INFO Server starting with config: {
   "environment": "development",
   "workers": 1,
   "port": 4000,
@@ -63,23 +63,6 @@
       "port": 10029
     }
   },
-  "passport": {
-    "successRedirect": "/",
-    "failureRedirect": "/login",
-    "twitter": {
-      "consumerKey": "XXXXX",
-      "consumerSecret": "XXXXX"
-    },
-    "facebook": {
-      "clientID": "XXXXX",
-      "clientSecret": "XXXXX"
-    },
-    "yammer": {
-      "clientID": "XXXXX",
-      "clientSecret": "XXXXX"
-    }
-  },
-  "secret": "PXTTjtFUCt75Ii0klpOLtwng963npLietza7jgxTNDUlN1ijSo7XpLGfin41XFDIJRE2NGY1qH58Xb5mciSmutZC02BOVtv6EEWyJKt75JxBjGKkJ6hK56cCYxlwNbz8"
+  "secret": "robPwLlhKxap2TJBSP1SrLXYFXmcoxCMhSpx9DTVqmUbkoeXuqFpnyb2oU8LuIstE33bRWlBjIqOxSF8zgmCwl4KvzevwMvNXrPrhFMbHMTG5nGlI6U0ZogWXs73jClG"
 }
-[Fri, 27 Dec 2013 03:16:59 GMT] INFO Creating 1 worker process.
-[Fri, 27 Dec 2013 03:17:06 GMT] INFO Server worker running in development on port 4000 with a PID of: 1731
+[Sat, 21 Dec 2013 22:52:51 GMT] INFO Creating 1 worker process.

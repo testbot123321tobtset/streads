@@ -28,6 +28,22 @@ Ext.define('X.view.page.user.Root', {
                     pack: 'center',
                     align: 'stretch'
                 },
+                itemId: 'userFriends',
+                cls: 'user-friends',
+                title: 'Friends',
+                items: [
+                    {
+                      xtype: 'emailfield',
+                      label: 'Friend\'s Email'
+                    }
+                ]
+            },
+            {
+                layout: {
+                    type: 'vbox',
+                    pack: 'center',
+                    align: 'stretch'
+                },
                 itemId: 'userGroups',
                 cls: 'user-groups',
                 title: 'Groups',
