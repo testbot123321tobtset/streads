@@ -113,6 +113,18 @@ router.match('/user/groups(.:format)', 'POST').
             action: 'create'
         });
 
+// routing for creating/destroying friendhips
+router.post('/friendships(.:format)').
+        to({
+            controller:'Friendships',
+            action:'create'
+        });
+router.del('/friendships/:id(.:format)').
+        to({
+            controller: 'Friendships',
+            action: 'destroy'
+        });
+
 router.resource('users');
 //router.resource('friendships');
 //router.resource('groupships');

@@ -1,34 +1,76 @@
+var __ = require('underscore');
+var AH = require('../helpers/application');
+
 var Friendships = function () {
-  this.respondsWith = ['html', 'json', 'xml', 'js', 'txt'];
+  var me = this;
 
-  this.index = function (req, resp, params) {
-    this.respond({params: params});
+  me.respondsWith = [
+    'json'
+  ];
+
+  me.index = function (req, resp, params) {
+    me.respond({params: params});
   };
 
-  this.add = function (req, resp, params) {
-    this.respond({params: params});
+  me.add = function (req, resp, params) {
+    me.respond({params: params});
   };
 
-  this.create = function (req, resp, params) {
+  me.create = function (req, resp, params) {
+    var self = this,
+    Friendship = geddy.model.Friendship,
+    User = geddy.model.User,
+    frienderId = self.session.get("userId");
+    var friendId;
+    User.first({
+      usernameEmail: params['email']
+    }, function(err, user) {
+      if (!__.isObject(user) || err) {
+        self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('noUserFoundForEmail')));
+      } else {
+        // here we gets the user to make friend with
+        friendId = user.id;
+        // checks whether frienship already exists or not
+        Friendship.first({
+          frienderUserId: frienderId,
+          friendUserId: friendId
+        }, function(err, data) {
+          if (data) {
+            self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('friendshipAlreadyExists')));
+          } else { // create new friendship if there's no friendship yet
+            var friendship = Friendship.create({
+              frienderUserId: frienderId,
+              friendUserId: friendId
+            });
+            friendship.save(function(err, data) {
+              if (err) {
+                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('failedToSaveFriendship')));
+              } else {
+                self.respond(AH.getSuccessResponseObject(params, data));
+              }
+            });
+          }
+        });
+      }
+    });
     // Save the resource, then display index page
-    this.redirect({controller: this.name});
   };
 
-  this.show = function (req, resp, params) {
-    this.respond({params: params});
+  me.show = function (req, resp, params) {
+    me.respond({params: params});
   };
 
-  this.edit = function (req, resp, params) {
-    this.respond({params: params});
+  me.edit = function (req, resp, params) {
+    me.respond({params: params});
   };
 
-  this.update = function (req, resp, params) {
+  me.update = function (req, resp, params) {
     // Save the resource, then display the item page
-    this.redirect({controller: this.name, id: params.id});
+    me.redirect({controller: me.name, id: params.id});
   };
 
-  this.remove = function (req, resp, params) {
-    this.respond({params: params});
+  me.remove = function (req, resp, params) {
+    me.respond({params: params});
   };
 
 };

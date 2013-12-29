@@ -1,0 +1,115 @@
+[Fri, 27 Dec 2013 17:08:15 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 01:08:15 GMT+0800 (CST)] "POST /friendships 1.1" 500 2155 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+Error: Partial template "app/views/friendships/create" not found in app/views, app/views/friendships and app/views/layouts
+    at Partial.getTemplateData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:85:15)
+    at Partial.render (/usr/local/lib/node_modules/geddy/lib/template/partial.js:95:29)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:136:15
+    at Array.forEach (native)
+    at Partial.renderChildren (/usr/local/lib/node_modules/geddy/lib/template/partial.js:135:16)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:100:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+    at Object.oncomplete (fs.js:107:15)
+[Fri, 27 Dec 2013 17:08:27 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 01:08:27 GMT+0800 (CST)] "POST /friendships 1.1" 500 2155 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+Error: Partial template "app/views/friendships/create" not found in app/views, app/views/friendships and app/views/layouts
+    at Partial.getTemplateData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:85:15)
+    at Partial.render (/usr/local/lib/node_modules/geddy/lib/template/partial.js:95:29)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:136:15
+    at Array.forEach (native)
+    at Partial.renderChildren (/usr/local/lib/node_modules/geddy/lib/template/partial.js:135:16)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:100:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+    at Object.oncomplete (fs.js:107:15)
+[Fri, 27 Dec 2013 17:08:53 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 01:08:53 GMT+0800 (CST)] "POST /friendships 1.1" 500 2155 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+Error: Partial template "app/views/friendships/create" not found in app/views, app/views/friendships and app/views/layouts
+    at Partial.getTemplateData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:85:15)
+    at Partial.render (/usr/local/lib/node_modules/geddy/lib/template/partial.js:95:29)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:136:15
+    at Array.forEach (native)
+    at Partial.renderChildren (/usr/local/lib/node_modules/geddy/lib/template/partial.js:135:16)
+    at handleData (/usr/local/lib/node_modules/geddy/lib/template/partial.js:100:16)
+    at /usr/local/lib/node_modules/geddy/lib/template/partial.js:117:9
+    at fs.js:266:14
+    at Object.oncomplete (fs.js:107:15)
+[Sat, 28 Dec 2013 02:38:42 GMT] ERROR Worker 3477 died.
+[Sat, 28 Dec 2013 02:38:51 GMT] ERROR Worker 3478 died.
+[Sat, 28 Dec 2013 02:40:51 GMT] ERROR Worker 3480 died.
+[Sat, 28 Dec 2013 02:45:45 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 10:45:45 GMT+0800 (CST)] "POST /friendships 1.1" 500 2490 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+TypeError: Cannot read property 'datatype' of undefined
+    at _createComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:185:27)
+    at _createOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:130:41)
+    at Query.initialize (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:298:40)
+    at Query (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:12:19)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:602:15)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:572:18)
+    at me.create (/Users/hengchu/Documents/streads/streads/app/controllers/friendships.js:28:10)
+    at callback (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at controller.BaseController._handleAction (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:295:7)
+    at cb [as callback] (/usr/local/lib/node_modules/geddy/lib/app/index.js:258:36)
+[Sat, 28 Dec 2013 02:46:08 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 10:46:08 GMT+0800 (CST)] "POST /friendships 1.1" 500 2490 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+TypeError: Cannot read property 'datatype' of undefined
+    at _createComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:185:27)
+    at _createOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:130:41)
+    at Query.initialize (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:298:40)
+    at Query (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:12:19)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:602:15)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:572:18)
+    at me.create (/Users/hengchu/Documents/streads/streads/app/controllers/friendships.js:28:10)
+    at callback (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at controller.BaseController._handleAction (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:295:7)
+    at cb [as callback] (/usr/local/lib/node_modules/geddy/lib/app/index.js:258:36)
+[Sat, 28 Dec 2013 02:46:27 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 10:46:27 GMT+0800 (CST)] "POST /friendships 1.1" 500 2379 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+TypeError: Object #<Object> has no method 'get'
+    at me.create (/Users/hengchu/Documents/streads/streads/app/controllers/friendships.js:27:24)
+    at callback (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at controller.BaseController._handleAction (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:295:7)
+    at cb [as callback] (/usr/local/lib/node_modules/geddy/lib/app/index.js:258:36)
+    at async.Initializer.complete (/usr/local/lib/node_modules/geddy/node_modules/utilities/lib/async.js:286:10)
+    at /usr/local/lib/node_modules/geddy/lib/app/index.js:269:21
+    at /usr/local/lib/node_modules/geddy/lib/controller/init.js:103:9
+    at localCallback (/usr/local/lib/node_modules/geddy/lib/sessions/index.js:86:9)
+    at Cookie.read (/usr/local/lib/node_modules/geddy/lib/sessions/stores/cookie.js:55:5)
+    at init (/usr/local/lib/node_modules/geddy/lib/sessions/index.js:89:19)
+[Sat, 28 Dec 2013 02:46:43 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 10:46:43 GMT+0800 (CST)] "POST /friendships 1.1" 500 2490 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+TypeError: Cannot read property 'datatype' of undefined
+    at _createComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:185:27)
+    at _createOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:130:41)
+    at Query.initialize (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:298:40)
+    at Query (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:12:19)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:602:15)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:572:18)
+    at me.create (/Users/hengchu/Documents/streads/streads/app/controllers/friendships.js:28:10)
+    at callback (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at controller.BaseController._handleAction (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:295:7)
+    at cb [as callback] (/usr/local/lib/node_modules/geddy/lib/app/index.js:258:36)
+[Sat, 28 Dec 2013 02:46:59 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 10:46:59 GMT+0800 (CST)] "POST /friendships 1.1" 500 2490 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+TypeError: Cannot read property 'datatype' of undefined
+    at _createComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:185:27)
+    at _createOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:130:41)
+    at Query.initialize (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:298:40)
+    at Query (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:12:19)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:602:15)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:572:18)
+    at me.create (/Users/hengchu/Documents/streads/streads/app/controllers/friendships.js:28:10)
+    at callback (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at controller.BaseController._handleAction (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:295:7)
+    at cb [as callback] (/usr/local/lib/node_modules/geddy/lib/app/index.js:258:36)
+[Sat, 28 Dec 2013 02:47:11 GMT] ERROR 127.0.0.1 - - [Sat Dec 28 2013 10:47:11 GMT+0800 (CST)] "POST /friendships 1.1" 500 2490 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"
+TypeError: Cannot read property 'datatype' of undefined
+    at _createComparison (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:185:27)
+    at _createOperation (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:130:41)
+    at Query.initialize (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:298:40)
+    at Query (/usr/local/lib/node_modules/geddy/node_modules/model/lib/query/query.js:12:19)
+    at Object.obj.all (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:602:15)
+    at Function.obj.first (/usr/local/lib/node_modules/geddy/node_modules/model/lib/index.js:572:18)
+    at me.create (/Users/hengchu/Documents/streads/streads/app/controllers/friendships.js:28:10)
+    at callback (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:282:22)
+    at controller.BaseController._handleAction (/usr/local/lib/node_modules/geddy/lib/controller/base_controller.js:295:7)
+    at cb [as callback] (/usr/local/lib/node_modules/geddy/lib/app/index.js:258:36)
+[Sat, 28 Dec 2013 15:13:43 GMT] ERROR Worker 3802 died.
+[Sat, 28 Dec 2013 15:22:28 GMT] ERROR Worker 3808 died.
+[Sat, 28 Dec 2013 15:23:58 GMT] ERROR Worker 3810 died.
+[Sun, 29 Dec 2013 02:58:06 GMT] ERROR Worker 4852 died.
+[Sun, 29 Dec 2013 02:59:26 GMT] ERROR Worker 4853 died.
+[Sun, 29 Dec 2013 03:01:20 GMT] ERROR Worker 4855 died.
+[Sun, 29 Dec 2013 03:03:55 GMT] ERROR Worker 4858 died.
