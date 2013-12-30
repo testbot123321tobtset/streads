@@ -8,6 +8,41 @@ var Friendships = function () {
     'json'
   ];
 
+  me.checkIfAuthenticatedUserExists = function(next) {
+    var self = this;
+
+    var User = geddy.model.User;
+    User.first({
+      id: self.session.get('userId')
+    }, function(err, user) {
+      if (__.isObject(user)) {
+        // Include groups for authenticated user only
+        user.includeGroups({
+          fn: function() {
+            me.authenticatedUser = user;
+            me.message = false;
+            __.each(User.fieldExcusionArray, function(field) {
+              if (__.has(me.authenticatedUser, field)) {
+                delete me.authenticatedUser[field];
+              }
+            });
+            next();
+          },
+          scope: me
+        });
+      }
+      else {
+        me.authenticatedUser = false;
+        me.message = AH.getResponseMessage('noAuthenticatedUserFound');
+        next();
+      }
+    });
+  };
+
+  me.before(me.checkIfAuthenticatedUserExists, {
+    async: true
+  });
+
   me.index = function (req, resp, params) {
     me.respond({params: params});
   };
@@ -38,15 +73,24 @@ var Friendships = function () {
           if (data) {
             self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('friendshipAlreadyExists')));
           } else { // create new friendship if there's no friendship yet
-            var friendship = Friendship.create({
-              frienderUserId: frienderId,
-              friendUserId: friendId
-            });
-            friendship.save(function(err, data) {
-              if (err) {
-                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('failedToSaveFriendship')));
+            Friendship.first({
+              frienderUserId: friendId,
+              friendUserId: frienderId
+            }, function(err, data) {
+              if (data) {
+                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('friendshipAlreadyExists')));
               } else {
-                self.respond(AH.getSuccessResponseObject(params, data));
+                var friendship = Friendship.create({
+                  frienderUserId: frienderId,
+                  friendUserId: friendId
+                });
+                friendship.save(function(err, data) {
+                  if (err) {
+                    self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('failedToSaveFriendship')));
+                  } else {
+                    self.respond(AH.getSuccessResponseObject(params, data));
+                  }
+                });
               }
             });
           }
