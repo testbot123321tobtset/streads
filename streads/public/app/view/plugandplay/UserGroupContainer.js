@@ -20,11 +20,18 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 itemId: 'userGroupContainerToolbar',
                 cls: 'user-group-container-toolbar',
                 docked: 'top',
+                height: X.config.Config.getDefaultToolbarHeight(),
+                defaults: {
+                    height: X.config.Config.getDefaultToolbarHeight()
+                },
+                title: 'Feed',
                 items: [
                     {
                         xtype: 'button',
                         itemId: 'backButton',
+                        cls: 'back-button',
                         ui: 'back',
+                        text: 'Back',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userGroupContainer').onBackButtonTap();
@@ -32,12 +39,23 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                         }
                     },
                     {
+                        xtype: 'spacer'
+                    },
+                    {
                         xtype: 'button',
-                        itemId: '#forwardButton',
-                        ui: 'forward'
+                        itemId: 'storiesButton',
+                        cls: 'stories-button',
+                        ui: 'action',
+                        text: 'Stories'
+                    },
+                    {
+                        xtype: 'button',
+                        itemId: 'moreButton',
+                        cls: 'x-button-boring more-button',
+                        ui: 'normal',
+                        text: 'Edit'
                     }
                 ]
-
             },
             {
                 xtype: 'corecontainer',

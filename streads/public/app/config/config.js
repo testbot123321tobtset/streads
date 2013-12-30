@@ -22,39 +22,55 @@ Ext.define('X.config.Config', {
             
             // Good news
             SUCCESS: 'It worked!',
-            SAVE_SUCCESSFUL: 'Your changes were successfully saved.'
+            SAVE_SUCCESSFUL: 'Your changes were successfully saved.',
+            
+            MODEL_SUCCESSFULLY_CREATED: 'This model was successfully created.',
+            MODEL_SUCCESSFULLY_UPDATED: 'This model was successfully updated.',
+            MODEL_SUCCESSFULLY_DESTROYED: 'This model was successfully destroyed.',
+            USER_SUCCESSFULLY_CREATED: 'This user was successfully created.',
+            USER_SUCCESSFULLY_UPDATED: 'This user was successfully updated.',
+            USER_SUCCESSFULLY_DESTROYED: 'This user was successfully destroyed.',
+            GROUP_SUCCESSFULLY_CREATED: 'This group was successfully created.',
+            GROUP_SUCCESSFULLY_UPDATED: 'This group was successfully updated.',
+            GROUP_FAILED_UPDATED: 'This group failed to update.',
+            GROUP_SUCCESSFULLY_DESTROYED: 'This group was successfully destroyed.'
         },
         CUSTOMER_SERVICE_EMAIL_ADDRESS: 'test@test.com',
         DEBUG: true,
         BOOTUP_DEBUG: false,
         DETAILED_DEBUG: false,
         
+        // UI
+        defaultToolbarHeight: 46,
+        // Animations
+        defaultAnimationDuration: 500,
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
+        defaultAnimationEasing: 'linear',
         showAnimationConfig: {
             type: 'slideIn',
             direction: 'left',
-            easing: 'ease-in',
+            //easing: 'ease-in',
             duration: 500
         },
         hideAnimationConfig: {
             type: 'slideOut',
             direction: 'right',
-            easing: 'ease-out',
+            //easing: 'ease-out',
             duration: 500
         },
         showAnimationConfigWithNoDirection: {
             type: 'slideIn',
-            easing: 'ease-in',
+            //easing: 'ease-in',
             duration: 500
         },
         hideAnimationConfigWithNoDirection: {
             type: 'slideOut',
-            easing: 'ease-out',
+            //easing: 'ease-out',
             duration: 500
         },
         animationConfig: {
             type: 'slide',
-            easing: 'ease-in',
+            //easing: 'ease-in',
             duration: 500
         }
     },

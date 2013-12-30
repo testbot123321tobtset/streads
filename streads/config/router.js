@@ -102,6 +102,11 @@ router.match('/user/logout', 'GET').
             action: 'logout'
         });
         
+router.match('/user/groups(.:format)', 'GET').
+        to({
+            controller: 'Groups',
+            action: 'index'
+        });
 router.match('/user/groups/:id', 'GET').
         to({
             controller: 'Groups',
@@ -111,6 +116,11 @@ router.match('/user/groups(.:format)', 'POST').
         to({
             controller: 'Groups',
             action: 'create'
+        });
+router.match('/user/groups/:id(.:format)', 'PUT').
+        to({
+            controller: 'Groups',
+            action: 'update'
         });
 router.match('/user/groups/:id(.:format)','DELETE').
         to({

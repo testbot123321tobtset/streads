@@ -221,6 +221,34 @@
     }
 }
 
+.x-button.x-button-forward {
+   border : 0px;
+
+
+   &:after {
+       content: '!';
+       font-family: 'iOS7';
+       color: $ios7-blue;
+       font-size: 1.3em;
+       text-align: center;
+       background-color: transparent;
+       line-height: 1.3em;
+       padding-left: 0px;
+   }
+
+
+   .x-button-label {
+       font-size: 1.1em;
+       line-height: 1.3em;
+       font-weight: 300;
+       padding-left: 2px;
+   }
+}
+
+.x-button.x-list-item-remove {
+    z-index: 25;
+}
+
 // Badges
 
 .x-hasbadge {
@@ -246,5 +274,23 @@
         padding: 1px 2px 2px;
         border: 0px;
         background-color: $ios7-red;
+    }
+}
+
+// My addition
+.x-button {
+    &.x-button-boring {
+        border-color: $magnesium;
+        background-color: $magnesium;
+        .x-button-label {
+            color: white;
+        }
+        &.x-button-pressing {
+            border-color: $silver;
+            background-color: $silver;
+            .x-button-label {
+                color: white;
+            }
+        }
     }
 }

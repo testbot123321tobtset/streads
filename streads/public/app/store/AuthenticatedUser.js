@@ -4,7 +4,7 @@ Ext.define('X.store.AuthenticatedUser', {
         model: 'X.model.AuthenticatedUser',
         storeId: 'AuthenticatedUserStore',
         autoLoad: false,
-        autoSync: true,
+        autoSync: false,
         mustBeEmptiedOnApplicationShutDown: false
     }
 });

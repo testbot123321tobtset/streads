@@ -53,6 +53,16 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'groupForAuthenticatedUserCouldNotBeCreated':
             responseMessage = 'Hmm, we couldn\'t create that group for you. Let us know, and we\'ll take care of it.';
             break;
+        case 'groupForAuthenticatedUserCouldNotBeUpdated':
+            responseMessage = 'Hmm, we couldn\'t update that group for you. Let us know, and we\'ll take care of it.';
+            break;
+        // Groups
+        case 'groupSuccessfullyCreatedWindow':
+            responseMessage = 'Group successfully created.';
+            break;
+        case 'groupSuccessfullyUpdatedWindow':
+            responseMessage = 'Group successfully updated.';
+            break;
         default:
             break;
     }
@@ -101,43 +111,4 @@ exports.executeCallback = function(callback) {
     }
     
     return false;
-};
-
-exports.checkIfAuthenticatedUserExists = function(myScope, controller, next) {
-    var self = myScope;
-    controller.error = false;
-    controller.message = false;
-    controller.authenticatedUser = false;
-    var User = geddy.model.User;
-    User.first({
-        id: self.session.get('userId')
-    }, function(err, user) {
-        if (err) {
-            controller.error = err;
-        }
-        else {
-            if (__.isObject(user)) {
-                // Include groups for authenticated user only
-                user.includeGroups({
-                    fn: function() {
-                        __.each(User.fieldExcusionArray, function(field) {
-                            if (__.has(user, field)) {
-                                delete user[field];
-                            }
-                        });
-                        controller.authenticatedUser = user;
-                        controller.message = false;
-                        next();
-                    },
-                    scope: controller
-                });
-            }
-            else {
-                controller.authenticatedUser = false;
-                controller.message = AH.getResponseMessage('noAuthenticatedUserFound');
-                next();
-            }
-        }
-
-    });
 };

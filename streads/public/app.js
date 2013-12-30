@@ -152,6 +152,57 @@ Ext.application({
             }
         });
         
+        Ext.apply(String.prototype, (function() {
+            function uc(str, p1) {
+                return p1.toUpperCase();
+            }
+            function lc(str, p1) {
+                return p1.toLowerCase();
+            }
+            var camelRe = /-([a-z])/g,
+                    titleRe = /((?:\s|^)[a-z])/g,
+                    capsRe = /^([a-z])/,
+                    decapRe = /^([A-Z])/,
+                    leadAndTrailWS = /^\s*([^\s]*)?\s*/,
+                    result;
+
+            return {
+                leftPad: function(val, size, ch) {
+                    result = String(val);
+                    if (!ch) {
+                        ch = " ";
+                    }
+                    while (result.length < size) {
+                        result = ch + result;
+                    }
+                    return result;
+                },
+                camel: function(s) {
+                    return this.replace(camelRe, uc);
+                },
+                title: function(s) {
+                    return this.replace(titleRe, uc);
+                },
+                decapitalize: function() {
+                    return this.replace(decapRe, lc);
+                },
+                startsWith: function(prefix) {
+                    return this.substr(0, prefix.length) === prefix;
+                },
+                endsWith: function(suffix) {
+                    var start = this.length - suffix.length;
+                    return (start > -1) && (this.substr(start) === suffix);
+                },
+                equalsIgnoreCase: function(other) {
+                    return (this.toLowerCase() === other.toLowerCase());
+                },
+                // Remove leading and trailing whitespace
+                normalize: function() {
+                    return leadAndTrailWS.exec(this)[1] || '';
+                }
+            };
+        })());
+        
         Ext.Msg.defaultAllowedConfig.width = '100%';
     },
     onUpdated: function() {

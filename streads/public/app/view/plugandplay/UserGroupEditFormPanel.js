@@ -1,22 +1,22 @@
-Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
+Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
     extend: 'X.view.core.FormPanel',
     requires: [
         'Ext.form.FieldSet'
     ],
-    xtype: 'usergroupaddformpanel',
-    id: 'userGroupAddFormPanel',
+    xtype: 'usergroupeditformpanel',
+    id: 'userGroupEditFormPanel',
     config: {
         layout: {
             type: 'vbox',
             pack: 'center',
             align: 'stretch'
         },
-        cls: 'user-group-add-form-panel',
+        cls: 'user-group-edit-form-panel',
         items: [
             {
                 xtype: 'fieldset',
-                itemId: 'groupAddTitleAndDescriptionFormFieldSet',
-                cls: 'group-add-title-and-description-form-fieldset',
+                itemId: 'groupEditTitleAndDescriptionFormFieldSet',
+                cls: 'group-edit-title-and-description-form-fieldset',
                 defaults: {
                     xtype: 'textfield'
                 },
@@ -37,8 +37,8 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
             },
             {
                 xtype: 'fieldset',
-                itemId: 'groupAddMembersFormFieldSet',
-                cls: 'group-add-members-form-fieldset',
+                itemId: 'groupEditMembersFormFieldSet',
+                cls: 'group-edit-members-form-fieldset',
                 defaults: {
                     xtype: 'textfield'
                 },
@@ -51,13 +51,20 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                     }
                 ],
                 flex: 1
+            }
+        ],
+        listeners: [
+            {
+                fn: 'onGroupRecordChange',
+                event: 'change',
+                delegate: '#titleTextfield',
+                buffer: 1
             },
             {
-                xtype: 'button',
-                itemId: 'submitButton',
-                cls: 'submit-button',
-                text: 'Create',
-                ui: 'confirm'
+                fn: 'onGroupRecordChange',
+                event: 'change',
+                delegate: '#descriptionTextfield',
+                buffer: 1
             }
         ]
     },
@@ -75,5 +82,21 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
         var me = this;
         me.down('#descriptionTextfield').setValue('');
         return me;
+    },
+    onGroupRecordChange: function(field, newValue, oldValue, eOpts) {
+        var me = this;
+        var groupRecord = me.getRecord();
+        var groupRecordId = groupRecord.get('id');
+        var fieldName = field.getName();
+        var groupsStore = Ext.getStore('GroupsStore');
+        var groupFromGroupsStore = groupsStore.getById(groupRecordId);
+        var groupFieldValueFromGroupsStore = groupFromGroupsStore.get(fieldName);
+        if(groupFieldValueFromGroupsStore !== newValue) {
+            groupRecord.set(fieldName, newValue);
+            Ext.Viewport.fireEvent('groupDataEdit', {
+                group: groupRecord,
+                silent: true
+            });
+        }
     }
 });

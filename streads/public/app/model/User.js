@@ -36,11 +36,6 @@ Ext.define('X.model.User', {
                     return record.get('firstName') + ' ' + record.get('lastName');
                 },
                 persist: false
-            },
-            {
-                name: 'groups',
-                type: 'auto',
-                persist: false
             }
         ],
         validations: [

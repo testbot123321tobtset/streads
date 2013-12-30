@@ -63,14 +63,13 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
     },
     onUserRecordChange: function(field, newValue, oldValue, eOpts) {
         var me = this;
-        var userRecord = me.getRecord();
         var fieldName = field.getName();
-        var knownFieldValue = X.authenticatedEntity.get(fieldName);
-        if(knownFieldValue !== newValue) {
-            // Authenticated users store will auto sync on set()
+        var authenticatedEntityFieldValue = X.authenticatedEntity.get(fieldName);
+        if(authenticatedEntityFieldValue !== newValue) {
             X.authenticatedEntity.set(fieldName, newValue);
-            // Need to commit to unset dirty
-            X.authenticatedEntity.commit();
+            Ext.Viewport.fireEvent('authenticatedUserDataEdit', {
+                silent: true
+            });
         }
     }
 });

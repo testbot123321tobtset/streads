@@ -7,9 +7,11 @@ Ext.define('X.controller.Main', {
     extend: 'Ext.app.Controller',
     mixins: {
         util: 'X.controller.mixin.Util',
+        common: 'X.controller.mixin.Common',
         factory: 'X.controller.mixin.Factory',
         page: 'X.controller.mixin.Page',
-        user: 'X.controller.mixin.User'
+        user: 'X.controller.mixin.User',
+        group: 'X.controller.mixin.Group'
     },
     config: {
         debug: false,

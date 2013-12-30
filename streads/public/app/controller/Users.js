@@ -35,6 +35,9 @@ Ext.define('X.controller.Users', {
             'user/profile/more/logout': 'showAuthenticatedMoreLogoutInformation'
         },
         control: {
+            viewport: {
+                authenticatedUserDataEdit: 'onAuthenticatedUserDataEdit'
+            },
             // Login
             pageLogin: {
                 activeitemchange: 'onPageLoginTabPanelActiveItemChange'
@@ -118,6 +121,13 @@ Ext.define('X.controller.Users', {
         }
         return me;
     },
+    onAuthenticatedUserDataEdit: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onAuthenticatedUserDataEdit(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.doUpdateAuthenticatedUser(options);
+    },
     // Show sign up form
     showSignup: function() {
         var me = this;
@@ -173,7 +183,7 @@ Ext.define('X.controller.Users', {
                     console.log('Debug: X.controller.Users.xhrSignup(): Successful: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 form.reset();
-                me.generateSuccessfulUserCreatedWindow({
+                me.generateUserSuccessfullyCreatedWindow({
                     message: false,
                     fn: function() {
                         me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
@@ -185,7 +195,7 @@ Ext.define('X.controller.Users', {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received serverResponse:');
                     console.log(serverResponse);
-                    console.log(': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                    console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                     me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
                 }
                 form.reset();
@@ -224,7 +234,7 @@ Ext.define('X.controller.Users', {
                         if (me.getDebug()) {
                             console.log('Debug: X.controller.Users.xhrSignup(): Succeeded: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
-                        me.generateSuccessfulUserCreatedWindow({
+                        me.generateUserSuccessfullyCreatedWindow({
                             message: serverResponseMessage,
                             fn: function() {
                                 me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
@@ -307,7 +317,7 @@ Ext.define('X.controller.Users', {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received serverResponse:');
                     console.log(serverResponse);
-                    console.log(': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                    console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 form.reset();
                 var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
@@ -396,6 +406,13 @@ Ext.define('X.controller.Users', {
         }
         return me.generateAndFillViewportWithUserRootMoreLogoutWindow();
     },
+    doUpdateAuthenticatedUser: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.doUpdateAuthenticatedUser(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.saveAuthenticatedUser(options);
+    },
     // Logout
     doLogout: function(button, e, eOpts) {
         var me = this;
@@ -408,7 +425,7 @@ Ext.define('X.controller.Users', {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.doLogout(): User successfully logged out. Will redirect to X.XConfig.getDEFAULT_USER_LOGIN_PAGE(). Response received from server:');
                     console.log(response.responseText);
-                    console.log(': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                    console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
                 authenticatedUserStore.setAutoSync(false);

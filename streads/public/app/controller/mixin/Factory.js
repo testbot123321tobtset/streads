@@ -1,4 +1,44 @@
 Ext.define('X.controller.mixin.Factory', {
+    generateGroupSuccessfullyCreatedWindow: function(callback) {
+        var me = this;
+        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().GROUP_SUCCESSFULLY_CREATED;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
+    generateGroupSuccessfullyUpdatedWindow: function(callback) {
+        var me = this;
+        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().GROUP_SUCCESSFULLY_UPDATED;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
+    generateUserSuccessfullyCreatedWindow: function(callback) {
+        var me = this;
+        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().USER_SUCCESSFULLY_CREATED;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
+    generateUserSuccessfullyUpdatedWindow: function(callback) {
+        var me = this;
+        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().USER_SUCCESSFULLY_UPDATED;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
+    generateUserFailedUpdatedWindow: function(callback) {
+        var me = this;
+        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().GROUP_FAILED_UPDATED;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().ALERT, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
     generateFailedWindow: function(callback) {
         var me = this;
         var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : 'Hmm, that failed for some reason. Let us know, and we\'ll take care of it.';
@@ -19,22 +59,6 @@ Ext.define('X.controller.mixin.Factory', {
         var me = this;
         var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().INVALID_LOGIN;
         Ext.Msg.alert(X.XConfig.getMESSAGES().ALERT, message, function() {
-            me.executeCallback(callback);
-        });
-        return me;
-    },
-    generateSuccessfulUserCreatedWindow: function(callback) {
-        var me = this;
-        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : 'Arite! We have you in our system now! Now, let\'s log you in!';
-        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
-            me.executeCallback(callback);
-        });
-        return me;
-    },
-    generateSuccessfulGroupCreatedWindow: function(callback) {
-        var me = this;
-        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : 'Arite! We have your group in our system now! Now, start creating stories!';
-        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
             me.executeCallback(callback);
         });
         return me;
@@ -230,21 +254,52 @@ Ext.define('X.controller.mixin.Factory', {
         
         return me;
     },
-    // User :: Groups :: Feeds :: Group data: This is an independent panel i.e.
-    // this is not nested withing any other panels. Any panel can call this component
+    // User :: Groups :: Feeds :: Group data: This is an independent container i.e.
+    // this is not nested within any other panels. Any panel can call this component
     // without worrying about its place in the UI
     generateAndFillViewportWithGroupDataWindow: function() {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupDataWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        var selectedRecords = me.getUserGroupsList().getSelection();
+        var selectedRecord = selectedRecords[0];
         var userGroupContainer = me.createView({
             xtype: 'usergroupcontainer'
         });
         userGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
         userGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
-        userGroupContainer.getBackButton().setText('Back');
         userGroupContainer.show(X.config.Config.getShowAnimationConfig());
+        userGroupContainer.setRecordRecursive(selectedRecord);
+        return me;
+    },
+    generateAndFillViewportWithGroupEditFormPanel: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupEditFormPanel(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        var selectedRecords = me.getUserGroupsList().getSelection();
+        var selectedRecord = selectedRecords[0];
+        var userEditGroupContainer = me.createView({
+            xtype: 'usereditgroupcontainer'
+        });
+        userEditGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
+        userEditGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
+        userEditGroupContainer.setRecordRecursive(selectedRecord);
+        userEditGroupContainer.show(X.config.Config.getShowAnimationConfig());
+//        me.getOrFetchGroupRecordWithGivenIdAndCallback({
+//            id: selectedRecord.get('id'),
+//            successCallback: function() {
+//                var selectedGroupFromStore = Ext.getStore('GroupsStore').getById(selectedRecord.get('id'));
+//                console.log('!!!');
+//                console.log(Ext.getStore('GroupsStore').getCount());
+//                userEditGroupContainer.setRecordRecursive(selectedGroupFromStore);
+//            },
+//            failureCallback: function() {
+//                userEditGroupContainer.hide(X.config.Config.getHideAnimationConfig());
+//            },
+//            scope: me
+//        });
         return me;
     }
 });

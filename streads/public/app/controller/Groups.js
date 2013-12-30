@@ -1,7 +1,8 @@
 Ext.define('X.controller.Groups', {
     extend: 'X.controller.Main',
     requires: [
-        'X.view.plugandplay.UserGroupContainer'
+        'X.view.plugandplay.UserGroupContainer',
+        'X.view.plugandplay.UserEditGroupContainer'
     ],
     config: {
         models: [
@@ -27,6 +28,9 @@ Ext.define('X.controller.Groups', {
             'user/profile/groups/create': 'showCreate'
         },
         control: {
+            viewport: {
+                groupDataEdit: 'onGroupDataEdit'
+            },
             userGroupsTabPanel: {
                 activeitemchange: 'onUserGroupsTabPanelPanelActiveItemChange'
             },
@@ -39,6 +43,11 @@ Ext.define('X.controller.Groups', {
                     return false;
                 },
                 itemtap: 'showGroupData'
+            },
+            // This is actually the Edit button for now
+            // Maybe in future we might need more features here
+            userGroupContainerMoreButton: {
+                tap: 'onUserGroupContainerMoreButtonTap'
             }
         },
         refs: {
@@ -49,6 +58,11 @@ Ext.define('X.controller.Groups', {
             // User :: Groups :: Feeds
             userGroupFeeds: '#userGroupsTabPanel #userGroupFeeds',
             userGroupsList: '#userGroupsTabPanel #userGroupFeeds #userGroupsList',
+            // This is an independent container i.e. this is not nested within any other panels
+            userGroupContainer: '#userGroupContainer',
+            userGroupContainerTopToolbar: '#userGroupContainer #userGroupContainerToolbar',
+            userGroupContainerStoriesButton: '#userGroupContainer #userGroupContainerToolbar #storiesButton',
+            userGroupContainerMoreButton: '#userGroupContainer #userGroupContainerToolbar #moreButton',
             // User :: Groups :: Create
             userGroupAddFormPanel: '#userGroupAddFormPanel',
             userGroupCreateSubmitButton: '#userGroupAddFormPanel #submitButton'
@@ -69,6 +83,20 @@ Ext.define('X.controller.Groups', {
         }
         return me;
     },
+    onUserGroupContainerMoreButtonTap: function(button) {
+        var me = this;
+        me.generateAndFillViewportWithGroupEditFormPanel();
+        return me;
+    },
+    onGroupDataEdit: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.onGroupDataEdit(): Options: ');
+            console.log(options);
+            console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.doUpdateGroup(options);
+    },
     // Show groups disclosure list
     showFeed: function() {
         var me = this;
@@ -85,9 +113,21 @@ Ext.define('X.controller.Groups', {
             console.log('Debug: X.controller.Groups.addGroupsListToGroupsFeedTab(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         var groupsList = me.getUserGroupsList();
-        var groups = X.authenticatedEntity.get('groups');
-        if (Ext.isObject(groupsList) && Ext.isArray(groups) && groups.length > 0) {
-            groupsList.setData(groups);
+        var groupsStore = Ext.getStore('GroupsStore');
+        var callbackFunction = function() {
+            groupsList.setStore(groupsStore);
+        };
+        if (groupsStore.isLoading()) {
+            me.runTask({
+                fn: callbackFunction,
+                condition: function() {
+                    return groupsStore.isLoaded();
+                },
+                scope: me
+            });
+        }
+        else {
+            callbackFunction();
         }
         return me;
     },
@@ -123,91 +163,25 @@ Ext.define('X.controller.Groups', {
             });
         }
         else {
-            group.save({
-                success: function(record, operation) {
-                    if (me.getDebug()) {
-                        console.log('Debug: X.controller.Groups.doCreateGroup(): Success. Received serverResponse:');
-                        console.log(operation.getResponse());
-                        console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                    }
-                    if (Ext.isString(operation.getResponse().responseText)) {
-                        var serverResponse = Ext.decode(operation.getResponse().responseText);
-                        var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
-                        var serverResponseMessage = Ext.isString(serverResponse.message) ? serverResponse.message : false;
-                        var serverResponseResult = Ext.isObject(serverResponse.result) ? serverResponse.result : false;
-                        if (serverResponseSuccess) {
-                            if (me.getDebug()) {
-                                console.log('Debug: X.controller.Groups.doCreateGroup(): Success: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                            }
-                            me.generateSuccessfulGroupCreatedWindow({
-                                fn: function() {
-                                    // Refresh authenticated user for truth
-                                    Ext.getStore('AuthenticatedUserStore').load();
-                                }
-                            });
-                        }
-                        else {
-                            if (!serverResponseMessage) {
-                                if (me.getDebug()) {
-                                    console.log('Debug: X.controller.Groups.doCreateGroup(): Failed. Received no failure message from server: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                                }
-                                me.generateFailedWindow();
-                            }
-                            else {
-                                if (me.getDebug()) {
-                                    console.log('Debug: X.controller.Groups.doCreateGroup(): Failed. Received failure message from server: ' + serverResponseMessage + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                                }
-                                me.generateFailedWindow({
-                                    message: serverResponseMessage
-                                });
-                            }
-                        }
-                    }
-                    else {
-                        me.generateFailedWindow();
-                    }
-                },
-                failure: function(record, operation) {
-                    if (me.getDebug()) {
-                        console.log('Debug: X.controller.Groups.doCreateGroup(): Failed. Received serverResponse:');
-                        console.log(operation.getResponse());
-                        console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                    }
-                    if (Ext.isString(operation.getResponse().responseText)) {
-                        var serverResponse = Ext.decode(operation.getResponse().responseText);
-                        var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
-                        var serverResponseMessage = Ext.isString(serverResponse.message) ? serverResponse.message : false;
-                        var serverResponseResult = Ext.isObject(serverResponse.result) ? serverResponse.result : false;
-                        if (!serverResponseSuccess) {
-                            if (!serverResponseMessage) {
-                                if (me.getDebug()) {
-                                    console.log('Debug: X.controller.Groups.doCreateGroup(): Failed. Received no failure message from server: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                                }
-                                me.generateFailedWindow();
-                            }
-                            else {
-                                if (me.getDebug()) {
-                                    console.log('Debug: X.controller.Groups.doCreateGroup(): Failed. Received failure message from server: ' + serverResponseMessage + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                                }
-                                me.generateFailedWindow({
-                                    message: serverResponseMessage
-                                });
-                            }
-                        }
-                        else {
-                            me.generateFailedWindow();
-                        }
-                    }
-                    else {
-                        me.generateFailedWindow();
-                    }
-                }
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Groups.doCreateGroup(): Will call saveGivenGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            var groupsStore = Ext.getStore('GroupsStore');
+            groupsStore.add(group);
+            me.saveGivenGroup({
+                group: group
             });
-            group.commit();
         }
         return me;
     },
-    showGroupData: function(id) {
+    doUpdateGroup: function(group) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.doUpdateGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.saveGivenGroup(group);
+    },
+    showGroupData: function() {
         var me = this;
         if (X.XConfig.getDEBUG()) {
             console.log('Debug: X.controller.Groups.showGroupData(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));

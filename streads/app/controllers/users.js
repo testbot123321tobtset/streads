@@ -10,6 +10,7 @@ var passport = require('../helpers/passport'),
         });
 
 var AH = require('../helpers/application');
+var UH = require('../helpers/user');
 
 var Users = function() {
     var me = this;
@@ -19,7 +20,7 @@ var Users = function() {
     ];
 
     me.checkIfAuthenticatedUserExists = function(next) {
-        AH.checkIfAuthenticatedUserExists(this, me, next);
+        UH.checkIfAuthenticatedUserExists(this, me, next);
     };
     me.before(me.checkIfAuthenticatedUserExists, {
         async: true,
@@ -38,16 +39,24 @@ var Users = function() {
         User.first({
             usernameEmail: user.usernameEmail
         }, function(err, data) {
-            if (data) {
+            if(__.isObject(err)) {
+                self.respond(AH.getFailureResponseObject(params, err));
+            }
+            else if(__.isObject(data)) {
                 self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('usernameEmailIsAlreadyTaken')));
-            } else {
+            }
+            else {
                 if (user.isValid()) {
                     user.password = cryptPass(user.password);
                 }
                 user.save(function(err, data) {
-                    if (err) {
+                    if (__.isObject(err)) {
+                        self.respond(AH.getFailureResponseObject(params, err));
+                    }
+                    else if (!__.isObject(data)) {
                         self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeCreated')));
-                    } else {
+                    }
+                    else {
                         self.respond(AH.getSuccessResponseObject(params, data));
                     }
                 });
@@ -150,13 +159,13 @@ var Users = function() {
     // Authenticated: update authenticated and in-session user
     me.update = function(req, resp, params) {
         var self = this;
-        
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
         else {
+            var authenticatedUser = me.authenticatedUser;
             var User = geddy.model.User;
-            User.first(params.id, function(err, user) {
+            User.first(authenticatedUser.id, function(err, user) {
                 var skip = User.fieldUpdateExclusionArray;
                 // Update password only if it has changed
                 if(!params.password) {
@@ -169,7 +178,10 @@ var Users = function() {
                     user.password = cryptPass(user.password);
                 }
                 user.save(function(savedUserErr, savedUser) {
-                    if (savedUserErr || !savedUser) {
+                    if(__.isObject(savedUserErr)) {
+                        self.respond(AH.getFailureResponseObject(params, savedUserErr));
+                    }
+                    else if(!__.isObject(savedUser)) {
                         self.respond(AH.getFailureResponseObject(params, savedUserErr, AH.getResponseMessage('authenticatedUserCouldNotBeUpdated')));
                     }
                     else {
