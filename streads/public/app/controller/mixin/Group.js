@@ -8,11 +8,6 @@ Ext.define('X.controller.mixin.Group', {
             console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (Ext.isObject(group)) {
-            if (me.getDebug()) {
-                console.log('Debug: X.controller.mixin.Group.saveGivenGroup(): Group:');
-                console.log(group);
-                console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-            }
             var errors = group.validate();
             if (!errors.isValid()) {
                 group.reject();
@@ -23,8 +18,9 @@ Ext.define('X.controller.mixin.Group', {
                 return false;
             }
             else {
-                var silent = (Ext.isObject(options) && Ext.isBoolean(options.silent)) ? options.silent : false;
-                group.save({
+                var silent = Ext.isBoolean(options.silent) ? options.silent : false;
+                var typeOfSave = Ext.isString(options.typeOfSave) ? options.typeOfSave : 'edit';
+                var optionsToSaveOperation = {
                     success: function(record, operation) {
                         if (me.getDebug()) {
                             console.log('Debug: X.controller.mixin.Group.saveGivenGroup(): Success. Received serverResponse:');
@@ -54,11 +50,20 @@ Ext.define('X.controller.mixin.Group', {
                                 }
                             }
                         }
+                        if(operation.wasSuccessful()) {
+                            me.loadGroupsStore();
+                        }
                         me.commitOrRejectModelAndGenerateUserFeedbackOnSavingModel({
                             operation: operation,
                             model: group,
                             message: serverResponseMessage,
-                            silent: silent
+                            silent: silent,
+                            // This is the callback function that feeds into the callback for
+                            // what happens when user feedback is shown and when the user
+                            // reacts to it
+                            fn: function() {
+                                me.redirectTo('user/profile/groups/feeds');
+                            }
                         });
                     },
                     failure: function(record, operation) {
@@ -94,10 +99,32 @@ Ext.define('X.controller.mixin.Group', {
                             operation: operation,
                             model: group,
                             message: serverResponseMessage,
-                            silent: silent
+                            silent: silent,
+                            // This is the callback function that feeds into the callback for
+                            // what happens when user feedback is shown and when the user
+                            // reacts to it
+                            fn: function() {
+                                me.redirectTo('user/profile/groups/feeds');
+                            }
                         });
                     }
-                });
+                };
+                switch(typeOfSave) {
+                    case 'edit':
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.mixin.Group.saveGivenGroup(): Will call save(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                        }
+                        group.save(optionsToSaveOperation);
+                        break;
+                    case 'destroy':
+                        if (me.getDebug()) {
+                            console.log('Debug: X.controller.mixin.Group.saveGivenGroup(): Will call erase(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                        }
+                        group.erase(optionsToSaveOperation);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         else {

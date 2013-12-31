@@ -99,8 +99,8 @@ Ext.define('X.controller.Users', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feed') {
-            me.redirectTo('user/profile/groups/feed');
+        if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feeds') {
+            me.redirectTo('user/profile/groups/feeds');
         }
         else if (activeItem.getItemId() === 'userMore' && urlHash !== 'user/profile/more/account') {
             me.redirectTo('user/profile/more/account');

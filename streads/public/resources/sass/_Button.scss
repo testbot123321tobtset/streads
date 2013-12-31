@@ -208,6 +208,10 @@
         line-height: 1.2em;
     }
 
+    .x-button-label {
+        color: $ios7-blue;
+    }
+
     &.x-button-pressing {
         color: $ios7-blue-lighten;
 
@@ -222,27 +226,26 @@
 }
 
 .x-button.x-button-forward {
-   border : 0px;
+    border : 0px;
 
+    &:after {
+        content: '!';
+        font-family: 'iOS7';
+        color: $ios7-blue;
+        font-size: 1.3em;
+        text-align: center;
+        background-color: transparent;
+        line-height: 1.3em;
+        padding-left: 0px;
+    }
 
-   &:after {
-       content: '!';
-       font-family: 'iOS7';
-       color: $ios7-blue;
-       font-size: 1.3em;
-       text-align: center;
-       background-color: transparent;
-       line-height: 1.3em;
-       padding-left: 0px;
-   }
-
-
-   .x-button-label {
-       font-size: 1.1em;
-       line-height: 1.3em;
-       font-weight: 300;
-       padding-left: 2px;
-   }
+    .x-button-label {
+        font-size: 1.1em;
+        line-height: 1.3em;
+        font-weight: 300;
+        padding-left: 2px;
+        color: $ios7-blue;
+    }
 }
 
 .x-button.x-list-item-remove {

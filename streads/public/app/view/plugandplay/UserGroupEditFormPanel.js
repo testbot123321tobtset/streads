@@ -51,19 +51,32 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
                     }
                 ],
                 flex: 1
+            },
+            {
+                xtype: 'button',
+                itemId: 'deleteButton',
+                cls: 'delete-button',
+                text: 'Delete',
+                ui: 'decline'
             }
         ],
         listeners: [
             {
-                fn: 'onGroupRecordChange',
+                fn: 'onGroupDataEdit',
                 event: 'change',
                 delegate: '#titleTextfield',
                 buffer: 1
             },
             {
-                fn: 'onGroupRecordChange',
+                fn: 'onGroupDataEdit',
                 event: 'change',
                 delegate: '#descriptionTextfield',
+                buffer: 1
+            },
+            {
+                fn: 'onGroupDataDestroy',
+                event: 'tap',
+                delegate: '#deleteButton',
                 buffer: 1
             }
         ]
@@ -83,7 +96,7 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
         me.down('#descriptionTextfield').setValue('');
         return me;
     },
-    onGroupRecordChange: function(field, newValue, oldValue, eOpts) {
+    onGroupDataEdit: function(field, newValue, oldValue, eOpts) {
         var me = this;
         var groupRecord = me.getRecord();
         var groupRecordId = groupRecord.get('id');
@@ -93,10 +106,18 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
         var groupFieldValueFromGroupsStore = groupFromGroupsStore.get(fieldName);
         if(groupFieldValueFromGroupsStore !== newValue) {
             groupRecord.set(fieldName, newValue);
-            Ext.Viewport.fireEvent('groupDataEdit', {
+            Ext.Viewport.fireEvent('editgroup', {
                 group: groupRecord,
                 silent: true
             });
         }
+    },
+    onGroupDataDestroy: function(field, newValue, oldValue, eOpts) {
+        var me = this;
+        Ext.Viewport.fireEvent('destroygroup', {
+            group: me.getRecord(),
+            silent: false,
+            typeOfSave: 'destroy'
+        });
     }
 });

@@ -12,7 +12,6 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         cls: 'user-edit-group-container',
         centered: true,
         fullscreen: true,
-        hidden: true,
         items: [
             {
                 xtype: 'toolbar',

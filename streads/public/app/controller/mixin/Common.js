@@ -3,7 +3,8 @@ Ext.define('X.controller.mixin.Common', {
     // {
     //      operation: <operation object>,
     //      model: <model>,
-    //      message: string (optional)
+    //      message: string (optional),
+    //      fn: function (optional – this will be sent as a callback to the window UX if any)
     // }
     // Name of the function responsible for generating user feedback gets generated using the following format:
     // generate<title-cased model name><title-cased 'Successfully'/'Failed' depending on whether operation was successful><title-cased action name in past tense e.g. 'Destroyed' for destroy function>Window
@@ -22,7 +23,7 @@ Ext.define('X.controller.mixin.Common', {
         if(operation && model) {
             var action = operation.getAction(),
                     camelizedActionName = action.title(),
-                    actionNameInPastTense = (camelizedActionName === 'destroy') ? (camelizedActionName + 'ed') : (camelizedActionName + 'd');
+                    actionNameInPastTense = (camelizedActionName === 'Destroy') ? (camelizedActionName + 'ed') : (camelizedActionName + 'd');
             var wasSuccessful = operation.wasSuccessful(),
                     successfullyOrFailedString = wasSuccessful ? 'Successfully' : 'Failed';
             var generateWindowFunctionName = 'generate' + modelName + successfullyOrFailedString + actionNameInPastTense + 'Window';
@@ -31,7 +32,14 @@ Ext.define('X.controller.mixin.Common', {
                 console.log('Debug: X.controller.mixin.Factory: Might call function name: ' + generateWindowFunctionName + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
             }
             // Actually do stuff
-            wasSuccessful ? model.commit() : model.reject();
+            // For instance, this will fire destroyedgroup
+            Ext.Viewport.fireEvent((actionNameInPastTense + modelName).toLowerCase(), options);
+            if(wasSuccessful) {
+                model.commit();
+            }
+            else {
+                model.reject();
+            }
             !silent && me[generateWindowFunctionName].call(me, options);
         }
         return me;

@@ -11,9 +11,9 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
             align: 'stretch'
         },
         cls: 'user-group-container',
+        floating: true,
         centered: true,
         fullscreen: true,
-        hidden: true,
         items: [
             {
                 xtype: 'toolbar',

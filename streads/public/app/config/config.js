@@ -6,7 +6,7 @@ Ext.define('X.config.Config', {
         DEFAULT_USER_SIGNUP_PAGE: 'user/signup',
         DEFAULT_USER_LOGIN_PAGE: 'user/login',
         DEFAULT_USER_LOGOUT_PAGE: 'user/logout',
-        DEFAULT_USER_PAGE: 'user/profile/groups/feed',
+        DEFAULT_USER_PAGE: 'user/profile/groups/feeds',
         MESSAGES: {
             // Bad news
             ALERT: 'Something seems to be wrong!',
@@ -43,35 +43,35 @@ Ext.define('X.config.Config', {
         // UI
         defaultToolbarHeight: 46,
         // Animations
-        defaultAnimationDuration: 500,
+        defaultAnimationDuration: 400,
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
         defaultAnimationEasing: 'linear',
         showAnimationConfig: {
             type: 'slideIn',
             direction: 'left',
             //easing: 'ease-in',
-            duration: 500
+            duration: 400
         },
         hideAnimationConfig: {
             type: 'slideOut',
             direction: 'right',
             //easing: 'ease-out',
-            duration: 500
+            duration: 400
         },
         showAnimationConfigWithNoDirection: {
             type: 'slideIn',
             //easing: 'ease-in',
-            duration: 500
+            duration: 300
         },
         hideAnimationConfigWithNoDirection: {
             type: 'slideOut',
             //easing: 'ease-out',
-            duration: 500
+            duration: 400
         },
         animationConfig: {
             type: 'slide',
             //easing: 'ease-in',
-            duration: 500
+            duration: 400
         }
     },
     constructor: function(config) {

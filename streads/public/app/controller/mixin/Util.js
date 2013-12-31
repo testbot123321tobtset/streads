@@ -137,23 +137,12 @@ Ext.define('X.controller.mixin.Util', {
             }
         });
     },
-    closeAllWindows: function() {
+    hideAllFloatingPanels: function() {
         var me = this;
-
-        var matchedWindows = Ext.WindowManager.getBy(function(component) {
-            if (!Ext.isEmpty(component) && component.isXType('window')) {
-                return true;
-            }
-            else {
-                return false;
-            }
+        var allVisibleUis = Ext.ComponentQuery.query('panel, container');
+        Ext.each(allVisibleUis, function(thisUi) {
+            thisUi.hide();
         });
-        if (Ext.isArray(matchedWindows) && matchedWindows.length > 0) {
-            Ext.each(matchedWindows, function(thisWindow) {
-                thisWindow.close();
-            });
-        }
-
         return me;
     },
     /*
