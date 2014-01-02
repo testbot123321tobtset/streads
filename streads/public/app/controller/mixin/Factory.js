@@ -233,11 +233,13 @@ Ext.define('X.controller.mixin.Factory', {
         return me;
     },
     // User :: Groups :: Feeds
-    generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow: function() {
+    generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow: function(options) {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        
+        var options = Ext.isObject(options) ? options : false;
         
         // Make sure pageUserRoot exists
         var pageUserRoot = me.getPageUserRoot();
@@ -245,21 +247,59 @@ Ext.define('X.controller.mixin.Factory', {
             pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().getPageUserRoot();
         }
         pageUserRoot.setActiveItem('#userGroups');
-        
         // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
         pageUserRoot.down('#userGroupsTabPanel').setActiveItem('#userGroupFeeds');
         
-        var uisToBeHiddenFromViewIfApplicable = [
-            me.getUserEditGroupContainer(),
-            me.getUserGroupContainer()
-        ];
-        Ext.each(uisToBeHiddenFromViewIfApplicable, function(thisUi) {
-            if(Ext.isObject(thisUi) && !thisUi.isHidden()) {
-                thisUi.hide(X.config.Config.getHideAnimationConfig());
-            }
-        });
+        var hideAllWindows = (options && Ext.isBoolean(options.hideAllWindows)) ? options.hideAllWindows : true;
+        if(hideAllWindows) {
+            me.hideAllWindows();
+        }
         
         return me;
+    },
+    // User :: Groups :: Feed data
+    generateAndFillViewportWithGroupDataWindow: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupDataWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        if (Ext.isObject(options) && Ext.isObject(options.group)) {
+            var group = options.group;
+            var showContainer = Ext.isBoolean(options.showContainer) ? options.showContainer : true;
+            var userGroupContainer = me.createView({
+                xtype: 'usergroupcontainer'
+            });
+            userGroupContainer.setRecordRecursive(group);
+            if (showContainer) {
+                userGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
+                userGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
+                userGroupContainer.show(X.config.Config.getShowAnimationConfig());
+            }
+            return me;
+        }
+        return false;
+    },
+    // User :: Groups :: Feed edit
+    generateAndFillViewportWithGroupEditFormPanel: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupEditFormPanel(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        if (Ext.isObject(options) && Ext.isObject(options.group)) {
+            var group = options.group;
+            var showContainer = Ext.isBoolean(options.showContainer) ? options.showContainer : true;
+            var userEditGroupContainer = me.createView({
+                xtype: 'usereditgroupcontainer'
+            });
+            userEditGroupContainer.setRecordRecursive(group);
+            if (showContainer) {
+                userEditGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
+                userEditGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
+                userEditGroupContainer.show(X.config.Config.getShowAnimationConfig());
+            }
+            return me;
+        }
+        return false;
     },
     // User :: Groups :: Create
     generateAndFillUserRootGroupsWindowWithUserAddGroupWindow: function() {
@@ -268,47 +308,22 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithAddUserGroupWindow()');
         }
         
+        var options = Ext.isObject(options) ? options : false;
+        
         // Make sure pageUserRoot exists
         var pageUserRoot = me.getPageUserRoot();
         if(!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
             pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().getPageUserRoot();
         }
         pageUserRoot.setActiveItem('#userGroups');
-        
         // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
         pageUserRoot.down('#userGroupsTabPanel').setActiveItem('#userAddGroups');
         
-        return me;
-    },
-    // User :: Groups :: Feeds :: Group data: This is an independent container i.e.
-    // this is not nested within any other panels. Any panel can call this component
-    // without worrying about its place in the UI
-    generateAndFillViewportWithGroupDataWindow: function(group) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupDataWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        var hideAllWindows = (options && Ext.isBoolean(options.hideAllWindows)) ? options.hideAllWindows : true;
+        if(hideAllWindows) {
+            me.hideAllWindows();
         }
-        var userGroupContainer = me.createView({
-            xtype: 'usergroupcontainer'
-        });
-        userGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
-        userGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
-        userGroupContainer.show(X.config.Config.getShowAnimationConfig());
-        userGroupContainer.setRecordRecursive(group);
-        return me;
-    },
-    generateAndFillViewportWithGroupEditFormPanel: function(group) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupEditFormPanel(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        var userEditGroupContainer = me.createView({
-            xtype: 'usereditgroupcontainer'
-        });
-        userEditGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
-        userEditGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
-        userEditGroupContainer.setRecordRecursive(group);
-        userEditGroupContainer.show(X.config.Config.getShowAnimationConfig());
+        
         return me;
     }
 });

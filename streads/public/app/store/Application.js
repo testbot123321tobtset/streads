@@ -58,8 +58,9 @@ Ext.define('X.store.Application', {
         }
         else if (me.isLoaded()) {
             if (X.config.Config.getDEBUG()) {
-                console.log('Debug: X.store.Application: ' + me.getStoreId() + ': waitWhileLoadingAndCallbackOnLoad(): Will not run because this store has already loaded once');
+                console.log('Debug: X.store.Application: ' + me.getStoreId() + ': waitWhileLoadingAndCallbackOnLoad(): Will not run because this store has already loaded once. Calling callback immediately');
             }
+            me.executeCallback(callbackOnLoad);
             return false;
         }
     },
@@ -103,7 +104,7 @@ Ext.define('X.store.Application', {
                         if (X.config.Config.getDEBUG()) {
                             console.log('Debug: X.store.Application: ' + me.getStoreId() + ': runTask(): Has stopped running');
                         }
-                        taskFn.call(taskScope)
+                        taskFn.call(taskScope);
                     }
                 }, taskScope).delay(taskDelay);
             }

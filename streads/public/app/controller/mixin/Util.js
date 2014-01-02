@@ -137,11 +137,24 @@ Ext.define('X.controller.mixin.Util', {
             }
         });
     },
-    hideAllFloatingPanels: function() {
+    hideAllWindows: function() {
         var me = this;
-        var allVisibleUis = Ext.ComponentQuery.query('panel, container');
-        Ext.each(allVisibleUis, function(thisUi) {
-            thisUi.hide();
+        if (X.config.Config.getDEBUG()) {
+            console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        var allCores = Ext.ComponentQuery.query('corecontainer, corepanel');
+        Ext.each(allCores, function(thisUi) {
+            if (Ext.isFunction(thisUi.getIsWindow) && thisUi.getIsWindow()) {
+                if (X.config.Config.getDEBUG()) {
+                    console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Querying: ' + thisUi.getXTypes() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                }
+                if (!thisUi.isHidden()) {
+                    if (X.config.Config.getDEBUG()) {
+                        console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Hiding: ' + thisUi.getXTypes() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                    }
+                    thisUi.hide(X.config.Config.getHideAnimationConfig());
+                }
+            }
         });
         return me;
     },

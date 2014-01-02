@@ -1,3 +1,6 @@
+// This is meant to be displayed as a window. This means that any other 
+// component can call this component and this component should just fill up
+// the screen. This is essentially an independent and quasi-floating window
 Ext.define('X.view.plugandplay.UserEditGroupContainer', {
     extend: 'X.view.core.Container',
     requires: [
@@ -6,6 +9,11 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
     xtype: 'usereditgroupcontainer',
     id: 'userEditGroupContainer',
     config: {
+        // isWindow config just means what is explained in the beginning
+        // This is an easy way to query for any and all windows and do
+        // further processing with them. Usually this is used to hide all
+        // of such windows
+        isWindow: true,
         layout: {
             type: 'fit'
         },

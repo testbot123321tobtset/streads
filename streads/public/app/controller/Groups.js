@@ -41,25 +41,30 @@ Ext.define('X.controller.Groups', {
                 destroygroup: 'onDestroyGroup',
                 destroyedgroup: 'onDestroyedGroup'
             },
+            // User :: Groups
             userGroupsTabPanel: {
                 activeitemchange: 'onUserGroupsTabPanelPanelActiveItemChange'
             },
-            userGroupCreateSubmitButton: {
-                tap: 'doCreateGroup'
-            },
+            // User :: Groups :: Feeds
             userGroupsList: {
                 itemtap: 'onUserGroupsListItemTap'
             },
             // This is actually the Edit button for now
             // Maybe in future we might need more features here
+            // User :: Groups :: Feed data
             userGroupContainerMoreButton: {
                 tap: 'onUserGroupContainerMoreButtonTap'
             },
-            userGroupContainer: {
-                hide: 'onUserGroupContainerHide'
+            userGroupContainerBackButton: {
+                tap: 'onUserGroupContainerBackButtonTap'
             },
-            userEditGroupContainer: {
-                hide: 'onUserEditGroupContainerHide'
+            // User :: Groups :: Group edit
+            userEditGroupContainerBackButton: {
+                tap: 'onUserEditGroupContainerBackButtonTap'
+            },
+            // User :: Groups :: Create
+            userGroupCreateSubmitButton: {
+                tap: 'doCreateGroup'
             }
         },
         refs: {
@@ -70,25 +75,29 @@ Ext.define('X.controller.Groups', {
             // User :: Groups :: Feeds
             userGroupFeeds: '#userGroupsTabPanel #userGroupFeeds',
             userGroupsList: '#userGroupsTabPanel #userGroupFeeds #userGroupsList',
-            // This is an independent container i.e. this is not nested within any other panels
+            // User :: Groups :: Feed data
             userGroupContainer: '#userGroupContainer',
             userGroupContainerTopToolbar: '#userGroupContainer #userGroupContainerToolbar',
             userGroupContainerStoriesButton: '#userGroupContainer #userGroupContainerToolbar #storiesButton',
             userGroupContainerMoreButton: '#userGroupContainer #userGroupContainerToolbar #moreButton',
+            userGroupContainerBackButton: '#userGroupContainer #userGroupContainerToolbar #backButton',
+            // User :: Groups :: Group edit
+            userEditGroupContainer: '#userEditGroupContainer',
+            userEditGroupContainerTopToolbar: '#userEditGroupContainer #userEditGroupContainerToolbar',
+            userEditGroupContainerBackButton: '#userEditGroupContainer #userEditGroupContainerToolbar #backButton',
+            userGroupEditFormPanel: '#userGroupEditFormPanel',
             // User :: Groups :: Create
             userGroupAddFormPanel: '#userGroupAddFormPanel',
-            userEditGroupContainer: '#userEditGroupContainer',
-            userGroupEditFormPanel: '#userGroupEditFormPanel',
             userGroupCreateSubmitButton: '#userGroupAddFormPanel #submitButton'
         }
     },
-    // DIRECT EVENT HANDLERS
+    // UI EVENT HANDLERS
     onUserGroupsTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        var urlHash = me.getUrlHash();
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.onUserGroupsTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        var urlHash = me.getUrlHash();
         if (activeItem.getItemId() === 'userGroupFeeds' && urlHash !== 'user/profile/groups/feeds') {
             me.redirectTo('user/profile/groups/feeds');
         }
@@ -109,30 +118,28 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.onUserGroupContainerMoreButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        // TODO: This assumes that Edit button will only be tapped if active UI is the Group container
-        // This isn't a very good assumption: see if there is a better way to do it
         me.redirectTo(me.getUrlHash() + '/edit');
         return me;
     },
-    onUserGroupContainerHide: function(container) {
+    onUserGroupContainerBackButtonTap: function(button) {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.onUserGroupContainerHide(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        // TODO: This assumes that group container can only come up if the UI underneath is the feeds UI
-        // This isn't a very good assumption: see if there is a better way to do it
         me.redirectTo('user/profile/groups/feeds');
         return me;
     },
-    onUserEditGroupContainerHide: function(container) {
+    onUserEditGroupContainerBackButtonTap: function(button) {
         var me = this;
-        var urlHash = me.getUrlHash();
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Groups.onUserEditGroupContainerHide(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.controller.Groups.onUserEditGroupContainerBackButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        me.redirectTo(urlHash.split('/edit')[0]);
+        me.redirectTo('user/profile/groups/feeds/' + button.up('#userEditGroupContainer').
+                getRecord().
+                getId());
         return me;
     },
+    // OTHER EVENT HANDLERS
     onEditGroup: function(options) {
         var me = this;
         if (me.getDebug()) {
@@ -161,30 +168,23 @@ Ext.define('X.controller.Groups', {
         me.redirectTo('user/profile/groups/feeds');
         return me;
     },
-    // Show groups disclosure list
+    // HELPERS
+    // User :: Groups :: Feeds
     showGroupsList: function() {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showGroupsList(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('>>>>>>>>>>>>>>' + me.getUrlHash());
         }
-        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow().
-                addGroupsListToGroupsFeedTab();
-        return me;
-    },
-    showFeedUiForGivenGroupId: function(groupId) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Groups.showFeedUiForGivenGroupId(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        me.generateAndFillViewportWithGroupDataWindow(Ext.getStore('GroupsStore').getById(groupId));
-        return me;
-    },
-    showEditGroupUiForGivenGroupId: function(groupId) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Groups.showEditFeedUiForGivenGroupId(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        me.generateAndFillViewportWithGroupEditFormPanel(Ext.getStore('GroupsStore').getById(groupId));
+        Ext.getStore('GroupsStore').
+                waitWhileLoadingAndCallbackOnLoad({
+                    fn: function() {
+                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow({
+                            hideAllWindows: true
+                        });
+                        me.addGroupsListToGroupsFeedTab();
+                    }
+                });
         return me;
     },
     addGroupsListToGroupsFeedTab: function() {
@@ -192,32 +192,86 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.addGroupsListToGroupsFeedTab(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        var groupsList = me.getUserGroupsList();
-        var groupsStore = Ext.getStore('GroupsStore');
-        var callbackFunction = function() {
-            groupsList.setStore(groupsStore);
-        };
-        if (groupsStore.isLoading()) {
-            me.runTask({
-                fn: callbackFunction,
-                condition: function() {
-                    return groupsStore.isLoaded();
-                },
-                scope: me
-            });
-        }
-        else {
-            callbackFunction();
-        }
+        me.getUserGroupsList().
+                setStore(Ext.getStore('GroupsStore'));
         return me;
     },
-    // Show add group form
+    // User :: Groups :: Feed data
+    showFeedUiForGivenGroupId: function(groupId) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.showFeedUiForGivenGroupId(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        Ext.getStore('GroupsStore').
+                waitWhileLoadingAndCallbackOnLoad({
+                    fn: function() {
+                        // Preload all UIs that go underneath this edit group UI but don't show them
+                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow({
+                            hideAllWindows: false
+                        });
+                        me.addGroupsListToGroupsFeedTab();
+                        // Actually show group feed UI
+                        me.generateAndFillViewportWithGroupDataWindow({
+                            group: Ext.getStore('GroupsStore').
+                                    getById(groupId),
+                            showcontainer: true
+                        });
+                    }
+                });
+        return me;
+    },
+    // User :: Groups :: Group edit
+    showEditGroupUiForGivenGroupId: function(groupId) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.showEditFeedUiForGivenGroupId(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        Ext.getStore('GroupsStore').
+                waitWhileLoadingAndCallbackOnLoad({
+                    fn: function() {
+                        // Preload all UIs that go underneath this edit group UI but don't show them
+                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow({
+                            hideAllWindows: false
+                        });
+                        me.addGroupsListToGroupsFeedTab();
+                        var group = Ext.getStore('GroupsStore').
+                                getById(groupId);
+                        me.generateAndFillViewportWithGroupDataWindow({
+                            group: group,
+                            showcontainer: false
+                        });
+                        // Actually show edit group UI
+                        me.generateAndFillViewportWithGroupEditFormPanel({
+                            group: group,
+                            showcontainer: true
+                        });
+                    }
+                });
+        return me;
+    },
+    doUpdateGroup: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.doUpdateGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.saveGivenGroup(options);
+    },
+    doDestroyGroup: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.doDestroyGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.saveGivenGroup(options);
+    },
+    // User :: Groups :: Create
     showCreate: function() {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showCreate(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        me.generateAndFillUserRootGroupsWindowWithUserAddGroupWindow();
+        me.generateAndFillUserRootGroupsWindowWithUserAddGroupWindow({
+            hideAllWindows: true
+        });
         return me;
     },
     doCreateGroup: function(button) {
@@ -253,20 +307,6 @@ Ext.define('X.controller.Groups', {
             });
         }
         return me;
-    },
-    doUpdateGroup: function(options) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Groups.doUpdateGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        return me.saveGivenGroup(options);
-    },
-    doDestroyGroup: function(options) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Groups.doDestroyGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        return me.saveGivenGroup(options);
     },
     init: function() {
         var me = this;
