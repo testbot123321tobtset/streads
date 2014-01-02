@@ -16,7 +16,6 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
                 defaults: {
                     xtype: 'textfield'
                 },
-                title: 'My Account',
                 items: [
                     {
                         itemId: 'firstNameTextfield',

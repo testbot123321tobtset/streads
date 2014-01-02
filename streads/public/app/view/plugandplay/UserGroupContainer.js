@@ -39,7 +39,6 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                         itemId: 'backButton',
                         cls: 'back-button',
                         ui: 'back',
-                        text: 'Back',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userGroupContainer').onBackButtonTap();
@@ -72,6 +71,16 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 html: 'This container will have this group\'s feed',
                 flex: 1
             }
+        ],
+        listeners: [
+            {
+                fn: 'onShow',
+                event: 'show'
+            },
+            {
+                fn: 'onUpdateData',
+                event: 'updatedata'
+            }
         ]
     },
     onBackButtonTap: function(button, e, eOpts) {
@@ -79,8 +88,20 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
         me.hide(X.config.Config.getHideAnimationConfig());
         return me;
     },
+    onShow: function() {
+        var me = this;
+        me.setTitleToGroupTitle();
+    },
+    onUpdateData: function() {
+        var me = this;
+        me.setTitleToGroupTitle();
+    },
     getBackButton: function() {
         var me = this;
         return me.down('#userGroupContainerToolbar #backButton');
+    },
+    setTitleToGroupTitle: function() {
+        var me = this;
+        me.down('#userGroupContainerToolbar').setTitle(Ext.String.ellipsis(me.getRecord().get('title'), 10));
     }
 });

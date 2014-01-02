@@ -37,7 +37,6 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                         itemId: 'backButton',
                         cls: 'back-button',
                         ui: 'back',
-                        text: 'Back',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userEditGroupContainer').onBackButtonTap();
@@ -49,6 +48,16 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
             {
                 xtype: 'usergroupeditformpanel'
             }
+        ],
+        listeners: [
+            {
+                fn: 'onShow',
+                event: 'show'
+            },
+            {
+                fn: 'onUpdateData',
+                event: 'updatedata'
+            }
         ]
     },
     onBackButtonTap: function(button, e, eOpts) {
@@ -56,8 +65,20 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         me.hide(X.config.Config.getHideAnimationConfig());
         return me;
     },
+    onShow: function() {
+        var me = this;
+        me.setTitleToGroupTitle();
+    },
+    onUpdateData: function() {
+        var me = this;
+        me.setTitleToGroupTitle();
+    },
     getBackButton: function() {
         var me = this;
         return me.down('#userEditGroupContainerToolbar #backButton');
+    },
+    setTitleToGroupTitle: function() {
+        var me = this;
+        me.down('#userEditGroupContainerToolbar').setTitle(me.getRecord().get('title'));
     }
 });

@@ -76,11 +76,6 @@
      */
     "css": [
         {
-            "path": "resources/css/cupertino.css",
-            "theme": "Cupertino",
-            "update": "full"
-        },
-        {
             "path": "resources/css/app.css",
             "theme": "X",
             "update": "delta"

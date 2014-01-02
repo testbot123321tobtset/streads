@@ -174,7 +174,6 @@ Ext.define('X.controller.Groups', {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showGroupsList(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-            console.log('>>>>>>>>>>>>>>' + me.getUrlHash());
         }
         Ext.getStore('GroupsStore').
                 waitWhileLoadingAndCallbackOnLoad({

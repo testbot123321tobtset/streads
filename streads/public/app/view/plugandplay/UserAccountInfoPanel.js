@@ -15,26 +15,26 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
         cls: 'user-account-info-panel',
         scrollable: true,
         items: [
-            {
-                itemId: 'userDisplayName',
-                cls: 'highlighted-header-panel user-account-display-name-panel',
-                tpl: new Ext.XTemplate(
-                        '<tpl if="typeof(firstName) === \'string\' && firstName !== \'\'">',
-                        '{firstName} ',
-                        '</tpl>',
-                        '<tpl if="typeof(lastName) === \'string\' && lastName !== \'\'">',
-                        '{lastName}',
-                        '</tpl>',
-                        '<tpl if="!this.nameExists(firstName, lastName)">',
-                        '{usernameEmail}',
-                        '</tpl>',
-                        {
-                            nameExists: function(firstName, lastName) {
-                                return (typeof (firstName) === 'string' && firstName !== '') || (typeof (lastName) === 'string' && lastName !== '');
-                            }
-                        }
-                )
-            },
+            //            {
+            //                itemId: 'userDisplayName',
+            //                cls: 'highlighted-header-panel user-account-display-name-panel',
+            //                tpl: new Ext.XTemplate(
+            //                        '<tpl if="typeof(firstName) === \'string\' && firstName !== \'\'">',
+            //                        '{firstName} ',
+            //                        '</tpl>',
+            //                        '<tpl if="typeof(lastName) === \'string\' && lastName !== \'\'">',
+            //                        '{lastName}',
+            //                        '</tpl>',
+            //                        '<tpl if="!this.nameExists(firstName, lastName)">',
+            //                        '{usernameEmail}',
+            //                        '</tpl>',
+            //                        {
+            //                            nameExists: function(firstName, lastName) {
+            //                                return (typeof (firstName) === 'string' && firstName !== '') || (typeof (lastName) === 'string' && lastName !== '');
+            //                            }
+            //                        }
+            //                )
+            //            },
             {
                 itemId: 'profilePanel',
                 cls: 'user-account-profile-panel',
@@ -69,7 +69,7 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
     onUserDisplayNameUpdateData: function() {
         var me = this;
         var userAccountFormPanel = me.down('useraccountformpanel');
-        if(Ext.isObject(userAccountFormPanel)) {
+        if (Ext.isObject(userAccountFormPanel)) {
             userAccountFormPanel.setRecord(userAccountFormPanel.getRecord());
         }
         return me;
