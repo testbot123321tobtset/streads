@@ -127,12 +127,7 @@ router.match('/user/groups/:id(.:format)','DELETE').
             controller: 'Groups',
             action: 'destroy'
         });
-
-/* router.match('/user/image(.:format)', 'POST').
-        to({
-            controller: 'Images,
-            action: 'create'
-        });     */             
+         
 
 router.resource('users');
 //router.resource('friendships');
