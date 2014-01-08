@@ -1,4 +1,4 @@
-[Mon, 30 Dec 2013 00:18:44 GMT] INFO Server starting with config: {
+[Wed, 08 Jan 2014 19:55:25 GMT] INFO Server starting with config: {
   "environment": "development",
   "workers": 1,
   "port": 4000,
@@ -24,11 +24,11 @@
   "rotateWorkers": false,
   "rotationWindow": 7200000,
   "rotationTimeout": 300000,
-  "logDir": "/Library/WebServer/Documents/myapps/touch/streads/streads/log",
+  "logDir": "/Users/hankclark/streads/streads/log",
   "gracefulShutdownTimeout": 30000,
   "heartbeatInterval": 5000,
   "heartbeatWindow": 20000,
-  "staticFilePath": "/Library/WebServer/Documents/myapps/touch/streads/streads/public",
+  "staticFilePath": "/Users/hankclark/streads/streads/public",
   "cacheControl": {
     "expires": {
       "default": 0
@@ -43,7 +43,7 @@
   "i18n": {
     "defaultLocale": "en-us",
     "loadPaths": [
-      "/Library/WebServer/Documents/myapps/touch/streads/streads/config/locales"
+      "/Users/hankclark/streads/streads/config/locales"
     ]
   },
   "hostname": null,
@@ -81,16 +81,5 @@
   },
   "secret": "PXTTjtFUCt75Ii0klpOLtwng963npLietza7jgxTNDUlN1ijSo7XpLGfin41XFDIJRE2NGY1qH58Xb5mciSmutZC02BOVtv6EEWyJKt75JxBjGKkJ6hK56cCYxlwNbz8"
 }
-[Mon, 30 Dec 2013 00:18:44 GMT] INFO Creating 1 worker process.
-[Mon, 30 Dec 2013 00:18:50 GMT] INFO Server worker running in development on port 4000 with a PID of: 43330
-[Mon, 30 Dec 2013 00:20:18 GMT] INFO Creating 1 worker process.
-[Mon, 30 Dec 2013 00:20:22 GMT] INFO Code changed, killing 43336, cycling ...
-[Mon, 30 Dec 2013 00:20:22 GMT] INFO Creating 1 worker process.
-[Mon, 30 Dec 2013 00:20:24 GMT] INFO Code changed, killing 43337, cycling ...
-[Mon, 30 Dec 2013 00:20:24 GMT] INFO Creating 1 worker process.
-[Mon, 30 Dec 2013 00:20:27 GMT] INFO Server worker running in development on port 4000 with a PID of: 43338
-[Mon, 30 Dec 2013 00:20:44 GMT] INFO Code changed, killing 43338, cycling ...
-[Mon, 30 Dec 2013 00:20:44 GMT] INFO Creating 1 worker process.
-[Mon, 30 Dec 2013 00:20:48 GMT] INFO Code changed, killing 43341, cycling ...
-[Mon, 30 Dec 2013 00:20:48 GMT] INFO Creating 1 worker process.
-[Mon, 30 Dec 2013 00:20:51 GMT] INFO Server worker running in development on port 4000 with a PID of: 43342
+[Wed, 08 Jan 2014 19:55:25 GMT] INFO Creating 1 worker process.
+[Wed, 08 Jan 2014 19:55:27 GMT] INFO Server worker running in development on port 4000 with a PID of: 13715

@@ -50,7 +50,41 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
                         flex: 1
                     }
                 ]
-            }
+            },
+            {
+                itemId: 'image-upload-button',
+                xtype:"button",
+                text: "Upload",
+                ui: 'confirm',
+                listeners: {
+                    tap: function() {
+                        alert("You tapped me");
+                    }
+                }, 
+                handler: function(){
+                    var input = Ext.Viewport.down("fileinput").input;
+                    var image = Ext.Viewport.down("image");
+                    var files = input.dom.files;
+                    if (files.length) {
+                        request.binaryData = files[0];
+
+                        //size is in bytes
+                        if(request.binaryData.size <= 2097152) {
+                            Ext.Ajax.request(request);
+                        } else {
+                            Ext.Msg.alert("JPG Must be less then 2MB");
+                        }
+                    }else {
+                        Ext.Msg.alert("Please Select a JPG");
+                    }
+                }
+            },
+            {
+                        xtype: 'panel',
+                        id: "output",
+                        scrollable: true,
+                        flex:1
+                    }
         ],
         listeners: [
             {
