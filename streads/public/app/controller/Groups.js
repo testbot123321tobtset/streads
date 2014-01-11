@@ -51,7 +51,7 @@ Ext.define('X.controller.Groups', {
             },
             // This is actually the Edit button for now
             // Maybe in future we might need more features here
-            // User :: Groups :: Feed data
+            // User :: Groups :: Feed data,
             userGroupContainerMoreButton: {
                 tap: 'onUserGroupContainerMoreButtonTap'
             },
@@ -92,6 +92,20 @@ Ext.define('X.controller.Groups', {
         }
     },
     // UI EVENT HANDLERS
+//    onOrientationchange: function(viewport, newOrientation, width, height, eOpts) {
+//        var me = this;
+//        var windows = [
+//            me.getUserGroupContainer(),
+//            me.getUserEditGroupContainer()
+//        ];
+//        Ext.each(windows, function(thisWindow) {
+//            if(Ext.isObject(thisWindow)) {
+//                thisWindow.setWidth(width);
+//                thisWindow.setHeight(height);
+//            }
+//        });
+//        return me;
+//    },
     onUserGroupsTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
         if (me.getDebug()) {
@@ -253,7 +267,13 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.doUpdateGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        return me.saveGivenGroup(options);
+        if(!me.saveGivenGroup(options)) {
+            var group = (Ext.isObject(options) && Ext.isObject(options.group)) ? options.group : false;
+            var userEditGroupContainer = me.getUserEditGroupContainer();
+            userEditGroupContainer.setRecordRecursive(group);
+            userEditGroupContainer.setTitleToGroupTitle();
+        }
+        return me;
     },
     doDestroyGroup: function(options) {
         var me = this;

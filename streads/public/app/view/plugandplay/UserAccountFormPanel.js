@@ -7,6 +7,11 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
     xtype: 'useraccountformpanel',
     id: 'userAccountFormPanel',
     config: {
+        layout: {
+            type: 'vbox',
+            pack: 'start',
+            align: 'stretch'
+        },
         cls: 'user-account-form-panel',
         items: [
             {
@@ -37,6 +42,13 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
                         readOnly: true
                     }
                 ]
+            },
+            {
+                xtype: 'button',
+                itemId: 'logoutButton',
+                cls: 'logout-button',
+                text: 'Log out',
+                ui: 'decline'
             }
         ],
         listeners: [

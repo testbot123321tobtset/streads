@@ -8,7 +8,7 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
     config: {
         layout: {
             type: 'vbox',
-            pack: 'center',
+            pack: 'start',
             align: 'stretch'
         },
         cls: 'user-group-add-form-panel',
@@ -49,8 +49,7 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                         placeHolder: 'List all contacts here',
                         name: 'titleX'
                     }
-                ],
-                flex: 1
+                ]
             },
             {
                 xtype: 'button',

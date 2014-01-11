@@ -20,6 +20,9 @@ Ext.define('X.controller.Main', {
         refs: {
         },
         control: {
+            viewport: {
+                orientationchange: 'onOrientationchange'
+            }
         },
         routes: {
         }
@@ -32,5 +35,7 @@ Ext.define('X.controller.Main', {
         if (me.getDebug() && me.getBootupDebug()) {
             console.log("Debug: X.controller.Main.init()");
         }
+    },
+    onOrientationchange: function() {
     }
 });

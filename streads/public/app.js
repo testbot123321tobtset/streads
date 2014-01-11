@@ -120,10 +120,12 @@ Ext.application({
         }
         // Destroy the #appLoadingIndicator element
         Ext.fly('circleG').destroy();
-
-        // Initialize the main view
-        //Ext.Viewport.add(Ext.create('X.view.Main'));
         
+        // Firing default Viewport events
+//        Ext.Viewport.on('orientationchange', function() {
+//            alert('orientation change');
+//        });
+
         // http://docs.sencha.com/touch/2.3.0/#!/api/Ext.Component-method-setRecord
         Ext.define('X.override.Component', {
             override: 'Ext.Component',

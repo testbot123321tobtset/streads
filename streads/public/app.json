@@ -76,8 +76,8 @@
      */
     "css": [
         {
-            "path": "resources/css/app.css",
-            "theme": "X",
+            "path": "resources/css/cupertino.css",
+            "theme": "Cupertino",
             "update": "delta"
         }
     ],

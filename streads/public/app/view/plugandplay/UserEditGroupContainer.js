@@ -51,6 +51,10 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         ],
         listeners: [
             {
+                fn: 'onInitialize',
+                event: 'initialize'
+            },
+            {
                 fn: 'onShow',
                 event: 'show'
             },
@@ -60,6 +64,13 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
             }
         ]
     },
+//    onInitialize: function() {
+//        var me = this;
+//        var element = me.element;
+//        element.on('swipe', function(event, node, options, eOpts) {
+//            me.fireEvent('elementswipe', event, node, options, eOpts);
+//        });
+//    },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
         me.hide(X.config.Config.getHideAnimationConfig());

@@ -74,8 +74,9 @@ Ext.define('X.controller.Users', {
             userAccountInfoPanel: '#userMoreTabPanel #userAccountInfoPanel',
             userAccountFormPanel: '#userMoreTabPanel #userAccountFormPanel',
             // User :: Logout
-            userLogoutPanel: '#userMoreTabPanel #userLogout',
-            logoutButton: '#userMoreTabPanel #userLogout #logoutButton'
+            logoutButton: '#userAccountFormPanel #logoutButton'
+//            userLogoutPanel: '#userMoreTabPanel #userLogout',
+//            logoutButton: '#userMoreTabPanel #userLogout #logoutButton'
         }
     },
     // DIRECT EVENT HANDLERS
