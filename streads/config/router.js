@@ -127,6 +127,7 @@ router.match('/user/groups/:id(.:format)','DELETE').
             controller: 'Groups',
             action: 'destroy'
         });
+         
 
 router.resource('users');
 //router.resource('friendships');

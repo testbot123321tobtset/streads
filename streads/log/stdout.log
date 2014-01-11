@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [Sat, 11 Jan 2014 08:59:59 GMT] INFO Server starting with config: {
+=======
+[Wed, 08 Jan 2014 20:01:22 GMT] INFO Server starting with config: {
+>>>>>>> b4be46abd095252cf94113c9f1fc0ddde65d5820
   "environment": "development",
   "workers": 1,
   "port": 4000,
@@ -24,11 +28,11 @@
   "rotateWorkers": false,
   "rotationWindow": 7200000,
   "rotationTimeout": 300000,
-  "logDir": "/Library/WebServer/Documents/myapps/touch/streads/streads/log",
+  "logDir": "/Users/hankclark/streads/streads/log",
   "gracefulShutdownTimeout": 30000,
   "heartbeatInterval": 5000,
   "heartbeatWindow": 20000,
-  "staticFilePath": "/Library/WebServer/Documents/myapps/touch/streads/streads/public",
+  "staticFilePath": "/Users/hankclark/streads/streads/public",
   "cacheControl": {
     "expires": {
       "default": 0
@@ -43,7 +47,7 @@
   "i18n": {
     "defaultLocale": "en-us",
     "loadPaths": [
-      "/Library/WebServer/Documents/myapps/touch/streads/streads/config/locales"
+      "/Users/hankclark/streads/streads/config/locales"
     ]
   },
   "hostname": null,
@@ -81,5 +85,10 @@
   },
   "secret": "PXTTjtFUCt75Ii0klpOLtwng963npLietza7jgxTNDUlN1ijSo7XpLGfin41XFDIJRE2NGY1qH58Xb5mciSmutZC02BOVtv6EEWyJKt75JxBjGKkJ6hK56cCYxlwNbz8"
 }
+<<<<<<< HEAD
 [Sat, 11 Jan 2014 08:59:59 GMT] INFO Creating 1 worker process.
 [Sat, 11 Jan 2014 09:00:13 GMT] INFO Server worker running in development on port 4000 with a PID of: 53592
+=======
+[Wed, 08 Jan 2014 20:01:22 GMT] INFO Creating 1 worker process.
+[Wed, 08 Jan 2014 20:01:23 GMT] INFO Server worker running in development on port 4000 with a PID of: 13837
+>>>>>>> b4be46abd095252cf94113c9f1fc0ddde65d5820
