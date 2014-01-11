@@ -51,6 +51,7 @@ Ext.define('X.view.plugandplay.UserAccountInfoPanel', {
                     }
                 ]
             }
+           
         ],
         listeners: [
             {
