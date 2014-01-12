@@ -1,4 +1,4 @@
-[Mon, 30 Dec 2013 13:39:45 GMT] INFO Server starting with config: {
+[Sun, 12 Jan 2014 19:20:23 GMT] INFO Server starting with config: {
   "environment": "development",
   "workers": 1,
   "port": 4000,
@@ -81,8 +81,14 @@
   },
   "secret": "PXTTjtFUCt75Ii0klpOLtwng963npLietza7jgxTNDUlN1ijSo7XpLGfin41XFDIJRE2NGY1qH58Xb5mciSmutZC02BOVtv6EEWyJKt75JxBjGKkJ6hK56cCYxlwNbz8"
 }
-[Mon, 30 Dec 2013 13:39:45 GMT] INFO Creating 1 worker process.
-[Mon, 30 Dec 2013 13:39:52 GMT] INFO Server worker running in development on port 4000 with a PID of: 5656
-[Fri, 03 Jan 2014 12:59:59 GMT] INFO Code changed, killing 5656, cycling ...
-[Fri, 03 Jan 2014 12:59:59 GMT] INFO Creating 1 worker process.
-[Fri, 03 Jan 2014 13:00:10 GMT] INFO Server worker running in development on port 4000 with a PID of: 12037
+[Sun, 12 Jan 2014 19:20:23 GMT] INFO Creating 1 worker process.
+[Sun, 12 Jan 2014 19:20:24 GMT] INFO Server worker running in development on port 4000 with a PID of: 4226
+[Sun, 12 Jan 2014 19:23:18 GMT] INFO Code changed, killing 4226, cycling ...
+[Sun, 12 Jan 2014 19:23:18 GMT] INFO Creating 1 worker process.
+[Sun, 12 Jan 2014 19:23:19 GMT] INFO Server worker running in development on port 4000 with a PID of: 4231
+[Sun, 12 Jan 2014 19:23:28 GMT] INFO Code changed, killing 4231, cycling ...
+[Sun, 12 Jan 2014 19:23:28 GMT] INFO Creating 1 worker process.
+[Sun, 12 Jan 2014 19:23:28 GMT] INFO Server worker running in development on port 4000 with a PID of: 4232
+[Sun, 12 Jan 2014 19:23:34 GMT] INFO Code changed, killing 4232, cycling ...
+[Sun, 12 Jan 2014 19:23:34 GMT] INFO Creating 1 worker process.
+[Sun, 12 Jan 2014 19:23:35 GMT] INFO Server worker running in development on port 4000 with a PID of: 4233

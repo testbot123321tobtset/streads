@@ -388,21 +388,25 @@ Ext.define('X.controller.Users', {
       }
       var formPanel = button.up('coreformpanel');
       var formData = formPanel.getValues();
-      console.log(formData);
       me.xhrAddFriend(formPanel);
     },
     xhrAddFriend: function(form) {
       var me = this;
-      console.log(form);
-      //form.submit({
-        //method: 'POST',
-        //success: function(form, action) {
-          //if (me.getDebug()) {
-            //console.log('Debug: X.controller.Users.xhrAddFriend(): Successful');
-          //}
-          //form.reset();
-        //}
-      //});
+      form.submit({
+        url: '/friendships',
+        method: 'POST',
+        success: function(form, action, serverResponse) {
+          if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.xhrAddFriend(): Successful');
+          }
+          form.reset();
+          console.log(serverResponse);
+        },
+        failure: function(form, serverResponse) {
+          form.reset();
+          console.log(serverResponse);
+        }
+      });
     },
     show: function(id) {
         var me = this;

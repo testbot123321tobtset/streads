@@ -61,6 +61,7 @@ exports.getResponseMessage = function(responseMessageType) {
             break;
         case 'friendshipAlreadyExists':
             responseMessage = 'You\'ve already friended this user!';
+            break;
         case 'groupForAuthenticatedUserCouldNotBeUpdated':
             responseMessage = 'Hmm, we couldn\'t update that group for you. Let us know, and we\'ll take care of it.';
             break;
