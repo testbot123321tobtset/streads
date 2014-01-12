@@ -1,1 +1,10 @@
 /nbproject/private/
+*.log
+
+*.log
+
+streads/log/access.log
+
+streads/log/stdout.log
+
+streads/log/stdout.log

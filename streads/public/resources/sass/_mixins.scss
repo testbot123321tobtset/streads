@@ -135,6 +135,14 @@
     @include box-shadow($default-box-shadow-color 0px -8px 10px);
 }
 
+@mixin mega-right-side-box-shadow {
+    @include box-shadow($default-box-shadow-color 1px 0px 10px);
+}
+
+@mixin mega-left-side-box-shadow {
+    @include box-shadow($default-box-shadow-color 0px 0px 10px);
+}
+
 @mixin mega-depressed-box-shadow {
     @include box-shadow($default-box-shadow-color 0px 12px 15px inset);
 }

@@ -3,8 +3,7 @@ Ext.define('X.model.AuthenticatedUser', {
     config: {
         fields: [
             {
-                name: 'id',
-                type: 'string'
+                name: 'id'
             },
             {
                 name: 'createdAt',
@@ -34,7 +33,7 @@ Ext.define('X.model.AuthenticatedUser', {
                 name: 'fullName',
                 type: 'string',
                 convert: function(value, record) {
-                    return (Ext.isString(record.data.firstName) && Ext.isString(record.data.lastName)) ? record.data.firstName + ' ' + record.data.lastName : null;
+                    return (Ext.isString(record.get('firstName')) && Ext.isString(record.get('lasttName'))) ? record.get('firstName') + ' ' + record.get('lastName') : null;
                 },
                 persist: false
             },

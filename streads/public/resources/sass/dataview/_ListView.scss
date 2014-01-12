@@ -1,0 +1,13 @@
+.x-list {
+    .x-list-disclosure {
+        &:before {
+            font-family: 'iOS7';
+            // Changed
+            // color: #ccc;
+            color: $silver;
+            // Changed
+            // line-height: 26px;
+            line-height: 22px;
+        }
+    }
+}

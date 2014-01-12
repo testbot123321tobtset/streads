@@ -22,25 +22,25 @@ Ext.define('X.view.plugandplay.UserMoreTabPanel', {
                         flex: 1
                     }
                 ]
-            },
-            {
-                layout: {
-                    type: 'vbox',
-                    pack: 'center',
-                    align: 'center'
-                },
-                itemId: 'userLogout',
-                cls: 'user-logout',
-                title: 'Log out',
-                items: {
-                    xtype: 'button',
-                    style: 'width: 80%',
-                    itemId: 'logoutButton',
-                    cls: 'logout-button',
-                    text: 'Log out',
-                    ui: 'decline'
-                }
             }
+//            ,
+//            {
+//                layout: {
+//                    type: 'vbox',
+//                    pack: 'center',
+//                    align: 'stretch'
+//                },
+//                itemId: 'userLogout',
+//                cls: 'user-logout',
+//                title: 'Log out',
+//                items: {
+//                    xtype: 'button',
+//                    itemId: 'logoutButton',
+//                    cls: 'logout-button',
+//                    text: 'Log out',
+//                    ui: 'decline'
+//                }
+//            }
         ]
     }
 });

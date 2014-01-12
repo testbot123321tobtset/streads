@@ -8,7 +8,7 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
     config: {
         layout: {
             type: 'vbox',
-            pack: 'center',
+            pack: 'start',
             align: 'stretch'
         },
         cls: 'user-group-add-form-panel',
@@ -39,7 +39,6 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                 xtype: 'fieldset',
                 itemId: 'groupAddMembersFormFieldSet',
                 cls: 'group-add-members-form-fieldset',
-                title: 'Select Members',
                 defaults: {
                     xtype: 'textfield'
                 },
@@ -48,16 +47,15 @@ Ext.define('X.view.plugandplay.UserGroupAddFormPanel', {
                         itemId: 'titleXTextfield',
                         cls: 'title-textfield',
                         placeHolder: 'List all contacts here',
-                        name: 'title'
+                        name: 'titleX'
                     }
-                ],
-                flex: 1
+                ]
             },
             {
                 xtype: 'button',
                 itemId: 'submitButton',
                 cls: 'submit-button',
-                text: 'Create Group',
+                text: 'Create',
                 ui: 'confirm'
             }
         ]

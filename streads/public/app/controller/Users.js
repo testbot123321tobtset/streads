@@ -35,6 +35,9 @@ Ext.define('X.controller.Users', {
             'user/profile/more/logout': 'showAuthenticatedMoreLogoutInformation'
         },
         control: {
+            viewport: {
+                authenticatedUserDataEdit: 'onAuthenticatedUserDataEdit'
+            },
             // Login
             pageLogin: {
                 activeitemchange: 'onPageLoginTabPanelActiveItemChange'
@@ -77,8 +80,9 @@ Ext.define('X.controller.Users', {
             userAccountInfoPanel: '#userMoreTabPanel #userAccountInfoPanel',
             userAccountFormPanel: '#userMoreTabPanel #userAccountFormPanel',
             // User :: Logout
-            userLogoutPanel: '#userMoreTabPanel #userLogout',
-            logoutButton: '#userMoreTabPanel #userLogout #logoutButton'
+            logoutButton: '#userAccountFormPanel #logoutButton'
+//            userLogoutPanel: '#userMoreTabPanel #userLogout',
+//            logoutButton: '#userMoreTabPanel #userLogout #logoutButton'
         }
     },
     // DIRECT EVENT HANDLERS
@@ -86,7 +90,7 @@ Ext.define('X.controller.Users', {
         var me = this;
         var urlHash = me.getUrlHash();
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onPageLoginTabPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash);
+            console.log('Debug: X.controller.Users.onPageLoginTabPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (activeItem.getItemId() === 'userLogin' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_LOGIN_PAGE()) {
             me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
@@ -100,10 +104,10 @@ Ext.define('X.controller.Users', {
         var me = this;
         var urlHash = me.getUrlHash();
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash);
+            console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feed') {
-            me.redirectTo('user/profile/groups/feed');
+        if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feeds') {
+            me.redirectTo('user/profile/groups/feeds');
         }
         else if (activeItem.getItemId() === 'userMore' && urlHash !== 'user/profile/more/account') {
             me.redirectTo('user/profile/more/account');
@@ -114,7 +118,7 @@ Ext.define('X.controller.Users', {
         var me = this;
         var urlHash = me.getUrlHash();
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onUserMoreTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash);
+            console.log('Debug: X.controller.Users.onUserMoreTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (activeItem.getItemId() === 'userAccount' && urlHash !== 'user/profile/more/account') {
             me.redirectTo('user/profile/more/account');
@@ -123,6 +127,13 @@ Ext.define('X.controller.Users', {
             me.redirectTo('user/profile/more/logout');
         }
         return me;
+    },
+    onAuthenticatedUserDataEdit: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onAuthenticatedUserDataEdit(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.doUpdateAuthenticatedUser(options);
     },
     // Show sign up form
     showSignup: function() {
@@ -133,7 +144,7 @@ Ext.define('X.controller.Users', {
                 getActiveItem().
                 getItemId() !== 'userSignup') {
             if (me.getDebug()) {
-                console.log('Debug: X.controller.Users.showSignup(): Current active item is not userLogin. Will call generateAndFillViewportWithUserLoginWindow()');
+                console.log('Debug: X.controller.Users.showSignup(): Current active item is not userLogin. Will call generateAndFillViewportWithUserLoginWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
             }
             return me.generateAndFillViewportWithUserSignupWindow();
         }
@@ -142,7 +153,7 @@ Ext.define('X.controller.Users', {
     doSignup: function(button) {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.doSignup()');
+            console.log('Debug: X.controller.Users.doSignup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         var formPanel = button.up('coreformpanel');
         var formData = formPanel.getValues();
@@ -170,16 +181,16 @@ Ext.define('X.controller.Users', {
     xhrSignup: function(form) {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.xhrSignup()');
+            console.log('Debug: X.controller.Users.xhrSignup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         form.submit({
             method: 'POST',
             success: function(form, action) {
                 if (me.getDebug()) {
-                    console.log('Debug: X.controller.Users.xhrSignup(): Successful');
+                    console.log('Debug: X.controller.Users.xhrSignup(): Successful: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 form.reset();
-                me.generateSuccessfulUserCreatedWindow({
+                me.generateUserSuccessfullyCreatedWindow({
                     message: false,
                     fn: function() {
                         me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
@@ -191,7 +202,8 @@ Ext.define('X.controller.Users', {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received serverResponse:');
                     console.log(serverResponse);
-                    //me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
+                    console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                    me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
                 }
                 form.reset();
                 var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
@@ -200,12 +212,12 @@ Ext.define('X.controller.Users', {
                 if (!serverResponseSuccess) {
                     if (!serverResponseMessage) {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received no failure message from server');
+                            console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received no failure message from server: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                     }
                     else {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received failure message from server: ' + serverResponseMessage);
+                            console.log('Debug: X.controller.Users.xhrSignup(): Failed. Received failure message from server: ' + serverResponseMessage + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                     }
                     me.generateFailedAuthenticationWindow({
@@ -215,7 +227,7 @@ Ext.define('X.controller.Users', {
                 else {
                     if (!serverResponseResult) {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrSignup(): Succeeded. But, no user object was found');
+                            console.log('Debug: X.controller.Users.xhrSignup(): Succeeded. But, no user object was found: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                         me.generateFailedAuthenticationWindow({
                             message: serverResponseMessage,
@@ -227,9 +239,9 @@ Ext.define('X.controller.Users', {
                     }
                     else {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrSignup(): Succeeded');
+                            console.log('Debug: X.controller.Users.xhrSignup(): Succeeded: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
-                        me.generateSuccessfulUserCreatedWindow({
+                        me.generateUserSuccessfullyCreatedWindow({
                             message: serverResponseMessage,
                             fn: function() {
                                 me.redirectTo(X.config.Config.getDEFAULT_USER_LOGIN_PAGE());
@@ -251,7 +263,7 @@ Ext.define('X.controller.Users', {
                 getActiveItem().
                 getItemId() !== 'userLogin') {
             if (me.getDebug()) {
-                console.log('Debug: X.controller.Users.showLogin(): Current active item is not userLogin. Will call generateAndFillViewportWithUserLoginWindow()');
+                console.log('Debug: X.controller.Users.showLogin(): Current active item is not userLogin. Will call generateAndFillViewportWithUserLoginWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
             }
             return me.generateAndFillViewportWithUserLoginWindow();
         }
@@ -261,7 +273,7 @@ Ext.define('X.controller.Users', {
     doLogin: function(button, e, eOpts) {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.doLogin()');
+            console.log('Debug: X.controller.Users.doLogin(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         var formPanel = button.up('coreformpanel');
         var formData = formPanel.getValues();
@@ -289,7 +301,7 @@ Ext.define('X.controller.Users', {
             method: 'POST',
             success: function(form, action) {
                 if (me.getDebug()) {
-                    console.log('Debug: X.controller.Users.xhrLogin(): Successful');
+                    console.log('Debug: X.controller.Users.xhrLogin(): Successful: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 form.reset();
                 me.loadAuthenticatedUserStore({
@@ -312,6 +324,7 @@ Ext.define('X.controller.Users', {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received serverResponse:');
                     console.log(serverResponse);
+                    console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 form.reset();
                 var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
@@ -320,12 +333,12 @@ Ext.define('X.controller.Users', {
                 if (!serverResponseSuccess) {
                     if (!serverResponseMessage) {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received no failure message from server');
+                            console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received no failure message from server: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                     }
                     else {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received failure message from server: ' + serverResponseMessage);
+                            console.log('Debug: X.controller.Users.xhrLogin(): Failed. Received failure message from server: ' + serverResponseMessage + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                     }
                     me.generateFailedAuthenticationWindow({
@@ -339,7 +352,7 @@ Ext.define('X.controller.Users', {
                 else {
                     if (!serverResponseResult) {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrLogin(): Succeeded. But, no authenticated user object was found');
+                            console.log('Debug: X.controller.Users.xhrLogin(): Succeeded. But, no authenticated user object was found: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                         me.generateFailedAuthenticationWindow({
                             message: serverResponseMessage,
@@ -351,7 +364,7 @@ Ext.define('X.controller.Users', {
                     }
                     else {
                         if (me.getDebug()) {
-                            console.log('Debug: X.controller.Users.xhrLogin(): Succeeded');
+                            console.log('Debug: X.controller.Users.xhrLogin(): Succeeded: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
                         var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
                         authenticatedUserStore.setAutoSync(false);
@@ -394,14 +407,14 @@ Ext.define('X.controller.Users', {
     show: function(id) {
         var me = this;
         if (X.XConfig.getDEBUG()) {
-            console.log('Debug: X.controller.Users.show()');
+            console.log('Debug: X.controller.Users.show(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         return me;
     },
     authenticate: function(action) {
         var me = this;
         if (X.XConfig.getDEBUG()) {
-            console.log('Debug: X.controller.Users.authenticate()');
+            console.log('Debug: X.controller.Users.authenticate(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         action.resume();
     },
@@ -409,7 +422,7 @@ Ext.define('X.controller.Users', {
     showAuthenticatedMoreAccountInformation: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.showAuthenticatedMoreAccountInformation()');
+            console.log('Debug: X.controller.Users.showAuthenticatedMoreAccountInformation(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         me.generateAndFillViewportWithUserRootMoreAccountWindow();
         var userAccountInfoPanel = me.getUserAccountInfoPanel();
@@ -419,9 +432,16 @@ Ext.define('X.controller.Users', {
     showAuthenticatedMoreLogoutInformation: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.showAuthenticatedMoreLogoutInformation()');
+            console.log('Debug: X.controller.Users.showAuthenticatedMoreLogoutInformation(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         return me.generateAndFillViewportWithUserRootMoreLogoutWindow();
+    },
+    doUpdateAuthenticatedUser: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.doUpdateAuthenticatedUser(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.saveAuthenticatedUser(options);
     },
     // Logout
     doLogout: function(button, e, eOpts) {
@@ -435,6 +455,7 @@ Ext.define('X.controller.Users', {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.doLogout(): User successfully logged out. Will redirect to X.XConfig.getDEFAULT_USER_LOGIN_PAGE(). Response received from server:');
                     console.log(response.responseText);
+                    console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
                 authenticatedUserStore.setAutoSync(false);

@@ -1,0 +1,8 @@
+.x-layout-card {
+    .x-layout-card-item {
+        @include mega-left-side-box-shadow;
+        &:first-child {
+            @include no-box-shadow;
+        }
+    }
+}

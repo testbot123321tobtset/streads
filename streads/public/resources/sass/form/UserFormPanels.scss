@@ -1,19 +1,22 @@
-.user-login-form-panel, .user-signup-form-panel {
+.user-signup-form-panel, .user-login-form-panel {
     .submit-button {
-        margin: 0.5em;
+        margin-left: $default-button-margin;
+        margin-right: $default-button-margin;
+        margin-top: $default-button-margin;
     }
 }
-.user-account-form-panel {
-    .x-form-fieldset .x-form-fieldset-inner {
-        border: 0px solid transparent;
+.user-account-form-panel, .user-group-add-form-panel, .user-group-edit-form-panel {
+    background-color: $white-96;
+    .x-form-fieldset {
+        background-color: white;
+        margin-top: $default-margin-for-fieldsets;
+        margin-bottom: 0px;
     }
-}
-.user-group-add-form-panel {
-    .x-form-fieldset:first-child {
-        border-top: 0px solid transparent;
-        border-bottom: 0px solid transparent;
+    .x-form-fieldset:last-child {
+        margin-bottom: 1em;
     }
-    .submit-button {
-        margin: 0.5em;
+    .submit-button, .delete-button, .logout-button {
+        border-top-color: $default-border-color-for-fieldsets;
+        border-bottom-color: $default-border-color-for-fieldsets;
     }
 }

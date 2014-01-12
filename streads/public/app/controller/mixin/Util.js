@@ -84,13 +84,13 @@ Ext.define('X.controller.mixin.Util', {
         var xtype = item.xtype,
                 cache = Ext.isArray(X.viewCache) ? X.viewCache : [],
                 ln = cache.length,
-                limit = 20,
+                limit = 10,
                 view, i = 0, j, oldView;
 
         for (; i < ln; i++) {
             if (cache[i].xtype === xtype) {
                 if (X.config.Config.getDEBUG()) {
-                    console.log('Debug: X.controller.mixin.Util.createView(): View fetched from view cache');
+                    console.log('Debug: X.controller.mixin.Util.createView(): View fetched from view cache: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 return cache[i];
             }
@@ -109,11 +109,16 @@ Ext.define('X.controller.mixin.Util', {
         }
 
         if (X.config.Config.getDEBUG()) {
-            console.log('Debug: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype);
+            console.log('Debug: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         view = Ext.create('widget.' + xtype);
         cache.push(view);
-
+        if (X.config.Config.getDEBUG()) {
+            view.on('painted', function() {
+                console.log('Debug: ' + xtype + '.painted: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            });
+        }
+        
         X.viewCache = cache;
 
         return view;
@@ -132,23 +137,25 @@ Ext.define('X.controller.mixin.Util', {
             }
         });
     },
-    closeAllWindows: function() {
+    hideAllWindows: function() {
         var me = this;
-
-        var matchedWindows = Ext.WindowManager.getBy(function(component) {
-            if (!Ext.isEmpty(component) && component.isXType('window')) {
-                return true;
-            }
-            else {
-                return false;
+        if (X.config.Config.getDEBUG()) {
+            console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        var allCores = Ext.ComponentQuery.query('corecontainer, corepanel');
+        Ext.each(allCores, function(thisUi) {
+            if (Ext.isFunction(thisUi.getIsWindow) && thisUi.getIsWindow()) {
+                if (X.config.Config.getDEBUG()) {
+                    console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Querying: ' + thisUi.getXTypes() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                }
+                if (!thisUi.isHidden()) {
+                    if (X.config.Config.getDEBUG()) {
+                        console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Hiding: ' + thisUi.getXTypes() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                    }
+                    thisUi.hide(X.config.Config.getHideAnimationConfig());
+                }
             }
         });
-        if (Ext.isArray(matchedWindows) && matchedWindows.length > 0) {
-            Ext.each(matchedWindows, function(thisWindow) {
-                thisWindow.close();
-            });
-        }
-
         return me;
     },
     /*
@@ -156,5 +163,11 @@ Ext.define('X.controller.mixin.Util', {
      */
     getUrlHash: function() {
         return location.hash.substr(1);
+    },
+    isWebApp: function() {
+        if (document.URL.indexOf('http') !== -1) {
+            return true;
+        }
+        return false;
     }
 });

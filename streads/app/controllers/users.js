@@ -10,6 +10,7 @@ var passport = require('../helpers/passport'),
         });
 
 var AH = require('../helpers/application');
+var UH = require('../helpers/user');
 
 var Users = function() {
     var me = this;
@@ -18,40 +19,9 @@ var Users = function() {
         'json'
     ];
 
-    me.error = false;
-    me.message = false;
-    me.authenticatedUser = false;
     me.checkIfAuthenticatedUserExists = function(next) {
-        var self = this;
-
-        var User = geddy.model.User;
-        User.first({
-            id: self.session.get('userId')
-        }, function(err, user) {
-            if (__.isObject(user)) {
-                // Include groups for authenticated user only
-                user.includeGroups({
-                    fn: function() {
-                        me.authenticatedUser = user;
-                        me.message = false;
-                        __.each(User.fieldExcusionArray, function(field) {
-                            if (__.has(me.authenticatedUser, field)) {
-                                delete me.authenticatedUser[field];
-                            }
-                        });
-                        next();
-                    },
-                    scope: me
-                });
-            }
-            else {
-                me.authenticatedUser = false;
-                me.message = AH.getResponseMessage('noAuthenticatedUserFound');
-                next();
-            }
-        });
+        UH.checkIfAuthenticatedUserExists(this, me, next);
     };
-
     me.before(me.checkIfAuthenticatedUserExists, {
         async: true,
         except: [
@@ -69,16 +39,24 @@ var Users = function() {
         User.first({
             usernameEmail: user.usernameEmail
         }, function(err, data) {
-            if (data) {
+            if(__.isObject(err)) {
+                self.respond(AH.getFailureResponseObject(params, err));
+            }
+            else if(__.isObject(data)) {
                 self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('usernameEmailIsAlreadyTaken')));
-            } else {
+            }
+            else {
                 if (user.isValid()) {
                     user.password = cryptPass(user.password);
                 }
                 user.save(function(err, data) {
-                    if (err) {
+                    if (__.isObject(err)) {
+                        self.respond(AH.getFailureResponseObject(params, err));
+                    }
+                    else if (!__.isObject(data)) {
                         self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeCreated')));
-                    } else {
+                    }
+                    else {
                         self.respond(AH.getSuccessResponseObject(params, data));
                     }
                 });
@@ -91,31 +69,31 @@ var Users = function() {
     // not implementing public forums, we'll only have in-group and private messaging
     // 
     // Authenticated: displays all my friends (for now it displays all users TODO)
-    me.index = function(req, resp, params) {
-        var self = this;
-
-        if (!__.isObject(me.authenticatedUser)) {
-            self.respond(AH.getFailureResponseObject(params, me.error, me.message));
-        }
-        else {
-            var User = geddy.model.User;
-            User.all(function(err, users) {
-                if (err || !users) {
-                    self.respond(AH.getFailureResponseObject(params, err));
-                }
-                else {
-                    __.each(users, function(user) {
-                        __.each(User.fieldExcusionArray, function(field) {
-                            if (__.has(user, field)) {
-                                delete user[field];
-                            }
-                        });
-                    });
-                    self.respond(AH.getSuccessResponseObject(params, users));
-                }
-            });
-        }
-    };
+    //    me.index = function(req, resp, params) {
+    //        var self = this;
+    //
+    //        if (!__.isObject(me.authenticatedUser)) {
+    //            self.respond(AH.getFailureResponseObject(params, me.error, me.message));
+    //        }
+    //        else {
+    //            var User = geddy.model.User;
+    //            User.all(function(err, users) {
+    //                if (err || !users) {
+    //                    self.respond(AH.getFailureResponseObject(params, err));
+    //                }
+    //                else {
+    //                    __.each(users, function(user) {
+    //                        __.each(User.fieldExcusionArray, function(field) {
+    //                            if (__.has(user, field)) {
+    //                                delete user[field];
+    //                            }
+    //                        });
+    //                    });
+    //                    self.respond(AH.getSuccessResponseObject(params, users));
+    //                }
+    //            });
+    //        }
+    //    };
     
     // Authenticated: logs a user out
     me.logout = function(req, resp, params) {
@@ -146,39 +124,49 @@ var Users = function() {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
         else {
-            var User = geddy.model.User;
-            User.first(params.id, function(err, user) {
-                if (err || !user) {
-                    if (!__isObject(err)) {
-                        var err = new Error();
-                    }
-                    err.statusCode = 400;
-                    self.respond(AH.getFailureResponseObject(params, err));
-                }
-                else {
-                    __.each(User.fieldExcusionArray, function(field) {
-                        if (__.has(user, field)) {
-                            delete user[field];
+            // If requested user is the same as authenticated user, then just use showMe()
+            if(params.id === me.authenticatedUser.id) {
+                me.showMe(req, resp, params);
+            }
+            else {
+                var User = geddy.model.User;
+                User.first(params.id, function(err, user) {
+                    if (err || !user) {
+                        if (!__isObject(err)) {
+                            var err = new Error();
                         }
-                    });
-                    self.respond(AH.getSuccessResponseObject(params, user.toObj()));
-                }
-            });
+                        err.statusCode = 400;
+                        self.respond(AH.getFailureResponseObject(params, err));
+                    }
+                    else {
+                        __.each(User.fieldShowExclusionArray, function(field) {
+                            if (__.has(user, field)) {
+                                delete user[field];
+                            }
+                        });
+                        __.each(User.fieldShowUnauthenticatedExclusionArray, function(field) {
+                            if (__.has(user, field)) {
+                                delete user[field];
+                            }
+                        });
+                        self.respond(AH.getSuccessResponseObject(params, user.toObj()));
+                    }
+                });
+            }
         }
     };
 
     // Authenticated: update authenticated and in-session user
     me.update = function(req, resp, params) {
         var self = this;
-        
-        self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
         else {
+            var authenticatedUser = me.authenticatedUser;
             var User = geddy.model.User;
-            User.first(params.id, function(err, user) {
-                var skip = User.fieldUpdateExcusionArray;
+            User.first(authenticatedUser.id, function(err, user) {
+                var skip = User.fieldUpdateExclusionArray;
                 // Update password only if it has changed
                 if(!params.password) {
                     skip.push('password');
@@ -189,38 +177,20 @@ var Users = function() {
                 if (params.password && user.isValid()) {
                     user.password = cryptPass(user.password);
                 }
-                user.save(function(err, user) {
-                    if (err || !user) {
-                        self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeUpdated')));
+                user.save(function(savedUserErr, savedUser) {
+                    if(__.isObject(savedUserErr)) {
+                        self.respond(AH.getFailureResponseObject(params, savedUserErr));
+                    }
+                    else if(!__.isObject(savedUser)) {
+                        self.respond(AH.getFailureResponseObject(params, savedUserErr, AH.getResponseMessage('authenticatedUserCouldNotBeUpdated')));
                     }
                     else {
-//                        User.first('C9814392-7103-4F55-9AD5-864C4AA8D8FD', function(err, friend) {
-//                            user.addFriender(friend);
-//                            user.save(function(err, data) {
-//                                user.getFrienders(function(err, data) {
-//                                    console.log(data);
-//                                });
-//                            });
-//                        });
-                        
-//                        geddy.model.Group.first('8A96F2EF-C2CF-4701-A32F-0F149853F4ED', function(err, group) {
-//                            group.addUser(user);
-//                            group.save(function(err, data) {
-//                                group.getUsers(function(err, data) {
-//                                    console.log(data);
-//                                });
-//                                user.getGroups(function(err, data) {
-//                                    console.log(data);
-//                                });
-//                            });
-//                        });
-                        
-                        __.each(User.fieldExcusionArray, function(field) {
-                            if (__.has(user, field)) {
-                                delete user[field];
+                        __.each(User.fieldShowExclusionArray, function(field) {
+                            if (__.has(savedUser, field)) {
+                                delete savedUser[field];
                             }
                         });
-                        self.respond(AH.getSuccessResponseObject(params, user));
+                        self.respond(AH.getSuccessResponseObject(params, savedUser));
                     }
                 });
             });
@@ -236,7 +206,7 @@ var Users = function() {
             if (err) {
                 self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeDeleted')));
             } else {
-                __.each(User.fieldExcusionArray, function(field) {
+                __.each(User.fieldShowExclusionArray, function(field) {
                     if (__.has(user, field)) {
                         delete user[field];
                     }

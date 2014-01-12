@@ -6,6 +6,9 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'usernameEmailIsAlreadyTaken':
             responseMessage = 'We know this email! Maybe you want to log right in?';
             break;
+        case 'groupTitleIsAlreadyTakenByTheCreator':
+            responseMessage = 'You already have a group with this title. Get creative and pick a new title.';
+            break;
         case 'userAuthenticationFailed':
             responseMessage = 'Hmm, we couldn\'t log you in. Let us know, and we\'ll take care of it.';
             break;
@@ -18,6 +21,7 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'noLoggedInUserFound':
             responseMessage = 'No logged in user found.';
             break;
+            
         case 'authenticatedUserCouldNotBeCreated':
             responseMessage = 'Hmm, we couldn\'t create that account. Let us know, and we\'ll take care of it.';
             break;
@@ -27,6 +31,7 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'authenticatedUserCouldNotBeDeleted':
             responseMessage = 'Hmm, we couldn\'t delete your account. Let us know, and we\'ll take care of it.';
             break;
+            
         case 'postCreateDeniedDueToNonOwner':
             responseMessage = 'You cannot create a post that does not belong to you.';
             break;
@@ -56,6 +61,15 @@ exports.getResponseMessage = function(responseMessageType) {
             break;
         case 'friendshipAlreadyExists':
             responseMessage = 'You\'ve already friended this user!';
+        case 'groupForAuthenticatedUserCouldNotBeUpdated':
+            responseMessage = 'Hmm, we couldn\'t update that group for you. Let us know, and we\'ll take care of it.';
+            break;
+        // Groups
+        case 'groupSuccessfullyCreatedWindow':
+            responseMessage = 'Group successfully created.';
+            break;
+        case 'groupSuccessfullyUpdatedWindow':
+            responseMessage = 'Group successfully updated.';
             break;
         default:
             break;
@@ -90,7 +104,7 @@ exports.getSuccessResponseObject = function(params, result, message) {
     if (__.isString(message)) {
         responseObject.message = message;
     }
-
+    
     return responseObject;
 };
 exports.executeCallback = function(callback) {

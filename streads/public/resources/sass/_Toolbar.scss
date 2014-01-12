@@ -27,13 +27,13 @@
     .x-title {
         font-weight: 200;
         font-size: 1em;
-        padding-top: .3em;
+        padding-top: 0em;
+        color: $ios7-blue;
     }
 
     .x-button {
         border: 0;
-        margin: 0px;
-        background: transparent;
+        margin: 0;
         
         &.x-button-pressing {
             border-color: transparent;

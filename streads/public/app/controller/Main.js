@@ -5,11 +5,16 @@
  */
 Ext.define('X.controller.Main', {
     extend: 'Ext.app.Controller',
+    requires: [
+        'X.view.plugandplay.CameraTriggerPanel'
+    ],
     mixins: {
         util: 'X.controller.mixin.Util',
+        common: 'X.controller.mixin.Common',
         factory: 'X.controller.mixin.Factory',
         page: 'X.controller.mixin.Page',
-        user: 'X.controller.mixin.User'
+        user: 'X.controller.mixin.User',
+        group: 'X.controller.mixin.Group'
     },
     config: {
         debug: false,
@@ -30,5 +35,38 @@ Ext.define('X.controller.Main', {
         if (me.getDebug() && me.getBootupDebug()) {
             console.log("Debug: X.controller.Main.init()");
         }
+        
+        // Viewport listeners: this seems like a better way to reliably listen
+        // to events on viewport compared to having these in 'control' object
+        Ext.Viewport.on({
+            painted: {
+                fn: 'onViewportPainted',
+                scope: me,
+                single: true
+            },
+//            orientationchange: {
+//                fn: 'onOrientationchange',
+//                scope: me
+//            },
+            cameratriggerbuttondoubletap: {
+                fn: 'onCameraTriggerButtonDoubleTap',
+                scope: me
+            }
+        });
+    },
+    onViewportPainted: function(viewportElement, eOpts) {
+        var me = this;
+        me.generateCameraTriggerPanel();
+        return me;
+    },
+//    onOrientationchange: function() {
+//    },
+    onCameraTriggerButtonDoubleTap: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log("Debug: X.controller.Main.onCameraTriggerButtonDoubleTap()");
+        }
+        // This should bring up the camera interface
+        return me;
     }
 });

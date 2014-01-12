@@ -2,11 +2,11 @@
  This file is generated and updated by Sencha Cmd. You can edit this file as
  needed for your application, but these edits will have to be merged by
  Sencha Cmd when it performs code generation tasks such as generating new
- models, controllers or views and when running "sencha app upgrade".
+ models, controllers or views and when running 'sencha app upgrade'.
  
  Ideally changes to this file would be limited and most work would be done
  in other places (such as Controllers). If Sencha Cmd cannot merge your
- changes and its generated code, it will produce a "merge conflict" that you
+ changes and its generated code, it will produce a 'merge conflict' that you
  will need to resolve manually.
  */
 
@@ -115,14 +115,12 @@ Ext.application({
         // Easy access to config object
         X.XConfig = X.config.Config;
         if (X.XConfig.getDEBUG() && X.XConfig.getBOOTUP_DEBUG()) {
-            console.log("Debug: Ext.application.launch()");
+            console.log('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
+            alert('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         // Destroy the #appLoadingIndicator element
         Ext.fly('circleG').destroy();
 
-        // Initialize the main view
-        //Ext.Viewport.add(Ext.create('X.view.Main'));
-        
         // http://docs.sencha.com/touch/2.3.0/#!/api/Ext.Component-method-setRecord
         Ext.define('X.override.Component', {
             override: 'Ext.Component',
@@ -138,12 +136,76 @@ Ext.application({
             }
         });
         
+        // Standardize animations across all relevant components
+        Ext.define('X.override.TabPanel', {
+            override: 'Ext.TabPanel',
+            config: {
+                layout: {
+                    type: 'card',
+                    animation: X.config.Config.getAnimationConfig()
+                },
+                showAnimation: X.config.Config.getShowAnimationConfigWithNoDirection(),
+                hideAnimation: X.config.Config.getHideAnimationConfigWithNoDirection()
+            }
+        });
+        
+        Ext.apply(String.prototype, (function() {
+            function uc(str, p1) {
+                return p1.toUpperCase();
+            }
+            function lc(str, p1) {
+                return p1.toLowerCase();
+            }
+            var camelRe = /-([a-z])/g,
+                    titleRe = /((?:\s|^)[a-z])/g,
+                    capsRe = /^([a-z])/,
+                    decapRe = /^([A-Z])/,
+                    leadAndTrailWS = /^\s*([^\s]*)?\s*/,
+                    result;
+
+            return {
+                leftPad: function(val, size, ch) {
+                    result = String(val);
+                    if (!ch) {
+                        ch = " ";
+                    }
+                    while (result.length < size) {
+                        result = ch + result;
+                    }
+                    return result;
+                },
+                camel: function(s) {
+                    return this.replace(camelRe, uc);
+                },
+                title: function(s) {
+                    return this.replace(titleRe, uc);
+                },
+                decapitalize: function() {
+                    return this.replace(decapRe, lc);
+                },
+                startsWith: function(prefix) {
+                    return this.substr(0, prefix.length) === prefix;
+                },
+                endsWith: function(suffix) {
+                    var start = this.length - suffix.length;
+                    return (start > -1) && (this.substr(start) === suffix);
+                },
+                equalsIgnoreCase: function(other) {
+                    return (this.toLowerCase() === other.toLowerCase());
+                },
+                // Remove leading and trailing whitespace
+                normalize: function() {
+                    return leadAndTrailWS.exec(this)[1] || '';
+                }
+            };
+        })());
+        
         Ext.Msg.defaultAllowedConfig.width = '100%';
     },
     onUpdated: function() {
         Ext.Msg.confirm(
-                "Application Update",
-                "This application has just successfully been updated to the latest version. Reload now?",
+                'Application Update',
+                'This application has just successfully been updated to the latest version. Reload now?',
                 function(buttonId) {
                     if (buttonId === 'yes') {
                         window.location.reload();

@@ -18,7 +18,7 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 },
                 itemId: 'userGroupFeeds',
                 cls: 'user-group-feeds',
-                title: 'Feed',
+                title: 'Feeds',
                 items: [
                     {
                         xtype: 'usergroupslist',
@@ -32,7 +32,7 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 },
                 itemId: 'userAddGroups',
                 cls: 'user-add-groups',
-                title: 'Add',
+                title: 'Create',
                 items: [
                     {
                         xtype: 'usergroupaddformpanel',

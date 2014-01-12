@@ -1,3 +1,6 @@
+@include icon('camera', 'v');
+@include icon('video', 'V');
+
 .x-button {
     height: 2.1em;
     padding: 0 8px;
@@ -6,6 +9,10 @@
 
     // My addition
     @include border-radius($default-button-radius);
+    margin-top: $default-margin-for-fieldsets;
+    margin-bottom: $default-margin-for-fieldsets;
+    border-left-width: 0px;
+    border-right-width: 0px;
 }
 
 .x-button-icon {
@@ -60,13 +67,16 @@
     border-color: $ios7-blue;
 
     // My addition
-    background-color: $ios7-blue;
+    // background-color: $ios7-blue;
+    border-color: transparent;
+    // This matches a form field's height, which is 40px
+    height: 2.63em;
 
     .x-button-label {
         color: $ios7-blue;
 
         // My addition
-        color: white;
+        // color: white;
     }
 
     &.x-button-pressing,
@@ -75,12 +85,13 @@
 
         // My addition
         background-color: $ios7-blue-lighten;
+        background-color: white;
 
         .x-button-label {
             color: $ios7-blue-lighten;
 
             // My addition
-            color: white;
+            // color: white;
         }
     }
 }
@@ -91,13 +102,16 @@
     border-color: $ios7-red;
 
     // My addition
-    background-color: $ios7-red;
+    // background-color: $ios7-red;
+    border-color: transparent;
+    // This matches a form field's height, which is 40px
+    height: 2.63em;
 
     .x-button-label {
         color: $ios7-red;
 
         // My addition
-        color: white;
+        // color: white;
     }
 
     &.x-button-pressing,
@@ -106,12 +120,13 @@
 
         // My addition
         background-color: $ios7-red-lighten;
+        background-color: white;
 
         .x-button-label {
             color: $ios7-red-lighten;
 
             // My addition
-            color: white;
+            // color: white;
         }
     }
 }
@@ -122,13 +137,16 @@
     border-color: $ios7-green;
 
     // My addition
-    background-color: $ios7-green;
+    // background-color: $ios7-green;
+    border-color: transparent;
+    // This matches a form field's height, which is 40px
+    height: 2.63em;
 
     .x-button-label {
         color: $ios7-green;
 
         // My addition
-        color: white;
+        // color: white;
     }
 
     &.x-button-pressing,
@@ -136,13 +154,13 @@
         border-color: $ios7-green-lighten;
 
         // My addition
-        background-color: $ios7-green-lighten;
+        // background-color: $ios7-green-lighten;
 
         .x-button-label {
             color: $ios7-green-lighten;
 
             // My addition
-            color: white;
+            // color: white;
         }
     }
 }
@@ -205,6 +223,11 @@
         // My addition
         font-weight: $default-font-weight;
         padding-left: 2px;
+        line-height: 1.2em;
+    }
+
+    .x-button-label {
+        color: $ios7-blue;
     }
 
     &.x-button-pressing {
@@ -218,6 +241,33 @@
             color: $ios7-blue-lighten;
         }
     }
+}
+
+.x-button.x-button-forward {
+    border : 0px;
+
+    &:after {
+        content: '!';
+        font-family: 'iOS7';
+        color: $ios7-blue;
+        font-size: 1.3em;
+        text-align: center;
+        background-color: transparent;
+        line-height: 1.3em;
+        padding-left: 0px;
+    }
+
+    .x-button-label {
+        font-size: 1.1em;
+        line-height: 1.3em;
+        font-weight: 300;
+        padding-left: 2px;
+        color: $ios7-blue;
+    }
+}
+
+.x-button.x-list-item-remove {
+    z-index: 25;
 }
 
 // Badges
@@ -245,5 +295,23 @@
         padding: 1px 2px 2px;
         border: 0px;
         background-color: $ios7-red;
+    }
+}
+
+// My addition
+.x-button {
+    &.x-button-boring {
+        border-color: $magnesium;
+        background-color: $magnesium;
+        .x-button-label {
+            color: white;
+        }
+        &.x-button-pressing {
+            border-color: $silver;
+            background-color: $silver;
+            .x-button-label {
+                color: white;
+            }
+        }
     }
 }

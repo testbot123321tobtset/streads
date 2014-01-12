@@ -11,27 +11,47 @@ $aluminum: #999999;
 $magnesium: #B3B3B3;
 $silver: #CCCCCC;
 $mercury: #E6E6E6;
-$white-94: #EFEFEF;
-$white-96: #F5F5F5;
-$white-98: #F9F9F9;
+$white-94: darken(white, 6%);
+$white-96: darken(white, 4%);
+$white-97: darken(white, 3%);
+$white-98: darken(white, 2%);
+$white-99: darken(white, 1%);
 $facebook-blue: #4c66a4;
 $facebook-blue-lighten: lighten($facebook-blue, 30%);
-
-$default-font-weight: 200;
-$default-font-ultralight-weight: 100;
-$default-font-color: $nickel;
-$default-button-radius: 0px;
 $ios7-blue: #157efb;
 $ios7-red: #fc3e39;
 $ios7-orange: #F92E32;
 $ios7-green: #53d769;
+$icloud-reminders-purple: #b14bc9;
+$i-purple: $icloud-reminders-purple;
+$my-purple: #790F5B;
 $ios7-blue-lighten: lighten($ios7-blue, 30%);
 $ios7-red-lighten: lighten($ios7-red, 30%);
 $ios7-orange-lighten: lighten($ios7-orange, 30%);
 $ios7-green-lighten: lighten($ios7-green, 30%);
+$icloud-reminders-purple-lighten: lighten($icloud-reminders-purple, 30%);
+$i-purple-lighten: $icloud-reminders-purple-lighten;
+$my-purple-lighten: lighten($my-purple, 30%);
+
+$default-font-weight: 200;
+$default-font-ultralight-weight: 100;
+$default-font-color: $nickel;
+
+$default-button-radius: 0px;
+$default-button-margin: 1em;
+
+$default-margin-for-fieldsets: 2em;
+$default-border-color-for-fieldsets: #dbdbe0;
 
 $default-absolute-top-margin: 20px;
-$default-button-margin: 1em;
 
 $default-opacity-on-floating-foreground-element: 0.7;
 $default-background-color-on-floating-foreground-element: white;
+
+$default-box-shadow-color: $aluminum;
+
+$list-item-selected-color: $white-97;
+$list-item-pressed-color: $white-99;
+$list-disclosure-size: 10px;
+
+$default-background-color-on-separated-sections-panel: $white-94;
