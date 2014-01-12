@@ -86,19 +86,27 @@ Ext.define('X.controller.mixin.Factory', {
         });
         return me;
     },
+    generateCameraTriggerPanel: function() {
+        var me = this;
+        var cameraTriggerPanel = Ext.Viewport.add(me.createView({
+            xtype: 'cameratriggerpanel',
+            style: 'background: transparent; z-index: 10;'
+        }));
+        cameraTriggerPanel.show();
+    },
     generateAndFillViewportWithUserSignupWindow: function() {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserSignupWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageLogin())) {
-            Ext.Viewport.removeAll(false, true).add(me.createView({
+            Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pagelogin'
             }).setActiveItem('#userSignup'));
         }
         else {
             if(me.getPageLogin().isHidden()) {
-                Ext.Viewport.removeAll(false, true).add(me.getPageLogin());
+                Ext.Viewport.removeAll(false, false).add(me.getPageLogin());
                 me.getPageLogin().show();
                 me.getPageLogin().setActiveItem('#userSignup');
             }
@@ -114,13 +122,13 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserLoginWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageLogin())) {
-            Ext.Viewport.removeAll(false, true).add(me.createView({
+            Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pagelogin'
             }).setActiveItem('#userLogin'));
         }
         else {
             if(me.getPageLogin().isHidden()) {
-                Ext.Viewport.removeAll(false, true).add(me.getPageLogin());
+                Ext.Viewport.removeAll(false, false).add(me.getPageLogin());
                 me.getPageLogin().show();
                 me.getPageLogin().setActiveItem('#userLogin');
             }
@@ -136,14 +144,14 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            Ext.Viewport.removeAll(false, true).add(me.createView({
+            Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
             }).setActiveItem('#userMore'));
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, true).add(pageUserRoot);
+                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
                 pageUserRoot.show();
                 pageUserRoot.setActiveItem('#userMore');
             }
@@ -159,7 +167,7 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreAccountWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            var pageUserRoot = Ext.Viewport.removeAll(false, true).add(me.createView({
+            var pageUserRoot = Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
             }));
             pageUserRoot.setActiveItem('#userMore');
@@ -168,7 +176,7 @@ Ext.define('X.controller.mixin.Factory', {
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, true).add(pageUserRoot);
+                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
                 pageUserRoot.show();
                 pageUserRoot.setActiveItem('#userMore');
                 pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userAccount');
@@ -186,7 +194,7 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreLogoutWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            var pageUserRoot = Ext.Viewport.removeAll(false, true).add(me.createView({
+            var pageUserRoot = Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
             }));
             pageUserRoot.setActiveItem('#userMore');
@@ -195,7 +203,7 @@ Ext.define('X.controller.mixin.Factory', {
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, true).add(pageUserRoot);
+                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
                 pageUserRoot.show();
                 pageUserRoot.setActiveItem('#userMore');
                 pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userLogout');
@@ -215,14 +223,14 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootGroupsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            Ext.Viewport.removeAll(false, true).add(me.createView({
+            Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
             }).setActiveItem('#userGroups'));
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, true).add(pageUserRoot);
+                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
                 pageUserRoot.show();
                 pageUserRoot.setActiveItem('#userGroups');
             }

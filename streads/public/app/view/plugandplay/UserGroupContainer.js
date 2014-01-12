@@ -68,8 +68,8 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 xtype: 'corecontainer',
                 itemId: 'feedContainer',
                 cls: 'user-group-container-feed-container',
-                html: 'This container will have this group\'s feed',
-                flex: 1
+                flex: 1,
+                tpl: new Ext.XTemplate('{title}')
             }
         ],
         listeners: [

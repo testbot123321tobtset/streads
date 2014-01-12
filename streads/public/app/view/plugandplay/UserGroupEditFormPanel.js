@@ -103,20 +103,47 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
         var groupsStore = Ext.getStore('GroupsStore');
         var groupFromGroupsStore = groupsStore.getById(groupRecordId);
         var groupFieldValueFromGroupsStore = groupFromGroupsStore.get(fieldName);
-        if(groupFieldValueFromGroupsStore !== newValue) {
-            groupRecord.set(fieldName, newValue);
-            Ext.Viewport.fireEvent('editgroup', {
-                group: groupRecord,
-                silent: true
-            });
+        if (groupFieldValueFromGroupsStore !== newValue) {
+            var formValues = me.getValues();
+            formValues['createdById'] = groupRecord.get('createdById');
+            var dummyGroupRecord = Ext.create('X.model.Group', formValues);
+            dummyGroupRecord.set(fieldName, newValue);
+            var errors = dummyGroupRecord.validate();
+            if (!errors.isValid()) {
+                me.setRecordRecursive(groupRecord);
+                Ext.Viewport.fireEvent('editgroupvalidationfailed', {
+                    errors: errors
+                });
+            }
+            else {
+                groupRecord.set(fieldName, newValue);
+                Ext.Viewport.fireEvent('editgroup', {
+                    group: groupRecord,
+                    silent: true
+                });
+            }
+            dummyGroupRecord.destroy();
         }
+        return me;
     },
     onGroupDataDestroy: function(field, newValue, oldValue, eOpts) {
         var me = this;
-        Ext.Viewport.fireEvent('destroygroup', {
-            group: me.getRecord(),
-            silent: false,
-            typeOfSave: 'destroy'
-        });
+        Ext.Msg.confirm(
+                X.XConfig.getMESSAGES().MESSAGE_BOX_CONFIRM_TITLE,
+                'Do you really want to delete ' + me.getRecord().get('title') + '?',
+                function(buttonId, value) {
+                    if (buttonId === 'yes') {
+                        Ext.Viewport.fireEvent('destroygroup', {
+                            group: me.getRecord(),
+                            silent: false,
+                            typeOfSave: 'destroy'
+                        });
+                    }
+                    else {
+                        
+                    }
+                }
+        );
+        return me;
     }
 });

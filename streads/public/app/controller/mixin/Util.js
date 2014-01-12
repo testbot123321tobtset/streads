@@ -163,5 +163,11 @@ Ext.define('X.controller.mixin.Util', {
      */
     getUrlHash: function() {
         return location.hash.substr(1);
+    },
+    isWebApp: function() {
+        if (document.URL.indexOf('http') !== -1) {
+            return true;
+        }
+        return false;
     }
 });

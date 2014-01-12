@@ -22,10 +22,16 @@ $ios7-blue: #157efb;
 $ios7-red: #fc3e39;
 $ios7-orange: #F92E32;
 $ios7-green: #53d769;
+$icloud-reminders-purple: #b14bc9;
+$i-purple: $icloud-reminders-purple;
+$my-purple: #790F5B;
 $ios7-blue-lighten: lighten($ios7-blue, 30%);
 $ios7-red-lighten: lighten($ios7-red, 30%);
 $ios7-orange-lighten: lighten($ios7-orange, 30%);
 $ios7-green-lighten: lighten($ios7-green, 30%);
+$icloud-reminders-purple-lighten: lighten($icloud-reminders-purple, 30%);
+$i-purple-lighten: $icloud-reminders-purple-lighten;
+$my-purple-lighten: lighten($my-purple, 30%);
 
 $default-font-weight: 200;
 $default-font-ultralight-weight: 100;

@@ -38,6 +38,7 @@ Ext.define('X.controller.Groups', {
         control: {
             viewport: {
                 editgroup: 'onEditGroup',
+                editgroupvalidationfailed: 'onEditGroupValidationFailed',
                 destroygroup: 'onDestroyGroup',
                 destroyedgroup: 'onDestroyedGroup'
             },
@@ -163,6 +164,19 @@ Ext.define('X.controller.Groups', {
         }
         return me.doUpdateGroup(options);
     },
+    onEditGroupValidationFailed: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.onEditGroupValidationFailed(): Options: ');
+            console.log(options);
+            console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        me.generateUserFailedUpdatedWindow({
+            message: options.errors.getAt(0).
+                    getMessage()
+        });
+        return me;
+    },
     onDestroyGroup: function(options) {
         var me = this;
         if (me.getDebug()) {
@@ -269,9 +283,6 @@ Ext.define('X.controller.Groups', {
         }
         if(!me.saveGivenGroup(options)) {
             var group = (Ext.isObject(options) && Ext.isObject(options.group)) ? options.group : false;
-            var userEditGroupContainer = me.getUserEditGroupContainer();
-            userEditGroupContainer.setRecordRecursive(group);
-            userEditGroupContainer.setTitleToGroupTitle();
         }
         return me;
     },
@@ -324,6 +335,23 @@ Ext.define('X.controller.Groups', {
             me.saveGivenGroup({
                 group: group
             });
+        }
+        return me;
+    },
+    updateAllUiWithGivenGroupData: function(group) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.updateAllUiWithGroupData(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        if (Ext.isObject(group)) {
+            var userGroupContainer = me.getUserGroupContainer();
+            var userEditGroupContainer = me.getUserEditGroupContainer();
+            if (Ext.isObject(userGroupContainer)) {
+                userGroupContainer.setRecordRecursive(group);
+            }
+            if (Ext.isObject(userEditGroupContainer)) {
+                userEditGroupContainer.setRecordRecursive(group);
+            }
         }
         return me;
     },

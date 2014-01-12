@@ -24,6 +24,9 @@ Ext.define('X.config.Config', {
             SUCCESS: 'It worked!',
             SAVE_SUCCESSFUL: 'Your changes were successfully saved.',
             
+            // Message box title
+            MESSAGE_BOX_CONFIRM_TITLE: 'Just making sure',
+            
             MODEL_SUCCESSFULLY_CREATED: 'This model was successfully created.',
             MODEL_SUCCESSFULLY_UPDATED: 'This model was successfully updated.',
             MODEL_SUCCESSFULLY_DESTROYED: 'This model was successfully destroyed.',
@@ -43,20 +46,20 @@ Ext.define('X.config.Config', {
         // UI
         defaultToolbarHeight: 46,
         // Animations
-        defaultAnimationDuration: 400,
+        defaultAnimationDuration: 300,
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
         defaultAnimationEasing: 'linear',
         showAnimationConfig: {
             type: 'slideIn',
             direction: 'left',
             //easing: 'ease-in',
-            duration: 400
+            duration: 300
         },
         hideAnimationConfig: {
             type: 'slideOut',
             direction: 'right',
             //easing: 'ease-out',
-            duration: 400
+            duration: 300
         },
         showAnimationConfigWithNoDirection: {
             type: 'slideIn',
@@ -66,22 +69,16 @@ Ext.define('X.config.Config', {
         hideAnimationConfigWithNoDirection: {
             type: 'slideOut',
             //easing: 'ease-out',
-            duration: 400
+            duration: 300
         },
         animationConfig: {
             type: 'slide',
             //easing: 'ease-in',
-            duration: 400
+            duration: 300
         }
     },
     constructor: function(config) {
         this.initConfig(config);
         return this;
-    },
-    isWebApp: function() {
-        if (document.URL.indexOf('http') !== -1) {
-            return true;
-        }
-        return false;
     }
 });
