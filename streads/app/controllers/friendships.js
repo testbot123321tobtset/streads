@@ -58,7 +58,7 @@ var Friendships = function () {
     frienderId = self.session.get("userId");
     var friendId;
     User.first({
-      usernameEmail: params['email']
+      usernameEmail: params['friendEmailField']
     }, function(err, user) {
       if (!__.isObject(user) || err) {
         self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('noUserFoundForEmail')));

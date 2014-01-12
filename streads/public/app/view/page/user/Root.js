@@ -2,7 +2,8 @@ Ext.define('X.view.page.user.Root', {
     extend: 'Ext.tab.Panel',
     requires: [
         'X.view.plugandplay.UserGroupsTabPanel',
-        'X.view.plugandplay.UserMoreTabPanel'
+        'X.view.plugandplay.UserMoreTabPanel',
+        'X.view.plugandplay.UserFriendFormPanel'
     ],
     xtype: 'pageuserroot',
     id: 'pageUserRoot',
@@ -33,10 +34,11 @@ Ext.define('X.view.page.user.Root', {
                 cls: 'user-friends',
                 title: 'Friends',
                 items: [
-                    {
-                      xtype: 'emailfield',
-                      label: 'Friend\'s Email'
-                    }
+                  {
+                      xtype: 'userfriendformpanel',
+                      flex: 1,
+                      scrollable: null
+                  }
                 ]
             },
             {

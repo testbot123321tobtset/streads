@@ -83,3 +83,6 @@
 }
 [Mon, 30 Dec 2013 13:39:45 GMT] INFO Creating 1 worker process.
 [Mon, 30 Dec 2013 13:39:52 GMT] INFO Server worker running in development on port 4000 with a PID of: 5656
+[Fri, 03 Jan 2014 12:59:59 GMT] INFO Code changed, killing 5656, cycling ...
+[Fri, 03 Jan 2014 12:59:59 GMT] INFO Creating 1 worker process.
+[Fri, 03 Jan 2014 13:00:10 GMT] INFO Server worker running in development on port 4000 with a PID of: 12037
