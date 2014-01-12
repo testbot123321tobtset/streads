@@ -36,7 +36,9 @@ Ext.define('X.config.Config', {
             GROUP_SUCCESSFULLY_CREATED: 'This group was successfully created.',
             GROUP_SUCCESSFULLY_UPDATED: 'This group was successfully updated.',
             GROUP_FAILED_UPDATED: 'This group failed to update.',
-            GROUP_SUCCESSFULLY_DESTROYED: 'This group was successfully destroyed.'
+            GROUP_SUCCESSFULLY_DESTROYED: 'This group was successfully destroyed.',
+            
+            FRIENDSHIP_SUCCESSFULLY_CREATED: 'This friendship was successfully created.'
         },
         CUSTOMER_SERVICE_EMAIL_ADDRESS: 'test@test.com',
         DEBUG: true,

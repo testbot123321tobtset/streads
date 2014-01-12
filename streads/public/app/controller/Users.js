@@ -400,11 +400,16 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.xhrAddFriend(): Successful');
           }
           form.reset();
-          console.log(serverResponse);
+          me.generateFriendshipSuccessfullyCreatedWindow({
+            message: "Successfully friended this user!"
+          });
         },
         failure: function(form, serverResponse) {
           form.reset();
-          console.log(serverResponse);
+          var serverResponseMessage = (Ext.isObject(serverResponse) && Ext.isString(serverResponse.message)) ? serverResponse.message : false;
+          me.generateFailedWindow({
+            message: serverResponseMessage
+          });
         }
       });
     },
