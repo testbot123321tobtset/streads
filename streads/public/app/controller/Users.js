@@ -421,7 +421,7 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.doLogout()');
         }
         Ext.Ajax.request({
-            url: X.XConfig.getDEFAULT_USER_LOGOUT_PAGE(),
+            url: X.XConfig.getAPI_ENDPOINT() + X.XConfig.getDEFAULT_USER_LOGOUT_PAGE(),
             success: function(response) {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.doLogout(): User successfully logged out. Will redirect to X.XConfig.getDEFAULT_USER_LOGIN_PAGE(). Response received from server:');

@@ -1,0 +1,12 @@
+@import 'compass';
+@import '_variables';
+@import '_mixins';
+
+.x-layout-card {
+    .x-layout-card-item {
+        @include mega-left-side-box-shadow;
+        &:first-child {
+            @include no-box-shadow;
+        }
+    }
+}

@@ -46,6 +46,9 @@ Ext.define('X.view.plugandplay.UserSignupFormPanel', {
         ],
         url: 'users'
     },
+    applyUrl: function(url) {
+        return X.config.Config.getAPI_ENDPOINT() + url;
+    },
     resetLoginFields: function() {
         var me = this;
         me.resetEmailField().resetPasswordField();

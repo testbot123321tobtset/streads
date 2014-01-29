@@ -19,6 +19,19 @@
 
 var router = new geddy.RegExpRouter();
 
+// CORS
+//router.match('/', 'OPTIONS').
+//        to({
+//            controller: 'Application',
+//            action: 'options'
+//        });
+
+router.match('/*path(.:format)', 'OPTIONS').
+        to({
+            controller: 'Application',
+            action: 'options'
+        });
+
 // We default to index.html in public directory, so we can load Sencha Touch
 router.get('/').
         to('Main.index');
@@ -81,6 +94,11 @@ router.get('/auth/yammer').
 router.get('/auth/yammer/callback').
         to('Auth.yammerCallback');
 
+router.match('/users(.:format)', 'POST').
+        to({
+            controller: 'Users',
+            action: 'create'
+        });
 router.match('/user', 'GET').
         to({
             controller: 'Users',
@@ -129,7 +147,7 @@ router.match('/user/groups/:id(.:format)','DELETE').
         });
          
 
-router.resource('users');
+//router.resource('users');
 //router.resource('friendships');
 //router.resource('groupships');
 //router.resource('groups');

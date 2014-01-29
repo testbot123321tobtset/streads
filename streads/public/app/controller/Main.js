@@ -6,6 +6,7 @@
 Ext.define('X.controller.Main', {
     extend: 'Ext.app.Controller',
     requires: [
+        'Ext.device.Camera',
         'X.view.plugandplay.CameraTriggerPanel'
     ],
     mixins: {
@@ -44,10 +45,10 @@ Ext.define('X.controller.Main', {
                 scope: me,
                 single: true
             },
-//            orientationchange: {
-//                fn: 'onOrientationchange',
-//                scope: me
-//            },
+            orientationchange: {
+                fn: 'onOrientationchange',
+                scope: me
+            },
             cameratriggerbuttondoubletap: {
                 fn: 'onCameraTriggerButtonDoubleTap',
                 scope: me
@@ -59,13 +60,27 @@ Ext.define('X.controller.Main', {
         me.generateCameraTriggerPanel();
         return me;
     },
-//    onOrientationchange: function() {
-//    },
+    onOrientationchange: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log("Debug: X.controller.Main.onOrientationchange()");
+        }
+    },
     onCameraTriggerButtonDoubleTap: function() {
         var me = this;
         if (me.getDebug()) {
             console.log("Debug: X.controller.Main.onCameraTriggerButtonDoubleTap()");
         }
+//        Ext.device.Camera.capture({
+//            success: function(image) {
+//            },
+//            quality: 75,
+//            width: 300,
+//            height: 300,
+//            destination: 'data',
+//            source: 'camera',
+//            encoding: 'jpg'
+//        });
         // This should bring up the camera interface
         return me;
     }

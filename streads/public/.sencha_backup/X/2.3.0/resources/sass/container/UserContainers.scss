@@ -1,0 +1,6 @@
+@import '_variables';
+@import '_mixins';
+
+#userGroupContainer, #userEditGroupContainer {
+    @include mega-left-side-box-shadow;
+}

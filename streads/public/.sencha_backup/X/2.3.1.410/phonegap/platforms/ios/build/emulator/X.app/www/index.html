@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html manifest="" lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>X</title>
+        <!-- http://cssload.net/ -->
+        <style>
+            #circleG{
+                width:149.33333333333334px;
+                margin: auto;
+                margin-top: 50%;
+                position:absolute; 
+                top:50%; 
+                height:32px; 
+                margin-top:-16px; /* negative half of the height */
+                left:50%; 
+                width: 150px; 
+                margin-left: -82px; /* negative half of the width */
+            }
+
+            .circleG{
+                background-color:#DBDBDB;
+                float:left;
+                height:32px;
+                margin-left:17px;
+                width:32px;
+                -moz-animation-name:bounce_circleG;
+                -moz-animation-duration:3.4499999999999997s;
+                -moz-animation-iteration-count:infinite;
+                -moz-animation-direction:linear;
+                -moz-border-radius:21px;
+                -webkit-animation-name:bounce_circleG;
+                -webkit-animation-duration:3.4499999999999997s;
+                -webkit-animation-iteration-count:infinite;
+                -webkit-animation-direction:linear;
+                -webkit-border-radius:21px;
+                -ms-animation-name:bounce_circleG;
+                -ms-animation-duration:3.4499999999999997s;
+                -ms-animation-iteration-count:infinite;
+                -ms-animation-direction:linear;
+                -ms-border-radius:21px;
+                -o-animation-name:bounce_circleG;
+                -o-animation-duration:3.4499999999999997s;
+                -o-animation-iteration-count:infinite;
+                -o-animation-direction:linear;
+                -o-border-radius:21px;
+                animation-name:bounce_circleG;
+                animation-duration:3.4499999999999997s;
+                animation-iteration-count:infinite;
+                animation-direction:linear;
+                border-radius:21px;
+            }
+
+            #circleG_1{
+                -moz-animation-delay:2.07s;
+                -webkit-animation-delay:2.07s;
+                -ms-animation-delay:2.07s;
+                -o-animation-delay:2.07s;
+                animation-delay:2.07s;
+            }
+
+            #circleG_2{
+                -moz-animation-delay:1.6099999999999999s;
+                -webkit-animation-delay:1.6099999999999999s;
+                -ms-animation-delay:1.6099999999999999s;
+                -o-animation-delay:1.6099999999999999s;
+                animation-delay:1.6099999999999999s;
+            }
+
+            #circleG_3{
+                -moz-animation-delay:0.69s;
+                -webkit-animation-delay:0.69s;
+                -ms-animation-delay:0.69s;
+                -o-animation-delay:0.69s;
+                animation-delay:0.69s;
+            }
+
+            @-moz-keyframes bounce_circleG{
+                0%{
+                }
+
+                50%{
+                    background-color:#000000}
+
+                100%{
+                }
+
+            }
+
+            @-webkit-keyframes bounce_circleG{
+                0%{
+                }
+
+                50%{
+                    background-color:#000000}
+
+                100%{
+                }
+
+            }
+
+            @-ms-keyframes bounce_circleG{
+                0%{
+                }
+
+                50%{
+                    background-color:#000000}
+
+                100%{
+                }
+
+            }
+
+            @-o-keyframes bounce_circleG{
+                0%{
+                }
+
+                50%{
+                    background-color:#000000}
+
+                100%{
+                }
+
+            }
+
+            @keyframes bounce_circleG{
+                0%{
+                }
+
+                50%{
+                    background-color:#000000}
+
+                100%{
+                }
+
+            }
+
+        </style>
+        <!-- The line below must be kept intact for Sencha Command to build your application -->
+        <script type="text/javascript">/**
+ * Sencha Blink - Testing
+ * @author Jacky Nguyen <jacky@sencha.com>
+ */
+(function(global) {
+    var head = global.document.head,
+        Ext = global.Ext;
+
+    if (typeof Ext == 'undefined') {
+        global.Ext = Ext = {};
+    }
+
+    function write(content) {
+        document.write(content);
+    }
+
+    function addMeta(name, content) {
+        var meta = document.createElement('meta');
+
+        meta.setAttribute('name', name);
+        meta.setAttribute('content', content);
+        head.appendChild(meta);
+    }
+
+    Ext.blink = function(options) {
+        var scripts = options.js || [],
+            styleSheets = options.css || [],
+            i, ln, path, platform, theme;
+
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    "@media screen and (orientation: portrait) {" +
+                        "@-ms-viewport {width: 320px !important;}" +
+                    "}" +
+                    "@media screen and (orientation: landscape) {" +
+                        "@-ms-viewport {width: 560px !important;}" +
+                    "}"
+                )
+            );
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+        addMeta('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no');
+        addMeta('apple-mobile-web-app-capable', 'yes');
+        addMeta('apple-touch-fullscreen', 'yes');
+
+        Ext.microloaded = true;
+
+        var filterPlatform = window.Ext.filterPlatform = function(platform) {
+            var profileMatch = false,
+                ua = navigator.userAgent,
+                j, jln, exclude;
+
+            platform = [].concat(platform);
+
+            function isPhone(ua) {
+                var isMobile = /Mobile(\/|\s)/.test(ua);
+
+                // Either:
+                // - iOS but not iPad
+                // - Android 2
+                // - Android with "Mobile" in the UA
+
+                return /(iPhone|iPod)/.test(ua) ||
+                          (!/(Silk)/.test(ua) && (/(Android)/.test(ua) && (/(Android 2)/.test(ua) || isMobile))) ||
+                          (/(BlackBerry|BB)/.test(ua) && isMobile) ||
+                          /(Windows Phone)/.test(ua);
+            }
+
+            function isTablet(ua) {
+                return !isPhone(ua) && (/iPad/.test(ua) || /Android|Silk/.test(ua) || /(RIM Tablet OS)/.test(ua) ||
+                    (/MSIE 10/.test(ua) && /; Touch/.test(ua)));
+            }
+
+            // Check if the ?platform parameter is set in the URL
+            var paramsString = window.location.search.substr(1),
+                paramsArray = paramsString.split("&"),
+                params = {},
+                testPlatform, i;
+
+            for (i = 0; i < paramsArray.length; i++) {
+                var tmpArray = paramsArray[i].split("=");
+                params[tmpArray[0]] = tmpArray[1];
+            }
+
+            testPlatform = params.platform;
+            if (testPlatform) {
+                return platform.indexOf(testPlatform) != -1;
+            }
+
+            for (j = 0, jln = platform.length; j < jln; j++) {
+                switch (platform[j]) {
+                    case 'phone':
+                        profileMatch = isPhone(ua);
+                        break;
+                    case 'tablet':
+                        profileMatch = isTablet(ua);
+                        break;
+                    case 'desktop':
+                        profileMatch = !isPhone(ua) && !isTablet(ua);
+                        break;
+                    case 'ios':
+                        profileMatch = /(iPad|iPhone|iPod)/.test(ua);
+                        break;
+                    case 'android':
+                        profileMatch = /(Android|Silk)/.test(ua);
+                        break;
+                    case 'blackberry':
+                        profileMatch = /(BlackBerry|BB)/.test(ua);
+                        break;
+                    case 'safari':
+                        profileMatch = /Safari/.test(ua) && !(/(BlackBerry|BB)/.test(ua));
+                        break;
+                    case 'chrome':
+                        profileMatch = /Chrome/.test(ua);
+                        break;
+                    case 'ie10':
+                        profileMatch = /MSIE 10/.test(ua);
+                        break;
+                    case 'windows':
+                        profileMatch = /MSIE 10/.test(ua) || /Trident/.test(ua);
+                        break;
+                    case 'tizen':
+                        profileMatch = /Tizen/.test(ua);
+                        break;
+                    case 'firefox':
+                        profileMatch = /Firefox/.test(ua);
+                }
+                if (profileMatch) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        for (i = 0,ln = styleSheets.length; i < ln; i++) {
+            path = styleSheets[i];
+
+            if (typeof path != 'string') {
+                platform = path.platform;
+                exclude = path.exclude;
+                theme = path.theme;
+                path = path.path;
+            }
+
+            if (platform) {
+                if (!filterPlatform(platform) || filterPlatform(exclude)) {
+                    continue;
+                }
+                Ext.theme = {
+                    name: theme || 'Default'
+                };
+            }
+            write('<link rel="stylesheet" href="'+path+'">');
+        }
+
+        for (i = 0,ln = scripts.length; i < ln; i++) {
+            path = scripts[i];
+
+            if (typeof path != 'string') {
+                platform = path.platform;
+                exclude = path.exclude;
+                path = path.path;
+            }
+
+            if (platform) {
+                if (!filterPlatform(platform) || filterPlatform(exclude)) {
+                    continue;
+                }
+            }
+
+            write('<script src="'+path+'"></'+'script>');
+        }
+    }
+
+})(this);Ext.blink({"id":"2f9bfa45-a94c-4fa0-bc33-fc73179e1d28","js":[{"path":"app.js","update":"delta"}],"css":[{"path":"resources/css/app.css","update":"delta"}]});</script>
+    </head>
+    <body>
+        <div id="circleG">
+            <div id="circleG_1" class="circleG">
+            </div>
+            <div id="circleG_2" class="circleG">
+            </div>
+            <div id="circleG_3" class="circleG">
+            </div>
+        </div>
+    </body>
+</html>

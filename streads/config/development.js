@@ -27,12 +27,24 @@ var config = {
     db: {
         mongo: {
             username: 'deepakkghosh',
-            dbname: 'streadsdev',
-            prefix: null,
             password: 'deepakkghoshpass',
             host: 'dharma.mongohq.com',
-            port: 10029
+            port: 10029,
+            dbname: 'streadsdev',
+            prefix: null
         }
+    },
+    sessions: {
+        store: 'mongodb',
+        server: {
+            user: 'deepakkghosh',
+            password: 'deepakkghoshpass',
+            host: 'dharma.mongohq.com',
+            port: 10029,
+            db: 'streadsdev'
+        },
+        key: 'did',
+        expiry: 14 * 24 * 60 * 60
     }
 };
 

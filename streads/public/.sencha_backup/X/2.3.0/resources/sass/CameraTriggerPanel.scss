@@ -1,0 +1,19 @@
+.camera-trigger-panel {
+    @include no-background;
+    @include no-border;
+    min-height: 2.75em !important;
+    left: .29em !important;
+    .x-panel-inner {
+        @include no-background;
+        @include no-border;
+        .camera-trigger-button {
+            @include no-background;
+            @include no-border;
+            margin: 0 !important;
+            .x-button-icon.camera {
+                font-size: 1.5em;
+                color: $my-orange;
+            }
+        }
+    }
+}

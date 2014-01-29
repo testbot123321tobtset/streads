@@ -1,0 +1,58 @@
+@import 'compass';
+@import '_variables';
+@import '_mixins';
+
+.x-toolbar {
+    background-color: #f8f9f9;
+    min-height: 2.85em;
+    
+    background-color: transparent;
+
+    &.x-docked-bottom {
+        border-top: 1px solid #ccc;
+        border-top-width: 0px;
+    }
+
+    &.x-docked-top {
+        border-bottom: 1px solid #ccc;
+        .x-button {
+            padding-top: 0em;
+        }
+    }
+
+    &.x-docked-left {
+        border-right: 1px solid #ccc;
+    }
+
+    &.x-docked-right {
+        border-left: 1px solid #ccc;
+    }
+
+    .x-title {
+        font-weight: 200;
+        font-size: 1em;
+        padding-top: 0em;
+        color: $ios7-blue;
+    }
+
+    .x-button {
+        border: 0;
+        margin: 0;
+        
+        &.x-button-pressing {
+            border-color: transparent;
+
+            // My addition
+            background-color: transparent;
+
+            .x-button-label {
+                color: $steel;
+            }
+        }
+    }
+
+    .x-button-label {
+        font-size: 1.1em;
+        color: $steel;
+    }
+}

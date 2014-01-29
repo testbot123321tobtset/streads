@@ -26,6 +26,11 @@ var User = function() {
     me.validatesPresent('password', {
         on: 'create'
     });
+    // This expects 2 field from client: password and confirmPassword
+    // Only if the 2 fields have the same value will the user be created
+//    me.validatesConfirmed('password', 'confirmPassword', {
+//        on: 'create'
+//    });
 
     me.hasMany('Passports');
     /*

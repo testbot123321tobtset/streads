@@ -1,0 +1,140 @@
+@import 'compass';
+@import '_variables';
+@import '_mixins';
+
+.x-msgbox {
+    padding: 0px;
+    margin: 0px;
+    max-width: 19em;
+    border: 0px;
+
+    @include background-image(linear-gradient(top, rgba(241, 242, 242, 1) 1%, rgba(236, 231, 232, 1) 25%, rgba(241, 242, 242, 1) 100%));
+    
+    min-width: 100% !important;
+    background: white;
+    border-top: 1px solid $aluminum;
+    border-bottom: 1px solid $aluminum;
+    padding-top: 0.8em;
+
+    .x-icon {
+        margin: 0 0.8em 0 0.5em;
+        background: #fff;
+    }
+
+    .x-msgbox-warning, x-msgbox-error {
+        .x-button {
+            border-color: $ios7-red;
+            .x-button-label {
+                color: $ios7-red;
+            }
+        }
+    }
+
+    .x-msgbox-title {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        .x-title {
+            font-size: 1.2em;
+            padding: 0px;
+            // line-height: 1.7em;
+            
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+        
+        padding: 5px;
+        margin: 0px;
+    }
+
+    .x-dock-body {
+        margin: 10px;
+    }
+
+    .x-body {
+        background: transparent !important;
+    }
+
+    .x-toolbar {
+        background: transparent none;
+        @include box-shadow(none);
+
+        &.x-docked-top {
+            // height: 2.1em;
+        }
+    }
+
+    .x-field {
+        padding-top: .5em;
+        min-height: .8em;
+        margin: 0 0 .6em 0;
+        background: transparent;
+        @include border-radius(0);
+    }
+
+    .x-field-input {
+        padding-right: 2.2em;
+    }
+
+    .x-form-field {
+        min-height: .8em;
+        padding: .3em;
+        padding-right: 0 !important;
+        -webkit-appearance: none;
+        background: transparent;
+    }
+}
+
+.x-msgbox-text {
+    //padding: .6em 0;
+    // line-height: 1.4em;
+    color: #000;
+    font-size: .9em;
+    font-weight: 400;
+}
+
+.x-msgbox {
+    @include border-radius(0);
+    .x-msgbox-buttons {
+        padding: 0;
+        height: auto;
+        min-height: auto;
+
+        .x-toolbar-inner {
+
+            .x-button {
+                @include border-radius(0px);
+                @include no-border;
+                background-color: transparent;
+                border-right: 1px solid $mercury !important;
+
+                border-bottom-width: 0px;
+                height: 40px;
+                margin: 0;
+                
+                border-color: $mercury;
+                
+                &:first-child {
+                    border-left-width: 0px !important;
+                }
+
+                &:last-child {
+                    border-right-width: 0px !important;
+                }
+
+                &.x-button-pressing {
+                    background-color: $white-98;
+                }
+
+                & .x-button-label {
+                    font-size: .9em;
+                    color: $ios7-blue;
+                }
+                
+                border-top: 1px solid $mercury !important;
+            }
+        }
+    }
+}
+
