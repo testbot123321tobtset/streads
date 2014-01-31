@@ -1,0 +1,14 @@
+@import 'compass';
+@import '_variables';
+@import '_mixins';
+@import 'core/container';
+
+#userGroupContainer, #userEditGroupContainer {
+    @include mega-left-side-box-shadow;
+}
+
+/*Error while sencha app build: 0.5 is not a color for `grayscale'*/
+/*.blurred-background {
+    @include filter(grayscale(0.5));
+    @include filter(blur(2px));
+}*/

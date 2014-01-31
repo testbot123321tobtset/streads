@@ -50,7 +50,7 @@ Ext.define('X.model.Group', {
             type: 'rest',
             idParam: 'id',
             appendId: true,
-            url: '/user/groups',
+            url: X.config.Config.getAPI_ENDPOINT() + 'user/groups',
             batchActions: true,
             reader: {
                 type: 'json',

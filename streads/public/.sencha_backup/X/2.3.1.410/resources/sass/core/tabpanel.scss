@@ -1,0 +1,90 @@
+@import 'compass';
+@import '_variables';
+@import '_mixins';
+
+/*
+.x-tabbar {
+    z-index: 2;
+}
+
+.x-tabbar-inner {
+    @include filter(blur(10px));
+    z-index: 1;
+    opacity: .35;
+}*/
+
+.x-tabbar {
+    background-color: transparent;
+    &.x-docked-top {
+        padding: 0px;
+        min-height: 0em;
+        border-width: 0px;
+        .x-tab {
+            padding: 0px;
+            @include border-radius(0px);
+            border: 0px solid transparent;
+            
+            &.x-tab-pressed {
+/*                background-color: $tabbar-pressed-background-color;*/
+            }
+            
+            .x-button-label {
+                color: #929292;
+                font-size: 30px;
+                line-height: 45px;
+                font-weight: 100;
+                padding: 0px
+            }
+
+            border-bottom: 1px solid #CCC;
+            /*border-right: 1px solid #CCC;*/
+            &:first-child {
+                /*border-right: 1px solid #CCC !important;*/
+            }
+            &:last-child {
+                border-right: 0px solid transparent;
+            }
+            
+            &.x-tab-active {
+                @include no-background;
+                .x-button-label {
+                    color: $ios7-blue;
+                }
+            }
+        }
+        .x-tab:first-child, .x-tab:last-child {
+            @include border-radius(0px);
+        }
+    }
+    &.x-transparent-bottom-tabbbar {
+        width: 100% !important;
+        opacity: $default-opacity-on-floating-foreground-element !important;
+        background-color: $default-background-color-on-floating-foreground-element !important;
+    }
+    .x-tab {
+        margin-left: 0.3em;
+        margin-right: 0.3em;
+        .x-button-icon {
+            display: none !important;
+            width: 0em;
+            height: 0em;
+
+            .x-button-icon.x-hidden {
+                display: none !important;
+            }
+
+            &:before {
+                color: #949494;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+                font-size: 1.4em;
+                line-height: 1.15em;
+            }
+        }
+        .x-button-label {
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 100;
+            padding: 0px 1px;
+        }
+    }
+}

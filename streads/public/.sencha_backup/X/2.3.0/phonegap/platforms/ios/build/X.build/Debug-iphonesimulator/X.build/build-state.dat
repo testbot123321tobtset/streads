@@ -1,0 +1,823 @@
+TX
+v6
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Info.plist /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist
+cPhaseScriptExecution Copy\ www\ directory /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Script-304B58A110DAC018002A0835.sh
+cCpResource X/config.xml build/emulator/X.app/config.xml
+cCpResource X/Resources/icons/icon-76.png build/emulator/X.app/icon-76.png
+cCpResource X/Resources/icons/icon-40@2x.png build/emulator/X.app/icon-40@2x.png
+cCpResource X/Resources/icons/icon-72.png build/emulator/X.app/icon-72.png
+cCpResource X/Resources/icons/icon.png build/emulator/X.app/icon.png
+cCpResource X/Resources/icons/icon@2x.png build/emulator/X.app/icon@2x.png
+cCopyStringsFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/en.lproj/Localizable.strings X/Resources/en.lproj/Localizable.strings
+cCompileXIB /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.xib
+cCpResource X/Resources/icons/icon-50.png build/emulator/X.app/icon-50.png
+cCpResource X/Resources/icons/icon-60@2x.png build/emulator/X.app/icon-60@2x.png
+cCopyStringsFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/de.lproj/Localizable.strings X/Resources/de.lproj/Localizable.strings
+cCpResource X/Resources/icons/icon-small.png build/emulator/X.app/icon-small.png
+cCpResource X/Resources/splash/Default-Landscape@2x~ipad.png build/emulator/X.app/Default-Landscape@2x~ipad.png
+cCpResource X/Resources/splash/Default-Landscape~ipad.png build/emulator/X.app/Default-Landscape~ipad.png
+cCpResource X/Resources/splash/Default-Portrait@2x~ipad.png build/emulator/X.app/Default-Portrait@2x~ipad.png
+cCpResource X/Resources/icons/icon-small@2x.png build/emulator/X.app/icon-small@2x.png
+cCpResource X/Resources/splash/Default-Portrait~ipad.png build/emulator/X.app/Default-Portrait~ipad.png
+cCpResource X/Resources/icons/icon-40.png build/emulator/X.app/icon-40.png
+cCpResource X/Resources/splash/Default@2x~iphone.png build/emulator/X.app/Default@2x~iphone.png
+cCpResource X/Resources/icons/icon-60.png build/emulator/X.app/icon-60.png
+cCpResource X/Resources/splash/Default~iphone.png build/emulator/X.app/Default~iphone.png
+cCpResource X/Resources/splash/Default-568h@2x~iphone.png build/emulator/X.app/Default-568h@2x~iphone.png
+cCpResource X/Resources/icons/icon-50@2x.png build/emulator/X.app/icon-50@2x.png
+cCpResource X/Resources/icons/icon-76@2x.png build/emulator/X.app/icon-76@2x.png
+cCpResource X/Resources/icons/icon-72@2x.png build/emulator/X.app/icon-72@2x.png
+cProcessPCH /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/X-Prefix-avvhbdxlwkyzqwfiqgwqmufcerbt/X-Prefix.pch.pch X/X-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X normal i386
+cGenerateDSYMFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app.dSYM /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X
+cTouch /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
+c00000000528204AD0000000000000176
+t1384252589
+s374
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/SDKSettings.plist
+c00000000524A1E0000000000000003B5
+t1380589056
+s949
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/CoreServices/SystemVersion.plist
+c0000000052675AD600000000000001A0
+t1382505174
+s416
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
+c0000000052675AD80000000000059350
+t1382505176
+s365392
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c0000000052675ADF0000000000445870
+t1382505183
+s4479088
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c0000000052675ADF00000000000EC820
+t1382505183
+s968736
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c0000000052675AE100000000001BA530
+t1382505185
+s1811760
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m
+c0000000052B917050000000000001399
+t1387861765
+s5017
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m
+c0000000052B917050000000000001262
+t1387861765
+s4706
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.xib
+c0000000052B917030000000000001759
+t1387861763
+s5977
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/de.lproj/Localizable.strings
+c0000000052B9170300000000000004BF
+t1387861763
+s1215
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/en.lproj/Localizable.strings
+c0000000052B9170300000000000004AA
+t1387861763
+s1194
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-40.png
+c0000000052B917030000000000000FF2
+t1387861763
+s4082
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-40@2x.png
+c0000000052B917030000000000001CF3
+t1387861763
+s7411
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-50.png
+c0000000052B91703000000000000130A
+t1387861763
+s4874
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-50@2x.png
+c0000000052B91703000000000000258B
+t1387861763
+s9611
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-60.png
+c0000000052B9170300000000000016B3
+t1387861763
+s5811
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-60@2x.png
+c0000000052B917030000000000002E94
+t1387861763
+s11924
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-72.png
+c0000000052B917040000000000001350
+t1387861764
+s4944
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-72@2x.png
+c0000000052B917040000000000002DBA
+t1387861764
+s11706
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-76.png
+c0000000052B917040000000000001B71
+t1387861764
+s7025
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-76@2x.png
+c0000000052B917040000000000003B9E
+t1387861764
+s15262
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-small.png
+c0000000052B917040000000000000CDE
+t1387861764
+s3294
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-small@2x.png
+c0000000052B9170400000000000015E8
+t1387861764
+s5608
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon.png
+c0000000052B917040000000000000F3E
+t1387861764
+s3902
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon@2x.png
+c0000000052B917040000000000001EBD
+t1387861764
+s7869
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-568h@2x~iphone.png
+c0000000052B9170400000000000085B1
+t1387861764
+s34225
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Landscape@2x~ipad.png
+c0000000052B917040000000000012DF4
+t1387861764
+s77300
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Landscape~ipad.png
+c0000000052B917040000000000008877
+t1387861764
+s34935
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Portrait@2x~ipad.png
+c0000000052B917040000000000012B02
+t1387861764
+s76546
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Portrait~ipad.png
+c0000000052B9170400000000000085E6
+t1387861764
+s34278
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default@2x~iphone.png
+c0000000052B917040000000000007323
+t1387861764
+s29475
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default~iphone.png
+c0000000052B91704000000000000289A
+t1387861764
+s10394
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist
+c0000000052B92549000000000000099C
+t1387865417
+s2460
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Prefix.pch
+c0000000052B9170500000000000003B3
+t1387861765
+s947
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/config.xml
+c0000000052B92549000000000000124F
+t1387865417
+s4687
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m
+c0000000052B917050000000000000453
+t1387861765
+s1107
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o
+t1387865544
+s77700
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o
+t1387865544
+s53664
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/X.LinkFileList
+c0000000052B925C600000000000001F2
+t1387865542
+s498
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o
+t1387865543
+s3180
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Script-304B58A110DAC018002A0835.sh
+c0000000052B925C6000000000000002D
+t1387865542
+s45
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app
+t1387865550
+s1020
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app.dSYM
+t2
+s0
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-568h@2x~iphone.png
+t1387865543
+s34225
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Landscape@2x~ipad.png
+t1387865543
+s77300
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Landscape~ipad.png
+t1387865543
+s34935
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Portrait@2x~ipad.png
+t1387865543
+s76546
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Portrait~ipad.png
+t1387865543
+s34278
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default@2x~iphone.png
+t1387865543
+s29475
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default~iphone.png
+t1387865543
+s10394
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Info.plist
+t1387865542
+s1214
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/MainViewController.nib
+t1387865543
+s836
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/PkgInfo
+t2
+s0
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X
+t1387865550
+s271684
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/config.xml
+t1387865543
+s4687
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/de.lproj/Localizable.strings
+t1387865543
+s280
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/en.lproj/Localizable.strings
+t1387865543
+s166
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-40.png
+t1387865543
+s4082
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-40@2x.png
+t1387865543
+s7411
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-50.png
+t1387865543
+s4874
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-50@2x.png
+t1387865543
+s9611
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-60.png
+t1387865543
+s5811
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-60@2x.png
+t1387865543
+s11924
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-72.png
+t1387865543
+s4944
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-72@2x.png
+t1387865543
+s11706
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-76.png
+t1387865543
+s7025
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-76@2x.png
+t1387865543
+s15262
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-small.png
+t1387865543
+s3294
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-small@2x.png
+t1387865543
+s5608
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon.png
+t1387865543
+s3902
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon@2x.png
+t1387865543
+s7869
+
+N/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/libCordova.a
+c0000000052B925C600000000000D7868
+t1387865542
+s882792
+
+N/var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/X-Prefix-avvhbdxlwkyzqwfiqgwqmufcerbt/X-Prefix.pch.pch
+t1387864849
+s5346368
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependenciesf034b1465d69b841^8be2c1465d69b841^---0#1#1#--18"Check dependencies36"09130042-B9A2-40F9-BD03-E6DAE20A6E48-
+
+CCompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s409558343.485047
+e409558344.632622
+r1
+xCompileC
+xbuild/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVViewController.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Compile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m178"CompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o X/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerce507c475d69b841^9e0ca2485d69b841^---0#0#1#-19%DVTDocumentLocation2@118"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m0000000000000000^4361"CompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o X/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-generated-files.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-own-target-headers.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-all-target-headers.hmap -iquote /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-project-headers.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/usr/local/lib/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/UninstalledProducts/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources/i386 -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources -F/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -include /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/X-Prefix-avvhbdxlwkyzqwfiqgwqmufcerbt/X-Prefix.pch -MMD -MT dependencies -MF /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.dia -c /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/AppDelegate.m -o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o36"526E2F0C-0ED1-4264-80F6-1D32F8F749AC-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s409558343.485529
+e409558344.402205
+r1
+xCompileC
+xbuild/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVViewController.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection126"Compile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m192"CompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o X/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler92947c475d69b841^e71d67485d69b841^---0#0#1#-19%DVTDocumentLocation2@125"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m0000000000000000^4403"CompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o X/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-generated-files.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-own-target-headers.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-all-target-headers.hmap -iquote /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-project-headers.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/usr/local/lib/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/UninstalledProducts/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources/i386 -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources -F/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -include /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/X-Prefix-avvhbdxlwkyzqwfiqgwqmufcerbt/X-Prefix.pch -MMD -MT dependencies -MF /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.dia -c /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.m -o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o36"04B69F39-B8B2-4C6D-9FAB-5505FA753F97-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s409558343.484604
+e409558343.982983
+r1
+xCompileC
+xbuild/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Compile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m156"CompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o X/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerfa2b7c475d69b841^49a2fb475d69b841^---0#0#1#-19%DVTDocumentLocation2@103"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m0000000000000000^4303"CompileC build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o X/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-generated-files.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-own-target-headers.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-all-target-headers.hmap -iquote /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-project-headers.hmap -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/usr/local/lib/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/UninstalledProducts/include -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources/i386 -I/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources -F/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -include /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/X-Prefix-avvhbdxlwkyzqwfiqgwqmufcerbt/X-Prefix.pch -MMD -MT dependencies -MF /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.d --serialize-diagnostics /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.dia -c /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/main.m -o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o36"5315079C-7DF0-4422-8DDA-0D249231281A-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCompileXIB /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.xib
+s409558343.294640
+e409558343.379271
+r1
+xCompileXIB
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.xib
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection130"Compiling /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.xib43"CompileXIB X/Classes/MainViewController.xib8f8a4b475d69b841^2b1861475d69b841^---0#0#1#-19%DVTDocumentLocation2@127"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.xib0000000000000000^1169"CompileXIB X/Classes/MainViewController.xib    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 7.0 --output-format human-readable-text --compile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/MainViewController.nib /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Classes/MainViewController.xib36"BE4133D7-5AD1-46C9-9E04-9344DFA6CED6-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCopyStringsFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/de.lproj/Localizable.strings X/Resources/de.lproj/Localizable.strings
+s409558343.331564
+e409558343.375604
+r1
+xCopyStringsFile
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/de.lproj/Localizable.strings
+xX/Resources/de.lproj/Localizable.strings
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Copy X/Resources/de.lproj/Localizable.strings106"CopyStringsFile build/emulator/X.app/de.lproj/Localizable.strings X/Resources/de.lproj/Localizable.stringsd33355475d69b841^3d2860475d69b841^---0#0#1#-19%DVTDocumentLocation2@135"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/de.lproj/Localizable.strings0000000000000000^926"CopyStringsFile build/emulator/X.app/de.lproj/Localizable.strings X/Resources/de.lproj/Localizable.strings    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/de.lproj -- X/Resources/de.lproj/Localizable.strings36"8F2030F6-DBF7-42F1-A02F-049DB2125FAE-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCopyStringsFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/en.lproj/Localizable.strings X/Resources/en.lproj/Localizable.strings
+s409558343.291537
+e409558343.333213
+r1
+xCopyStringsFile
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/en.lproj/Localizable.strings
+xX/Resources/en.lproj/Localizable.strings
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Copy X/Resources/en.lproj/Localizable.strings106"CopyStringsFile build/emulator/X.app/en.lproj/Localizable.strings X/Resources/en.lproj/Localizable.strings51bc4a475d69b841^b5c155475d69b841^---0#0#1#-19%DVTDocumentLocation2@135"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/en.lproj/Localizable.strings0000000000000000^926"CopyStringsFile build/emulator/X.app/en.lproj/Localizable.strings X/Resources/en.lproj/Localizable.strings    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/en.lproj -- X/Resources/en.lproj/Localizable.strings36"08250C3F-7540-49E0-A4FF-BA2B0B048553-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-40.png build/emulator/X.app/icon-40.png
+s409558343.379465
+e409558343.445343
+r1
+xCpResource
+xX/Resources/icons/icon-40.png
+xbuild/emulator/X.app/icon-40.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy build/emulator/X.app/icon-40.png73"CpResource X/Resources/icons/icon-40.png build/emulator/X.app/icon-40.png1c4261475d69b841^3a0472475d69b841^---0#0#1#-19%DVTDocumentLocation2@127"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-40.png00349ce5deffdf42^980"CpResource X/Resources/icons/icon-40.png build/emulator/X.app/icon-40.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-40.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"5C00DBD0-1924-4CE3-9E4C-AA49DCB2B707-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-40@2x.png build/emulator/X.app/icon-40@2x.png
+s409558343.268084
+e409558343.286795
+r1
+xCpResource
+xX/Resources/icons/icon-40@2x.png
+xbuild/emulator/X.app/icon-40@2x.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection40"Copy build/emulator/X.app/icon-40@2x.png79"CpResource X/Resources/icons/icon-40@2x.png build/emulator/X.app/icon-40@2x.pngcac544475d69b841^ec6b49475d69b841^---0#0#1#-19%DVTDocumentLocation2@130"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-40@2x.png00349ce5deffdf42^989"CpResource X/Resources/icons/icon-40@2x.png build/emulator/X.app/icon-40@2x.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-40@2x.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"20989085-8CCE-4070-BC04-0BD2D0B6594E-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-50.png build/emulator/X.app/icon-50.png
+s409558343.311694
+e409558343.330269
+r1
+xCpResource
+xX/Resources/icons/icon-50.png
+xbuild/emulator/X.app/icon-50.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy build/emulator/X.app/icon-50.png73"CpResource X/Resources/icons/icon-50.png build/emulator/X.app/icon-50.pnge8de4f475d69b841^baf354475d69b841^---0#0#1#-19%DVTDocumentLocation2@127"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-50.png00349ce5deffdf42^980"CpResource X/Resources/icons/icon-50.png build/emulator/X.app/icon-50.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-50.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"CDCA6A59-484F-43C7-B7EC-2D9D02D4D760-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-50@2x.png build/emulator/X.app/icon-50@2x.png
+s409558343.446662
+e409558343.448989
+r1
+xCpResource
+xX/Resources/icons/icon-50@2x.png
+xbuild/emulator/X.app/icon-50@2x.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection40"Copy build/emulator/X.app/icon-50@2x.png79"CpResource X/Resources/icons/icon-50@2x.png build/emulator/X.app/icon-50@2x.png868d72475d69b841^bbf172475d69b841^---0#0#1#-19%DVTDocumentLocation2@130"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-50@2x.png00349ce5deffdf42^989"CpResource X/Resources/icons/icon-50@2x.png build/emulator/X.app/icon-50@2x.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-50@2x.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"398CC91D-6A1E-472C-A9A0-4F5ECCB71F40-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-60.png build/emulator/X.app/icon-60.png
+s409558343.389843
+e409558343.445478
+r1
+xCpResource
+xX/Resources/icons/icon-60.png
+xbuild/emulator/X.app/icon-60.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy build/emulator/X.app/icon-60.png73"CpResource X/Resources/icons/icon-60.png build/emulator/X.app/icon-60.png92e663475d69b841^7c4672475d69b841^---0#0#1#-19%DVTDocumentLocation2@127"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-60.png00349ce5deffdf42^980"CpResource X/Resources/icons/icon-60.png build/emulator/X.app/icon-60.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-60.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"52416F61-22F1-4989-BEB2-44336135337D-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-60@2x.png build/emulator/X.app/icon-60@2x.png
+s409558343.313696
+e409558343.332156
+r1
+xCpResource
+xX/Resources/icons/icon-60@2x.png
+xbuild/emulator/X.app/icon-60@2x.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection40"Copy build/emulator/X.app/icon-60@2x.png79"CpResource X/Resources/icons/icon-60@2x.png build/emulator/X.app/icon-60@2x.png5a6750475d69b841^75ad55475d69b841^---0#0#1#-19%DVTDocumentLocation2@130"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-60@2x.png00349ce5deffdf42^989"CpResource X/Resources/icons/icon-60@2x.png build/emulator/X.app/icon-60@2x.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-60@2x.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"16D3DBA4-01E7-43F3-BA14-35DEB34934E0-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-72.png build/emulator/X.app/icon-72.png
+s409558343.268793
+e409558343.291335
+r1
+xCpResource
+xX/Resources/icons/icon-72.png
+xbuild/emulator/X.app/icon-72.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy build/emulator/X.app/icon-72.png73"CpResource X/Resources/icons/icon-72.png build/emulator/X.app/icon-72.png63ec44475d69b841^53954a475d69b841^---0#0#1#-19%DVTDocumentLocation2@127"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-72.png00349ce5deffdf42^980"CpResource X/Resources/icons/icon-72.png build/emulator/X.app/icon-72.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-72.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"8A0BD01A-9BEE-4040-9929-493F8ED38CF6-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-72@2x.png build/emulator/X.app/icon-72@2x.png
+s409558343.448917
+e409558343.483524
+r1
+xCpResource
+xX/Resources/icons/icon-72@2x.png
+xbuild/emulator/X.app/icon-72@2x.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection40"Copy build/emulator/X.app/icon-72@2x.png79"CpResource X/Resources/icons/icon-72@2x.png build/emulator/X.app/icon-72@2x.png100573475d69b841^15c97b475d69b841^---0#0#1#-19%DVTDocumentLocation2@130"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-72@2x.png00349ce5deffdf42^989"CpResource X/Resources/icons/icon-72@2x.png build/emulator/X.app/icon-72@2x.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-72@2x.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"AA8C6457-F6E2-4159-A37E-0BECEBFD368F-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-76.png build/emulator/X.app/icon-76.png
+s409558343.267839
+e409558343.294449
+r1
+xCpResource
+xX/Resources/icons/icon-76.png
+xbuild/emulator/X.app/icon-76.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy build/emulator/X.app/icon-76.png73"CpResource X/Resources/icons/icon-76.png build/emulator/X.app/icon-76.png31b644475d69b841^99614b475d69b841^---0#0#1#-19%DVTDocumentLocation2@127"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-76.png00349ce5deffdf42^980"CpResource X/Resources/icons/icon-76.png build/emulator/X.app/icon-76.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-76.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"A9DDE155-3885-4CB5-9BEB-FC8D81457679-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-76@2x.png build/emulator/X.app/icon-76@2x.png
+s409558343.447076
+e409558343.479028
+r1
+xCpResource
+xX/Resources/icons/icon-76@2x.png
+xbuild/emulator/X.app/icon-76@2x.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection40"Copy build/emulator/X.app/icon-76@2x.png79"CpResource X/Resources/icons/icon-76@2x.png build/emulator/X.app/icon-76@2x.png508e72475d69b841^e8a17a475d69b841^---0#0#1#-19%DVTDocumentLocation2@130"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-76@2x.png00349ce5deffdf42^989"CpResource X/Resources/icons/icon-76@2x.png build/emulator/X.app/icon-76@2x.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-76@2x.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"30136B79-E7C9-43EC-AA73-754215AE58B8-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-small.png build/emulator/X.app/icon-small.png
+s409558343.333895
+e409558343.360854
+r1
+xCpResource
+xX/Resources/icons/icon-small.png
+xbuild/emulator/X.app/icon-small.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection40"Copy build/emulator/X.app/icon-small.png79"CpResource X/Resources/icons/icon-small.png build/emulator/X.app/icon-small.png459d55475d69b841^36775c475d69b841^---0#0#1#-19%DVTDocumentLocation2@130"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-small.png00349ce5deffdf42^989"CpResource X/Resources/icons/icon-small.png build/emulator/X.app/icon-small.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-small.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"8026D31F-22FB-4431-91E2-A34F44DB0677-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon-small@2x.png build/emulator/X.app/icon-small@2x.png
+s409558343.375722
+e409558343.389270
+r1
+xCpResource
+xX/Resources/icons/icon-small@2x.png
+xbuild/emulator/X.app/icon-small@2x.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection43"Copy build/emulator/X.app/icon-small@2x.png85"CpResource X/Resources/icons/icon-small@2x.png build/emulator/X.app/icon-small@2x.png014d60475d69b841^5abd63475d69b841^---0#0#1#-19%DVTDocumentLocation2@133"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon-small@2x.png00349ce5deffdf42^998"CpResource X/Resources/icons/icon-small@2x.png build/emulator/X.app/icon-small@2x.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon-small@2x.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"DFCCE4ED-88BF-42F1-B3FC-0F80701C0DF1-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon.png build/emulator/X.app/icon.png
+s409558343.282718
+e409558343.311370
+r1
+xCpResource
+xX/Resources/icons/icon.png
+xbuild/emulator/X.app/icon.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection34"Copy build/emulator/X.app/icon.png67"CpResource X/Resources/icons/icon.png build/emulator/X.app/icon.pngcd7348475d69b841^79b24f475d69b841^---0#0#1#-19%DVTDocumentLocation2@124"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon.png00349ce5deffdf42^971"CpResource X/Resources/icons/icon.png build/emulator/X.app/icon.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"28A83DFD-6FBF-4FAC-8BE2-7BF72B5E2975-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/icons/icon@2x.png build/emulator/X.app/icon@2x.png
+s409558343.287019
+e409558343.313478
+r1
+xCpResource
+xX/Resources/icons/icon@2x.png
+xbuild/emulator/X.app/icon@2x.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy build/emulator/X.app/icon@2x.png73"CpResource X/Resources/icons/icon@2x.png build/emulator/X.app/icon@2x.pngde8d49475d69b841^e14050475d69b841^---0#0#1#-19%DVTDocumentLocation2@127"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/icon@2x.png00349ce5deffdf42^980"CpResource X/Resources/icons/icon@2x.png build/emulator/X.app/icon@2x.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/icons/icon@2x.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"843A65D6-B12B-4825-AD02-8FC062CA3D41-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/splash/Default-568h@2x~iphone.png build/emulator/X.app/Default-568h@2x~iphone.png
+s409558343.446092
+e409558343.474945
+r1
+xCpResource
+xX/Resources/splash/Default-568h@2x~iphone.png
+xbuild/emulator/X.app/Default-568h@2x~iphone.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection52"Copy build/emulator/X.app/Default-568h@2x~iphone.png104"CpResource X/Resources/splash/Default-568h@2x~iphone.png build/emulator/X.app/Default-568h@2x~iphone.png726b72475d69b841^5f9779475d69b841^---0#0#1#-19%DVTDocumentLocation2@142"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-568h@2x~iphone.png00349ce5deffdf42^1027"CpResource X/Resources/splash/Default-568h@2x~iphone.png build/emulator/X.app/Default-568h@2x~iphone.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-568h@2x~iphone.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"F5B19C52-B2B6-44D8-9272-7EA84D18E45A-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/splash/Default-Landscape@2x~ipad.png build/emulator/X.app/Default-Landscape@2x~ipad.png
+s409558343.334888
+e409558343.371336
+r1
+xCpResource
+xX/Resources/splash/Default-Landscape@2x~ipad.png
+xbuild/emulator/X.app/Default-Landscape@2x~ipad.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy build/emulator/X.app/Default-Landscape@2x~ipad.png110"CpResource X/Resources/splash/Default-Landscape@2x~ipad.png build/emulator/X.app/Default-Landscape@2x~ipad.png9cde55475d69b841^9d135f475d69b841^---0#0#1#-19%DVTDocumentLocation2@145"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Landscape@2x~ipad.png00349ce5deffdf42^1036"CpResource X/Resources/splash/Default-Landscape@2x~ipad.png build/emulator/X.app/Default-Landscape@2x~ipad.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Landscape@2x~ipad.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"8EF9A030-C8C9-469A-A048-8FCF17AC9256-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/splash/Default-Landscape~ipad.png build/emulator/X.app/Default-Landscape~ipad.png
+s409558343.361038
+e409558343.375403
+r1
+xCpResource
+xX/Resources/splash/Default-Landscape~ipad.png
+xbuild/emulator/X.app/Default-Landscape~ipad.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection52"Copy build/emulator/X.app/Default-Landscape~ipad.png104"CpResource X/Resources/splash/Default-Landscape~ipad.png build/emulator/X.app/Default-Landscape~ipad.pngd28d5c475d69b841^ef1a60475d69b841^---0#0#1#-19%DVTDocumentLocation2@142"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Landscape~ipad.png00349ce5deffdf42^1027"CpResource X/Resources/splash/Default-Landscape~ipad.png build/emulator/X.app/Default-Landscape~ipad.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Landscape~ipad.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"1260C4E4-CB19-40A1-9CC2-DFE5771BBC0E-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/splash/Default-Portrait@2x~ipad.png build/emulator/X.app/Default-Portrait@2x~ipad.png
+s409558343.371552
+e409558343.389261
+r1
+xCpResource
+xX/Resources/splash/Default-Portrait@2x~ipad.png
+xbuild/emulator/X.app/Default-Portrait@2x~ipad.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection54"Copy build/emulator/X.app/Default-Portrait@2x~ipad.png108"CpResource X/Resources/splash/Default-Portrait@2x~ipad.png build/emulator/X.app/Default-Portrait@2x~ipad.png48325f475d69b841^09a963475d69b841^---0#0#1#-19%DVTDocumentLocation2@144"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Portrait@2x~ipad.png00349ce5deffdf42^1033"CpResource X/Resources/splash/Default-Portrait@2x~ipad.png build/emulator/X.app/Default-Portrait@2x~ipad.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Portrait@2x~ipad.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"73709E87-5565-4BEB-A3DC-AADD48433DF9-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/splash/Default-Portrait~ipad.png build/emulator/X.app/Default-Portrait~ipad.png
+s409558343.375932
+e409558343.445388
+r1
+xCpResource
+xX/Resources/splash/Default-Portrait~ipad.png
+xbuild/emulator/X.app/Default-Portrait~ipad.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection51"Copy build/emulator/X.app/Default-Portrait~ipad.png102"CpResource X/Resources/splash/Default-Portrait~ipad.png build/emulator/X.app/Default-Portrait~ipad.png886460475d69b841^950e72475d69b841^---0#0#1#-19%DVTDocumentLocation2@141"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default-Portrait~ipad.png00349ce5deffdf42^1024"CpResource X/Resources/splash/Default-Portrait~ipad.png build/emulator/X.app/Default-Portrait~ipad.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default-Portrait~ipad.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"CC528E9A-ED17-4FED-8E53-53F05A2B65A1-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/splash/Default@2x~iphone.png build/emulator/X.app/Default@2x~iphone.png
+s409558343.389581
+e409558343.445425
+r1
+xCpResource
+xX/Resources/splash/Default@2x~iphone.png
+xbuild/emulator/X.app/Default@2x~iphone.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection47"Copy build/emulator/X.app/Default@2x~iphone.png94"CpResource X/Resources/splash/Default@2x~iphone.png build/emulator/X.app/Default@2x~iphone.png08e363475d69b841^996672475d69b841^---0#0#1#-19%DVTDocumentLocation2@137"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default@2x~iphone.png00349ce5deffdf42^1012"CpResource X/Resources/splash/Default@2x~iphone.png build/emulator/X.app/Default@2x~iphone.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default@2x~iphone.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"48C9F70F-56F8-491E-8AEC-1600D49F9710-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/Resources/splash/Default~iphone.png build/emulator/X.app/Default~iphone.png
+s409558343.445646
+e409558343.448605
+r1
+xCpResource
+xX/Resources/splash/Default~iphone.png
+xbuild/emulator/X.app/Default~iphone.png
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Copy build/emulator/X.app/Default~iphone.png88"CpResource X/Resources/splash/Default~iphone.png build/emulator/X.app/Default~iphone.pngf35572475d69b841^6fd872475d69b841^---0#0#1#-19%DVTDocumentLocation2@134"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Default~iphone.png00349ce5deffdf42^1003"CpResource X/Resources/splash/Default~iphone.png build/emulator/X.app/Default~iphone.png    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/Resources/splash/Default~iphone.png /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"3CC4A59F-27E1-4E36-84D5-D17A7372A93A-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CCpResource X/config.xml build/emulator/X.app/config.xml
+s409558343.267535
+e409558343.282410
+r1
+xCpResource
+xX/config.xml
+xbuild/emulator/X.app/config.xml
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Copy build/emulator/X.app/config.xml55"CpResource X/config.xml build/emulator/X.app/config.xml8ca144475d69b841^9d4c48475d69b841^---0#0#1#-19%DVTDocumentLocation2@126"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/config.xml00349ce5deffdf42^945"CpResource X/config.xml build/emulator/X.app/config.xml    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/config.xml /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"A609A6B0-BA35-4431-B019-E6C853666C7A-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CGenerateDSYMFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app.dSYM /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X
+s409558350.366463
+e409558350.778642
+r1
+xGenerateDSYMFile
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app.dSYM
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection122"Generate /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app.dSYM65"GenerateDSYMFile build/emulator/X.app.dSYM build/emulator/X.app/X4aed5d4e5d69b841^6556c74e5d69b841^---0#0#1#-19%DVTDocumentLocation2@120"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app.dSYM00349ce5deffdf42^961"GenerateDSYMFile build/emulator/X.app.dSYM build/emulator/X.app/X    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X -o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app.dSYM36"AF90EFA9-4DFB-481B-BFA6-213B146F9403-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CLd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X normal i386
+s409558344.634835
+e409558350.350829
+r1
+xLd
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X
+xnormal
+xi386
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/X.LinkFileList
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/libCordova.a
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/crt1.o
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/main.o
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/AppDelegate.o
+d/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/MainViewController.o
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libSystem.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libobjc.dylib
+d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.0/lib/darwin/libclang_rt.ios.a
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_override.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcache_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcommonCrypto_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcompiler_rt_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcopyfile_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libdispatch.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libdyld_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libmacho_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libnotify_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libremovefile_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_blocks.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_c.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_dnssd.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_info.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_m.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_network.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libunwind_sim.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libxpc.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_configuration.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_asl.dylib
+d/usr/lib/libSystem.B.dylib
+d/usr/lib/system/libcache.dylib
+d/usr/lib/system/libcommonCrypto.dylib
+d/usr/lib/system/libcompiler_rt.dylib
+d/usr/lib/system/libcopyfile.dylib
+d/usr/lib/system/libcorecrypto.dylib
+d/usr/lib/system/libdyld.dylib
+d/usr/lib/system/libkeymgr.dylib
+d/usr/lib/system/liblaunch.dylib
+d/usr/lib/system/libmacho.dylib
+d/usr/lib/system/libquarantine.dylib
+d/usr/lib/system/libremovefile.dylib
+d/usr/lib/system/libsystem_asl.dylib
+d/usr/lib/system/libsystem_blocks.dylib
+d/usr/lib/system/libsystem_c.dylib
+d/usr/lib/system/libsystem_configuration.dylib
+d/usr/lib/system/libsystem_dnssd.dylib
+d/usr/lib/system/libsystem_info.dylib
+d/usr/lib/system/libsystem_kernel.dylib
+d/usr/lib/system/libsystem_m.dylib
+d/usr/lib/system/libsystem_malloc.dylib
+d/usr/lib/system/libsystem_notify.dylib
+d/usr/lib/system/libsystem_platform.dylib
+d/usr/lib/system/libsystem_pthread.dylib
+d/usr/lib/system/libsystem_sandbox.dylib
+d/usr/lib/system/libunc.dylib
+d/usr/lib/system/libunwind.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/host/libdyld.dylib
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Link /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X37"Ld build/emulator/X.app/X normal i386d2a6a2485d69b841^90d9594e5d69b841^---0#0#1#--2196"Ld build/emulator/X.app/X normal i386    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv IPHONEOS_DEPLOYMENT_TARGET 7.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -L/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -F/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator -filelist /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/X.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/libCordova.a -ObjC -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=7.0 -framework AssetsLibrary /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/libCordova.a -framework CoreGraphics -framework MobileCoreServices -framework CoreLocation -Xlinker -dependency_info -Xlinker /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/X_dependency_info.dat -o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/X36"0C76DD0E-E234-45EF-A736-741F998223E7-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CPhaseScriptExecution Copy\ www\ directory /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Script-304B58A110DAC018002A0835.sh
+s409558342.762457
+e409558343.266997
+r1
+xPhaseScriptExecution
+xCopy www directory
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Script-304B58A110DAC018002A0835.sh
+o
+oreal	0m0.447s
+ouser	0m0.113s
+osys	0m0.188s
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Run custom shell script 'Copy www directory'120"PhaseScriptExecution Copy\ www\ directory build/X.build/Debug-iphonesimulator/X.build/Script-304B58A110DAC018002A0835.sh0af6c3465d69b841^fb5d44475d69b841^-42"real	0m0.447suser	0m0.113ssys	0m0.188s3(21%IDEActivityLogMessage2@14"real	0m0.447s-409558343#1#14#-0#-----2@14"user	0m0.113s-409558343#15#14#-0#-----2@13"sys	0m0.188s-409558343#29#13#-0#-----0#0#1#--23546"PhaseScriptExecution Copy\ www\ directory build/X.build/Debug-iphonesimulator/X.build/Script-304B58A110DAC018002A0835.sh    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv ACTION build    setenv AD_HOC_CODE_SIGNING_ALLOWED NO    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER deepakghosh    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv ALWAYS_USE_SEPARATE_HEADERMAPS YES    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD i386    setenv ARCHS_STANDARD_32_64_BIT i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_STANDARD_64_BIT x86_64    setenv ARCHS_STANDARD_INCLUDING_64_BIT "i386 x86_64"    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build    setenv BUILD_ROOT /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator    setenv CACHE_ROOT /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode    setenv CCHROOT /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLANG_ENABLE_OBJC_ARC YES    setenv CLANG_WARN_BOOL_CONVERSION YES    setenv CLANG_WARN_CONSTANT_CONVERSION YES    setenv CLANG_WARN_EMPTY_BODY YES    setenv CLANG_WARN_ENUM_CONVERSION YES    setenv CLANG_WARN_INT_CONVERSION YES    setenv CLANG_WARN__DUPLICATE_METHOD_MATCH YES    setenv CLASS_FILE_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app    setenv CODE_SIGNING_ALLOWED NO    setenv CODE_SIGN_CONTEXT_CLASS XCiPhoneSimulatorCodeSignContext    setenv CODE_SIGN_IDENTITY "iPhone Developer: Deepak Ghosh (AAY8E34846)"    setenv COLOR_DIAGNOSTICS NO    setenv COMBINE_HIDPI_IMAGES NO    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator    setenv CONFIGURATION_TEMP_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator    setenv CONTENTS_FOLDER_PATH X.app    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CREATE_INFOPLIST_SECTION_IN_BINARY NO    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEFAULT_KEXT_INSTALL_PATH /System/Library/Extensions    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources    setenv DERIVED_FILE_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH X.app/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/X.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME X.app.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH X.app/Executables    setenv EXECUTABLE_FOLDER_PATH X.app    setenv EXECUTABLE_NAME X    setenv EXECUTABLE_PATH X.app/X    setenv FILE_LIST /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH X.app/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME X.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER X/X-Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_THUMB_SUPPORT NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNDECLARED_SELECTOR YES    setenv GCC_WARN_UNINITIALIZED_AUTOS YES    setenv GCC_WARN_UNUSED_FUNCTION YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/include \"/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/usr/local/lib/include\" \"/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/UninstalledProducts/include\" \"/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator\""    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE X/X-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH X.app/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH X.app/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/X.dst/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER deepakghosh    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/X.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 7.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH X.app/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_DEPENDENCY_INFO_FILE /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/X_dependency_info.dat    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/X-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER YES    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_KEXT_INSTALL_PATH /Library/Extensions    setenv LIBRARY_SEARCH_PATHS "/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal/i386/X.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH X.app/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 13B42    setenv MAC_OS_X_VERSION_ACTUAL 1091    setenv MAC_OS_X_VERSION_MAJOR 1090    setenv MAC_OS_X_VERSION_MINOR 0901    setenv MODULE_CACHE_DIR /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/ModuleCache    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects    setenv OBJECT_FILE_DIR_normal /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Objects-normal    setenv OBJROOT /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build    setenv ONLY_ACTIVE_ARCH YES    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load \"/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/libCordova.a\" -ObjC"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH X.app/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/PkgInfo    setenv PKGINFO_PATH X.app/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 11B508    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 70000    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH X.app/PlugIns    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH X.app/PrivateHeaders    setenv PRODUCT_NAME X    setenv PRODUCT_SETTINGS_PATH /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT X    setenv PROJECT_DERIVED_FILE_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/DerivedSources    setenv PROJECT_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PROJECT_FILE_PATH /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X.xcodeproj    setenv PROJECT_NAME X    setenv PROJECT_TEMP_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build    setenv PROJECT_TEMP_ROOT /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build    setenv PUBLIC_HEADERS_FOLDER_PATH X.app/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator "    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH X.app/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk    setenv SDK_NAME iphonesimulator7.0    setenv SDK_PRODUCT_BUILD_VERSION 11B508    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH X.app/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH X.app/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv SRCROOT /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_KEXT_INSTALL_PATH /System/Library/Extensions    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1,2    setenv TARGETNAME X    setenv TARGET_BUILD_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator    setenv TARGET_NAME X    setenv TARGET_TEMP_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build    setenv TEMP_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build    setenv TEMP_FILES_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build    setenv TEMP_FILE_DIR /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build    setenv TEMP_ROOT /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build    setenv TOOLCHAINS com.apple.dt.toolchain.XcodeDefault    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH X.app    setenv UNSTRIPPED_PRODUCT NO    setenv USER deepakghosh    setenv USER_APPS_DIR /Users/deepakghosh/Applications    setenv USER_LIBRARY_DIR /Users/deepakghosh/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH X.app/version.plist    setenv VERSION_INFO_BUILDER deepakghosh    setenv VERSION_INFO_FILE X_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:X  PROJECT:X-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME X.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 5A3005    setenv XCODE_VERSION_ACTUAL 0502    setenv XCODE_VERSION_MAJOR 0500    setenv XCODE_VERSION_MINOR 0500    setenv XPCSERVICES_FOLDER_PATH X.app/XPCServices    setenv YACC yacc    setenv arch i386    setenv variant normal    /bin/sh -c /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/X.build/Debug-iphonesimulator/X.build/Script-304B58A110DAC018002A0835.sh36"B5D9A767-ABD3-450F-B8F4-726EBBB58BDC-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CProcessInfoPlistFile /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Info.plist /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist
+s409558342.758256
+e409558342.760857
+r1
+xProcessInfoPlistFile
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Info.plist
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection110"Process /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist67"ProcessInfoPlistFile build/emulator/X.app/Info.plist X/X-Info.plist693bc2465d69b841^74d3c2465d69b841^---0#0#1#-19%DVTDocumentLocation2@109"file:///Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist0000000000000000^1081"ProcessInfoPlistFile build/emulator/X.app/Info.plist X/X-Info.plist    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-infoPlistUtility /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/X/X-Info.plist -genpkginfo /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app/Info.plist36"2C6EAD32-4250-4943-B4F4-40A01C1756FC-
+b60B36008-31EF-45B6-97E6-68890168A46F
+
+CProcessPCH /var/folders/mq/nbpm3bcn3yd7kr3jv4xxblfh0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/X-Prefix-avvhbdxlwkyzqwfiqgwqmufcerbt/X-Prefix.pch.pch X/X-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CTouch /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app
+s409558350.781463
+e409558350.828253
+r1
+xTouch
+x/Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Touch /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app26"Touch build/emulator/X.app302bc84e5d69b841^bb0bd44e5d69b841^---0#0#1#--725"Touch build/emulator/X.app    cd /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/Users/deepakghosh/bin/Sencha/Cmd/4.0.1.45:/Users/deepakghosh/bin/Sencha/Cmd/4.0.0.203:/Users/deepakghosh/bin/Sencha/Cmd/3.1.2.342:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /usr/bin/touch -c /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/platforms/ios/build/emulator/X.app36"65F604C9-033C-4ECF-B8D9-2E6034B8EF99-
+b60B36008-31EF-45B6-97E6-68890168A46F
+

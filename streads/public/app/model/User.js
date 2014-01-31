@@ -52,7 +52,7 @@ Ext.define('X.model.User', {
             type: 'rest',
             idParam: 'id',
             appendId: true,
-            url: '/users',
+            url: X.config.Config.getAPI_ENDPOINT() + 'users',
             batchActions: true,
             reader: {
                 type: 'json',

@@ -14,7 +14,7 @@ var UH = require('../helpers/user');
 
 var Users = function() {
     var me = this;
-
+    
     me.respondsWith = [
         'json'
     ];
@@ -39,10 +39,10 @@ var Users = function() {
         User.first({
             usernameEmail: user.usernameEmail
         }, function(err, data) {
-            if(__.isObject(err)) {
+            if (__.isObject(err)) {
                 self.respond(AH.getFailureResponseObject(params, err));
             }
-            else if(__.isObject(data)) {
+            else if (__.isObject(data)) {
                 self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('usernameEmailIsAlreadyTaken')));
             }
             else {
@@ -94,11 +94,11 @@ var Users = function() {
     //            });
     //        }
     //    };
-    
+
     // Authenticated: logs a user out
     me.logout = function(req, resp, params) {
         var self = this;
-        
+
         var session = self.session;
         session.unset('userId');
         session.unset('authType');
@@ -119,13 +119,13 @@ var Users = function() {
     // Authenticated: display a particular user using id from params
     me.show = function(req, resp, params) {
         var self = this;
-        
+
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
         else {
             // If requested user is the same as authenticated user, then just use showMe()
-            if(params.id === me.authenticatedUser.id) {
+            if (params.id === me.authenticatedUser.id) {
                 me.showMe(req, resp, params);
             }
             else {
@@ -168,7 +168,7 @@ var Users = function() {
             User.first(authenticatedUser.id, function(err, user) {
                 var skip = User.fieldUpdateExclusionArray;
                 // Update password only if it has changed
-                if(!params.password) {
+                if (!params.password) {
                     skip.push('password');
                 }
                 user.updateAttributes(params, {
@@ -178,10 +178,10 @@ var Users = function() {
                     user.password = cryptPass(user.password);
                 }
                 user.save(function(savedUserErr, savedUser) {
-                    if(__.isObject(savedUserErr)) {
+                    if (__.isObject(savedUserErr)) {
                         self.respond(AH.getFailureResponseObject(params, savedUserErr));
                     }
-                    else if(!__.isObject(savedUser)) {
+                    else if (!__.isObject(savedUser)) {
                         self.respond(AH.getFailureResponseObject(params, savedUserErr, AH.getResponseMessage('authenticatedUserCouldNotBeUpdated')));
                     }
                     else {
@@ -205,7 +205,31 @@ var Users = function() {
         User.remove(params.id, function(err, user) {
             if (err) {
                 self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeDeleted')));
-            } else {
+            }
+            else {
+                user.getGroups(function(err, groups) {
+                    if (!err) {
+                        var Group = geddy.model.Group;
+                        var found = false;
+                        groups.forEach(function(thisGroup) {
+                            Group.destroyGivenGroupAndAllThroughAssociations({
+                                params: params,
+                                group: thisGroup,
+                                groupship: groupshipToBeDeletedData
+                            });
+                            if (thisGroup.id === id) {
+                                found = true;
+                                self.respond(AH.getSuccessResponseObject(params, thisGroup));
+                            }
+                        });
+                        if(!found) {
+                            self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
+                        }
+                    }
+                    else {
+                        self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupsFoundForAuthenticatedUser')));
+                    }
+                });
                 __.each(User.fieldShowExclusionArray, function(field) {
                     if (__.has(user, field)) {
                         delete user[field];

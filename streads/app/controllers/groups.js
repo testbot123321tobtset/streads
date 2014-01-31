@@ -26,7 +26,7 @@ var Groups = function() {
             var authenticatedUserId = me.authenticatedUser.id;
             // Make sure this is the authenticated user
             params.createdById = authenticatedUserId;
-            if(__.isString(params.id)) {
+            if (__.isString(params.id)) {
                 // Ext sends an id by default, and this id corresponds to the DOM id at the time the request was made
                 // But we want this id to be Mongo id, so delete it, and Mongo will generate one by default
                 delete params['id'];
@@ -39,20 +39,25 @@ var Groups = function() {
                 if (!err) {
                     if (!data) {
                         var User = geddy.model.User;
-                        var skip = User.fieldUpdateExclusionArray;
-                        skip.push('password');
-                        var owner = me.authenticatedUser;
-                        var group = Group.create(params);
-                        owner.updateAttributes(params, {
-                            skip: skip
-                        });
-                        owner.addGroup(group);
-                        owner.save(function(ownerSaveErr, ownerSaveData) {
-                            if (!ownerSaveErr) {
-                                self.respond(AH.getSuccessResponseObject(params, ownerSaveData));
+                        User.first({
+                            id: authenticatedUserId
+                        }, function(fetchFromDbAuthenticatedUserErr, fetchedFromDbAuthenticatedUser) {
+                            if (__.isObject(fetchFromDbAuthenticatedUserErr) || !__.isObject(fetchedFromDbAuthenticatedUser)) {
+                                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('noAuthenticatedUserFound')));
                             }
                             else {
-                                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('groupForAuthenticatedUserCouldNotBeCreated')));
+                                var group = Group.create(params);
+                                var owner = fetchedFromDbAuthenticatedUser;
+                                owner.addGroup(group);
+                                owner.save(function(ownerSaveErr, ownerSaveData) {
+                                    if (!__.isObject(ownerSaveErr) && __.isObject(ownerSaveData)) {
+                                        me.authenticatedUser = ownerSaveData;
+                                        self.respond(AH.getSuccessResponseObject(params, ownerSaveData));
+                                    }
+                                    else {
+                                        self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('groupForAuthenticatedUserCouldNotBeCreated')));
+                                    }
+                                });
                             }
                         });
                     }
@@ -68,17 +73,17 @@ var Groups = function() {
     };
     me.index = function(req, resp, params) {
         var self = this;
-        
+
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
         else {
             var user = me.authenticatedUser;
             user.getGroups(function(err, groups) {
-                if(__.isObject(err)) {
+                if (__.isObject(err)) {
                     self.respond(AH.getFailureResponseObject(params, err));
                 }
-                else if(!__.isObject(groups)) {
+                else if (!__.isObject(groups)) {
                     self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupsFoundForAuthenticatedUser')));
                 }
                 else {
@@ -86,10 +91,10 @@ var Groups = function() {
                 }
             });
         }
-    },
+    };
     me.getMyGroupData = function(req, resp, params) {
         var self = this;
-        
+
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
@@ -106,7 +111,7 @@ var Groups = function() {
                                 self.respond(AH.getSuccessResponseObject(params, thisGroup));
                             }
                         });
-                        if(!found) {
+                        if (!found) {
                             self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
                         }
                     }
@@ -129,17 +134,17 @@ var Groups = function() {
         else {
             var Group = geddy.model.Group;
             var givenGroupId = params.id;
-            if(!__.isString(givenGroupId)) {
+            if (!__.isString(givenGroupId)) {
                 self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupIdFoundInRequestForAuthenticatedUser')));
             }
             else {
                 Group.first({
                     id: givenGroupId
                 }, function(err, groupToBeUpdated) {
-                    if(__.isObject(err)) {
+                    if (__.isObject(err)) {
                         self.respond(AH.getFailureResponseObject(params, err));
                     }
-                    else if(!__.isObject(groupToBeUpdated)) {
+                    else if (!__.isObject(groupToBeUpdated)) {
                         self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
                     }
                     else {
@@ -169,36 +174,39 @@ var Groups = function() {
         else {
             var Group = geddy.model.Group;
             var givenGroupId = params.id;
-            if(!__.isString(givenGroupId)) {
+            if (!__.isString(givenGroupId)) {
                 self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupIdFoundInRequestForAuthenticatedUser')));
             }
             else {
                 Group.first({
                     id: givenGroupId
                 }, function(err, groupToBeDeleted) {
-                    if(__.isObject(err)) {
+                    if (__.isObject(err)) {
                         self.respond(AH.getFailureResponseObject(params, err));
                     }
-                    else if(!__.isObject(groupToBeDeleted)) {
+                    else if (!__.isObject(groupToBeDeleted)) {
                         self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
                     }
                     else {
                         var Groupship = geddy.model.Groupship;
-                        Groupship.first({
+                        Groupship.all({
                             groupId: givenGroupId,
                             userId: me.authenticatedUser.id
-                        }, function(groupshipToBeDeletedErr, groupshipToBeDeletedData) {
-                            if(__.isObject(groupshipToBeDeletedErr)) {
+                        }, function(groupshipToBeDeletedErr, groupshipsToBeDeletedData) {
+                            if (__.isObject(groupshipToBeDeletedErr)) {
                                 self.respond(AH.getFailureResponseObject(params, err));
                             }
-                            else if(!__.isObject(groupshipToBeDeletedData)) {
-                                self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
-                            }
+//                            else if (!__.isObject(groupshipsToBeDeletedData)) {
+//                                self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
+//                            }
                             else {
-                                me.destroyGivenGroupAndAllThroughAssociations({
-                                    params: params,
-                                    group: groupToBeDeleted,
-                                    groupship: groupshipToBeDeletedData
+                                console.log(typeof(groupshipsToBeDeletedData));
+                                groupshipsToBeDeletedData.forEach(function(thisGroupshipToBeDeletedData) {
+                                    me.destroyGivenGroupAndAllThroughAssociations({
+                                        params: params,
+                                        group: groupToBeDeleted,
+                                        groupship: thisGroupshipToBeDeletedData
+                                    });
                                 });
                             }
                         });

@@ -1,0 +1,297 @@
+Sencha Cmd v4.0.2.67
+[INF] 
+[INF] init-plugin:
+[INF] 
+[INF] cmd-root-plugin.init-properties:
+[INF] 
+[INF] init-properties:
+[INF] 
+[INF] init-sencha-command:
+[INF] 
+[INF] init:
+[INF] 
+[INF] app-build-impl:
+[INF] 
+[INF] -before-init-local:
+[INF] 
+[INF] -init-local:
+[INF] 
+[INF] -after-init-local:
+[INF] 
+[INF] init-local:
+[INF] 
+[INF] find-cmd-in-path:
+[INF] 
+[INF] find-cmd-in-environment:
+[INF] 
+[INF] find-cmd-in-shell:
+[INF] 
+[INF] init-cmd:
+[INF]      [echo] Using Sencha Cmd from /Users/deepakghosh/bin/Sencha/Cmd/4.0.2.67 for /Library/WebServer/Documents/myapps/touch/streads/streads/public/build.xml
+[INF] 
+[INF] -before-init:
+[INF] 
+[INF] -init:
+[INF] Initializing Sencha Cmd ant environment
+[INF] Adding antlib taskdef for com/sencha/command/compass/ant/antlib.xml
+[WRN] The application was last modified by an older version of Sencha Cmd (4.0.1.45), current is 4.0.2.67. Please run 'sencha app upgrade -noframework' to update to 4.0.2.67.
+[INF] 
+[INF] -after-init:
+[INF] 
+[INF] -before-init-defaults:
+[INF] 
+[INF] -init-defaults:
+[INF] 
+[INF] -after-init-defaults:
+[INF] 
+[INF] -init-compiler:
+[INF] 
+[INF] init:
+[INF] 
+[INF] -before-build:
+[INF] 
+[INF] refresh:
+[INF] 
+[INF] -before-refresh:
+[INF] 
+[INF] -init:
+[INF] 
+[INF] -init-compiler:
+[INF] 
+[INF] -detect-app-build-properties:
+[INF] Loading app json manifest...
+[INF] Loading classpath entry /Library/WebServer/Documents/myapps/touch/streads/streads/public/touch/src
+[INF] Loading classpath entry /Library/WebServer/Documents/myapps/touch/streads/streads/public/app.js
+[INF] Loading classpath entry /Library/WebServer/Documents/myapps/touch/streads/streads/public/app
+[INF] Loading classpath entry /Library/WebServer/Documents/myapps/touch/streads/streads/public/build/temp/native/X/sencha-compiler/app
+[INF] Loading classpath entry /Library/WebServer/Documents/myapps/touch/streads/streads/public/build/temp/native/X/sencha-compiler/app
+[INF] Concatenating output to file /Library/WebServer/Documents/myapps/touch/streads/streads/public/build/temp/native/X/sencha-compiler/cmd-packages.js
+[INF] Adding external reference : @full-page => @overrides
+[INF] Loading classpath entry /Library/WebServer/Documents/myapps/touch/streads/streads/public/build/temp/native/X/sencha-compiler/cmd-packages.js
+[INF] Adding external reference : Ext.util.Observable => /Library/WebServer/Documents/myapps/touch/streads/streads/public/build/temp/native/X/sencha-compiler/cmd-packages.js
+[INF] 
+[INF] -refresh-app:
+[INF] Appending concatenated output to file /Library/WebServer/Documents/myapps/touch/streads/streads/public/bootstrap.js
+[INF] Appending concatenated output to file /Library/WebServer/Documents/myapps/touch/streads/streads/public/bootstrap.js
+[INF] Appending concatenated output to file /Library/WebServer/Documents/myapps/touch/streads/streads/public/bootstrap.js
+[INF] Appending concatenated output to file /Library/WebServer/Documents/myapps/touch/streads/streads/public/bootstrap.js
+[INF] Appending concatenated output to file /Library/WebServer/Documents/myapps/touch/streads/streads/public/bootstrap.js
+[INF] Appending content to /Library/WebServer/Documents/myapps/touch/streads/streads/public/bootstrap.json
+[INF] 
+[INF] -refresh:
+[INF] 
+[INF] -after-refresh:
+[INF] 
+[INF] resolve:
+[INF] 
+[INF] js:
+[INF] 
+[INF] -before-js:
+[INF] 
+[INF] -init:
+[INF] 
+[INF] -init-compiler:
+[INF] 
+[INF] -detect-app-build-properties:
+[INF] 
+[INF] -compile-js:
+[INF] Compressing data with YuiJavascriptCompressor
+[INF] Concatenating output to file /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/app.js
+[INF] 
+[INF] -js:
+[INF] 
+[INF] -after-js:
+[INF] 
+[INF] resources:
+[INF] 
+[INF] -before-resources:
+[INF] 
+[INF] -before-inherit-resources:
+[INF] 
+[INF] -before-copy-resources:
+[INF] 
+[INF] -init:
+[INF] 
+[INF] -init-compiler:
+[INF] 
+[INF] -resources:
+[INF] merging resources into /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/resources
+[INF] merged 0 resources into /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/resources
+[INF] merging resources into /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www
+[INF] merged 0 resources into /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www
+[INF] 
+[INF] -after-copy-resources:
+[INF] 
+[INF] -after-inherit-resources:
+[INF] 
+[INF] -after-resources:
+[INF] 
+[INF] sass:
+[INF] 
+[INF] -before-sass:
+[INF] 
+[INF] -compass-compile-theme-package:
+[INF] 
+[INF] -compass-compile-theme-folders:
+[INF] 
+[INF] -compass-compile-sass-dir:
+[INF] executing compass using system installed ruby runtime
+identical ../css/app.css 
+identical ../css/core/button.css 
+identical ../css/core/card.css 
+identical ../css/core/container.css 
+identical ../css/core/field.css 
+identical ../css/core/fieldset.css 
+identical ../css/core/formpanel.css 
+identical ../css/core/listview.css 
+identical ../css/core/mask.css 
+identical ../css/core/messagebox.css 
+identical ../css/core/panel.css 
+identical ../css/core/picker.css 
+identical ../css/core/sheet.css 
+identical ../css/core/tabpanel.css 
+identical ../css/core/textarea.css 
+identical ../css/core/toolbar.css 
+identical ../css/custom/button.css 
+identical ../css/custom/card.css 
+identical ../css/custom/container.css 
+identical ../css/custom/field.css 
+identical ../css/custom/fieldset.css 
+identical ../css/custom/formpanel.css 
+identical ../css/custom/listview.css 
+identical ../css/custom/mask.css 
+identical ../css/custom/messagebox.css 
+identical ../css/custom/panel.css 
+identical ../css/custom/picker.css 
+identical ../css/custom/sheet.css 
+identical ../css/custom/tabpanel.css 
+identical ../css/custom/textarea.css 
+identical ../css/custom/toolbar.css 
+identical ../css/shell.css 
+[INF] 
+[INF] -compass-compile:
+[INF] 
+[INF] -sass:
+[INF] 
+[INF] -after-sass:
+[INF] 
+[INF] slice:
+[INF] 
+[INF] -before-slice:
+[INF] 
+[INF] -slice-images:
+[INF] 
+[INF] -slice:
+[INF] 
+[INF] -after-slice:
+[INF] 
+[INF] page:
+[INF] 
+[INF] -before-page:
+[INF] 
+[INF] -init:
+[INF] 
+[INF] -init-compiler:
+[INF] 
+[INF] -copy-app-resources:
+[INF] Copying page resources to /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www
+[INF] copying /Library/WebServer/Documents/myapps/touch/streads/streads/public/resources/css/app.css to /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/resources/css/app.css
+[INF] 
+[INF] -generate-deltas:
+[INF] 
+[INF] -detect-app-build-properties:
+[INF] 
+[INF] -build-standalone-json-manifest:
+[INF] Writing content to /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/app.json
+[INF] 
+[INF] -build-output-page:
+[INF] 
+[INF] -build-output-microload-page:
+[INF] Writing content to /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/microloader.js
+[INF] Appending content to /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/microloader.js
+[INF] Building output markup to /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/index.html
+[INF]    [delete] Deleting: /Library/WebServer/Documents/myapps/touch/streads/streads/public/phonegap/www/microloader.js
+[INF] 
+[INF] -generate-cache-manifest:
+[INF] 
+[INF] -page:
+[INF] 
+[INF] -after-page:
+[INF] 
+[INF] native-package:
+[INF] 
+[INF] -before-native-package:
+[INF] 
+[INF] -before-init-local:
+[INF] 
+[INF] -init-local:
+[INF] 
+[INF] -after-init-local:
+[INF] 
+[INF] init-local:
+[INF] 
+[INF] find-cmd-in-path:
+[INF] 
+[INF] find-cmd-in-environment:
+[INF] 
+[INF] find-cmd-in-shell:
+[INF] 
+[INF] init-cmd:
+[INF]      [echo] Using Sencha Cmd from /Users/deepakghosh/bin/Sencha/Cmd/4.0.2.67 for /Library/WebServer/Documents/myapps/touch/streads/streads/public/build.xml
+[INF] 
+[INF] -before-init:
+[INF] 
+[INF] -init:
+[INF] 
+[INF] -after-init:
+[INF] 
+[INF] -before-init-defaults:
+[INF] 
+[INF] -init-defaults:
+[INF] 
+[INF] -after-init-defaults:
+[INF] 
+[INF] -init-compiler:
+[INF] 
+[INF] init:
+[INF] 
+[INF] -before-phonegap-init:
+[INF] 
+[INF] -phonegap-init:
+[INF] 
+[INF] -after-phonegap-init:
+[INF] 
+[INF] phonegap-init:
+[INF] 
+[INF] -before-phonegap:
+[INF] 
+[INF] phonegap-copy-build:
+[INF] 
+[INF] -before-phonegap-copy-build:
+[INF] 
+[INF] -phonegap-copy-build:
+[INF] 
+[INF] -after-phonegap-copy-build:
+[INF] 
+[INF] -phonegap-build:
+[INF] 
+[INF] -phonegap-local-build:
+[INF] [shellscript] [phonegap] compiling iOS...
+[INF] [shellscript] [phonegap] successfully compiled iOS app
+[INF] 
+[INF] -phonegap-run:
+[INF] 
+[INF] -after-phonegap:
+[INF] 
+[INF] -native-package:
+[INF] 
+[INF] -after-native-package:
+[INF] 
+[INF] -build:
+[INF] 
+[INF] -after-build:
+[INF] 
+[INF] build:
+[INF] 
+[INF] app-build:
+

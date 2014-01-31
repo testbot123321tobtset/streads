@@ -1,0 +1,41 @@
+@import 'compass';
+@import '_variables';
+@import '_mixins';
+
+.x-list {
+    .x-list-disclosure {
+        &:before {
+            font-family: 'iOS7';
+            // Changed
+            // color: #ccc;
+            color: $silver;
+            // Changed
+            // line-height: 26px;
+            line-height: 22px;
+        }
+    }
+    .x-list-item {
+        &.x-item-pressed {
+            /*background-color: $list-item-pressed-color !important;
+            border-right: 1px solid $default-border-color-for-fieldsets !important;
+            &:last-child {
+                border-right: 0px solid transparent !important;
+            }*/
+            background-color: transparent !important;
+        }
+        &.x-item-selected {
+            &.x-list-item-tpl {
+                background-color: transparent;
+                &:before {
+                    border-bottom: 1px solid $default-border-color-for-fieldsets;
+                }
+                &:last-child {
+                    &:before {
+                        @include no-border;
+                    }
+                }
+            }
+            color: $default-theme-color;
+        }
+    }
+}

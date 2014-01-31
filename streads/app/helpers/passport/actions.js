@@ -119,13 +119,13 @@ var actions = new (function() {
                 if (!cryptPass) {
                     cryptPass = require('./index').cryptPass;
                 }
-
+                
                 if (bcrypt.compareSync(password, user.password)) {
                     self.session.set('userId', user.id);
                     self.session.set('authType', 'local');
                     // No third-party auth tokens
                     self.session.set('authData', {});
-                    self.respond(AH.getSuccessResponseObject(false));
+                    self.respond(AH.getSuccessResponseObject(params, user));
                 } else {
                     self.respond(AH.getFailureResponseObject(false, err, AH.getResponseMessage('userAuthenticationFailed')));
                 }

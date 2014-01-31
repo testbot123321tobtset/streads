@@ -1,6 +1,9 @@
 Ext.define('X.config.Config', {
     singleton: true,
     config: {
+        // Server Config
+        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
+        
         // TO DO: Update these URLs when you have the UIs
         DEFAULT_LOGIN_PAGE: 'user/login',
         DEFAULT_USER_SIGNUP_PAGE: 'user/signup',
@@ -44,6 +47,8 @@ Ext.define('X.config.Config', {
         DETAILED_DEBUG: false,
         
         // UI
+        // When you change any of these settings, make sure you change overrides as well
+        // E.g. overrides.TabPanel
         defaultToolbarHeight: 46,
         // Animations
         defaultAnimationDuration: 300,
