@@ -6,26 +6,30 @@
     background-color: #f8f9f9;
     min-height: 2.85em;
     
-    background-color: transparent;
+    @include no-border;
+    @include no-background;
 
     &.x-docked-bottom {
-        border-top: 1px solid #ccc;
-        border-top-width: 0px;
+        @include no-border;
+        @include no-background;
     }
 
     &.x-docked-top {
-        border-bottom: 1px solid #ccc;
+        @include no-border;
+        @include no-background;
         .x-button {
             padding-top: 0em;
         }
     }
 
     &.x-docked-left {
-        border-right: 1px solid #ccc;
+        @include no-border;
+        @include no-background;
     }
 
     &.x-docked-right {
-        border-left: 1px solid #ccc;
+        @include no-border;
+        @include no-background;
     }
 
     .x-title {

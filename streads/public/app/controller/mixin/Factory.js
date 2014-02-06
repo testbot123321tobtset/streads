@@ -92,6 +92,7 @@ Ext.define('X.controller.mixin.Factory', {
             xtype: 'cameratriggerpanel'
         }));
         cameraTriggerPanel.show();
+        console.log(cameraTriggerPanel.isHidden());
     },
     generateAndFillViewportWithUserSignupWindow: function() {
         var me = this;

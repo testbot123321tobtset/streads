@@ -10,7 +10,7 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
             pack: 'center',
             align: 'stretch'
         },
-        bottom: '-0.05em',
+        bottom: 0,
         cls: 'camera-trigger-panel',
         zIndex: 10,
         items: [

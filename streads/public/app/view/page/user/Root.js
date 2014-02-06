@@ -9,11 +9,9 @@ Ext.define('X.view.page.user.Root', {
     config: {
         cls: 'page-user-root',
         tabBarPosition: 'bottom',
-        /*
-         * Use this to make the bottom tab bar transparent
         tabBar: {
             docked: 'bottom',
-            cls: 'x-stretched x-docked-bottom x-transparent-bottom-tabbbar',
+            cls: 'x-stretched x-docked-bottom x-full-width',
             bottom: 0,
             layout: {
                 type: 'hbox',
@@ -21,7 +19,6 @@ Ext.define('X.view.page.user.Root', {
                 pack: 'center'
             }
         },
-        */
         items: [
             {
                 layout: {
@@ -31,7 +28,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userGroups',
                 cls: 'user-groups',
-                title: 'Groups',
+                iconCls: 'home',
                 items: [
                     {
                         flex: 1,
@@ -47,7 +44,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userMore',
                 cls: 'user-more',
-                title: 'More',
+                iconCls: 'more',
                 items: [
                     {
                         flex: 1,

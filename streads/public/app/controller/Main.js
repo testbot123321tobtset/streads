@@ -71,8 +71,10 @@ Ext.define('X.controller.Main', {
         if (me.getDebug()) {
             console.log("Debug: X.controller.Main.onCameraTriggerButtonDoubleTap()");
         }
+        // This should bring up the camera interface
 //        Ext.device.Camera.capture({
 //            success: function(image) {
+//                console.log(image);
 //            },
 //            quality: 75,
 //            width: 300,
@@ -81,7 +83,11 @@ Ext.define('X.controller.Main', {
 //            source: 'camera',
 //            encoding: 'jpg'
 //        });
-        // This should bring up the camera interface
+//        navigator.camera.getPicture(success, fail, {
+//            quality: 50,
+//            destinationType: navigator.camera.DestinationType.FILE_URI,
+//            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+//        });
         return me;
     }
 });

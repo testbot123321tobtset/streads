@@ -4,20 +4,60 @@
 @import 'core/panel';
 
 .camera-trigger-panel {
-    @include no-background;
     @include no-border;
-    min-height: 2.75em !important;
-    left: .15em !important;
+    @include no-background;
+    
+    bottom: 0 !important;
+    margin: $default-iconned-button-margin-from-edge;
+                
+    min-height: $tabbar-tab-height !important;
+    height: $tabbar-tab-height !important;
+    min-width: $tabbar-tab-min-width !important;
+    width: $tabbar-tab-width !important;
+    
+    opacity: $default-iconned-button-outer-container-opacity;
+
     .x-panel-inner {
-        @include no-background;
         @include no-border;
+        @include no-background;
+        
         .camera-trigger-button {
-            @include no-background;
-            @include no-border;
+
+            min-height: $tabbar-tab-height !important;
+            height: $tabbar-tab-height !important;
+            min-width: $tabbar-tab-min-width !important;
+            width: $tabbar-tab-width !important;
+
+            @include border-radius($tabbar-tab-border-radius);
+
+            background-color: $tabbar-tab-background-color;
+
+            border-width: $tabbar-tab-border-width;
+            border-style: $tabbar-tab-border-style;
+            border-color: $tabbar-tab-border-color;
+
             margin: 0 !important;
-            .x-button-icon.camera {
-                font-size: 1.5em;
-                color: $my-orange;
+            
+            &.x-button-pressing {
+                background-color: $default-iconned-pressed-background-color;
+                border-color: $default-iconned-borer-pressed-color;
+            }
+
+            .x-button-icon {
+                @include full-width;
+                @include full-height;
+
+                @include no-text-shadow;
+                @include no-text-stroke;
+
+                &:before {
+                    margin-left: $default-iconned-button-margin-left;
+                    margin-top: $default-iconned-button-margin-top;
+
+                    font-size: $tabbar-tab-button-font-size;
+                    line-height: $tabbar-tab-button-line-height;
+                    color: $tabbar-tab-button-color;
+                }
             }
         }
     }

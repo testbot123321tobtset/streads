@@ -1,6 +1,24 @@
 @import 'compass';
 @import '_variables';
 
+/* Widths and Heights */
+@mixin full-width {
+    width: 100% !important;
+}
+
+@mixin full-height {
+    height: 100% !important;
+}
+
+/* Margins and Paddings */
+@mixin no-margin {
+    margin: 0 !important;
+}
+
+@mixin no-padding {
+    padding: 0 !important;
+}
+
 /* Borders */
 @mixin no-border {
     border: 0px solid transparent !important;
@@ -59,6 +77,13 @@
 @mixin no-background-not-important {
     background-image: none;
     background-color: transparent;
+}
+
+/* Transparency */
+@mixin full-transparency {
+    opacity: 0 !important;
+    background-image: none !important;
+    background-color: transparent !important;
 }
 
 /* Box shadow */
@@ -367,6 +392,13 @@
 @mixin mega-text-shadow {
      @include text-shadow(black 0px 0px 2px);
 }
+
+/* Text stroke */
+@mixin no-text-stroke {
+    -webkit-text-stroke-width: 0px !important;
+    -webkit-text-stroke-color: transparent !important;
+}
+
 
 /* 
     Letterpress effect as shown in http://www.midwinter-dg.com/permalink-7-great-css-based-text-effects-using-the-text-shadow-property_2011-03-03.html

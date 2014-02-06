@@ -1,8 +1,15 @@
+$include-default-icons: false;
+
 @import 'sencha-touch/cupertino';
 @import 'sencha-touch/cupertino/all';
 
+/* http://pictos.cc/font/ */
 @include icon('camera', 'v');
 @include icon('video', 'V');
+@include icon('home', 'H');
+@include icon('more', '.');
+@include icon('news', 'N');
+@include icon('add', '&');
 
 @import 'shell';
 

@@ -14,77 +14,67 @@
 }*/
 
 .x-tabbar {
-    background-color: transparent;
-    &.x-docked-top {
-        padding: 0px;
-        min-height: 0em;
-        border-width: 0px;
-        .x-tab {
-            padding: 0px;
-            @include border-radius(0px);
-            border: 0px solid transparent;
-            
-            &.x-tab-pressed {
-/*                background-color: $tabbar-pressed-background-color;*/
-            }
-            
-            .x-button-label {
-                color: #929292;
-                font-size: 30px;
-                line-height: 45px;
-                font-weight: 100;
-                padding: 0px
-            }
-
-            border-bottom: 1px solid #CCC;
-            /*border-right: 1px solid #CCC;*/
-            &:first-child {
-                /*border-right: 1px solid #CCC !important;*/
-            }
-            &:last-child {
-                border-right: 0px solid transparent;
-            }
-            
-            &.x-tab-active {
-                @include no-background;
-                .x-button-label {
-                    color: $ios7-blue;
-                }
-            }
-        }
-        .x-tab:first-child, .x-tab:last-child {
-            @include border-radius(0px);
+    @include no-border;
+    @include no-background;
+    
+    &.x-docked-bottom {
+        @include no-padding;
+        
+        @include no-border;
+        @include no-background;
+        
+        margin-bottom: $tabbar-margin-from-edge;
+    
+        &.x-docked-bottom-that-is-top {
+            margin-top: $tabbar-margin-from-edge;
         }
     }
-    &.x-transparent-bottom-tabbbar {
-        width: 100% !important;
-        opacity: $default-opacity-on-floating-foreground-element !important;
-        background-color: $default-background-color-on-floating-foreground-element !important;
+    
+    &.x-full-width {
+        @include full-width;
+        @include no-background;
     }
+    
     .x-tab {
-        margin-left: 0.3em;
-        margin-right: 0.3em;
+        height: $tabbar-tab-height !important;
+        min-width: $tabbar-tab-min-width !important;
+        width: $tabbar-tab-width !important;
+
+        @include border-radius($tabbar-tab-border-radius);
+        border-width: $tabbar-tab-border-width;
+        border-style: $tabbar-tab-border-style;
+        border-color: $tabbar-tab-border-color;
+        background-color: $tabbar-tab-background-color;
+        
+        opacity: $tabbar-tab-opacity;
+        
+        margin: $tabbar-tab-margin;
+        
         .x-button-icon {
-            display: none !important;
-            width: 0em;
-            height: 0em;
-
-            .x-button-icon.x-hidden {
-                display: none !important;
-            }
-
+            @include full-width;
+            @include full-height;
+            
+            @include no-text-shadow;
+            @include no-text-stroke;
+            
             &:before {
-                color: #949494;
-                text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-                font-size: 1.4em;
-                line-height: 1.15em;
+                margin-left: $tabbar-tab-button-margin-left;
+                margin-top: $tabbar-tab-button-margin-top;
+                
+                font-size: $tabbar-tab-button-font-size;
+                line-height: $tabbar-tab-button-line-height;
+                color: $tabbar-tab-button-color;
             }
         }
-        .x-button-label {
-            font-size: 30px;
-            line-height: 45px;
-            font-weight: 100;
-            padding: 0px 1px;
+        
+        &.x-tab-pressed {
+            background-color: $tabbar-tab-pressed-background-color;
+            border-color: $tabbar-tab-pressed-border-color;
+        }
+
+        &.x-tab-active {
+            border-color: $tabbar-tab-active-border-color;
+            background-color: $tabbar-tab-active-background-color;
         }
     }
 }
