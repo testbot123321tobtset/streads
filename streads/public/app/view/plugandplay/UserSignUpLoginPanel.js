@@ -1,61 +1,55 @@
-Ext.define('X.view.plugandplay.UserSignUpLoginPanel', {
-	extend: 'X.view.core.FormPanel',
-	requires: [
-		'Ext.form.FieldSet',
-    	'Ext.field.Email',
-    	'Ext.field.Password',
-    	'Ext.SegmentedButton'
+Ext.define('X.view.plugandplay.UserLoginFormPanel', {
+    extend: 'X.view.core.FormPanel',
+    requires: [
+        'Ext.form.FieldSet',
+        'Ext.field.Email',
+        'Ext.field.Password'
     ],
-    xtype: 'usersignuploginpanel',
-    id: 'userSignupLoginPanel',
+    xtype: 'userloginformpanel',
+    id: 'userLoginFormPanel',
     config: {
-    	cls: 'user-signup-login-panel',
-    	layout: {
-    		type: 'vbox',
-    		pack: 'center',
-    		align: 'center'
-    	},
-    	items: [
-    		{
-    			xtype: 'fieldset',
-    			itemId: 'signupLoginFormFieldSet',
-    			cls: 'signup-login-form-fieldset',
-    			items: [
-    				{
-    					xtype: 'emailfield',
-    					itemId: 'usernameEmailField',
-    					cls: 'username-email-field',
-    					name: 'usernameEmail',
-    					placeHolder: 'Email'
-    				},
-    				{
-    					xtype: 'passwordfield',
-    					itemId: 'passwordTextfield',
-    					cls: 'password-passwordfield',
-    					name: 'password',
-    					placeHolder: 'Password'
-    				}
-    			]
-    		},
-    		{
-    			xtype: 'segmentedbutton',
-    			itemId: 'signupLoginButton',
-    			cls: 'signup-login-button',
-    			items: [
-    				{
-    					text: 'Log In',
-                        id: 'LoginButton'
-    				},
-    				{
-    					text: 'Sign Up',
-                        id: 'SignupButton'
-    				}
-    			]
-    		}	
-    	],
-    	url: 'login'
+        cls: 'user-login-form-panel',
+        layout: {
+            type: 'vbox',
+            pack: 'center',
+            align: 'stretch'
+        },
+        items: [
+            {
+                xtype: 'fieldset',
+                itemId: 'loginFormFieldSet',
+                cls: 'login-form-fieldset',
+                items: [
+                    {
+                        xtype: 'emailfield',
+                        itemId: 'usernameEmailfield',
+                        cls: 'username-emailfield',
+                        name: 'usernameEmail',
+                        placeHolder: 'Email'
+                    },
+                    {
+                        xtype: 'passwordfield',
+                        itemId: 'passwordTextfield',
+                        cls: 'password-passwordfield',
+                        name: 'password',
+                        placeHolder: 'Password'
+                    }
+                ]
+            },
+            {
+                xtype: 'button',
+                itemId: 'submitButton',
+                cls: 'submit-button',
+                text: 'Log in',
+                ui: 'confirm'
+            }
+        ],
+        url: 'login'
     },
-	resetLoginFields: function() {
+    applyUrl: function(url) {
+        return X.config.Config.getAPI_ENDPOINT() + url;
+    },
+    resetLoginFields: function() {
         var me = this;
         me.resetEmailField().resetPasswordField();
         return me;
@@ -70,4 +64,4 @@ Ext.define('X.view.plugandplay.UserSignUpLoginPanel', {
         me.down('#passwordTextfield').setValue('');
         return me;
     }
-})
+});

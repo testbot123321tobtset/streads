@@ -42,10 +42,10 @@ Ext.define('X.controller.Users', {
             pageLogin: {
                 activeitemchange: 'onPageLoginTabPanelActiveItemChange'
             },
-            userSignupButton: {
+            userSignupFormSubmitButton: {
                 tap: 'doSignup'
             },
-            userLoginButton: {
+            userLoginFormSubmitButton: {
                 tap: 'doLogin'
             },
             // User profile root page - this comes after authentication
@@ -63,13 +63,10 @@ Ext.define('X.controller.Users', {
         refs: {
             // Login
             pageLogin: '#pageLogin',
-            userSignUpLoginPanel: '#usersignupLoginPanel',
-            userLoginButton: '#LoginButton',
-            userSignupButton: '#SignupButton',
-            /*userSignupFormPanel: '#userSignupFormPanel',
+            userSignupFormPanel: '#userSignupFormPanel',
             userSignupFormSubmitButton: '#userSignupFormPanel #submitButton',
             userLoginFormPanel: '#userLoginFormPanel',
-            userLoginFormSubmitButton: '#userLoginFormPanel #submitButton',*/
+            userLoginFormSubmitButton: '#userLoginFormPanel #submitButton',
             // User profile root page - this comes after authentication
             pageUserRoot: '#pageUserRoot',
             // User :: More
