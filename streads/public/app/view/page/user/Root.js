@@ -28,7 +28,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userGroups',
                 cls: 'user-groups',
-                iconCls: 'home',
+                iconCls: 'groups',
                 items: [
                     {
                         flex: 1,

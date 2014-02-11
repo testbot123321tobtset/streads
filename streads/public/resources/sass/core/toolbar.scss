@@ -3,40 +3,56 @@
 @import '_mixins';
 
 .x-toolbar {
-    background-color: #f8f9f9;
-    min-height: 2.85em;
-    
     @include no-border;
     @include no-background;
+    
+    min-height: $toolbar-min-height;
+    height: $toolbar-height;
+    
+    background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
 
     &.x-docked-bottom {
         @include no-border;
         @include no-background;
+        
+        background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
     }
 
     &.x-docked-top {
         @include no-border;
         @include no-background;
-        .x-button {
-            padding-top: 0em;
-        }
+        
+        background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
     }
 
     &.x-docked-left {
         @include no-border;
         @include no-background;
+        
+        background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
     }
 
     &.x-docked-right {
         @include no-border;
         @include no-background;
+        
+        background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
+    }
+    
+    &.x-full-width {
+        @include full-width;
     }
 
     .x-title {
-        font-weight: 200;
-        font-size: 1em;
-        padding-top: 0em;
-        color: $ios7-blue;
+        padding-top: $toolbar-title-padding;
+        font-weight: $toolbar-title-font-weight;
+        font-size: $toolbar-title-font-size;
+        color: $toolbar-title-color;
+    }
+    
+    .x-toolbar-inner > .x-container {
+        @include no-border;
+        @include no-background;
     }
 
     .x-button {

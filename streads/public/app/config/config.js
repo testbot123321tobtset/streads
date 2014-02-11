@@ -2,6 +2,7 @@ Ext.define('X.config.Config', {
     singleton: true,
     config: {
         // Server Config
+//        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
         API_ENDPOINT: 'http://localhost:4000/',
         
         // TO DO: Update these URLs when you have the UIs
@@ -53,32 +54,31 @@ Ext.define('X.config.Config', {
         // Animations
         defaultAnimationDuration: 300,
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
-        defaultAnimationEasing: 'linear',
+        defaultAnimationEasing: 'ease',
         showAnimationConfig: {
-            type: 'slideIn',
-            direction: 'left',
-            //easing: 'ease-in',
+            type: 'fade',
+            easing: 'ease',
             duration: 300
         },
         hideAnimationConfig: {
-            type: 'slideOut',
-            direction: 'right',
-            //easing: 'ease-out',
+            type: 'fadeOut',
+            //direction: 'right',
+            easing: 'ease',
             duration: 300
         },
         showAnimationConfigWithNoDirection: {
-            type: 'slideIn',
-            //easing: 'ease-in',
+            type: 'fade',
+            easing: 'ease',
             duration: 300
         },
         hideAnimationConfigWithNoDirection: {
-            type: 'slideOut',
-            //easing: 'ease-out',
+            type: 'fadeOut',
+            easing: 'ease',
             duration: 300
         },
         animationConfig: {
-            type: 'slide',
-            //easing: 'ease-in',
+            type: 'fade',
+            easing: 'ease',
             duration: 300
         }
     },

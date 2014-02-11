@@ -7,7 +7,7 @@
     background-color: $default-background-color;
     border-top: 1px solid $default-border-color;
     .submit-button {
-        margin-top: $default-margin-for-fieldsets;
+        margin-top: $default-margin-for-fieldsets !important;
         border-top-color: $default-border-color-for-fieldsets;
         border-bottom-color: $default-border-color-for-fieldsets;
     }
@@ -16,14 +16,16 @@
     background-color: $default-background-color;
     .x-form-fieldset {
         background-color: white;
-        margin-top: $default-margin-for-fieldsets;
-        margin-bottom: 0px;
+        margin-top: $default-margin-for-fieldsets !important;
+        margin-bottom: 0px !important;
     }
-    .x-form-fieldset:last-child {
-        margin-bottom: 1em;
+    .x-form-fieldset:first-child {
+        margin-top: $default-margin-for-fieldsets + $tabbar-tab-height !important;
     }
     .submit-button, .delete-button, .logout-button {
         border-top-color: $default-border-color-for-fieldsets;
         border-bottom-color: $default-border-color-for-fieldsets;
+        
+        margin-bottom: $default-margin-for-fieldsets + $tabbar-tab-height !important;
     }
 }

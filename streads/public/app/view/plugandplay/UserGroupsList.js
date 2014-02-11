@@ -6,6 +6,7 @@ Ext.define('X.view.plugandplay.UserGroupsList', {
     xtype: 'usergroupslist',
     config: {
         itemId: 'userGroupsList',
+        cls: 'user-groups-list',
         itemTpl: '{title}',
         onItemDisclosure: true
     }

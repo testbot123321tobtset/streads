@@ -6,7 +6,6 @@
 Ext.define('X.controller.Main', {
     extend: 'Ext.app.Controller',
     requires: [
-        'Ext.device.Camera',
         'X.view.plugandplay.CameraTriggerPanel'
     ],
     mixins: {

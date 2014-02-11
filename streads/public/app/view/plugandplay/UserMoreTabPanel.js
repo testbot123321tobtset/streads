@@ -25,8 +25,7 @@ Ext.define('X.view.plugandplay.UserMoreTabPanel', {
                 },
                 itemId: 'userAccount',
                 cls: 'user-account',
-//                title: 'Account',
-                iconCls: 'home',
+                iconCls: 'user',
                 items: [
                     {
                         xtype: 'useraccountinfopanel',

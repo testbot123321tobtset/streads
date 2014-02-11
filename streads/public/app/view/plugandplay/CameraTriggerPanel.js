@@ -11,13 +11,14 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
             align: 'stretch'
         },
         bottom: 0,
+        right: 0,
         cls: 'camera-trigger-panel',
         zIndex: 10,
         items: [
             {
                 xtype: 'button',
                 itemId: 'cameraTriggerButton',
-                cls: 'camera-trigger-button',
+                cls: 'rounded-button camera-trigger-button',
                 iconCls: 'camera',
                 listeners: {
                     initialize: function(button, eOpts) {

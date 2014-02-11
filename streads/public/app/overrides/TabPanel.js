@@ -4,20 +4,9 @@ Ext.define('overrides.TabPanel', {
         layout: {
             type: 'card',
             animation: {
-                type: 'slide',
-                //easing: 'ease-in',
+                type: 'fade',
                 duration: 300
             }
-        },
-        showAnimation: {
-            type: 'slideIn',
-            //easing: 'ease-in',
-            duration: 300
-        },
-        hideAnimation: {
-            type: 'slideOut',
-            //easing: 'ease-out',
-            duration: 300
         }
     }
 });

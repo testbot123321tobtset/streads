@@ -6,10 +6,8 @@
 .camera-trigger-panel {
     @include no-border;
     @include no-background;
+    @include no-margin;
     
-    bottom: 0 !important;
-    margin: $default-iconned-button-margin-from-edge;
-                
     min-height: $tabbar-tab-height !important;
     height: $tabbar-tab-height !important;
     min-width: $tabbar-tab-min-width !important;
@@ -22,11 +20,11 @@
         @include no-background;
         
         .camera-trigger-button {
-
-            min-height: $tabbar-tab-height !important;
-            height: $tabbar-tab-height !important;
-            min-width: $tabbar-tab-min-width !important;
-            width: $tabbar-tab-width !important;
+            
+/*            min-height: $default-iconned-button-min-height !important;
+            height: $default-iconned-button-height !important;
+            min-width: $default-iconned-button-min-width !important;
+            width: $default-iconned-button-width !important;
 
             @include border-radius($tabbar-tab-border-radius);
 
@@ -58,7 +56,7 @@
                     line-height: $tabbar-tab-button-line-height;
                     color: $tabbar-tab-button-color;
                 }
-            }
+            }*/
         }
     }
 }

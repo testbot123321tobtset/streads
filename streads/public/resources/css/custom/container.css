@@ -1,1 +1,1 @@
-.x-container{background-color:white}#userGroupContainer,#userEditGroupContainer{-webkit-box-shadow:#999 0px 0px 10px;-moz-box-shadow:#999 0px 0px 10px;box-shadow:#999 0px 0px 10px}
+.x-container{background-color:white}#userGroupContainer,#userEditGroupContainer{border:1px solid #ccc}#userGroupContainer .user-group-container-feed-container .x-body,#userEditGroupContainer .user-group-container-feed-container .x-body{padding-top:2.9em !important}

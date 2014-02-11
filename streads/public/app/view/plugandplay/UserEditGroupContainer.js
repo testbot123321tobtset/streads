@@ -22,13 +22,19 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         fullscreen: true,
         items: [
             {
-                xtype: 'toolbar',
+                xtype: 'titlebar',
                 itemId: 'userEditGroupContainerToolbar',
-                cls: 'user-edit-group-container-toolbar',
                 docked: 'top',
+                top: 0,
+                cls: 'x-stretched x-docked-bottom x-docked-bottom-that-is-top x-full-width user-edit-group-container-toolbar',
                 height: X.config.Config.getDefaultToolbarHeight(),
                 defaults: {
                     height: X.config.Config.getDefaultToolbarHeight()
+                },
+                layout: {
+                    type: 'hbox',
+                    align: 'center',
+                    pack: 'center'
                 },
                 title: 'Edit',
                 items: [
@@ -36,7 +42,7 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                         xtype: 'button',
                         itemId: 'backButton',
                         cls: 'back-button',
-                        ui: 'back',
+                        iconCls: 'close',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userEditGroupContainer').onBackButtonTap();
@@ -46,7 +52,8 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                 ]
             },
             {
-                xtype: 'usergroupeditformpanel'
+                xtype: 'usergroupeditformpanel',
+                scrollable: true
             }
         ],
         listeners: [

@@ -9,6 +9,7 @@ $steel: #666666;
 $nickel: #808080;
 $aluminum: #999999;
 $magnesium: #B3B3B3;
+$dark-silver: darken(#CCCCCC, 8%);
 $silver: #CCCCCC;
 $mercury: #E6E6E6;
 $white-94: darken(white, 6%);
@@ -38,43 +39,78 @@ $my-purple-lighten: lighten($my-purple, 30%);
 $my-purple-orange: lighten($my-orange, 30%);
 
 $default-theme-color: $ios7-blue;
-$default-background-color: $white-96;
+$default-theme-transparency-opacity: 0.85;
+
+$default-background-color: white;
+$default-darker-background-color: $white-96;
 $default-border-color: $silver;
 
-$default-font-weight: 200;
-$default-font-ultralight-weight: 100;
+$default-font-weight: 400;
+$default-font-ultralight-weight: 300;
 $default-font-color: $nickel;
 
+/*
+Buttons
+*/
+/* Core */
 $default-button-radius: 0px;
 $default-button-margin: 1em;
 $default-button-font-size: 1em;
 $default-button-margin: 1em;
+$default-button-background-color: $default-darker-background-color;
 
-$default-iconned-borer-color: black;
-$default-iconned-borer-active-color: $default-theme-color;
-$default-iconned-borer-pressed-color: lighten($default-iconned-borer-color, 30%);
-$default-iconned-background-color: $default-iconned-borer-color;
+$default-iconned-borer-color: transparent;
+$default-iconned-borer-active-color: transparent;
+$default-iconned-borer-pressed-color: transparent;
+$default-iconned-background-color: transparent;
 $default-iconned-active-background-color: $default-iconned-borer-active-color;
 $default-iconned-pressed-background-color: $default-iconned-borer-pressed-color;
-$default-iconned-button-font-size: 2em;
-$default-iconned-button-line-height: 1.43em;
-$default-iconned-button-margin-left: -0.03em;
-$default-iconned-button-margin-top: 0.095em;
-$default-iconned-button-color: white;
-$default-iconned-button-outer-container-opacity: 0.5;
-$default-iconned-button-margin-from-edge: 0.5em;
 
-$tabbar-active-background-color: $white-97;
-$tabbar-pressed-background-color: $white-99;
-$tabbar-margin-from-edge: $default-iconned-button-margin-from-edge;
-$tabbar-tab-mergin-on-sides: $tabbar-margin-from-edge / 2;
-$tabbar-tab-margin: 0 .25em;
+/* Iconned buttons */
+$default-iconned-button-color-variance: 45%;
+$default-iconned-button-min-height: 100%;
+$default-iconned-button-height: 100%;
+$default-iconned-button-min-width: 100%;
+$default-iconned-button-width: 100%;
+$default-iconned-button-color: $silver;
+$default-iconned-button-pressed-color: darken($default-iconned-button-color, $default-iconned-button-color-variance);
+$default-iconned-button-active-color: $default-theme-color;
+$default-iconned-button-margin-from-edge: 0;
+$default-iconned-button-font-size: 2.5em;
+$default-iconned-button-line-height: 1.1em;
+
+$default-iconned-button-outer-container-opacity: $default-theme-transparency-opacity;
+
+/* Rounded button */
+$rounded-button-color-variance: $default-iconned-button-color-variance;
+$rounded-button-min-height: auto;
+$rounded-button-height: auto;
+$rounded-button-min-width: 100%;
+$rounded-button-width: 100%;
+$rounded-button-border-radius: 100%;
+$rounded-button-border-width: 1px;
+$rounded-button-border-color: $default-iconned-button-active-color;
+$rounded-button-border-pressed-color: darken($rounded-button-border-color, $default-iconned-button-color-variance);
+$rounded-button-background-color: lighten($rounded-button-border-color, $rounded-button-color-variance);
+$rounded-button-background-pressed-color: darken($rounded-button-background-color, $rounded-button-color-variance);
+$rounded-button-color: $default-iconned-button-active-color;
+$rounded-button-font-size: $default-iconned-button-font-size;
+$rounded-button-line-height: $default-iconned-button-line-height;
+
+/*
+Tabbar
+*/
+/* Tabbar */
+$tabbar-margin-from-edge: 0;
+$tabbar-border-visible-edge-width: 1px;
+$tabbar-border-visible-edge-color: transparent;
+/* Tabbar > Tab */
+$tabbar-tab-min-height: 2.9em;
 $tabbar-tab-height: 2.9em;
 $tabbar-tab-min-width: 2.9em;
 $tabbar-tab-width: 2.9em;
-$tabbar-tab-opacity: $default-iconned-button-outer-container-opacity;
-$tabbar-tab-border-radius: 1.5em;
-$tabbar-tab-border-width: 1px;
+$tabbar-tab-border-radius: 0;
+$tabbar-tab-border-width: 0;
 $tabbar-tab-border-style: solid;
 $tabbar-tab-border-color: $default-iconned-borer-color;
 $tabbar-tab-active-border-color: $default-iconned-borer-active-color;
@@ -82,14 +118,27 @@ $tabbar-tab-pressed-border-color: $default-iconned-borer-pressed-color;
 $tabbar-tab-background-color: $default-iconned-background-color;
 $tabbar-tab-active-background-color: $default-iconned-active-background-color;
 $tabbar-tab-pressed-background-color: $default-iconned-pressed-background-color;
+/* Tabbar > Tab > Button */
 $tabbar-tab-button-font-size: $default-iconned-button-font-size;
 $tabbar-tab-button-line-height: $default-iconned-button-line-height;
-$tabbar-tab-button-margin-left: 0.02em;
-$tabbar-tab-button-margin-top: 0.028em;
 $tabbar-tab-button-color: $default-iconned-button-color;
+$tabbar-tab-button-pressed-color: $default-iconned-button-pressed-color;
+$tabbar-tab-button-active-color: $default-iconned-button-active-color;
+
+/* Toolbar */
+$toolbar-min-height: $tabbar-tab-min-height;
+$toolbar-height: $tabbar-tab-height;
+$toolbar-button-font-size: 1.6em;
+$toolbar-button-line-height: 1em;
+/* Toolbar > Title */
+$toolbar-title-padding: 0.9em;
+$toolbar-title-font-weight: $default-font-weight;
+$toolbar-title-font-size: 1em;
+$toolbar-title-color: $default-theme-color;
 
 $default-margin-for-fieldsets: 2em;
 $default-border-color-for-fieldsets: $default-border-color;
+$default-border-color-for-fields: $default-border-color;
 
 $default-absolute-top-margin: 20px;
 

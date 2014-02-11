@@ -3,46 +3,35 @@
 @import '_mixins';
 
 .x-form-fieldset {
-    margin: 0px;
-
-    border: solid 1px #dbdbe0;
-    border-left: 0px;
-    border-right: 0px;
+    @include no-margin;
+    @include no-padding;
+    @include no-border;
+    @include no-background;
 
     .x-form-fieldset-inner {
-        background: #fff;
-        padding: 0;
-        border-color: #dbdbe0;
-        @include border-radius(0);
+        @include no-margin;
+        @include no-padding;
+        @include no-border;
+        @include no-background;
     }
 
     .x-field {
-        background: transparent;
-        position: relative;
+        @include no-margin;
+        @include no-padding;
+        @include no-border;
+        @include no-background;
 
         &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: 0px;
-            left: 1em;
-            right: 0px;
-            // My addition
-            border-bottom: solid 1px #dbdbe0;
+            @include no-margin;
+            @include no-padding;
+            @include no-background;
+            
+            border-bottom: solid 1px $default-border-color-for-fields;
         }
-
-        &:last-child {
-            &:before {
-                border-bottom: solid 1px transparent;
-            }
-        }
-
-        // My addition
-        border-bottom: solid 1px transparent;
     }
 
     .x-field-input {
-        border: 0px solid transparent;
+        @include no-border;
     }
 }
 

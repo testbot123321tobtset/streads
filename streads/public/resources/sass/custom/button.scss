@@ -4,6 +4,33 @@
 @import 'core/button';
 
 .x-button {
+    &.rounded-button {
+        @include no-background;
+        @include no-border;
+        
+        @include full-width;
+        @include full-height;
+            
+        @include no-margin;
+        
+        .x-button-icon {
+            position: static !important;
+            
+            vertical-align: middle !important;
+            
+            min-width: $rounded-button-min-width !important;
+            width: $rounded-button-width !important;
+            
+            @include no-margin;
+            
+            &:before {
+                font-size: $rounded-button-font-size !important;
+                line-height: $rounded-button-line-height !important;
+                color: $rounded-button-color;
+            }
+        }
+    }
+    
     &.facebook-login-button {
         background-color: $facebook-blue;
         border-color: $facebook-blue;

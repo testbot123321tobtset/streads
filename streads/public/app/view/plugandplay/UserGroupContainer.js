@@ -24,13 +24,19 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
         fullscreen: true,
         items: [
             {
-                xtype: 'toolbar',
+                xtype: 'titlebar',
                 itemId: 'userGroupContainerToolbar',
-                cls: 'user-group-container-toolbar',
                 docked: 'top',
+                top: 0,
+                cls: 'x-stretched x-docked-bottom x-docked-bottom-that-is-top x-full-width user-group-container-toolbar',
                 height: X.config.Config.getDefaultToolbarHeight(),
                 defaults: {
                     height: X.config.Config.getDefaultToolbarHeight()
+                },
+                layout: {
+                    type: 'hbox',
+                    align: 'center',
+                    pack: 'center'
                 },
                 title: 'Feed',
                 items: [
@@ -38,29 +44,27 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                         xtype: 'button',
                         itemId: 'backButton',
                         cls: 'back-button',
-                        ui: 'back',
+                        iconCls: 'close',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userGroupContainer').onBackButtonTap();
                             }
-                        }
-                    },
-                    {
-                        xtype: 'spacer'
+                        },
+                        align: 'left'
                     },
                     {
                         xtype: 'button',
                         itemId: 'storiesButton',
                         cls: 'stories-button',
-                        ui: 'action',
-                        text: 'Stories'
+                        iconCls: 'albums',
+                        align: 'right'
                     },
                     {
                         xtype: 'button',
                         itemId: 'moreButton',
-                        cls: 'x-button-boring more-button',
-                        ui: 'normal',
-                        text: 'Edit'
+                        cls: 'more-button',
+                        iconCls: 'more',
+                        align: 'right'
                     }
                 ]
             },
@@ -69,7 +73,8 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 itemId: 'feedContainer',
                 cls: 'user-group-container-feed-container',
                 flex: 1,
-                tpl: new Ext.XTemplate('{title}')
+                tpl: new Ext.XTemplate('{title}'),
+                scrollable: true
             }
         ],
         listeners: [

@@ -1,0 +1,15 @@
+@import 'compass';
+@import '_variables';
+@import '_mixins';
+@import 'core/toolbar';
+
+.x-toolbar {
+    .x-button {
+        .x-button-icon {
+            &:before {
+                font-size: $toolbar-button-font-size !important;
+                line-height: $toolbar-button-line-height !important;
+            }
+        }
+    }
+}

@@ -4,7 +4,13 @@
 @import 'core/container';
 
 #userGroupContainer, #userEditGroupContainer {
-    @include mega-left-side-box-shadow;
+    border: 1px solid $default-border-color;
+    
+    .user-group-container-feed-container {
+        .x-body {
+            padding-top: $tabbar-tab-height !important;
+        }
+    }
 }
 
 /*Error while sencha app build: 0.5 is not a color for `grayscale'*/

@@ -28,7 +28,7 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 },
                 itemId: 'userGroupFeeds',
                 cls: 'user-group-feeds',
-                iconCls: 'news',
+                iconCls: 'chatbubble',
                 items: [
                     {
                         xtype: 'usergroupslist',

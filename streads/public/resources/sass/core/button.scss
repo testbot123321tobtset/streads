@@ -3,15 +3,12 @@
 @import '_mixins';
 
 .x-button {
-    height: 2.1em;
-    padding: 0 8px;
-    @include border-radius(6px);
-    background-color: #fff;
-
-    // My addition
-    @include border-radius($default-button-radius);
     margin-top: $default-margin-for-fieldsets;
     margin-bottom: $default-margin-for-fieldsets;
+    
+    background-color: $default-button-background-color;
+    
+    @include border-radius($default-button-radius);
     border-left-width: 0px;
     border-right-width: 0px;
 }
@@ -170,29 +167,19 @@
     &.x-button-action,
     &.x-button-action-round,
     &.x-button-action-small {
-        border-color: $ios7-blue;
-
-        // My addition
-        background-color: $ios7-blue;
+        @include no-border;
+        @include no-background;
 
         .x-button-label {
-            color: $ios7-blue;
-
-            // My addition
-            color: white;
+            color: $tabbar-tab-button-color !important;
         }
 
         &.x-button-pressing {
-            border-color: $ios7-blue-lighten;
-
-            // My addition
-            background-color: $ios7-blue-lighten;
+            @include no-border;
+            @include no-background;
 
             .x-button-label {
-                color: $ios7-blue-lighten;
-
-                // My addition
-                color: white;
+                color: $tabbar-tab-button-pressed-color !important;
             }
         }
     }

@@ -15,66 +15,94 @@
 
 .x-tabbar {
     @include no-border;
-    @include no-background;
+    @include no-margin;
+    @include no-padding;
     
-    &.x-docked-bottom {
-        @include no-padding;
-        
-        @include no-border;
-        @include no-background;
-        
-        margin-bottom: $tabbar-margin-from-edge;
+    background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
     
-        &.x-docked-bottom-that-is-top {
-            margin-top: $tabbar-margin-from-edge;
-        }
-    }
+    height: $tabbar-tab-height !important;
+    min-height: $tabbar-tab-height !important;
     
     &.x-full-width {
         @include full-width;
-        @include no-background;
+    }
+    
+    &.x-docked-bottom {
+        @include no-border;
+        border-top-width: $tabbar-border-visible-edge-width !important;
+        border-top-color: $tabbar-border-visible-edge-color !important;
+        
+        @include no-margin;
+        @include no-padding;
+    
+        background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
+        
+        height: $tabbar-tab-height !important;
+        min-height: $tabbar-tab-height !important;
+        
+        margin-bottom: $tabbar-margin-from-edge !important;
+        
+        &.x-docked-bottom-that-is-top {
+            @include no-border;
+            border-bottom-width: $tabbar-border-visible-edge-width !important;
+            border-bottom-color: $tabbar-border-visible-edge-color !important;
+            
+            height: $tabbar-tab-height !important;
+            min-height: $tabbar-tab-height !important;
+        
+            margin-top: $tabbar-margin-from-edge !important;
+        }
     }
     
     .x-tab {
+        @include no-background;
+        @include no-border;
+        @include no-margin;
+        @include no-padding;
+        
+        min-height: $tabbar-tab-min-height !important;
         height: $tabbar-tab-height !important;
         min-width: $tabbar-tab-min-width !important;
         width: $tabbar-tab-width !important;
-
-        @include border-radius($tabbar-tab-border-radius);
-        border-width: $tabbar-tab-border-width;
-        border-style: $tabbar-tab-border-style;
-        border-color: $tabbar-tab-border-color;
-        background-color: $tabbar-tab-background-color;
-        
-        opacity: $tabbar-tab-opacity;
-        
-        margin: $tabbar-tab-margin;
         
         .x-button-icon {
-            @include full-width;
             @include full-height;
+            @include full-width;
             
             @include no-text-shadow;
             @include no-text-stroke;
-            
-            &:before {
-                margin-left: $tabbar-tab-button-margin-left;
-                margin-top: $tabbar-tab-button-margin-top;
                 
-                font-size: $tabbar-tab-button-font-size;
-                line-height: $tabbar-tab-button-line-height;
+            &:before {
+                font-size: $tabbar-tab-button-font-size !important;
+                line-height: $tabbar-tab-button-line-height !important;
                 color: $tabbar-tab-button-color;
             }
         }
         
         &.x-tab-pressed {
-            background-color: $tabbar-tab-pressed-background-color;
-            border-color: $tabbar-tab-pressed-border-color;
+            @include no-background;
+            @include no-border;
+            @include no-margin;
+            @include no-padding;
+            
+            .x-button-icon {
+                &:before {
+                    color: $tabbar-tab-button-pressed-color;
+                }
+            }
         }
 
         &.x-tab-active {
-            border-color: $tabbar-tab-active-border-color;
-            background-color: $tabbar-tab-active-background-color;
+            @include no-background;
+            @include no-border;
+            @include no-margin;
+            @include no-padding;
+            
+            .x-button-icon {
+                &:before {
+                    color: $tabbar-tab-button-active-color;
+                }
+            }
         }
     }
 }
