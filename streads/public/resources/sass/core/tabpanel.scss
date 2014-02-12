@@ -14,42 +14,52 @@
 }*/
 
 .x-tabbar {
-    @include no-border;
-    @include no-margin;
+    min-height: $tabbar-min-height !important;
+    height: $tabbar-height !important;
+    
     @include no-padding;
     
-    background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
+    @include no-border;
+    border-width: $tabbar-border-width !important;
+    border-color: $tabbar-border-color !important;
     
-    height: $tabbar-tab-height !important;
-    min-height: $tabbar-tab-height !important;
+    @include no-margin;
+    margin: $tabbar-margin !important;
+    
+    @include no-background;
+    background-color: $tabbar-background-color !important;
     
     &.x-full-width {
         @include full-width;
     }
     
     &.x-docked-bottom {
+        min-height: $tabbar-min-height !important;
+        height: $tabbar-height !important;
+        
         @include no-border;
+        border-width: $tabbar-border-width !important;
+        border-color: $tabbar-border-color !important;
         border-top-width: $tabbar-border-visible-edge-width !important;
         border-top-color: $tabbar-border-visible-edge-color !important;
         
         @include no-margin;
         @include no-padding;
-    
-        background-color: rgba(255, 255, 255, $default-theme-transparency-opacity) !important;
         
-        height: $tabbar-tab-height !important;
-        min-height: $tabbar-tab-height !important;
+        background-color: $tabbar-background-color !important;
         
         margin-bottom: $tabbar-margin-from-edge !important;
         
         &.x-docked-bottom-that-is-top {
+            min-height: $tabbar-min-height !important;
+            height: $tabbar-height !important;
+        
             @include no-border;
+            border-width: $tabbar-border-width !important;
+            border-color: $tabbar-border-color !important;
             border-bottom-width: $tabbar-border-visible-edge-width !important;
             border-bottom-color: $tabbar-border-visible-edge-color !important;
             
-            height: $tabbar-tab-height !important;
-            min-height: $tabbar-tab-height !important;
-        
             margin-top: $tabbar-margin-from-edge !important;
         }
     }
@@ -60,10 +70,7 @@
         @include no-margin;
         @include no-padding;
         
-        min-height: $tabbar-tab-min-height !important;
-        height: $tabbar-tab-height !important;
-        min-width: $tabbar-tab-min-width !important;
-        width: $tabbar-tab-width !important;
+        border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
         
         .x-button-icon {
             @include full-height;
@@ -76,6 +83,7 @@
                 font-size: $tabbar-tab-button-font-size !important;
                 line-height: $tabbar-tab-button-line-height !important;
                 color: $tabbar-tab-button-color;
+                @include single-text-shadow;
             }
         }
         
@@ -84,10 +92,13 @@
             @include no-border;
             @include no-margin;
             @include no-padding;
+
+            border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
             
             .x-button-icon {
                 &:before {
                     color: $tabbar-tab-button-pressed-color;
+                    @include single-text-shadow;
                 }
             }
         }
@@ -97,10 +108,13 @@
             @include no-border;
             @include no-margin;
             @include no-padding;
+
+            border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
             
             .x-button-icon {
                 &:before {
                     color: $tabbar-tab-button-active-color;
+                    @include single-text-shadow;
                 }
             }
         }

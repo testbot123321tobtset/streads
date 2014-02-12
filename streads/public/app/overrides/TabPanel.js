@@ -4,7 +4,7 @@ Ext.define('overrides.TabPanel', {
         layout: {
             type: 'card',
             animation: {
-                type: 'fade',
+                type: 'pop',
                 duration: 300
             }
         }

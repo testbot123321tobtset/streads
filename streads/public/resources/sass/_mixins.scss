@@ -10,6 +10,10 @@
     height: 100% !important;
 }
 
+@mixin auto-height {
+    height: auto !important;
+}
+
 /* Margins and Paddings */
 @mixin no-margin {
     margin: 0 !important;
@@ -72,6 +76,10 @@
 
 @mixin border-bottom {
     border-bottom: 1px solid $default-border-color !important;
+}
+
+@mixin no-border-radius {
+    @include border-radius(0);
 }
 
 /* Background */

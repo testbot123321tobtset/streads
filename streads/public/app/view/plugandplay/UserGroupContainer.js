@@ -4,6 +4,7 @@
 Ext.define('X.view.plugandplay.UserGroupContainer', {
     extend: 'X.view.core.Container',
     requires: [
+        'Ext.TitleBar'
     ],
     xtype: 'usergroupcontainer',
     id: 'userGroupContainer',
@@ -30,9 +31,6 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 top: 0,
                 cls: 'x-stretched x-docked-bottom x-docked-bottom-that-is-top x-full-width user-group-container-toolbar',
                 height: X.config.Config.getDefaultToolbarHeight(),
-                defaults: {
-                    height: X.config.Config.getDefaultToolbarHeight()
-                },
                 layout: {
                     type: 'hbox',
                     align: 'center',
@@ -56,14 +54,14 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                         xtype: 'button',
                         itemId: 'storiesButton',
                         cls: 'stories-button',
-                        iconCls: 'albums',
+                        iconCls: 'albumsfilled',
                         align: 'right'
                     },
                     {
                         xtype: 'button',
                         itemId: 'moreButton',
                         cls: 'more-button',
-                        iconCls: 'more',
+                        iconCls: 'morefilled',
                         align: 'right'
                     }
                 ]

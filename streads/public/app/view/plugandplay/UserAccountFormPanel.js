@@ -74,10 +74,12 @@ Ext.define('X.view.plugandplay.UserAccountFormPanel', {
     },
     onUserRecordChange: function(field, newValue, oldValue, eOpts) {
         var me = this;
+        var authenticatedEntity = X.authenticatedEntity;
         var fieldName = field.getName();
-        var authenticatedEntityFieldValue = X.authenticatedEntity.get(fieldName);
+        var authenticatedEntityFieldValue = authenticatedEntity.get(fieldName);
         if(authenticatedEntityFieldValue !== newValue) {
-            Ext.Viewport.fireEvent('authenticatedUserDataEdit', {
+            authenticatedEntity.set(fieldName, newValue);
+            Ext.Viewport.fireEvent('authenticateduserdataedit', {
                 silent: true
             });
         }

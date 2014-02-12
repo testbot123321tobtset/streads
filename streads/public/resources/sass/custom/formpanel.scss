@@ -20,12 +20,12 @@
         margin-bottom: 0px !important;
     }
     .x-form-fieldset:first-child {
-        margin-top: $default-margin-for-fieldsets + $tabbar-tab-height !important;
+        margin-top: $default-margin-for-fieldsets + $tabbar-height !important;
     }
     .submit-button, .delete-button, .logout-button {
         border-top-color: $default-border-color-for-fieldsets;
         border-bottom-color: $default-border-color-for-fieldsets;
         
-        margin-bottom: $default-margin-for-fieldsets + $tabbar-tab-height !important;
+        margin-bottom: $default-margin-for-fieldsets + $tabbar-height !important;
     }
 }

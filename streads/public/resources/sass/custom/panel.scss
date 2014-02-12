@@ -8,8 +8,8 @@
     @include no-background;
     @include no-margin;
     
-    min-height: $tabbar-tab-height !important;
-    height: $tabbar-tab-height !important;
+    min-height: $tabbar-height !important;
+    height: $tabbar-height !important;
     min-width: $tabbar-tab-min-width !important;
     width: $tabbar-tab-width !important;
     
@@ -20,6 +20,28 @@
         @include no-background;
         
         .camera-trigger-button {
+            @include no-margin;
+            @include no-border;
+            @include full-height;
+            @include full-width;
+            @include no-background;
+            
+            .x-button-icon {
+                @include full-width;
+                @include full-height;
+
+                @include no-text-shadow;
+                @include no-text-stroke;
+
+                &:before {
+                    font-size: $tabbar-tab-button-font-size !important;
+                    line-height: $tabbar-tab-button-line-height !important;
+                    color: $tabbar-tab-button-active-color;
+                    @include single-text-shadow;
+                }
+            }
+            
+            
             
 /*            min-height: $default-iconned-button-min-height !important;
             height: $default-iconned-button-height !important;

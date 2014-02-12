@@ -56,28 +56,28 @@ Ext.define('X.config.Config', {
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
         defaultAnimationEasing: 'ease',
         showAnimationConfig: {
-            type: 'fade',
+            type: 'pop',
             easing: 'ease',
             duration: 300
         },
         hideAnimationConfig: {
-            type: 'fadeOut',
+            type: 'popOut',
             //direction: 'right',
             easing: 'ease',
             duration: 300
         },
         showAnimationConfigWithNoDirection: {
-            type: 'fade',
+            type: 'pop',
             easing: 'ease',
             duration: 300
         },
         hideAnimationConfigWithNoDirection: {
-            type: 'fadeOut',
+            type: 'popOut',
             easing: 'ease',
             duration: 300
         },
         animationConfig: {
-            type: 'fade',
+            type: 'pop',
             easing: 'ease',
             duration: 300
         }

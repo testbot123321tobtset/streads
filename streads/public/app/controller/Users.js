@@ -36,7 +36,7 @@ Ext.define('X.controller.Users', {
         },
         control: {
             viewport: {
-                authenticatedUserDataEdit: 'onAuthenticatedUserDataEdit'
+                authenticateduserdataedit: 'onAuthenticatedUserDataEdit'
             },
             // Login
             pageLogin: {

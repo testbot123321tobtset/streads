@@ -15,9 +15,12 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         // of such windows
         isWindow: true,
         layout: {
-            type: 'fit'
+            type: 'vbox',
+            pack: 'center',
+            align: 'stretch'
         },
         cls: 'user-edit-group-container',
+        floating: true,
         centered: true,
         fullscreen: true,
         items: [
@@ -28,9 +31,6 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                 top: 0,
                 cls: 'x-stretched x-docked-bottom x-docked-bottom-that-is-top x-full-width user-edit-group-container-toolbar',
                 height: X.config.Config.getDefaultToolbarHeight(),
-                defaults: {
-                    height: X.config.Config.getDefaultToolbarHeight()
-                },
                 layout: {
                     type: 'hbox',
                     align: 'center',
@@ -53,6 +53,7 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
             },
             {
                 xtype: 'usergroupeditformpanel',
+                flex: 1,
                 scrollable: true
             }
         ],

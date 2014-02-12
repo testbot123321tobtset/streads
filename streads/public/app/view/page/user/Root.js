@@ -28,7 +28,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userGroups',
                 cls: 'user-groups',
-                iconCls: 'groups',
+                iconCls: 'groupsfilled',
                 items: [
                     {
                         flex: 1,
@@ -44,7 +44,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userMore',
                 cls: 'user-more',
-                iconCls: 'more',
+                iconCls: 'morefilled',
                 items: [
                     {
                         flex: 1,

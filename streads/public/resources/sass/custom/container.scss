@@ -4,11 +4,11 @@
 @import 'core/container';
 
 #userGroupContainer, #userEditGroupContainer {
-    border: 1px solid $default-border-color;
+    @include no-border;
     
     .user-group-container-feed-container {
         .x-body {
-            padding-top: $tabbar-tab-height !important;
+            padding-top: $tabbar-height !important;
         }
     }
 }
