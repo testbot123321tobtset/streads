@@ -109,15 +109,17 @@ Ext.define('X.controller.Groups', {
 //    },
     onUserGroupsTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Groups.onUserGroupsTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        var urlHash = me.getUrlHash();
-        if (activeItem.getItemId() === 'userGroupFeeds' && urlHash !== 'user/profile/groups/feeds') {
-            me.redirectTo('user/profile/groups/feeds');
-        }
-        else if (activeItem.getItemId() === 'userAddGroups' && urlHash !== 'user/profile/groups/create') {
-            me.redirectTo('user/profile/groups/create');
+        if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Groups.onUserGroupsTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            var urlHash = me.getUrlHash();
+            if (activeItem.getItemId() === 'userGroupFeeds' && urlHash !== 'user/profile/groups/feeds') {
+                me.redirectTo('user/profile/groups/feeds');
+            }
+            else if (activeItem.getItemId() === 'userAddGroups' && urlHash !== 'user/profile/groups/create') {
+                me.redirectTo('user/profile/groups/create');
+            }
         }
         return me;
     },

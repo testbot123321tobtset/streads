@@ -1,4 +1,15 @@
 Ext.define('X.controller.mixin.Factory', {
+    generateEagerComponents: function() {
+        var me = this;
+        var xTypesOfComponentsToBeEagerGenerated = X.config.Config.getEAGERGENERATECOMPONENTS();
+        Ext.Array.each(xTypesOfComponentsToBeEagerGenerated, function(thisXtype) {
+            me.createView({
+                xtype: thisXtype,
+                hidden: true
+            });
+        });
+        return me;
+    },
     generateGroupSuccessfullyCreatedWindow: function(callback) {
         var me = this;
         var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().GROUP_SUCCESSFULLY_CREATED;
@@ -92,7 +103,6 @@ Ext.define('X.controller.mixin.Factory', {
             xtype: 'cameratriggerpanel'
         }));
         cameraTriggerPanel.show();
-        console.log(cameraTriggerPanel.isHidden());
     },
     generateAndFillViewportWithUserSignupWindow: function() {
         var me = this;
@@ -277,11 +287,11 @@ Ext.define('X.controller.mixin.Factory', {
             var userGroupContainer = me.createView({
                 xtype: 'usergroupcontainer'
             });
-            userGroupContainer.setRecordRecursive(group);
             if (showContainer) {
                 userGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
                 userGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
                 userGroupContainer.show(X.config.Config.getShowAnimationConfig());
+                userGroupContainer.setRecordRecursive(group);
             }
             return me;
         }
@@ -299,11 +309,11 @@ Ext.define('X.controller.mixin.Factory', {
             var userEditGroupContainer = me.createView({
                 xtype: 'usereditgroupcontainer'
             });
-            userEditGroupContainer.setRecordRecursive(group);
             if (showContainer) {
                 userEditGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
                 userEditGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
                 userEditGroupContainer.show(X.config.Config.getShowAnimationConfig());
+                userEditGroupContainer.setRecordRecursive(group);
             }
             return me;
         }

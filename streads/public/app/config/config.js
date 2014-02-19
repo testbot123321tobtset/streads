@@ -48,6 +48,10 @@ Ext.define('X.config.Config', {
         DETAILED_DEBUG: false,
         
         // UI
+        EAGERGENERATECOMPONENTS: [
+            'usergroupcontainer',
+            'usereditgroupcontainer'
+        ],
         // When you change any of these settings, make sure you change overrides as well
         // E.g. overrides.TabPanel
         defaultToolbarHeight: 46,

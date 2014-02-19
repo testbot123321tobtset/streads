@@ -82,43 +82,49 @@ Ext.define('X.controller.Users', {
     // DIRECT EVENT HANDLERS
     onPageLoginTabPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        var urlHash = me.getUrlHash();
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onPageLoginTabPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        if (activeItem.getItemId() === 'userLogin' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_LOGIN_PAGE()) {
-            me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
-        }
-        else if (activeItem.getItemId() === 'userSignup' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_SIGNUP_PAGE()) {
-            me.redirectTo(X.XConfig.getDEFAULT_USER_SIGNUP_PAGE());
+        if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
+            var urlHash = me.getUrlHash();
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.onPageLoginTabPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            if (activeItem.getItemId() === 'userLogin' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_LOGIN_PAGE()) {
+                me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
+            }
+            else if (activeItem.getItemId() === 'userSignup' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_SIGNUP_PAGE()) {
+                me.redirectTo(X.XConfig.getDEFAULT_USER_SIGNUP_PAGE());
+            }
         }
         return me;
     },
     onPageUserRootTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        var urlHash = me.getUrlHash();
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feeds') {
-            me.redirectTo('user/profile/groups/feeds');
-        }
-        else if (activeItem.getItemId() === 'userMore' && urlHash !== 'user/profile/more/account') {
-            me.redirectTo('user/profile/more/account');
+        if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
+            var urlHash = me.getUrlHash();
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feeds') {
+                me.redirectTo('user/profile/groups/feeds');
+            }
+            else if (activeItem.getItemId() === 'userMore' && urlHash !== 'user/profile/more/account') {
+                me.redirectTo('user/profile/more/account');
+            }
         }
         return me;
     },
     onUserMoreTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        var urlHash = me.getUrlHash();
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onUserMoreTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        if (activeItem.getItemId() === 'userAccount' && urlHash !== 'user/profile/more/account') {
-            me.redirectTo('user/profile/more/account');
-        }
-        else if (activeItem.getItemId() === 'userLogout' && urlHash !== 'user/profile/more/logout') {
-            me.redirectTo('user/profile/more/logout');
+        if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
+            var urlHash = me.getUrlHash();
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.onUserMoreTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            if (activeItem.getItemId() === 'userAccount' && urlHash !== 'user/profile/more/account') {
+                me.redirectTo('user/profile/more/account');
+            }
+            else if (activeItem.getItemId() === 'userLogout' && urlHash !== 'user/profile/more/logout') {
+                me.redirectTo('user/profile/more/logout');
+            }
         }
         return me;
     },
@@ -306,6 +312,9 @@ Ext.define('X.controller.Users', {
                         authenticatedUserStore.removeAll();
                         authenticatedUserStore.setAutoSync(true);
                         me.resetAuthenticatedEntity();
+                        me.destroyGivenView({
+                            view: me.getPageLogin()
+                        });
                         Ext.create('Ext.util.DelayedTask', function() {
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
                         }).

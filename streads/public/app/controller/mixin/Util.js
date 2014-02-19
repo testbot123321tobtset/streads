@@ -95,7 +95,7 @@ Ext.define('X.controller.mixin.Util', {
                 return cache[i];
             }
         }
-
+        
         if (ln >= limit) {
             for (i = 0, j = 0; i < ln; i++) {
                 oldView = cache[i];
@@ -107,9 +107,9 @@ Ext.define('X.controller.mixin.Util', {
             }
             cache.length = j;
         }
-
+        
         if (X.config.Config.getDEBUG()) {
-            console.log('Debug: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: INTENSIVE OPERATION WARNING: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         view = Ext.create('widget.' + xtype);
         cache.push(view);
@@ -122,6 +122,40 @@ Ext.define('X.controller.mixin.Util', {
         X.viewCache = cache;
 
         return view;
+    },
+    destroyGivenView: function(options) {
+        var me = this;
+        
+        var cache = X.viewCache;
+        var cacheLength = cache.length;
+        if(Ext.isObject(options) && Ext.isArray(cache) && cacheLength > 0) {
+            var view = Ext.isObject(options.view) ? options.view : false;
+            if (Ext.isObject(view)) {
+                var id = view.getId();
+                var cacheCounter = 0;
+                while(cacheCounter < cacheLength) {
+                    var thisViewFromCache = cache[cacheCounter];
+                    if(id === thisViewFromCache.getId()) {
+                        if (X.config.Config.getDEBUG()) {
+                            console.log('Debug: X.controller.mixin.Util.destroyGivenView(): View with id: ' + id + ' will be removed from cache and destroyed: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                        }
+                        cache = Ext.Array.remove(cache, thisViewFromCache);
+                        X.viewCache = cache;
+                        thisViewFromCache.destroy();
+                        break;
+                    }
+                    cacheCounter++;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+        
+        return me;
     },
     /*
      * Iterate over all of the floating sheet components and make sure they're hidden when we

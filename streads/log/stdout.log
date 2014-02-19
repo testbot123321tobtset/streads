@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[Tue, 11 Feb 2014 05:51:21 GMT] INFO Server starting with config: {
-=======
-[Sat, 18 Jan 2014 22:11:04 GMT] INFO Server starting with config: {
->>>>>>> b0125668c7133ba2303d32dd758cad2a91f2e758
+[Tue, 18 Feb 2014 21:39:35 GMT] INFO Server starting with config: {
   "environment": "development",
   "workers": 1,
   "port": 4000,
@@ -28,26 +24,17 @@
   "rotateWorkers": false,
   "rotationWindow": 7200000,
   "rotationTimeout": 300000,
-<<<<<<< HEAD
   "logDir": "/Library/WebServer/Documents/myapps/touch/streads/streads/log",
   "gracefulShutdownTimeout": 30000,
   "heartbeatInterval": 5000,
   "heartbeatWindow": 20000,
   "staticFilePath": "/Library/WebServer/Documents/myapps/touch/streads/streads/public",
-=======
-  "logDir": "/Users/hankclark/streads/streads/log",
-  "gracefulShutdownTimeout": 30000,
-  "heartbeatInterval": 5000,
-  "heartbeatWindow": 20000,
-  "staticFilePath": "/Users/hankclark/streads/streads/public",
->>>>>>> b0125668c7133ba2303d32dd758cad2a91f2e758
   "cacheControl": {
     "expires": {
       "default": 0
     }
   },
   "sessions": {
-<<<<<<< HEAD
     "store": "mongodb",
     "key": "did",
     "expiry": 1209600,
@@ -58,21 +45,12 @@
       "port": 10029,
       "db": "streadsdev"
     }
-=======
-    "store": "cookie",
-    "key": "sid",
-    "expiry": 1209600
->>>>>>> b0125668c7133ba2303d32dd758cad2a91f2e758
   },
   "cookieSessionKey": "sdata",
   "i18n": {
     "defaultLocale": "en-us",
     "loadPaths": [
-<<<<<<< HEAD
       "/Library/WebServer/Documents/myapps/touch/streads/streads/config/locales"
-=======
-      "/Users/hankclark/streads/streads/config/locales"
->>>>>>> b0125668c7133ba2303d32dd758cad2a91f2e758
     ]
   },
   "hostname": null,
@@ -85,19 +63,11 @@
   "db": {
     "mongo": {
       "username": "deepakkghosh",
-<<<<<<< HEAD
       "password": "deepakkghoshpass",
       "host": "dharma.mongohq.com",
       "port": 10029,
       "dbname": "streadsdev",
       "prefix": null
-=======
-      "dbname": "streadsdev",
-      "prefix": null,
-      "password": "deepakkghoshpass",
-      "host": "dharma.mongohq.com",
-      "port": 10029
->>>>>>> b0125668c7133ba2303d32dd758cad2a91f2e758
     }
   },
   "passport": {
@@ -118,10 +88,5 @@
   },
   "secret": "PXTTjtFUCt75Ii0klpOLtwng963npLietza7jgxTNDUlN1ijSo7XpLGfin41XFDIJRE2NGY1qH58Xb5mciSmutZC02BOVtv6EEWyJKt75JxBjGKkJ6hK56cCYxlwNbz8"
 }
-<<<<<<< HEAD
-[Tue, 11 Feb 2014 05:51:21 GMT] INFO Creating 1 worker process.
-[Tue, 11 Feb 2014 05:51:35 GMT] INFO Server worker running in development on port 4000 with a PID of: 9836
-=======
-[Sat, 18 Jan 2014 22:11:04 GMT] INFO Creating 1 worker process.
-[Sat, 18 Jan 2014 22:11:05 GMT] INFO Server worker running in development on port 4000 with a PID of: 26627
->>>>>>> b0125668c7133ba2303d32dd758cad2a91f2e758
+[Tue, 18 Feb 2014 21:39:35 GMT] INFO Creating 1 worker process.
+[Tue, 18 Feb 2014 21:39:55 GMT] INFO Server worker running in development on port 4000 with a PID of: 11639

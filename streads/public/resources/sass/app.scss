@@ -19,7 +19,6 @@ $include-default-icons: false;
 /* Non-filled fonts */
 @include icon('home', '\f144', 'ionicons');
 @include icon('add', '\f1c9', 'ionicons');
-@include icon('plus', '\f1c9', 'ionicons');
 @include icon('close', '\f2bd', 'ionicons');
 @include icon('cross', '\f2bd', 'ionicons');
 @include icon('arrowright', '\f280', 'ionicons');
@@ -46,6 +45,8 @@ $include-default-icons: false;
 @include icon('circledplus', '\f1ca', 'ionicons');
 @include icon('personaddfilled', '\f1c4', 'ionicons');
 @include icon('personadd', '\f1c3', 'ionicons');
+@include icon('plusfilled', '\f1cb', 'ionicons');
+@include icon('plus', '\f1c9', 'ionicons');
 @include icon('arrowforwardthick', '\f152', 'ionicons');
 @include icon('arrowforward', '\f154', 'ionicons');
 
