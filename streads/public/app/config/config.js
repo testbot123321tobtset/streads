@@ -2,8 +2,8 @@ Ext.define('X.config.Config', {
     singleton: true,
     config: {
         // Server Config
-//        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
-        API_ENDPOINT: 'http://localhost:4000/',
+        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
+//        API_ENDPOINT: 'http://localhost:4000/',
         
         // TO DO: Update these URLs when you have the UIs
         DEFAULT_LOGIN_PAGE: 'user/login',

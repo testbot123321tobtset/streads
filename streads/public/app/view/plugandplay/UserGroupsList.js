@@ -8,6 +8,7 @@ Ext.define('X.view.plugandplay.UserGroupsList', {
         itemId: 'userGroupsList',
         cls: 'user-groups-list',
         itemTpl: '{title}',
+        deselectOnContainerClick: true,
         onItemDisclosure: true
     }
 });

@@ -1,6 +1,6 @@
-// http://docs.sencha.com/touch/2.3.0/#!/api/Ext.Component-method-setRecord
 Ext.define('overrides.Component', {
     override: 'Ext.Component',
+    // http://docs.sencha.com/touch/2.3.0/#!/api/Ext.Component-method-setRecord
     setRecordRecursive: function(record) {
         var me = this;
         if (typeof me.setRecord === 'function') {

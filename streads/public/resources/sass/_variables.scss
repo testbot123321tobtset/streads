@@ -196,6 +196,16 @@ $list-disclosure-icon-font-line-height: 0.9em;
 $list-zebrastripe: false;
 $list-bg-color: $list-background-color;
 
+/*
+Mask
+*/
+$mask-background-color: lighten($default-theme-color, 45%);
+$mask-border-color: transparent;
+$mask-border-radius: 500px;
+$mask-color: $default-theme-color;
+$mask-font-weight: $default-font-weight;
+$mask-spinner-font-size: 170%;
+
 $default-absolute-top-margin: 20px;
 
 $default-opacity-on-floating-foreground-element: 0.95;

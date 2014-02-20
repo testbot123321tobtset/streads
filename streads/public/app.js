@@ -93,7 +93,9 @@ Ext.application({
         'Ext.MessageBox',
         'Ext.device.Notification',
         'overrides.TabPanel',
-        'overrides.Component'
+        'overrides.Component',
+        'overrides.dataview.List',
+        'overrides.LoadMask'
     ],
     models: [
         'User',

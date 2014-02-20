@@ -791,7 +791,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.ux.ToggleableButton": [],
   "X.view.ux.plugin.SlideToRemove": [],
   "overrides.Component": [],
-  "overrides.TabPanel": []
+  "overrides.LoadMask": [],
+  "overrides.TabPanel": [],
+  "overrides.dataview.List": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1823,5 +1825,7 @@ Ext.ClassManager.addNameAliasMappings({
     "plugin.slidetoremove"
   ],
   "overrides.Component": [],
-  "overrides.TabPanel": []
+  "overrides.LoadMask": [],
+  "overrides.TabPanel": [],
+  "overrides.dataview.List": []
 });
