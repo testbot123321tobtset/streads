@@ -53,6 +53,15 @@ exports.getResponseMessage = function(responseMessageType) {
         case 'groupForAuthenticatedUserCouldNotBeCreated':
             responseMessage = 'Hmm, we couldn\'t create that group for you. Let us know, and we\'ll take care of it.';
             break;
+        case 'noUserFoundForEmail':
+            responseMessage = 'Hmm, we couldn\'t find a user with this email.';
+            break;
+        case 'failedToSaveFriendship':
+            responseMessage = 'Hmm, somehow we couldn\'t save the friendship, please let us know.'
+            break;
+        case 'friendshipAlreadyExists':
+            responseMessage = 'You\'ve already friended this user!';
+            break;
         case 'groupForAuthenticatedUserCouldNotBeUpdated':
             responseMessage = 'Hmm, we couldn\'t update that group for you. Let us know, and we\'ll take care of it.';
             break;

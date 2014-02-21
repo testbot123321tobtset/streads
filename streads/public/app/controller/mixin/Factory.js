@@ -10,6 +10,14 @@ Ext.define('X.controller.mixin.Factory', {
         });
         return me;
     },
+    generateFriendshipSuccessfullyCreatedWindow: function(callback) {
+      var me = this;
+      var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().FRIENDSHIP_SUCCESSFULLY_CREATED;
+      Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+        me.executeCallback(callback);
+      });
+      return me;
+    },
     generateGroupSuccessfullyCreatedWindow: function(callback) {
         var me = this;
         var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().GROUP_SUCCESSFULLY_CREATED;

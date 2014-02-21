@@ -2,7 +2,8 @@ Ext.define('X.view.page.user.Root', {
     extend: 'Ext.tab.Panel',
     requires: [
         'X.view.plugandplay.UserGroupsTabPanel',
-        'X.view.plugandplay.UserMoreTabPanel'
+        'X.view.plugandplay.UserMoreTabPanel',
+        'X.view.plugandplay.UserFriendFormPanel'
     ],
     xtype: 'pageuserroot',
     id: 'pageUserRoot',
@@ -20,6 +21,23 @@ Ext.define('X.view.page.user.Root', {
             }
         },
         items: [
+            {
+                layout: {
+                    type: 'vbox',
+                    pack: 'center',
+                    align: 'stretch'
+                },
+                itemId: 'userFriends',
+                cls: 'user-friends',
+                iconCls: 'groupsfilled',
+                items: [
+                  {
+                      xtype: 'userfriendformpanel',
+                      flex: 1,
+                      scrollable: null
+                  }
+                ]
+            },
             {
                 layout: {
                     type: 'vbox',
