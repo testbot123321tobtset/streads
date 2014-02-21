@@ -32,6 +32,12 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
                                 cameraTriggerButton: button
                             });
                         });
+                    },
+                    tap: function(button, eOpts) {
+                        Ext.Viewport.fireEvent('cameratriggerbuttontap', {
+                            cameraTriggerPanel: button.up('#cameraTriggerPanel'),
+                            cameraTriggerButton: button
+                        });
                     }
                 }
             }

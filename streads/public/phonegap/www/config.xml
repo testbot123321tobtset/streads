@@ -48,4 +48,10 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="http://deepakkghosh.streads.jit.su*" />
+    
+    <!--Plugins-->
+    <gap:plugin name="org.apache.cordova.camera" />
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
 </widget>

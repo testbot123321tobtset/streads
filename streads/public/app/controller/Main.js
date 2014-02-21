@@ -47,10 +47,6 @@ Ext.define('X.controller.Main', {
             orientationchange: {
                 fn: 'onOrientationchange',
                 scope: me
-            },
-            cameratriggerbuttondoubletap: {
-                fn: 'onCameraTriggerButtonDoubleTap',
-                scope: me
             }
         });
     },
@@ -64,29 +60,5 @@ Ext.define('X.controller.Main', {
         if (me.getDebug()) {
             console.log("Debug: X.controller.Main.onOrientationchange()");
         }
-    },
-    onCameraTriggerButtonDoubleTap: function() {
-        var me = this;
-        if (me.getDebug()) {
-            console.log("Debug: X.controller.Main.onCameraTriggerButtonDoubleTap()");
-        }
-        // This should bring up the camera interface
-//        Ext.device.Camera.capture({
-//            success: function(image) {
-//                console.log(image);
-//            },
-//            quality: 75,
-//            width: 300,
-//            height: 300,
-//            destination: 'data',
-//            source: 'camera',
-//            encoding: 'jpg'
-//        });
-//        navigator.camera.getPicture(success, fail, {
-//            quality: 50,
-//            destinationType: navigator.camera.DestinationType.FILE_URI,
-//            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-//        });
-        return me;
     }
 });

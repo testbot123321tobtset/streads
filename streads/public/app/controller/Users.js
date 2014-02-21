@@ -36,7 +36,8 @@ Ext.define('X.controller.Users', {
         },
         control: {
             viewport: {
-                authenticateduserdataedit: 'onAuthenticatedUserDataEdit'
+                authenticateduserdataedit: 'onAuthenticatedUserDataEdit',
+                cameratriggerbuttontap: 'onCameraTriggerButtonTap'
             },
             // Login
             pageLogin: {
@@ -448,6 +449,43 @@ Ext.define('X.controller.Users', {
                         delay(500);
             }
         });
+        return me;
+    },
+    /*
+     * Camera: Photo related functions
+     */
+    onCameraTriggerButtonTap: function(cameraTriggerPanel, cameraTriggerButton) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log("Debug: X.controller.Main.onCameraTriggerButtonDoubleTap()");
+        }
+        if (Ext.browser.is.PhoneGap) {
+            if (me.getDebug()) {
+                console.log("Debug: PHONEGAP: X.controller.Main.onCameraTriggerButtonTap()");
+            }
+            navigator.camera.getPicture(
+                    function() {
+                        console.log('success!');
+                    },
+                    function() {
+                        console.log('failure!');
+                    },
+                    {
+                        quality: 100,
+                        destinationType: 1,
+                        sourceType: 1,
+                        saveToPhotoAlbum: true,
+                        allowEdit: true,
+                        encodingType: 0,
+                        mediaType: 0
+                    }
+            );
+        }
+        else {
+            if (me.getDebug()) {
+                console.log("Debug: This is not a Phonegap application");
+            }
+        }
         return me;
     },
     init: function() {

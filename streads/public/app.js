@@ -88,7 +88,7 @@
 Ext.application({
     name: 'X',
     profiles: ['Phone'],
-    requires: [,
+    requires: [
         'X.config.Config',
         'Ext.MessageBox',
         'Ext.device.Notification',
