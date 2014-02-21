@@ -147,7 +147,19 @@ router.match('/user/groups/:id(.:format)','DELETE').
         });
          
 
-//router.resource('users');
+// routing for creating/destroying friendhips
+router.post('/friendships(.:format)').
+        to({
+            controller:'Friendships',
+            action:'create'
+        });
+router.del('/friendships/:id(.:format)').
+        to({
+            controller: 'Friendships',
+            action: 'destroy'
+        });
+router.resource('users');
+
 //router.resource('friendships');
 //router.resource('groupships');
 //router.resource('groups');

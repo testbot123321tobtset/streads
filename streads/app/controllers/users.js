@@ -31,9 +31,9 @@ var Users = function() {
 
     // Unauthenticated: creates a user
     me.create = function(req, resp, params) {
-        var self = this,
-                User = geddy.model.User,
-                user = User.create(params);
+      var self = this,
+      User = geddy.model.User,
+      user = User.create(params);
 
         // Non-blocking uniqueness checks are hard
         User.first({

@@ -49,6 +49,9 @@ Ext.define('X.controller.Users', {
             userLoginFormSubmitButton: {
                 tap: 'doLogin'
             },
+            userFriendSubmitButton: {
+                tap: 'doAddFriend'
+            },
             // User profile root page - this comes after authentication
             pageUserRoot: {
                 activeitemchange: 'onPageUserRootTabPanelPanelActiveItemChange'
@@ -68,6 +71,9 @@ Ext.define('X.controller.Users', {
             userSignupFormSubmitButton: '#userSignupFormPanel #submitButton',
             userLoginFormPanel: '#userLoginFormPanel',
             userLoginFormSubmitButton: '#userLoginFormPanel #submitButton',
+            // User Friend Form Panel - for adding friends
+            userFriendFormPanel: '#userFriendFormPanel',
+            userFriendSubmitButton: '#userFriendFormPanel #submitButton',
             // User profile root page - this comes after authentication
             pageUserRoot: '#pageUserRoot',
             // User :: More
@@ -384,6 +390,38 @@ Ext.define('X.controller.Users', {
             }
         });
         return me;
+    },
+    doAddFriend: function(button, e, eOpts) {
+      var me = this;
+      if (me.getDebug()) {
+        console.log('Debug: X.controller.Users.doAddFriend()');
+      }
+      var formPanel = button.up('coreformpanel');
+      var formData = formPanel.getValues();
+      me.xhrAddFriend(formPanel);
+    },
+    xhrAddFriend: function(form) {
+      var me = this;
+      form.submit({
+        url: '/friendships',
+        method: 'POST',
+        success: function(form, action, serverResponse) {
+          if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.xhrAddFriend(): Successful');
+          }
+          form.reset();
+          me.generateFriendshipSuccessfullyCreatedWindow({
+            message: "Successfully friended this user!"
+          });
+        },
+        failure: function(form, serverResponse) {
+          form.reset();
+          var serverResponseMessage = (Ext.isObject(serverResponse) && Ext.isString(serverResponse.message)) ? serverResponse.message : false;
+          me.generateFailedWindow({
+            message: serverResponseMessage
+          });
+        }
+      });
     },
     show: function(id) {
         var me = this;
