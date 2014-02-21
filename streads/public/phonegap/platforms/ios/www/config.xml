@@ -54,4 +54,8 @@
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
     </feature>
+    <gap:plugin name="org.apache.cordova.contacts" />
+    <feature name="Contacts">
+        <param name="ios-package" value="CDVContacts" />
+    </feature>
 </widget>

@@ -14,7 +14,8 @@ Ext.define('X.controller.Main', {
         factory: 'X.controller.mixin.Factory',
         page: 'X.controller.mixin.Page',
         user: 'X.controller.mixin.User',
-        group: 'X.controller.mixin.Group'
+        group: 'X.controller.mixin.Group',
+        deviceContact: 'X.controller.mixin.DeviceContact'
     },
     config: {
         debug: false,
