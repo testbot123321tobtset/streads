@@ -20,12 +20,6 @@
 var router = new geddy.RegExpRouter();
 
 // CORS
-//router.match('/', 'OPTIONS').
-//        to({
-//            controller: 'Application',
-//            action: 'options'
-//        });
-
 router.match('/*path(.:format)', 'OPTIONS').
         to({
             controller: 'Application',

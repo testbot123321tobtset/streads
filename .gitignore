@@ -1,3 +1,55 @@
-/nbproject/**
-streads/log/**
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
 *.log
+streads/log/
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node
+node_modules
+npm-debug.log
+
+# Netbeans IDE
+nbproject/
+
+# Others
+*.swp
+*.swo
+dist
+
+# App specific
+streads/config/secrets.json
+streads/public/buildlog.txt
+streads/public/.sencha/
+streads/public/.sencha_backup/
+streads/public/resources/.sass-cache
+# build folder is dynamically generated on running sencha build app
+streads/public/build/
+# Ignore generated phonegap folder – this folder gets dynamically generated when you initialize Phonegap inside of Sencha Touch
+streads/public/phonegap/

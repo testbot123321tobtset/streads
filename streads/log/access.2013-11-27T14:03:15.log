@@ -1,2 +1,0 @@
-[Wed, 27 Nov 2013 06:49:33 GMT] ACCESS 127.0.0.1 - - [Wed Nov 27 2013 01:49:33 GMT-0500 (EST)] "GET / 1.1" 200 427 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71"
-[Wed, 27 Nov 2013 06:49:33 GMT] ACCESS 127.0.0.1 - - [Wed Nov 27 2013 01:49:33 GMT-0500 (EST)] "GET /favicon.ico 1.1" 200 318 "http://localhost:4000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71"
