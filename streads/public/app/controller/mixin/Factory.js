@@ -6,7 +6,7 @@ Ext.define('X.controller.mixin.Factory', {
             me.createView({
                 xtype: thisXtype,
                 hidden: true
-            });
+            }).hide();
         });
         return me;
     },
@@ -296,8 +296,13 @@ Ext.define('X.controller.mixin.Factory', {
                 xtype: 'usergroupcontainer'
             });
             if (showContainer) {
-                userGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
-                userGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
+                if(userGroupContainer.getDepthBasedOnOffset()) {
+                    userGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
+                }
+                else {
+                    userGroupContainer.setDimensionsToFillScreen();
+                }
+                Ext.Viewport.add(userGroupContainer);
                 userGroupContainer.show(X.config.Config.getShowAnimationConfig());
                 userGroupContainer.setRecordRecursive(group);
             }
@@ -318,8 +323,13 @@ Ext.define('X.controller.mixin.Factory', {
                 xtype: 'usereditgroupcontainer'
             });
             if (showContainer) {
-                userEditGroupContainer.setWidth(Ext.Viewport.getWindowWidth());
-                userEditGroupContainer.setHeight(Ext.Viewport.getWindowHeight());
+                if(userEditGroupContainer.getDepthBasedOnOffset()) {
+                    userEditGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
+                }
+                else {
+                    userEditGroupContainer.setDimensionsToFillScreen();
+                }
+                Ext.Viewport.add(userEditGroupContainer);
                 userEditGroupContainer.show(X.config.Config.getShowAnimationConfig());
                 userEditGroupContainer.setRecordRecursive(group);
             }

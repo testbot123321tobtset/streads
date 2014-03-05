@@ -2,61 +2,39 @@
 @import '_variables';
 @import '_mixins';
 
+$form-panel-background-color: $default-background-color;
+
 .x-form {
+    
+    @include no-background;
+    background-color: $form-panel-background-color !important;
+    
+    @include no-border;
+    
     .x-scroll-container {
-        // My addition
-        background-color: transparent;
+        
+        @include no-background;
     }
 
-    > input[type=submit] {
-        display: none;
-    }
+    .x-form-fieldset {
 
-    .x-field .x-field-input,
-    .x-field .x-input-el {
-        font-weight: 300;
-    }
-
-    &.x-floating {
-        .x-input-el {
-            padding-top: .5em;
+        @include no-margin;
+        margin-top: $default-margin-for-fieldsets !important;
+        
+        &:last-child {
+            
+            margin-bottom: $default-margin-for-fieldsets !important;
         }
     }
 
-    .x-field .x-field-input {
-        border: 0px;
-        background-color: transparent;
+    .x-button {
+        
+        @include no-margin;
+        margin-top: $default-margin-for-fieldsets !important;
+        
+        &:last-child {
+            
+            margin-bottom: $default-margin-for-fieldsets !important;
+        }
     }
-}
-
-.x-form-label {
-    padding: .6em .6em .6em 1em;
-
-    span {
-        font-size: 1.1em;
-        font-weight: 400;
-    }
-}
-
-.x-form-fieldset {
-    // My addition
-    .x-form-fieldset-title {
-        margin-left: 1em;
-        text-transform: uppercase;
-        font-size: 0.8em;
-    }
-    .x-input-el {
-        padding: 0.4em;
-        padding-left: 1em;
-    }
-}
-
-.x-form-fieldset .x-form-fieldset-inner {
-    border-top: 1px solid #d9d9d9;
-    border-bottom: 1px solid #d9d9d9;
-
-    // My addition
-    border: 0px;
-
-    overflow: hidden;
 }

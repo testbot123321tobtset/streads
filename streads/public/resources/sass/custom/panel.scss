@@ -8,77 +8,44 @@
     @include no-background;
     @include no-margin;
     
-    min-height: $tabbar-height !important;
-    height: $tabbar-height !important;
-    min-width: $tabbar-tab-min-width !important;
-    width: $tabbar-tab-width !important;
+    min-height: $default-toolbar-height !important;
+    height: $default-toolbar-height !important;
+    min-width: $default-toolbar-height !important;
+    width: $default-toolbar-height !important;
     
-    opacity: $default-iconned-button-outer-container-opacity;
-
     .x-panel-inner {
         @include no-border;
         @include no-background;
+        @include no-margin;
         
         .camera-trigger-button {
+            @include no-background;
             @include no-margin;
             @include no-border;
             @include full-height;
             @include full-width;
-            @include no-background;
             
             .x-button-icon {
-                @include full-width;
-                @include full-height;
-
                 @include no-text-shadow;
                 @include no-text-stroke;
 
                 &:before {
-                    font-size: $tabbar-tab-button-font-size !important;
-                    line-height: $tabbar-tab-button-line-height !important;
-                    color: $tabbar-tab-button-active-color;
-                    @include single-text-shadow;
+                    font-size: 1.8em !important;
+                    line-height: 1em !important;
+                    color: $default-color-active !important;
                 }
             }
-            
-            
-            
-/*            min-height: $default-iconned-button-min-height !important;
-            height: $default-iconned-button-height !important;
-            min-width: $default-iconned-button-min-width !important;
-            width: $default-iconned-button-width !important;
-
-            @include border-radius($tabbar-tab-border-radius);
-
-            background-color: $tabbar-tab-background-color;
-
-            border-width: $tabbar-tab-border-width;
-            border-style: $tabbar-tab-border-style;
-            border-color: $tabbar-tab-border-color;
-
-            margin: 0 !important;
             
             &.x-button-pressing {
-                background-color: $default-iconned-pressed-background-color;
-                border-color: $default-iconned-borer-pressed-color;
-            }
+                .x-button-icon {
+                    @include no-text-shadow;
+                    @include no-text-stroke;
 
-            .x-button-icon {
-                @include full-width;
-                @include full-height;
-
-                @include no-text-shadow;
-                @include no-text-stroke;
-
-                &:before {
-                    margin-left: $default-iconned-button-margin-left;
-                    margin-top: $default-iconned-button-margin-top;
-
-                    font-size: $tabbar-tab-button-font-size;
-                    line-height: $tabbar-tab-button-line-height;
-                    color: $tabbar-tab-button-color;
+                    &:before {
+                        color: lighten($default-color-active, $default-color-variance) !important;
+                    }
                 }
-            }*/
+            }
         }
     }
 }

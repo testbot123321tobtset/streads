@@ -2,108 +2,104 @@
 @import '_variables';
 @import '_mixins';
 
+$toolbar-background-color: rgba(255, 255, 255, $default-theme-transparency-opacity);
+$toolbar-border-width: 0;
+$toolbar-border-style: solid;
+$toolbar-border-color: transparent;
+$toolbar-border-visible-edge-width: $default-border-width;
+$toolbar-border-visible-edge-style: $default-border-style;
+$toolbar-border-visible-edge-color: $default-border-color;
+$toolbar-title-color: $default-color-active;
+$toolbar-button-color: $default-color-active;
+$toolbar-button-pressing-color: lighten($toolbar-button-color, $default-color-variance);
+
 .x-toolbar {
-    @include no-padding;
-    
-    @include no-border;
-    border-width: $toolbar-border-width !important;
-    border-color: $toolbar-border-color !important;
-    
-    @include no-margin;
-    margin: $toolbar-margin !important;
     
     @include no-background;
     background-color: $toolbar-background-color !important;
     
-    height: $toolbar-height !important;
-    min-height: $toolbar-min-height !important;
+    height: $default-toolbar-height !important;
+    min-height: $default-toolbar-height !important;
+    
+    .x-container {
+        
+        @include no-background;
+    }
 
     &.x-docked-bottom {
-        @include no-border;
-        border-width: $toolbar-border-width !important;
-        border-color: $toolbar-border-color !important;
-        border-top-width: $tabbar-border-visible-edge-width !important;
-        border-top-color: $tabbar-border-visible-edge-color !important;
-
+        
         @include no-background;
         background-color: $toolbar-background-color !important;
+        
+        @include no-border;
+        border: $toolbar-border-width $toolbar-border-style $toolbar-border-color !important;
+        border-top: $toolbar-border-visible-edge-width $toolbar-border-visible-edge-style $toolbar-border-visible-edge-color !important;
+        
+        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+        & + div {
+            
+            .x-scroll-view {
+                
+                padding-bottom: $default-toolbar-height !important;
+            }
+        }
     }
 
     &.x-docked-top {
-        @include no-border;
-        border-width: $toolbar-border-width !important;
-        border-color: $toolbar-border-color !important;
-        border-bottom-width: $tabbar-border-visible-edge-width !important;
-        border-bottom-color: $tabbar-border-visible-edge-color !important;
-
+        
         @include no-background;
         background-color: $toolbar-background-color !important;
-    }
-
-    &.x-docked-left {
+        
         @include no-border;
-        border-width: $toolbar-border-width !important;
-        border-color: $toolbar-border-color !important;
-        border-right-width: $tabbar-border-visible-edge-width !important;
-        border-right-color: $tabbar-border-visible-edge-color !important;
-
-        @include no-background;
-        background-color: $toolbar-background-color !important;
-    }
-
-    &.x-docked-right {
-        @include no-border;
-        border-width: $toolbar-border-width !important;
-        border-color: $toolbar-border-color !important;
-        border-left-width: $tabbar-border-visible-edge-width !important;
-        border-left-color: $tabbar-border-visible-edge-color !important;
-
-        @include no-background;
-        background-color: $toolbar-background-color !important;
+        border: $toolbar-border-width $toolbar-border-style $toolbar-border-color !important;
+        border-bottom: $toolbar-border-visible-edge-width $toolbar-border-visible-edge-style $toolbar-border-visible-edge-color !important;
+        
+        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+        & + div {
+            
+            .x-scroll-view {
+                
+                padding-top: $default-toolbar-height !important;
+            }
+        }
     }
     
     &.x-full-width {
+        
         @include full-width;
     }
 
     .x-title {
-        @include no-padding;
-        @include no-margin;
         
-        @include no-border;
-        border: $toolbar-title-border-width $toolbar-title-border-style $toolbar-title-border-color !important;
-        
-        @include auto-height;
-        
-        font-weight: $toolbar-title-font-weight;
-        font-size: $toolbar-title-font-size;
-        color: $toolbar-title-color;
+        color: $toolbar-title-color !important;
     }
     
     .x-toolbar-inner > .x-container {
-        @include no-border;
-        @include no-background;
+        
     }
 
     .x-button {
-        @include no-margin;
-        @include no-padding;
         
-        @include full-height;
-        min-height: $toolbar-button-min-height !important;
-        height: $toolbar-button-height !important;
-        min-width: $toolbar-button-min-width !important;
-        width: $toolbar-button-width !important;
+        @include no-background;
         
         @include no-border;
-        border: $toolbar-button-border-width $toolbar-button-border-style $toolbar-button-border-color !important;
         
         .x-button-icon {
+            
             &:before {
-                font-size: $toolbar-button-font-size !important;
-                line-height: $toolbar-button-line-height !important;
-                color: $tabbar-tab-button-active-color;
-                @include single-text-shadow;
+                
+                color: $toolbar-button-color !important;
+            }
+        }
+        
+        &.x-button-pressing {
+            
+            .x-button-icon {
+
+                &:before {
+
+                    color: $toolbar-button-pressing-color !important;
+                }
             }
         }
     }

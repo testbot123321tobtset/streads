@@ -54,38 +54,52 @@ Ext.define('X.config.Config', {
             'usergroupcontainer',
             'usereditgroupcontainer'
         ],
+        // Every new window-like floating container will reduce in dimensions by this much %
+        LAYER_HORIZONTAL_OFFSET: 0,
+        LAYER_VERTICAL_OFFSET: 6,
         // When you change any of these settings, make sure you change overrides as well
-        // E.g. overrides.TabPanel
+        // E.g. overrides.TitleBar, overrides.tab.Bar
+        DEFAULT_TOOLBAR_HEIGHT: 50,
+        
         defaultToolbarHeight: 46,
         // Animations
-        defaultAnimationDuration: 300,
+        // When you change animations, check overrides.TitleBar for consistency
+        // Animation types: 'fade', 'fadeOut', 'flip', 'pop', 'popOut', 'slide', 'slideOut' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.fx.Animation-cfg-type)
+        defaultAnimationDuration: 800,
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
-        defaultAnimationEasing: 'ease',
+        defaultAnimationEasing: 'cubic-bezier(0,.23,0,1)',
         showAnimationConfig: {
-            type: 'pop',
-            easing: 'ease',
-            duration: 300
+            type: 'slide',
+            direction: 'up',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        HIDE_ANIM_CONFIG: {
+            type: 'slideOut',
+            direction: 'down',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
         },
         hideAnimationConfig: {
-            type: 'popOut',
-            //direction: 'right',
-            easing: 'ease',
-            duration: 300
+            type: 'slideOut',
+            direction: 'down',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
         },
         showAnimationConfigWithNoDirection: {
-            type: 'pop',
-            easing: 'ease',
-            duration: 300
+            type: 'slide',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
         },
         hideAnimationConfigWithNoDirection: {
-            type: 'popOut',
-            easing: 'ease',
-            duration: 300
+            type: 'slideOut',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
         },
         animationConfig: {
-            type: 'pop',
-            easing: 'ease',
-            duration: 300
+            type: 'slide',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
         }
     },
     constructor: function(config) {

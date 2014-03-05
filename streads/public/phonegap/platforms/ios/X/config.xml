@@ -21,6 +21,12 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <feature name="Contacts">
+        <param name="ios-package" value="CDVContacts" />
+    </feature>
     <name>X</name>
     <description>
         Hello World sample application that responds to the deviceready event.
@@ -70,11 +76,5 @@
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="http://deepakkghosh.streads.jit.su*" />
     <gap:plugin name="org.apache.cordova.camera" />
-    <feature name="Camera">
-        <param name="ios-package" value="CDVCamera" />
-    </feature>
     <gap:plugin name="org.apache.cordova.contacts" />
-    <feature name="Contacts">
-        <param name="ios-package" value="CDVContacts" />
-    </feature>
 </widget>

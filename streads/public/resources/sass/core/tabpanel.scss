@@ -2,120 +2,125 @@
 @import '_variables';
 @import '_mixins';
 
-/*
-.x-tabbar {
-    z-index: 2;
-}
+$tabbar-background-color: rgba(255, 255, 255, $default-theme-transparency-opacity);
+$tabbar-border-width: 0;
+$tabbar-border-style: solid;
+$tabbar-border-color: transparent;
+$tabbar-border-visible-edge-width: $default-border-width;
+$tabbar-border-visible-edge-style: $default-border-style;
+$tabbar-border-visible-edge-color: $default-border-color;
+$tabbar-tab-button-color: $default-color-normal;
+$tabbar-tab-button-pressed-color: lighten($tabbar-tab-button-color, $default-color-variance);
+$tabbar-tab-button-active-color: $default-color-active;
 
-.x-tabbar-inner {
-    @include filter(blur(10px));
-    z-index: 1;
-    opacity: .35;
-}*/
-
 .x-tabbar {
-    min-height: $tabbar-min-height !important;
-    height: $tabbar-height !important;
-    
-    @include no-padding;
-    
+
     @include no-border;
-    border-width: $tabbar-border-width !important;
-    border-color: $tabbar-border-color !important;
-    
-    @include no-margin;
-    margin: $tabbar-margin !important;
-    
+    border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
+
     @include no-background;
     background-color: $tabbar-background-color !important;
-    
+
+    &.x-docked-bottom {
+
+        @include no-border;
+        border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
+        border-top: $tabbar-border-visible-edge-width $tabbar-border-visible-edge-style $tabbar-border-visible-edge-color !important;
+
+        @include no-background;
+        background-color: $tabbar-background-color !important;
+        
+        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+        & + div {
+            
+            .x-scroll-view {
+                
+                padding-bottom: $default-toolbar-height !important;
+            }
+        }
+
+        &.x-docked-bottom-that-is-top {
+
+            @include no-border;
+            border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
+            border-bottom: $tabbar-border-visible-edge-width $tabbar-border-visible-edge-style $tabbar-border-visible-edge-color !important;
+
+            @include no-background;
+            background-color: $tabbar-background-color !important;
+            
+            /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+            & + div {
+                
+                .x-scroll-view {
+                    
+                    padding-top: $default-toolbar-height !important;
+                }
+            }
+        }
+    }
+
+    &.x-docked-top {
+
+        @include no-border;
+        border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
+        border-bottom: $tabbar-border-visible-edge-width $tabbar-border-visible-edge-style $tabbar-border-visible-edge-color !important;
+
+        @include no-background;
+        background-color: $tabbar-background-color !important;
+
+        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+        & + div {
+
+            .x-scroll-view {
+
+                padding-top: $default-toolbar-height !important;
+            }
+        }
+    }
+
     &.x-full-width {
         @include full-width;
     }
-    
-    &.x-docked-bottom {
-        min-height: $tabbar-min-height !important;
-        height: $tabbar-height !important;
-        
-        @include no-border;
-        border-width: $tabbar-border-width !important;
-        border-color: $tabbar-border-color !important;
-        border-top-width: $tabbar-border-visible-edge-width !important;
-        border-top-color: $tabbar-border-visible-edge-color !important;
-        
-        @include no-margin;
-        @include no-padding;
-        
-        background-color: $tabbar-background-color !important;
-        
-        margin-bottom: $tabbar-margin-from-edge !important;
-        
-        &.x-docked-bottom-that-is-top {
-            min-height: $tabbar-min-height !important;
-            height: $tabbar-height !important;
-        
-            @include no-border;
-            border-width: $tabbar-border-width !important;
-            border-color: $tabbar-border-color !important;
-            border-bottom-width: $tabbar-border-visible-edge-width !important;
-            border-bottom-color: $tabbar-border-visible-edge-color !important;
-            
-            margin-top: $tabbar-margin-from-edge !important;
-        }
-    }
-    
+
     .x-tab {
-        @include no-background;
-        @include no-border;
-        @include no-margin;
-        @include no-padding;
-        
-        border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
-        
+
         .x-button-icon {
-            @include full-height;
-            @include full-width;
-            
-            @include no-text-shadow;
-            @include no-text-stroke;
-                
+
             &:before {
-                font-size: $tabbar-tab-button-font-size !important;
-                line-height: $tabbar-tab-button-line-height !important;
-                color: $tabbar-tab-button-color;
-                @include single-text-shadow;
+                color: $tabbar-tab-button-color !important;
             }
         }
-        
-        &.x-tab-pressed {
-            @include no-background;
-            @include no-border;
-            @include no-margin;
-            @include no-padding;
 
-            border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
-            
+        .x-button-label {
+            color: $tabbar-tab-button-color !important;
+        }
+
+        &.x-tab-pressed {
+
             .x-button-icon {
+
                 &:before {
-                    color: $tabbar-tab-button-pressed-color;
-                    @include single-text-shadow;
+                    color: $tabbar-tab-button-pressed-color !important;
                 }
+            }
+
+            .x-button-label {
+                color: $tabbar-tab-button-pressed-color !important;
             }
         }
 
         &.x-tab-active {
-            @include no-background;
-            @include no-border;
-            @include no-margin;
-            @include no-padding;
 
-            border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
-            
             .x-button-icon {
+
                 &:before {
-                    color: $tabbar-tab-button-active-color;
-                    @include single-text-shadow;
+                    color: $tabbar-tab-button-active-color !important;
                 }
+            }
+
+            .x-button-label {
+                
+                color: $tabbar-tab-button-active-color !important;
             }
         }
     }

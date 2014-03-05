@@ -23,14 +23,16 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
         floating: true,
         centered: true,
         fullscreen: true,
+        layer: 1,
+        depthBasedOnOffset: true,
+        modal: true,
         items: [
             {
                 xtype: 'titlebar',
                 itemId: 'userGroupContainerToolbar',
                 docked: 'top',
                 top: 0,
-                cls: 'x-stretched x-docked-bottom x-docked-bottom-that-is-top x-full-width user-group-container-toolbar',
-                height: X.config.Config.getDefaultToolbarHeight(),
+                cls: 'x-stretched x-docked-top x-full-width user-group-container-toolbar',
                 layout: {
                     type: 'hbox',
                     align: 'center',
@@ -39,7 +41,6 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 title: 'Feed',
                 items: [
                     {
-                        xtype: 'button',
                         itemId: 'backButton',
                         cls: 'back-button',
                         iconCls: 'close',
@@ -51,14 +52,12 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                         align: 'left'
                     },
                     {
-                        xtype: 'button',
                         itemId: 'storiesButton',
                         cls: 'stories-button',
                         iconCls: 'albumsfilled',
                         align: 'right'
                     },
                     {
-                        xtype: 'button',
                         itemId: 'moreButton',
                         cls: 'more-button',
                         iconCls: 'morefilled',

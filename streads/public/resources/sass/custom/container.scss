@@ -3,18 +3,35 @@
 @import '_mixins';
 @import 'core/container';
 
-#userGroupContainer, #userEditGroupContainer {
-    @include no-border;
+$container-background-color: rgba(255, 255, 255, $default-theme-transparency-opacity);
+$container-border-width: 0;
+$container-border-style: solid;
+$container-border-color: transparent;
+$container-border-visible-edge-width: $default-border-width;
+$container-border-visible-edge-style: $default-border-style;
+$container-border-visible-edge-color: $default-border-color;
+
+.user-group-container, .user-edit-group-container {
     
-    .user-group-container-feed-container {
-        .x-body {
-            padding-top: $tabbar-height !important;
-        }
-    }
+    @include no-border;
+    border: $container-border-width $container-border-style $container-border-color !important;
+    border-top: $container-border-visible-edge-width $container-border-visible-edge-style $container-border-visible-edge-color !important;
+
+    @include no-background;
+    background-color: $container-background-color !important;
+    
+    @include mini-box-shadow;
 }
 
 /*Error while sencha app build: 0.5 is not a color for `grayscale'*/
-/*.blurred-background {
-    @include filter(grayscale(0.5));
-    @include filter(blur(2px));
-}*/
+.blurred-background {
+    /*This does not work:*/
+    /*@include filter(grayscale(0.5));*/
+    /*Workaround: https://github.com/chriseppstein/compass/issues/811*/
+    $percent: 50%;
+    -webkit-filter: unquote('grayscale(#{$percent})');
+    
+    @include filter(blur(10px));
+    
+    opacity: 0.3;
+}

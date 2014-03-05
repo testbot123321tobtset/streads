@@ -4,8 +4,18 @@ Ext.define('overrides.TabPanel', {
         layout: {
             type: 'card',
             animation: {
-                type: 'pop',
-                duration: 300
+                //                Available animations (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.layout.Card-cfg-animation)
+                //                cover
+                //                cube
+                //                fade
+                //                flip
+                //                pop
+                //                reveal
+                //                scroll
+                //                slide
+                type: 'flip',
+                duration: 500,
+                easing: 'cubic-bezier(0,.23,0,1)'
             }
         }
     }

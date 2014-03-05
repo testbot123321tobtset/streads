@@ -21,23 +21,24 @@ Ext.define('X.view.page.user.Root', {
             }
         },
         items: [
-            {
-                layout: {
-                    type: 'vbox',
-                    pack: 'center',
-                    align: 'stretch'
-                },
-                itemId: 'userFriends',
-                cls: 'user-friends',
-                iconCls: 'groupsfilled',
-                items: [
-                  {
-                      xtype: 'userfriendformpanel',
-                      flex: 1,
-                      scrollable: null
-                  }
-                ]
-            },
+//            {
+//                layout: {
+//                    type: 'vbox',
+//                    pack: 'center',
+//                    align: 'stretch'
+//                },
+//                itemId: 'userFriends',
+//                cls: 'user-friends',
+//                iconCls: 'groupsfilled',
+//                title: 'Friends',
+//                items: [
+//                  {
+//                      xtype: 'userfriendformpanel',
+//                      flex: 1,
+//                      scrollable: null
+//                  }
+//                ]
+//            },
             {
                 layout: {
                     type: 'vbox',
@@ -47,6 +48,7 @@ Ext.define('X.view.page.user.Root', {
                 itemId: 'userGroups',
                 cls: 'user-groups',
                 iconCls: 'groupsfilled',
+                title: 'Groups',
                 items: [
                     {
                         flex: 1,
@@ -63,6 +65,7 @@ Ext.define('X.view.page.user.Root', {
                 itemId: 'userMore',
                 cls: 'user-more',
                 iconCls: 'morefilled',
+                title: 'More',
                 items: [
                     {
                         flex: 1,

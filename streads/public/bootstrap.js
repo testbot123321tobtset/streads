@@ -797,7 +797,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "overrides.Component": [],
   "overrides.LoadMask": [],
   "overrides.TabPanel": [],
-  "overrides.dataview.List": []
+  "overrides.TitleBar": [],
+  "overrides.dataview.List": [],
+  "overrides.tab.Bar": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1837,5 +1839,7 @@ Ext.ClassManager.addNameAliasMappings({
   "overrides.Component": [],
   "overrides.LoadMask": [],
   "overrides.TabPanel": [],
-  "overrides.dataview.List": []
+  "overrides.TitleBar": [],
+  "overrides.dataview.List": [],
+  "overrides.tab.Bar": []
 });

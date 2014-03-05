@@ -3,18 +3,3 @@
 @import '_mixins';
 @import 'core/tabpanel';
 
-.fullscreen-textarea-tabpanel {
-    .x-tabbar {
-        .x-tab {
-            background-color: $ios7-green !important;
-            border-color: $ios7-green !important;
-        }
-    }
-    textarea {
-        border: 0px solid transparent !important;
-        padding: 0.5em;
-    }
-    .x-field-input {
-        border: 0px solid transparent !important;
-    }
-}

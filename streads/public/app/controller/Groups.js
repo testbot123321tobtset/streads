@@ -231,23 +231,23 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showFeedUiForGivenGroupId(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (Ext.browser.is.PhoneGap) {
-            navigator.contacts.find(
-                    [
-                        'id', 'displayName', 'name', 'nickname', 'emails'
-                    ],
-                    function(contacts) {
-                        console.log(me.getFormattedContactFromGivenDeviceContacts());
-                    },
-                    function() {
-                        console.log('failure!');
-                    },
-                    {
-                        filter: '',
-                        multiple: true
-                    }
-            );
-        }
+//        if (Ext.browser.is.PhoneGap) {
+//            navigator.contacts.find(
+//                    [
+//                        'id', 'displayName', 'name', 'nickname', 'emails'
+//                    ],
+//                    function(contacts) {
+//                        console.log(me.getFormattedContactFromGivenDeviceContacts());
+//                    },
+//                    function() {
+//                        console.log('failure!');
+//                    },
+//                    {
+//                        filter: '',
+//                        multiple: true
+//                    }
+//            );
+//        }
         Ext.getStore('GroupsStore').
                 waitWhileLoadingAndCallbackOnLoad({
                     fn: function() {

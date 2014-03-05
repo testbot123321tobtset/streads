@@ -3,14 +3,17 @@
 @import '_mixins';
 
 .x-panel.x-select-overlay {
+    
     padding: 0px;
     background-color: #fff;
 
     > .x-panel-inner {
+        
         overflow: hidden;
     }
 
     .x-list {
+        
         background: transparent !important;
     }
 

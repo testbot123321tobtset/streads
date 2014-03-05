@@ -29,6 +29,7 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 itemId: 'userGroupFeeds',
                 cls: 'user-group-feeds',
                 iconCls: 'chatbubblefilled',
+                title: 'Chats',
                 items: [
                     {
                         xtype: 'usergroupslist',
@@ -43,6 +44,7 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 itemId: 'userAddGroups',
                 cls: 'user-add-groups',
                 iconCls: 'plus',
+                title: 'New Group',
                 items: [
                     {
                         xtype: 'usergroupaddformpanel',

@@ -50,12 +50,8 @@
     <access origin="http://deepakkghosh.streads.jit.su*" />
     
     <!--Plugins-->
+    <!--http://docs.phonegap.com/en/3.3.0/cordova_camera_camera.md.html#Camera-->
     <gap:plugin name="org.apache.cordova.camera" />
-    <feature name="Camera">
-        <param name="ios-package" value="CDVCamera" />
-    </feature>
+    <!--http://docs.phonegap.com/en/3.3.0/cordova_contacts_contacts.md.html#Contacts-->
     <gap:plugin name="org.apache.cordova.contacts" />
-    <feature name="Contacts">
-        <param name="ios-package" value="CDVContacts" />
-    </feature>
 </widget>
