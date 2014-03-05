@@ -1,7 +1,6 @@
 Ext.define('overrides.TitleBar', {
     override: 'Ext.TitleBar',
     config: {
-        height: 50,
         listeners: [
             {
                 fn: 'onInitialize',

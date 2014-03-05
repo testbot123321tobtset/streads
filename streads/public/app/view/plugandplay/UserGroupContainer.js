@@ -77,7 +77,7 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
-        me.hide(X.config.Config.getHideAnimationConfig());
+        me.hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
         return me;
     },
     onShow: function() {

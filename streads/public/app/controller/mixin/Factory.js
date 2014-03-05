@@ -303,7 +303,7 @@ Ext.define('X.controller.mixin.Factory', {
                     userGroupContainer.setDimensionsToFillScreen();
                 }
                 Ext.Viewport.add(userGroupContainer);
-                userGroupContainer.show(X.config.Config.getShowAnimationConfig());
+                userGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userGroupContainer.setRecordRecursive(group);
             }
             return me;
@@ -330,7 +330,7 @@ Ext.define('X.controller.mixin.Factory', {
                     userEditGroupContainer.setDimensionsToFillScreen();
                 }
                 Ext.Viewport.add(userEditGroupContainer);
-                userEditGroupContainer.show(X.config.Config.getShowAnimationConfig());
+                userEditGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userEditGroupContainer.setRecordRecursive(group);
             }
             return me;

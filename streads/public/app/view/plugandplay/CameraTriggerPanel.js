@@ -10,14 +10,12 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
             pack: 'center',
             align: 'stretch'
         },
-        height: X.config.Config.getDEFAULT_TOOLBAR_HEIGHT(),
         bottom: 0,
         right: 0,
         // This right is not zero, because the icon we use here is not a perfect square
         // but a rectangle, and so it appears closer to the right than to the bottom
         // So we push it a bit toward the left, so it appears to be at an equal distance
         // from the right and the bottom
-//        right: '0.2em',
         cls: 'camera-trigger-panel',
         zIndex: 10,
         items: [

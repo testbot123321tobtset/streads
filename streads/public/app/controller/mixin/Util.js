@@ -186,7 +186,7 @@ Ext.define('X.controller.mixin.Util', {
                     if (X.config.Config.getDEBUG()) {
                         console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Hiding: ' + thisUi.getXTypes() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                     }
-                    thisUi.hide(X.config.Config.getHideAnimationConfig());
+                    thisUi.hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
                 }
             }
         });

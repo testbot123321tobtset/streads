@@ -4,6 +4,7 @@
 @import 'core/panel';
 
 .camera-trigger-panel {
+    
     @include no-border;
     @include no-background;
     @include no-margin;
@@ -14,11 +15,13 @@
     width: $default-toolbar-height !important;
     
     .x-panel-inner {
+        
         @include no-border;
         @include no-background;
         @include no-margin;
         
         .camera-trigger-button {
+            
             @include no-background;
             @include no-margin;
             @include no-border;
@@ -26,6 +29,7 @@
             @include full-width;
             
             .x-button-icon {
+                
                 @include no-text-shadow;
                 @include no-text-stroke;
 
@@ -37,11 +41,14 @@
             }
             
             &.x-button-pressing {
+                
                 .x-button-icon {
+                    
                     @include no-text-shadow;
                     @include no-text-stroke;
 
                     &:before {
+                        
                         color: lighten($default-color-active, $default-color-variance) !important;
                     }
                 }

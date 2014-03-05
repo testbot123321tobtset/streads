@@ -54,50 +54,40 @@ Ext.define('X.config.Config', {
             'usergroupcontainer',
             'usereditgroupcontainer'
         ],
-        // Every new window-like floating container will reduce in dimensions by this much %
+        // Every new window-like floating container will reduce in dimensions by this much pixels
         LAYER_HORIZONTAL_OFFSET: 0,
         LAYER_VERTICAL_OFFSET: 6,
-        // When you change any of these settings, make sure you change overrides as well
-        // E.g. overrides.TitleBar, overrides.tab.Bar
-        DEFAULT_TOOLBAR_HEIGHT: 50,
         
-        defaultToolbarHeight: 46,
         // Animations
         // When you change animations, check overrides.TitleBar for consistency
         // Animation types: 'fade', 'fadeOut', 'flip', 'pop', 'popOut', 'slide', 'slideOut' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.fx.Animation-cfg-type)
-        defaultAnimationDuration: 800,
+        DEFAULT_ANIMATION_DURATION: 800,
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
-        defaultAnimationEasing: 'cubic-bezier(0,.23,0,1)',
-        showAnimationConfig: {
+        DEFAULT_ANIMATION_EASING: 'cubic-bezier(0,.23,0,1)',
+        ANIMATION_CONFIG: {
+            type: 'slide',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        SHOW_ANIMATION_WITH_NO_DIRECTION_CONFIG: {
+            type: 'slide',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        HIDE_ANIMATION_WITH_NO_DIRECTION_CONFIG: {
+            type: 'slideOut',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        SHOW_ANIMATION_CONFIG: {
             type: 'slide',
             direction: 'up',
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
         },
-        HIDE_ANIM_CONFIG: {
+        HIDE_ANIMATION_CONFIG: {
             type: 'slideOut',
             direction: 'down',
-            easing: 'cubic-bezier(0,.23,0,1)',
-            duration: 800
-        },
-        hideAnimationConfig: {
-            type: 'slideOut',
-            direction: 'down',
-            easing: 'cubic-bezier(0,.23,0,1)',
-            duration: 800
-        },
-        showAnimationConfigWithNoDirection: {
-            type: 'slide',
-            easing: 'cubic-bezier(0,.23,0,1)',
-            duration: 800
-        },
-        hideAnimationConfigWithNoDirection: {
-            type: 'slideOut',
-            easing: 'cubic-bezier(0,.23,0,1)',
-            duration: 800
-        },
-        animationConfig: {
-            type: 'slide',
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
         }

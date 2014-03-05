@@ -20,6 +20,9 @@ $tabbar-tab-button-active-color: $default-color-active;
 
     @include no-background;
     background-color: $tabbar-background-color !important;
+    
+    height: $default-toolbar-height !important;
+    min-height: $default-toolbar-height !important;
 
     &.x-docked-bottom {
 
@@ -29,6 +32,9 @@ $tabbar-tab-button-active-color: $default-color-active;
 
         @include no-background;
         background-color: $tabbar-background-color !important;
+        
+        height: $default-toolbar-height !important;
+        min-height: $default-toolbar-height !important;
         
         /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
         & + div {
@@ -47,6 +53,9 @@ $tabbar-tab-button-active-color: $default-color-active;
 
             @include no-background;
             background-color: $tabbar-background-color !important;
+            
+            height: $default-toolbar-height !important;
+            min-height: $default-toolbar-height !important;
             
             /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
             & + div {
@@ -67,6 +76,9 @@ $tabbar-tab-button-active-color: $default-color-active;
 
         @include no-background;
         background-color: $tabbar-background-color !important;
+        
+        height: $default-toolbar-height !important;
+        min-height: $default-toolbar-height !important;
 
         /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
         & + div {

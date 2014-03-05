@@ -22,7 +22,7 @@ Ext.define('X.view.core.Container', {
         return this;
     },
     onSwipeDown: function(me, e) {
-        me.hide(X.config.Config.getHideAnimationConfig());
+        me.hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
         return me;
     },
     onUpdateData: function() {

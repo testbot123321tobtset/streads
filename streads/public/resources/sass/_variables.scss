@@ -43,7 +43,7 @@ $my-purple-orange: lighten($my-orange, 30%);
 
 /* Default theme colors */
 $default-theme-color: $ios7-orange;
-$default-theme-minimum-transparency-opacity: 0.9;
+$default-theme-minimum-transparency-opacity: 0.8;
 $default-theme-transparency-opacity: $default-theme-minimum-transparency-opacity;
 $default-background-color: white;
 $default-darker-background-color: $white-96;
@@ -60,7 +60,7 @@ $default-color-variance: 10%;
 $layer-reduction-percent: 1.5%;
 
 /* Default heights */
-$default-toolbar-height: 50px;
+$default-toolbar-height: 3.2em;
 
 /* Default font */
 $default-font-family: 'Helvetica Neue', HelveticaNeue, Helvetica-Neue, Helvetica, Arial, 'BBAlpha Sans', sans-serif;
