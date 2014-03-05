@@ -73,16 +73,6 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 tpl: new Ext.XTemplate('{title}'),
                 scrollable: true
             }
-        ],
-        listeners: [
-            {
-                fn: 'onShow',
-                event: 'show'
-            },
-            {
-                fn: 'onUpdateData',
-                event: 'updatedata'
-            }
         ]
     },
     onBackButtonTap: function(button, e, eOpts) {
@@ -93,10 +83,12 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
     onShow: function() {
         var me = this;
         me.setTitleToGroupTitle();
+        me.callParent(arguments);
     },
     onUpdateData: function() {
         var me = this;
         me.setTitleToGroupTitle();
+        me.callParent(arguments);
     },
     getBackButton: function() {
         var me = this;

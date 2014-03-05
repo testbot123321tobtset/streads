@@ -12,13 +12,8 @@ Ext.define('overrides.TitleBar', {
     onInitialize: function(me) {
         me.element.on('swipe', function(event) {
             if (event.direction === 'down') {
-                me.up('corecontainer').
-                        hide({
-                            type: 'slideOut',
-                            direction: 'down',
-                            easing: 'cubic-bezier(0,.23,0,1)',
-                            duration: 800
-                        });
+                var coreContainer = me.up('corecontainer');
+                coreContainer.fireEvent('swipedown', coreContainer, event);
             }
         });
     }

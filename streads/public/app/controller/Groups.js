@@ -56,10 +56,16 @@ Ext.define('X.controller.Groups', {
             userGroupContainerMoreButton: {
                 tap: 'onUserGroupContainerMoreButtonTap'
             },
+            userGroupContainer: {
+                swipedown: 'onUserGroupContainerSwipeDown'
+            },
             userGroupContainerBackButton: {
                 tap: 'onUserGroupContainerBackButtonTap'
             },
             // User :: Groups :: Group edit
+            userEditGroupContainer: {
+                swipedown: 'onUserEditGroupContainerSwipeDown'
+            },
             userEditGroupContainerBackButton: {
                 tap: 'onUserEditGroupContainerBackButtonTap'
             },
@@ -146,12 +152,30 @@ Ext.define('X.controller.Groups', {
         me.redirectTo('user/profile/groups/feeds');
         return me;
     },
+    onUserGroupContainerSwipeDown: function(userGroupContainer, event) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.onUserGroupContainerSwipeDown(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        me.redirectTo('user/profile/groups/feeds');
+        return me;
+    },
     onUserEditGroupContainerBackButtonTap: function(button) {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.onUserEditGroupContainerBackButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         me.redirectTo('user/profile/groups/feeds/' + button.up('#userEditGroupContainer').
+                getRecord().
+                getId());
+        return me;
+    },
+    onUserEditGroupContainerSwipeDown: function(userEditGroupContainer, event) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.onUserEditGroupContainerSwipeDown(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        me.redirectTo('user/profile/groups/feeds/' + userEditGroupContainer.
                 getRecord().
                 getId());
         return me;
