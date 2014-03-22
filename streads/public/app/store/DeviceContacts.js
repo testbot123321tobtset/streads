@@ -8,5 +8,16 @@ Ext.define('X.store.DeviceContacts', {
         mustBeEmptiedOnApplicationShutDown: false,
         sorters: 'formattedName',
         groupField: 'formattedName'
+    },
+    getEmails: function() {
+        var me = this;
+        var emails = [];
+        me.each(function(thisContact) {
+            var thisContactEmails = thisContact.getAllEmails();
+            if(Ext.isArray(thisContactEmails)) {
+                emails = Ext.Array.merge(emails, thisContactEmails);
+            }
+        });
+        return emails;
     }
 });

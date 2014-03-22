@@ -106,9 +106,9 @@ var User = function() {
 //    });
 
     me.hasMany('Passports');
-    /*
-     me.hasMany('Groupships');
-     me.hasMany('Groups', {through: 'Groupships'});*/
+    
+//    me.hasMany('Groupships');
+//    me.hasMany('Groups', {through: 'Groupships'});
 
 //    Named associations (http://geddyjs.org/guide#models)
 //    

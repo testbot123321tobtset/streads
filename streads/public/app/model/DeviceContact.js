@@ -33,5 +33,21 @@ Ext.define('X.model.DeviceContact', {
                 rootProperty: 'result'
             }
         }
+    },
+    getAllEmails: function() {
+        var me = this;
+        var emails = [];
+        var thisContactEmails = me.get('emails');
+        if (Ext.isArray(thisContactEmails) && !Ext.isEmpty(thisContactEmails)) {
+            Ext.each(thisContactEmails, function(thisContactEmailObject) {
+                if(Ext.isObject(thisContactEmailObject) && !Ext.isEmpty(thisContactEmailObject) && 'value' in thisContactEmailObject) {
+                    var thisContactEmail = thisContactEmailObject.value;
+                    if (Ext.isString(thisContactEmail) && Ext.data.Validations.email(false, thisContactEmail)) {
+                        emails.push(thisContactEmail);
+                    }
+                }
+            });
+        }
+        return emails;
     }
 });

@@ -51,8 +51,8 @@ Ext.define('X.config.Config', {
         
         // UI
         EAGERGENERATECOMPONENTS: [
-            'usergroupcontainer',
-            'usereditgroupcontainer'
+            //            'usergroupcontainer',
+            //            'usereditgroupcontainer'
         ],
         // Should depth be represented by offset either vertically or horizontally
         LAYER_DEPTH_BASED_ON_OFFSET: false,
@@ -91,21 +91,17 @@ Ext.define('X.config.Config', {
             direction: 'down',
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
-<<<<<<< Updated upstream
-        }
-=======
         },
         
         // Phonegap
         // Contact (http://docs.phonegap.com/en/3.3.0/cordova_contacts_contacts.md.html#Contacts)
         PG_FIELDS_REQUIRED_TO_IMPORT_DEVICE_CONTACT: [
-            // 'emails',
-            'phoneNumbers'
+            'emails'
+            //            'phoneNumbers'
         ],
         PG_READ_DEVICE_CONTACT_FIELDS: [
             'id', 'displayName', 'name', 'nickname', 'phoneNumbers', 'emails', 'photos'
         ]
->>>>>>> Stashed changes
     },
     constructor: function(config) {
         this.initConfig(config);

@@ -59,7 +59,11 @@ Ext.define('X.controller.Users', {
             userMoreTabPanel: {
                 activeitemchange: 'onUserMoreTabPanelPanelActiveItemChange'
             },
-            //Logout
+            // User account info panel
+            importFriendsFromDeviceContactsButton: {
+                tap: 'doImportFriendsFromDeviceContactsButton'
+            },
+            // Logout
             logoutButton: {
                 tap: 'doLogout'
             }
@@ -80,6 +84,7 @@ Ext.define('X.controller.Users', {
             userMoreTabPanel: '#userMoreTabPanel',
             userAccountInfoPanel: '#userMoreTabPanel #userAccountInfoPanel',
             userAccountFormPanel: '#userMoreTabPanel #userAccountFormPanel',
+            importFriendsFromDeviceContactsButton: '#userMoreTabPanel #userAccountFormPanel #importFriendsFromDeviceContactsButton',
             // User :: Logout
             logoutButton: '#userAccountFormPanel #logoutButton'
 //            userLogoutPanel: '#userMoreTabPanel #userLogout',
@@ -389,6 +394,55 @@ Ext.define('X.controller.Users', {
                 }
             }
         });
+        return me;
+    },
+    doImportFriendsFromDeviceContactsButton: function(button, e, eOpts) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.doImportFriendsFromDeviceContactsButton()');
+        }
+        var formPanel = button.up('coreformpanel');
+        var formData = formPanel.getValues();
+        // Retrieve contacts and fill list
+        me.getContactsFromDeviceAndCallback({
+            refreshDeviceContactsStore: true,
+            successCallback: {
+                fn: function() {
+                    // var args = arguments[0];
+                    // args.contacts should have all contacts
+                    me.xhrAddFriendsFromDeviceContacts();
+                },
+                scope: me
+            },
+            failureCallback: {
+                fn: function() {
+                    console.log('failed!');
+                },
+                scope: me
+            }
+        });
+        return me;
+    },
+    xhrAddFriendsFromDeviceContacts: function() {
+        var me = this;
+        var deviceContactsStore = Ext.getStore('DeviceContactStore');
+        var deviceContactsStoreCount = deviceContactsStore.getCount();
+        if (deviceContactsStoreCount > 0) {
+            console.log(deviceContactsStore.getEmails());
+//            Ext.Ajax.request({
+//                url: '/friendships/usingemails',
+//                method: 'POST',
+//                params: {
+//                    emails: [
+//                        
+//                    ]
+//                },
+//                success: function(response) {
+//                    var text = response.responseText;
+//                    // process server response here
+//                }
+//            });
+        }
         return me;
     },
     doAddFriend: function(button, e, eOpts) {

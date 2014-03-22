@@ -1,6 +1,10 @@
 Ext.define('X.config.DummyData', {
     singleton: true,
     config: {
+        // When you create users with email addresses from this dummy data to test friendships and stuff, sign up using these email addresses
+        // but with password "dummypass" so it is easier to remember the password
+        // The following email addresses exist in our database:
+        // email488@streads.com
         DEVICE_FORMATTED_CONTACTS:
                 [
                     {"familyName": "Family257", "formattedName": "Given Family Formatted218", "givenName": "Given446", "phoneNumbers": [
