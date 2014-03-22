@@ -90,6 +90,7 @@ Ext.application({
     profiles: ['Phone'],
     requires: [
         'X.config.Config',
+        'X.config.DummyData',
         'Ext.MessageBox',
         'Ext.device.Notification',
         'overrides.TabPanel',
@@ -101,12 +102,14 @@ Ext.application({
     models: [
         'User',
         'AuthenticatedUser',
-        'Group'
+        'Group',
+        'DeviceContact'
     ],
     stores: [
         'Users',
         'AuthenticatedUser',
-        'Groups'
+        'Groups',
+        'DeviceContacts'
     ],
     controllers: [
         'phone.Main',

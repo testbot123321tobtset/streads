@@ -34,15 +34,6 @@ $toolbar-button-pressing-color: lighten($toolbar-button-color, $default-color-va
         @include no-border;
         border: $toolbar-border-width $toolbar-border-style $toolbar-border-color !important;
         border-top: $toolbar-border-visible-edge-width $toolbar-border-visible-edge-style $toolbar-border-visible-edge-color !important;
-        
-        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
-        & + div {
-            
-            .x-scroll-view {
-                
-                padding-bottom: $default-toolbar-height !important;
-            }
-        }
     }
 
     &.x-docked-top {
@@ -53,29 +44,71 @@ $toolbar-button-pressing-color: lighten($toolbar-button-color, $default-color-va
         @include no-border;
         border: $toolbar-border-width $toolbar-border-style $toolbar-border-color !important;
         border-bottom: $toolbar-border-visible-edge-width $toolbar-border-visible-edge-style $toolbar-border-visible-edge-color !important;
-        
-        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
-        & + div {
-            
-            .x-scroll-view {
-                
-                padding-top: $default-toolbar-height !important;
-            }
-        }
     }
-    
+
     &.x-full-width {
-        
+
         @include full-width;
     }
 
     .x-title {
-        
+
         color: $toolbar-title-color !important;
     }
-    
+
     .x-toolbar-inner > .x-container {
+
+    }
+
+    .button-stacked {
         
+        @include no-background;
+        
+        @include no-margin;
+        margin: 0 0.2em !important;
+        
+        @include no-padding;
+        padding-top: .4em !important;
+        
+        @include no-border;
+        
+        -webkit-box-orient: vertical;
+        -ms-flex-direction: column;
+        flex-direction: column;
+
+        height: $default-toolbar-height !important;
+        min-height: $default-toolbar-height !important;
+        
+        min-width: 3.2em !important;
+
+        .x-button-icon {
+
+            margin: 0 auto;
+
+            height: 1.6em !important;
+            width: 1.6em !important;
+
+            font-size: 1.1em !important;
+            line-height: 1.5em !important;
+        }
+
+        .x-button-label {
+
+            display: block;
+            
+            @include no-margin;
+            
+            @include no-padding;
+            padding: 0.1em 0 0.2em 0;
+            
+            font-size: 0.65em !important;
+            line-height: 1em !important;
+            
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            
+            color: $toolbar-title-color !important;
+        }
     }
 
     .x-button {

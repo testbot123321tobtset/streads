@@ -2,18 +2,17 @@ Ext.define('X.view.page.user.Root', {
     extend: 'Ext.tab.Panel',
     requires: [
         'X.view.plugandplay.UserGroupsTabPanel',
-        'X.view.plugandplay.UserMoreTabPanel'
+        'X.view.plugandplay.UserMoreTabPanel',
+        'X.view.plugandplay.UserFriendFormPanel'
     ],
     xtype: 'pageuserroot',
     id: 'pageUserRoot',
     config: {
         cls: 'page-user-root',
         tabBarPosition: 'bottom',
-        /*
-         * Use this to make the bottom tab bar transparent
         tabBar: {
             docked: 'bottom',
-            cls: 'x-stretched x-docked-bottom x-transparent-bottom-tabbbar',
+            cls: 'x-stretched x-docked-bottom x-full-width',
             bottom: 0,
             layout: {
                 type: 'hbox',
@@ -21,8 +20,25 @@ Ext.define('X.view.page.user.Root', {
                 pack: 'center'
             }
         },
-        */
         items: [
+//            {
+//                layout: {
+//                    type: 'vbox',
+//                    pack: 'center',
+//                    align: 'stretch'
+//                },
+//                itemId: 'userFriends',
+//                cls: 'user-friends',
+//                iconCls: 'groupsfilled',
+//                title: 'Friends',
+//                items: [
+//                  {
+//                      xtype: 'userfriendformpanel',
+//                      flex: 1,
+//                      scrollable: null
+//                  }
+//                ]
+//            },
             {
                 layout: {
                     type: 'vbox',
@@ -31,6 +47,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userGroups',
                 cls: 'user-groups',
+                iconCls: 'groupsfilled',
                 title: 'Groups',
                 items: [
                     {
@@ -47,6 +64,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userMore',
                 cls: 'user-more',
+                iconCls: 'dotdotdotfilled',
                 title: 'More',
                 items: [
                     {

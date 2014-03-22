@@ -8,6 +8,16 @@ Ext.define('X.view.plugandplay.UserMoreTabPanel', {
     config: {
         cls: 'user-more-tab-panel',
         tabBarPosition: 'top',
+        tabBar: {
+            docked: 'top',
+            cls: 'x-stretched x-docked-bottom x-docked-bottom-that-is-top x-full-width',
+            top: 0,
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            }
+        },
         items: [
             {
                 layout: {
@@ -15,6 +25,7 @@ Ext.define('X.view.plugandplay.UserMoreTabPanel', {
                 },
                 itemId: 'userAccount',
                 cls: 'user-account',
+                iconCls: 'userfilled',
                 title: 'Account',
                 items: [
                     {

@@ -3,64 +3,58 @@
 @import '_mixins';
 
 .x-form-fieldset {
-    margin: 0px;
-
-    border: solid 1px #dbdbe0;
-    border-left: 0px;
-    border-right: 0px;
+    
+    @include no-margin;
+    @include no-padding;
+    @include no-border;
+    @include no-background;
 
     .x-form-fieldset-inner {
-        background: #fff;
-        padding: 0;
-        border-color: #dbdbe0;
-        @include border-radius(0);
+        
+        @include no-margin;
+        @include no-padding;
+        @include no-border;
+        @include no-background;
     }
 
     .x-field {
-        background: transparent;
-        position: relative;
+        
+        @include no-margin;
+        @include no-padding;
+        @include no-border;
+        @include no-background;
 
         &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: 0px;
-            left: 1em;
-            right: 0px;
-            // My addition
-            border-bottom: solid 1px #dbdbe0;
+            
+            @include no-margin;
+            @include no-padding;
+            @include no-background;
+            
+            border-bottom: solid 1px $default-border-color-for-fields;
         }
-
-        &:last-child {
-            &:before {
-                border-bottom: solid 1px transparent;
-            }
-        }
-
-        // My addition
-        border-bottom: solid 1px transparent;
     }
 
     .x-field-input {
-        border: 0px solid transparent;
+        
+        @include no-border;
     }
 }
 
 .x-form-fieldset-title {
     // My addition
     // margin: 2em .5em .5em 1em;
-    border-bottom: solid 1px #dbdbe0;
+/*    border-bottom: solid 1px #dbdbe0;
     margin: 0em !important;
     padding: 1em;
     padding-left: 1.3em;
     background: $white-98;
     color: $ios7-blue;
     font-weight: 400;
-    font-size: .9em;
+    font-size: .9em;*/
 }
 
 .x-form-fieldset-instructions {
-    color: #555555;
+/*    color: #555555;
     margin: 1em;
-    font-size: .8em;
+    font-size: .8em;*/
 }

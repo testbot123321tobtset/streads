@@ -276,11 +276,6 @@ Ext.define('X.controller.mixin.Factory', {
         // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
         pageUserRoot.down('#userGroupsTabPanel').setActiveItem('#userGroupFeeds');
         
-        var hideAllWindows = (options && Ext.isBoolean(options.hideAllWindows)) ? options.hideAllWindows : true;
-        if(hideAllWindows) {
-            me.hideAllWindows();
-        }
-        
         return me;
     },
     // User :: Groups :: Feed data
@@ -296,12 +291,13 @@ Ext.define('X.controller.mixin.Factory', {
                 xtype: 'usergroupcontainer'
             });
             if (showContainer) {
-                if(userGroupContainer.getDepthBasedOnOffset()) {
+                if(X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userGroupContainer.getDepthBasedOnOffset()) {
                     userGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
                 }
                 else {
                     userGroupContainer.setDimensionsToFillScreen();
                 }
+                me.createOptimizedLayeredEffectNew(userGroupContainer);
                 Ext.Viewport.add(userGroupContainer);
                 userGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userGroupContainer.setRecordRecursive(group);
@@ -323,12 +319,13 @@ Ext.define('X.controller.mixin.Factory', {
                 xtype: 'usereditgroupcontainer'
             });
             if (showContainer) {
-                if(userEditGroupContainer.getDepthBasedOnOffset()) {
+                if(X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userEditGroupContainer.getDepthBasedOnOffset()) {
                     userEditGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
                 }
                 else {
                     userEditGroupContainer.setDimensionsToFillScreen();
                 }
+                me.createOptimizedLayeredEffectNew(userEditGroupContainer);
                 Ext.Viewport.add(userEditGroupContainer);
                 userEditGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userEditGroupContainer.setRecordRecursive(group);
@@ -354,11 +351,6 @@ Ext.define('X.controller.mixin.Factory', {
         pageUserRoot.setActiveItem('#userGroups');
         // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
         pageUserRoot.down('#userGroupsTabPanel').setActiveItem('#userAddGroups');
-        
-        var hideAllWindows = (options && Ext.isBoolean(options.hideAllWindows)) ? options.hideAllWindows : true;
-        if(hideAllWindows) {
-            me.hideAllWindows();
-        }
         
         return me;
     }

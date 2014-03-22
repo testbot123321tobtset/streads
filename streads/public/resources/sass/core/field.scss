@@ -19,3 +19,39 @@
 
     @include mini-box-shadow;
 }
+
+/*Checkbox*/
+@mixin checkmark($color: $default-theme-color) {
+    
+    @extend .x-checkmark-base;
+    color: $color;
+}
+
+.x-checkmark-base {
+    
+    content: '\f170';
+    font-family: $default-icon-font-family;
+}
+
+.x-field-checkbox .x-field-mask,
+.x-field-radio .x-field-mask {
+    
+    &::after {
+        
+        @include checkmark(#ccc);
+    }
+}
+
+.x-input-checkbox:checked + .x-field-mask::after {
+    
+    content: '\f16f';
+    color: $default-theme-color;
+}
+
+.x-item-disabled {
+    
+    .x-input-checkbox:checked + .x-field-mask::after {
+        
+        color: lighten($default-theme-color, $default-color-variance);
+    }
+}

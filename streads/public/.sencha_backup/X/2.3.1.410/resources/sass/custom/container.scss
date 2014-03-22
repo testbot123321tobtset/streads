@@ -3,12 +3,49 @@
 @import '_mixins';
 @import 'core/container';
 
-#userGroupContainer, #userEditGroupContainer {
-    @include mega-left-side-box-shadow;
+$container-background-color: rgba(255, 255, 255, $default-theme-transparency-opacity);
+$container-border-width: 0;
+$container-border-style: solid;
+$container-border-color: transparent;
+$container-border-visible-edge-width: $default-border-width;
+$container-border-visible-edge-style: $default-border-style;
+$container-border-visible-edge-color: $default-border-color;
+
+.blurred-background {
+    
+    /* http://codepen.io/rikschennink/pen/zvcgx */
+    @include filter(blur(10px));
+    opacity: 0.35;
+    
+    @include single-transition;
 }
 
-/*Error while sencha app build: 0.5 is not a color for `grayscale'*/
-/*.blurred-background {
-    @include filter(grayscale(0.5));
-    @include filter(blur(2px));
-}*/
+.user-group-container, .user-edit-group-container {
+    
+    @include no-border;
+    border: $container-border-width $container-border-style $container-border-color !important;
+    border-top: $container-border-visible-edge-width $container-border-visible-edge-style $container-border-visible-edge-color !important;
+
+    @include no-background;
+    background-color: $container-background-color !important;
+    
+    @include box-shadow;
+    
+    .user-group-container-feed-container {
+        
+        @include full-transparency;
+        
+        .x-scroll-view {
+
+            padding-top: $default-toolbar-height !important;
+        }
+    }
+    
+    .users-list {
+        
+        .x-scroll-view {
+
+            padding-top: 0 !important;
+        }
+    }
+}

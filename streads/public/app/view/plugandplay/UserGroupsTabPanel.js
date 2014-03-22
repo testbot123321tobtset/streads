@@ -32,8 +32,7 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 title: 'Chats',
                 items: [
                     {
-                        xtype: 'usergroupslist',
-                        flex: 1
+                        xtype: 'usergroupslist'
                     }
                 ]
             },

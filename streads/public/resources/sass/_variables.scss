@@ -43,7 +43,11 @@ $my-purple-orange: lighten($my-orange, 30%);
 
 /* Default theme colors */
 $default-theme-color: $ios7-orange;
+<<<<<<< Updated upstream
 $default-theme-minimum-transparency-opacity: 0.8;
+=======
+$default-theme-minimum-transparency-opacity: 0;
+>>>>>>> Stashed changes
 $default-theme-transparency-opacity: $default-theme-minimum-transparency-opacity;
 $default-background-color: white;
 $default-darker-background-color: $white-96;
@@ -72,6 +76,12 @@ $default-font-size: 1em;
 $default-text-shadow-color: transparent;
 $default-text-shadow-blur: 0px;
 $default-text-shadow-v-offset: 0px;
+/* Defaut icon font family */
+$default-icon-font-family: 'ionicons';
+
+/* Compass transitions */
+$default-transition-duration: 400ms;
+$default-transition-function: ease-in-out;
 
 /* Fieldsets */
 $default-margin-for-fieldsets: $default-toolbar-height;
@@ -87,7 +97,7 @@ $list-pressed-color: lighten($list-color, $default-color-variance); /* Core */
 $list-background-color: transparent;
 $list-active-background-color: $list-background-color;
 $list-pressed-background-color: $list-background-color;
-$list-disclosure-icon-font-family: 'ionicons';
+$list-disclosure-icon-font-family: $default-icon-font-family;
 $list-disclosure-icon-font-size: 1.5em;
 $list-disclosure-icon-font-line-height: 0.9em;
 /* Core */

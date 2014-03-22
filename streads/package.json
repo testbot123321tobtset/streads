@@ -1,6 +1,6 @@
 {
     "name": "Streads",
-    "version": "0.0.1-63",
+    "version": "0.0.1-66",
     "author": "Deepak Ghosh",
     "dependencies": {
         "bcrypt": "0.7.7",

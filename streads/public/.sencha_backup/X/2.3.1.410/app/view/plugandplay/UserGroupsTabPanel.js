@@ -9,6 +9,16 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
     config: {
         cls: 'user-groups-tab-panel',
         tabBarPosition: 'top',
+        tabBar: {
+            docked: 'top',
+            cls: 'x-stretched x-docked-bottom x-docked-bottom-that-is-top x-full-width',
+            top: 0,
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            }
+        },
         items: [
             {
                 // This will have the UI to first display all groups
@@ -18,11 +28,11 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 },
                 itemId: 'userGroupFeeds',
                 cls: 'user-group-feeds',
-                title: 'Feeds',
+                iconCls: 'chatbubblefilled',
+                title: 'Chats',
                 items: [
                     {
-                        xtype: 'usergroupslist',
-                        flex: 1
+                        xtype: 'usergroupslist'
                     }
                 ]
             },
@@ -32,7 +42,8 @@ Ext.define('X.view.plugandplay.UserGroupsTabPanel', {
                 },
                 itemId: 'userAddGroups',
                 cls: 'user-add-groups',
-                title: 'Create',
+                iconCls: 'plus',
+                title: 'New Group',
                 items: [
                     {
                         xtype: 'usergroupaddformpanel',

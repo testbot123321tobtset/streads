@@ -64,7 +64,7 @@ Ext.define('X.view.page.user.Root', {
                 },
                 itemId: 'userMore',
                 cls: 'user-more',
-                iconCls: 'morefilled',
+                iconCls: 'dotdotdotfilled',
                 title: 'More',
                 items: [
                     {

@@ -22,13 +22,14 @@ $include-default-icons: false;
 @include icon('close', '\f2bd', 'ionicons');
 @include icon('cross', '\f2bd', 'ionicons');
 @include icon('arrowright', '\f280', 'ionicons');
+@include icon('arrowdown', '\f151', 'ionicons');
 /* Filled and non-filled fonts */
 @include icon('camerafilled', '\f165', 'ionicons');
 @include icon('camera', '\f164', 'ionicons');
 @include icon('videofilled', '\f1f4', 'ionicons');
 @include icon('video', '\f1f3', 'ionicons');
-@include icon('morefilled', '\f1b4', 'ionicons');
-@include icon('more', '\f1b3', 'ionicons');
+@include icon('dotdotdotfilled', '\f1b4', 'ionicons');
+@include icon('dotdotdot', '\f1b3', 'ionicons');
 @include icon('groupsfilled', '\f1c0', 'ionicons');
 @include icon('groups', '\f1bf', 'ionicons');
 @include icon('chatbubblefilled', '\f16b', 'ionicons');
@@ -46,9 +47,15 @@ $include-default-icons: false;
 @include icon('personaddfilled', '\f1c4', 'ionicons');
 @include icon('personadd', '\f1c3', 'ionicons');
 @include icon('plusfilled', '\f1cb', 'ionicons');
+@include icon('plusoutline', '\f1ca', 'ionicons');
 @include icon('plus', '\f1c9', 'ionicons');
+@include icon('minusfilled', '\f1ae', 'ionicons');
+@include icon('minusoutline', '\f1ad', 'ionicons');
+@include icon('minus', '\f1ac', 'ionicons');
 @include icon('arrowforwardthick', '\f152', 'ionicons');
 @include icon('arrowforward', '\f154', 'ionicons');
+@include icon('circlefilled', '\f16f', 'ionicons');
+@include icon('circle', '\f170', 'ionicons');
 
 @import 'shell';
 

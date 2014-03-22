@@ -4,20 +4,19 @@ Ext.define('overrides.TabPanel', {
         layout: {
             type: 'card',
             animation: {
-                type: 'slide',
-                //easing: 'ease-in',
-                duration: 300
+                // Available animations (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.layout.Card-cfg-animation)
+                // cover
+                // cube
+                // fade
+                // flip
+                // pop
+                // reveal
+                // scroll
+                // slide
+                type: 'flip',
+                duration: 500,
+                easing: 'cubic-bezier(0,.23,0,1)'
             }
-        },
-        showAnimation: {
-            type: 'slideIn',
-            //easing: 'ease-in',
-            duration: 300
-        },
-        hideAnimation: {
-            type: 'slideOut',
-            //easing: 'ease-out',
-            duration: 300
         }
     }
 });

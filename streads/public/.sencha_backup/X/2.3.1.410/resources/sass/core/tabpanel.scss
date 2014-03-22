@@ -2,89 +2,138 @@
 @import '_variables';
 @import '_mixins';
 
-/*
+$tabbar-background-color: rgba(255, 255, 255, $default-theme-transparency-opacity);
+$tabbar-border-width: 0;
+$tabbar-border-style: solid;
+$tabbar-border-color: transparent;
+$tabbar-border-visible-edge-width: $default-border-width;
+$tabbar-border-visible-edge-style: $default-border-style;
+$tabbar-border-visible-edge-color: $default-border-color;
+$tabbar-tab-button-color: $default-color-normal;
+$tabbar-tab-button-pressed-color: lighten($tabbar-tab-button-color, $default-color-variance);
+$tabbar-tab-button-active-color: $default-color-active;
+
 .x-tabbar {
-    z-index: 2;
-}
 
-.x-tabbar-inner {
-    @include filter(blur(10px));
-    z-index: 1;
-    opacity: .35;
-}*/
+    @include no-border;
+    border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
 
-.x-tabbar {
-    background-color: transparent;
-    &.x-docked-top {
-        padding: 0px;
-        min-height: 0em;
-        border-width: 0px;
-        .x-tab {
-            padding: 0px;
-            @include border-radius(0px);
-            border: 0px solid transparent;
-            
-            &.x-tab-pressed {
-/*                background-color: $tabbar-pressed-background-color;*/
-            }
-            
-            .x-button-label {
-                color: #929292;
-                font-size: 30px;
-                line-height: 45px;
-                font-weight: 100;
-                padding: 0px
-            }
+    @include no-background;
+    background-color: $tabbar-background-color !important;
+    
+    height: $default-toolbar-height !important;
+    min-height: $default-toolbar-height !important;
 
-            border-bottom: 1px solid #CCC;
-            /*border-right: 1px solid #CCC;*/
-            &:first-child {
-                /*border-right: 1px solid #CCC !important;*/
-            }
-            &:last-child {
-                border-right: 0px solid transparent;
-            }
+    &.x-docked-bottom {
+
+        @include no-border;
+        border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
+        border-top: $tabbar-border-visible-edge-width $tabbar-border-visible-edge-style $tabbar-border-visible-edge-color !important;
+
+        @include no-background;
+        background-color: $tabbar-background-color !important;
+        
+        height: $default-toolbar-height !important;
+        min-height: $default-toolbar-height !important;
+        
+        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+        & + div {
             
-            &.x-tab-active {
-                @include no-background;
-                .x-button-label {
-                    color: $ios7-blue;
+            .x-scroll-view {
+                
+                padding-bottom: $default-toolbar-height !important;
+            }
+        }
+
+        &.x-docked-bottom-that-is-top {
+
+            @include no-border;
+            border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
+            border-bottom: $tabbar-border-visible-edge-width $tabbar-border-visible-edge-style $tabbar-border-visible-edge-color !important;
+
+            @include no-background;
+            background-color: $tabbar-background-color !important;
+            
+            height: $default-toolbar-height !important;
+            min-height: $default-toolbar-height !important;
+            
+            /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+            & + div {
+                
+                .x-scroll-view {
+                    
+                    padding-top: $default-toolbar-height !important;
                 }
             }
         }
-        .x-tab:first-child, .x-tab:last-child {
-            @include border-radius(0px);
+    }
+
+    &.x-docked-top {
+
+        @include no-border;
+        border: $tabbar-border-width $tabbar-border-style $tabbar-border-color !important;
+        border-bottom: $tabbar-border-visible-edge-width $tabbar-border-visible-edge-style $tabbar-border-visible-edge-color !important;
+
+        @include no-background;
+        background-color: $tabbar-background-color !important;
+        
+        height: $default-toolbar-height !important;
+        min-height: $default-toolbar-height !important;
+
+        /*Give padding to the scroll view of the next element so it can scroll underneath the tab bar*/
+        & + div {
+
+            .x-scroll-view {
+
+                padding-top: $default-toolbar-height !important;
+            }
         }
     }
-    &.x-transparent-bottom-tabbbar {
-        width: 100% !important;
-        opacity: $default-opacity-on-floating-foreground-element !important;
-        background-color: $default-background-color-on-floating-foreground-element !important;
-    }
-    .x-tab {
-        margin-left: 0.3em;
-        margin-right: 0.3em;
-        .x-button-icon {
-            display: none !important;
-            width: 0em;
-            height: 0em;
 
-            .x-button-icon.x-hidden {
-                display: none !important;
-            }
+    &.x-full-width {
+        @include full-width;
+    }
+
+    .x-tab {
+
+        .x-button-icon {
 
             &:before {
-                color: #949494;
-                text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-                font-size: 1.4em;
-                line-height: 1.15em;
+                color: $tabbar-tab-button-color !important;
             }
         }
+
         .x-button-label {
-            font-size: 30px;
-            line-height: 45px;
-            font-weight: 100;
-            padding: 0px 1px;
+            color: $tabbar-tab-button-color !important;
+        }
+
+        &.x-tab-pressed {
+
+            .x-button-icon {
+
+                &:before {
+                    color: $tabbar-tab-button-pressed-color !important;
+                }
+            }
+
+            .x-button-label {
+                color: $tabbar-tab-button-pressed-color !important;
+            }
+        }
+
+        &.x-tab-active {
+
+            .x-button-icon {
+
+                &:before {
+                    color: $tabbar-tab-button-active-color !important;
+                }
+            }
+
+            .x-button-label {
+                
+                color: $tabbar-tab-button-active-color !important;
+            }
         }
     }
 }

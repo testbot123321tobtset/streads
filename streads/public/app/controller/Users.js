@@ -319,11 +319,11 @@ Ext.define('X.controller.Users', {
                         authenticatedUserStore.removeAll();
                         authenticatedUserStore.setAutoSync(true);
                         me.resetAuthenticatedEntity();
-                        me.destroyGivenView({
-                            view: me.getPageLogin()
-                        });
                         Ext.create('Ext.util.DelayedTask', function() {
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+//                            me.destroyGivenView({
+//                                view: me.getPageLogin()
+//                            });
                         }).
                                 delay(500);
                     },

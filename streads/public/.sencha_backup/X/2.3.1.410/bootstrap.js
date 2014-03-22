@@ -18,7 +18,6 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js",
   "X": "app",
-  "X.config.Config": "app/config/config.js",
   "overrides": "app/overrides"
 });
 Ext.ClassManager.addNameAlternateMappings({
@@ -746,11 +745,13 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "X.config.Config": [],
+  "X.config.DummyData": [],
   "X.controller.Boot": [],
   "X.controller.Groups": [],
   "X.controller.Main": [],
   "X.controller.Users": [],
   "X.controller.mixin.Common": [],
+  "X.controller.mixin.DeviceContact": [],
   "X.controller.mixin.Factory": [],
   "X.controller.mixin.Group": [],
   "X.controller.mixin.Page": [],
@@ -759,6 +760,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.controller.phone.Main": [],
   "X.model.Application": [],
   "X.model.AuthenticatedUser": [],
+  "X.model.DeviceContact": [],
   "X.model.Group": [],
   "X.model.User": [],
   "X.model.validation.UserLogin": [],
@@ -766,6 +768,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.profile.Phone": [],
   "X.store.Application": [],
   "X.store.AuthenticatedUser": [],
+  "X.store.DeviceContacts": [],
   "X.store.Groups": [],
   "X.store.Users": [],
   "X.view.Main": [],
@@ -779,6 +782,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.plugandplay.UserAccountFormPanel": [],
   "X.view.plugandplay.UserAccountInfoPanel": [],
   "X.view.plugandplay.UserEditGroupContainer": [],
+  "X.view.plugandplay.UserFriendFormPanel": [],
   "X.view.plugandplay.UserGroupAddFormPanel": [],
   "X.view.plugandplay.UserGroupContainer": [],
   "X.view.plugandplay.UserGroupEditFormPanel": [],
@@ -787,11 +791,16 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.plugandplay.UserLoginFormPanel": [],
   "X.view.plugandplay.UserMoreTabPanel": [],
   "X.view.plugandplay.UserSignupFormPanel": [],
+  "X.view.plugandplay.UsersList": [],
   "X.view.ux.FullScreenTextArea": [],
   "X.view.ux.ToggleableButton": [],
   "X.view.ux.plugin.SlideToRemove": [],
   "overrides.Component": [],
-  "overrides.TabPanel": []
+  "overrides.LoadMask": [],
+  "overrides.TabPanel": [],
+  "overrides.TitleBar": [],
+  "overrides.dataview.List": [],
+  "overrides.tab.Bar": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1736,11 +1745,13 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "X.config.Config": [],
+  "X.config.DummyData": [],
   "X.controller.Boot": [],
   "X.controller.Groups": [],
   "X.controller.Main": [],
   "X.controller.Users": [],
   "X.controller.mixin.Common": [],
+  "X.controller.mixin.DeviceContact": [],
   "X.controller.mixin.Factory": [],
   "X.controller.mixin.Group": [],
   "X.controller.mixin.Page": [],
@@ -1749,6 +1760,7 @@ Ext.ClassManager.addNameAliasMappings({
   "X.controller.phone.Main": [],
   "X.model.Application": [],
   "X.model.AuthenticatedUser": [],
+  "X.model.DeviceContact": [],
   "X.model.Group": [],
   "X.model.User": [],
   "X.model.validation.UserLogin": [],
@@ -1756,6 +1768,7 @@ Ext.ClassManager.addNameAliasMappings({
   "X.profile.Phone": [],
   "X.store.Application": [],
   "X.store.AuthenticatedUser": [],
+  "X.store.DeviceContacts": [],
   "X.store.Groups": [],
   "X.store.Users": [],
   "X.view.Main": [
@@ -1789,6 +1802,9 @@ Ext.ClassManager.addNameAliasMappings({
   "X.view.plugandplay.UserEditGroupContainer": [
     "widget.usereditgroupcontainer"
   ],
+  "X.view.plugandplay.UserFriendFormPanel": [
+    "widget.userfriendformpanel"
+  ],
   "X.view.plugandplay.UserGroupAddFormPanel": [
     "widget.usergroupaddformpanel"
   ],
@@ -1813,6 +1829,9 @@ Ext.ClassManager.addNameAliasMappings({
   "X.view.plugandplay.UserSignupFormPanel": [
     "widget.usersignupformpanel"
   ],
+  "X.view.plugandplay.UsersList": [
+    "widget.userslist"
+  ],
   "X.view.ux.FullScreenTextArea": [
     "widget.fullscreentextarea"
   ],
@@ -1823,5 +1842,9 @@ Ext.ClassManager.addNameAliasMappings({
     "plugin.slidetoremove"
   ],
   "overrides.Component": [],
-  "overrides.TabPanel": []
+  "overrides.LoadMask": [],
+  "overrides.TabPanel": [],
+  "overrides.TitleBar": [],
+  "overrides.dataview.List": [],
+  "overrides.tab.Bar": []
 });

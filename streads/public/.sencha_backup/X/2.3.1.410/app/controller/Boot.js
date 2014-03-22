@@ -31,5 +31,6 @@ Ext.define('X.controller.Boot', {
         if (me.getDebug() && me.getBootupDebug()) {
             console.log('Debug: X.controller.Boot.launch()');
         }
+        me.generateEagerComponents();
     }
 });

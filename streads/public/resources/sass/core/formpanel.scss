@@ -7,7 +7,6 @@ $form-panel-background-color: $default-background-color;
 .x-form {
     
     @include no-background;
-    background-color: $form-panel-background-color !important;
     
     @include no-border;
     
@@ -20,21 +19,11 @@ $form-panel-background-color: $default-background-color;
 
         @include no-margin;
         margin-top: $default-margin-for-fieldsets !important;
-        
-        &:last-child {
-            
-            margin-bottom: $default-margin-for-fieldsets !important;
-        }
     }
 
     .x-button {
         
         @include no-margin;
         margin-top: $default-margin-for-fieldsets !important;
-        
-        &:last-child {
-            
-            margin-bottom: $default-margin-for-fieldsets !important;
-        }
     }
 }

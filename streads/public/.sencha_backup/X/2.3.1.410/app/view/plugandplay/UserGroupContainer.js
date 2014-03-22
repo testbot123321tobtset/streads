@@ -4,6 +4,7 @@
 Ext.define('X.view.plugandplay.UserGroupContainer', {
     extend: 'X.view.core.Container',
     requires: [
+        'Ext.TitleBar'
     ],
     xtype: 'usergroupcontainer',
     id: 'userGroupContainer',
@@ -22,45 +23,54 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
         floating: true,
         centered: true,
         fullscreen: true,
+        layer: 1,
+        layerUnderneathItemId: 'userGroupContainer',
+        depthBasedOnOffset: true,
+        modal: true,
+        querySelectorsForComponentsToBeHiddenToOptimizeLayer: [
+        ],
+        querySelectorsForComponentsToBeBlurredToOptimizeLayer: [
+            '#pageUserRoot'
+        ],
         items: [
             {
-                xtype: 'toolbar',
+                xtype: 'titlebar',
                 itemId: 'userGroupContainerToolbar',
-                cls: 'user-group-container-toolbar',
                 docked: 'top',
-                height: X.config.Config.getDefaultToolbarHeight(),
-                defaults: {
-                    height: X.config.Config.getDefaultToolbarHeight()
+                top: 0,
+                cls: 'x-stretched x-docked-top x-full-width user-group-container-toolbar',
+                layout: {
+                    type: 'hbox',
+                    align: 'center',
+                    pack: 'center'
                 },
                 title: 'Feed',
                 items: [
                     {
-                        xtype: 'button',
                         itemId: 'backButton',
-                        cls: 'back-button',
-                        ui: 'back',
+                        cls: 'button-stacked back-button',
+                        iconCls: 'arrowdown',
+                        text: 'Close',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userGroupContainer').onBackButtonTap();
                             }
-                        }
+                        },
+                        align: 'left'
                     },
                     {
-                        xtype: 'spacer'
-                    },
-                    {
-                        xtype: 'button',
                         itemId: 'storiesButton',
-                        cls: 'stories-button',
-                        ui: 'action',
-                        text: 'Stories'
+                        cls: 'button-stacked stories-button',
+                        iconCls: 'albumsfilled',
+                        text: 'Stories',
+                        align: 'right'
                     },
                     {
-                        xtype: 'button',
                         itemId: 'moreButton',
-                        cls: 'x-button-boring more-button',
-                        ui: 'normal',
-                        text: 'Edit'
+                        cls: 'button-stacked more-button',
+                        iconCls: 'dotdotdotfilled',
+                        text: 'Edit',
+                        align: 'right'
                     }
                 ]
             },
@@ -69,32 +79,25 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 itemId: 'feedContainer',
                 cls: 'user-group-container-feed-container',
                 flex: 1,
-                tpl: new Ext.XTemplate('{title}')
-            }
-        ],
-        listeners: [
-            {
-                fn: 'onShow',
-                event: 'show'
-            },
-            {
-                fn: 'onUpdateData',
-                event: 'updatedata'
+                tpl: new Ext.XTemplate('{title}'),
+                scrollable: true
             }
         ]
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
-        me.hide(X.config.Config.getHideAnimationConfig());
+        me.callParent(arguments);
         return me;
     },
     onShow: function() {
         var me = this;
         me.setTitleToGroupTitle();
+        me.callParent(arguments);
     },
     onUpdateData: function() {
         var me = this;
         me.setTitleToGroupTitle();
+        me.callParent(arguments);
     },
     getBackButton: function() {
         var me = this;

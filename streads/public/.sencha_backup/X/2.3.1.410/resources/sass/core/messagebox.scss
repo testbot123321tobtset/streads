@@ -2,139 +2,87 @@
 @import '_variables';
 @import '_mixins';
 
-.x-msgbox {
-    padding: 0px;
-    margin: 0px;
-    max-width: 19em;
-    border: 0px;
+$messagebox-border-width: 0;
+$messagebox-border-style: solid;
+$messagebox-border-color: transparent;
+$messagebox-border-visible-edge-width: $default-border-width;
+$messagebox-border-visible-edge-style: $default-border-style;
+$messagebox-border-visible-edge-color: $default-border-color;
+$messagebox-background-color: rgba(255, 255, 255, $default-theme-minimum-transparency-opacity);
+$messagebox-button-background-color: $default-darker-background-color; 
+$messagebox-button-pressing-background-color: lighten($messagebox-button-background-color, $default-color-variance);
+$messagebox-layer-percent: 100% - $layer-reduction-percent;
 
-    @include background-image(linear-gradient(top, rgba(241, 242, 242, 1) 1%, rgba(236, 231, 232, 1) 25%, rgba(241, 242, 242, 1) 100%));
+.x-msgbox {
+    width: $messagebox-layer-percent !important;
+    min-width: $messagebox-layer-percent !important;
+    height: $messagebox-layer-percent !important;
+    min-height: $messagebox-layer-percent !important;
     
-    min-width: 100% !important;
-    background: white;
-    border-top: 1px solid $aluminum;
-    border-bottom: 1px solid $aluminum;
-    padding-top: 0.8em;
-
-    .x-icon {
-        margin: 0 0.8em 0 0.5em;
-        background: #fff;
-    }
-
-    .x-msgbox-warning, x-msgbox-error {
-        .x-button {
-            border-color: $ios7-red;
-            .x-button-label {
-                color: $ios7-red;
-            }
-        }
-    }
-
+    @include mini-box-shadow;
+    
+    @include no-background;
+    background-color: $messagebox-background-color !important;
+    
+    @include no-border;
+    @include no-border-radius;
+/*    border: $messagebox-border-width $messagebox-border-style $messagebox-border-color !important;
+    border-top: $messagebox-border-visible-edge-width $messagebox-border-visible-edge-style $messagebox-border-visible-edge-color !important;
+    border-bottom: $messagebox-border-visible-edge-width $messagebox-border-visible-edge-style $messagebox-border-visible-edge-color !important;*/
+    
     .x-msgbox-title {
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
-
-        .x-title {
-            font-size: 1.2em;
-            padding: 0px;
-            // line-height: 1.7em;
-            
-            font-size: 0.8em;
-            text-transform: uppercase;
-        }
         
-        padding: 5px;
-        margin: 0px;
-    }
-
-    .x-dock-body {
-        margin: 10px;
-    }
-
-    .x-body {
-        background: transparent !important;
-    }
-
-    .x-toolbar {
-        background: transparent none;
-        @include box-shadow(none);
-
-        &.x-docked-top {
-            // height: 2.1em;
+        .x-title {
+            font-size: 0.8em !important;
+            text-transform: uppercase !important;
+            color: $default-theme-color !important;
         }
     }
-
-    .x-field {
-        padding-top: .5em;
-        min-height: .8em;
-        margin: 0 0 .6em 0;
-        background: transparent;
-        @include border-radius(0);
+    
+    .x-toolbar.x-docked-top {
+        @include no-border;
+        border-bottom-width: 0px !important;
     }
+    
+    .x-toolbar.x-msgbox-buttons {
+        
+        @include no-border;
+        @include no-border-radius;
 
-    .x-field-input {
-        padding-right: 2.2em;
-    }
-
-    .x-form-field {
-        min-height: .8em;
-        padding: .3em;
-        padding-right: 0 !important;
-        -webkit-appearance: none;
-        background: transparent;
-    }
-}
-
-.x-msgbox-text {
-    //padding: .6em 0;
-    // line-height: 1.4em;
-    color: #000;
-    font-size: .9em;
-    font-weight: 400;
-}
-
-.x-msgbox {
-    @include border-radius(0);
-    .x-msgbox-buttons {
-        padding: 0;
-        height: auto;
-        min-height: auto;
-
+        @include no-background;
+        
         .x-toolbar-inner {
 
             .x-button {
-                @include border-radius(0px);
+                
+                @include full-height;
+                
                 @include no-border;
-                background-color: transparent;
-                border-right: 1px solid $mercury !important;
+                @include no-border-radius;
+                
+                @include no-background;
+                background-color: $messagebox-button-background-color !important;
+                
+                @include no-border;
+                border-top: $messagebox-border-visible-edge-width $messagebox-border-visible-edge-style $messagebox-border-visible-edge-color !important;
+                border-right: $messagebox-border-visible-edge-width $messagebox-border-visible-edge-style $messagebox-border-visible-edge-color !important;
 
-                border-bottom-width: 0px;
-                height: 40px;
-                margin: 0;
-                
-                border-color: $mercury;
-                
                 &:first-child {
-                    border-left-width: 0px !important;
+                    border-left: $messagebox-border-width $messagebox-border-style $messagebox-border-color !important;
                 }
 
                 &:last-child {
-                    border-right-width: 0px !important;
+                    border-right: $messagebox-border-width $messagebox-border-style $messagebox-border-color !important;
                 }
 
                 &.x-button-pressing {
-                    background-color: $white-98;
+                    background-color: $messagebox-button-pressing-background-color !important;
                 }
 
                 & .x-button-label {
-                    font-size: .9em;
-                    color: $ios7-blue;
+                    color: $default-theme-color;
                 }
-                
-                border-top: 1px solid $mercury !important;
             }
         }
     }
 }
-

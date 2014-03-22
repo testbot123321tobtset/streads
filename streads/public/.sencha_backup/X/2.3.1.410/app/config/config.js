@@ -1,6 +1,10 @@
 Ext.define('X.config.Config', {
     singleton: true,
     config: {
+        // Server Config
+        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
+//        API_ENDPOINT: 'http://localhost:4000/',
+        
         // TO DO: Update these URLs when you have the UIs
         DEFAULT_LOGIN_PAGE: 'user/login',
         DEFAULT_USER_SIGNUP_PAGE: 'user/signup',
@@ -36,7 +40,9 @@ Ext.define('X.config.Config', {
             GROUP_SUCCESSFULLY_CREATED: 'This group was successfully created.',
             GROUP_SUCCESSFULLY_UPDATED: 'This group was successfully updated.',
             GROUP_FAILED_UPDATED: 'This group failed to update.',
-            GROUP_SUCCESSFULLY_DESTROYED: 'This group was successfully destroyed.'
+            GROUP_SUCCESSFULLY_DESTROYED: 'This group was successfully destroyed.',
+            
+            FRIENDSHIP_SUCCESSFULLY_CREATED: 'This friendship was successfully created.'
         },
         CUSTOMER_SERVICE_EMAIL_ADDRESS: 'test@test.com',
         DEBUG: true,
@@ -44,40 +50,58 @@ Ext.define('X.config.Config', {
         DETAILED_DEBUG: false,
         
         // UI
-        // When you change any of these settings, make sure you change overrides as well
-        // E.g. overrides.TabPanel
-        defaultToolbarHeight: 46,
+        EAGERGENERATECOMPONENTS: [
+            'usergroupcontainer',
+            'usereditgroupcontainer'
+        ],
+        // Should depth be represented by offset either vertically or horizontally
+        LAYER_DEPTH_BASED_ON_OFFSET: false,
+        // Every new window-like floating container will reduce in dimensions by this much pixels
+        LAYER_HORIZONTAL_OFFSET: 0,
+        LAYER_VERTICAL_OFFSET: 0,
         // Animations
-        defaultAnimationDuration: 300,
+        // When you change animations, check overrides.TitleBar for consistency
+        // Animation types: 'fade', 'fadeOut', 'flip', 'pop', 'popOut', 'slide', 'slideOut' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.fx.Animation-cfg-type)
+        DEFAULT_ANIMATION_DURATION: 800,
         // Easing types: 'ease', 'linear', ease-in', 'ease-out', 'ease-in-out' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.Anim-cfg-easing)
-        defaultAnimationEasing: 'linear',
-        showAnimationConfig: {
-            type: 'slideIn',
-            direction: 'left',
-            //easing: 'ease-in',
-            duration: 300
-        },
-        hideAnimationConfig: {
-            type: 'slideOut',
-            direction: 'right',
-            //easing: 'ease-out',
-            duration: 300
-        },
-        showAnimationConfigWithNoDirection: {
-            type: 'slideIn',
-            //easing: 'ease-in',
-            duration: 300
-        },
-        hideAnimationConfigWithNoDirection: {
-            type: 'slideOut',
-            //easing: 'ease-out',
-            duration: 300
-        },
-        animationConfig: {
+        DEFAULT_ANIMATION_EASING: 'cubic-bezier(0,.23,0,1)',
+        ANIMATION_CONFIG: {
             type: 'slide',
-            //easing: 'ease-in',
-            duration: 300
-        }
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        SHOW_ANIMATION_WITH_NO_DIRECTION_CONFIG: {
+            type: 'slide',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        HIDE_ANIMATION_WITH_NO_DIRECTION_CONFIG: {
+            type: 'slideOut',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        SHOW_ANIMATION_CONFIG: {
+            type: 'slide',
+            direction: 'up',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        HIDE_ANIMATION_CONFIG: {
+            type: 'slideOut',
+            direction: 'down',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        
+        // Phonegap
+        // Contact (http://docs.phonegap.com/en/3.3.0/cordova_contacts_contacts.md.html#Contacts)
+        PG_FIELDS_REQUIRED_TO_IMPORT_DEVICE_CONTACT: [
+            // 'emails',
+            'phoneNumbers'
+        ],
+        PG_READ_DEVICE_CONTACT_FIELDS: [
+            'id', 'displayName', 'name', 'nickname', 'phoneNumbers', 'emails', 'photos'
+        ]
     },
     constructor: function(config) {
         this.initConfig(config);

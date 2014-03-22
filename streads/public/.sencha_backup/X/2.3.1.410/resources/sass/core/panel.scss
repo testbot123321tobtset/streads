@@ -10,44 +10,14 @@ http://compass-style.org/reference/compass/css3/filter/
 
 .x-panel.x-floating,
 .x-form.x-floating {
-    @include border-radius(0px);
+    @include no-border-radius;
 }
 
 .x-toolbar.x-docked-top {
-    @include border-top-radius(0px);
+    @include no-border-radius;
 }
 
 .x-container.x-floating > .x-dock > .x-toolbar.x-docked-bottom,
 .x-panel.x-floating > .x-dock > .x-toolbar.x-docked-bottom {
-    @include border-bottom-radius(0px);
-}
-
-.highlighted-header-panel, .section-highlighted-separated-panel {
-    font-size: 2.5em;
-    font-weight: 100;
-    color: $ios7-blue;
-    text-align: center;
-    padding: 0.3em;
-}
-
-.section-highlighted-separated-panel {
-    font-size: 1.5em;
-    padding: 0.5em;
-    background: $white-98;
-    border-top: 1px solid $silver;
-    border-bottom: 1px solid $silver;
-}
-
-.bottom-bordered-section-panel {
-    border-bottom: 1px solid $silver;
-}
-
-.highlighted-label-panel {
-    text-transform: uppercase;
-    font-size: 0.8em;
-    padding: 1em;
-    padding-left: 1.3em;
-    color: #555555;
-    font-weight: 400;
-    font-size: .8em;
+    @include no-border-radius;
 }

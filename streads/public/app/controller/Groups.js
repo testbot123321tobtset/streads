@@ -2,7 +2,8 @@ Ext.define('X.controller.Groups', {
     extend: 'X.controller.Main',
     requires: [
         'X.view.plugandplay.UserGroupContainer',
-        'X.view.plugandplay.UserEditGroupContainer'
+        'X.view.plugandplay.UserEditGroupContainer',
+        'X.view.plugandplay.UsersList'
     ],
     config: {
         models: [
@@ -93,6 +94,7 @@ Ext.define('X.controller.Groups', {
             userEditGroupContainerTopToolbar: '#userEditGroupContainer #userEditGroupContainerToolbar',
             userEditGroupContainerBackButton: '#userEditGroupContainer #userEditGroupContainerToolbar #backButton',
             userGroupEditFormPanel: '#userGroupEditFormPanel',
+            userGroupEditFormPanelUsersListContainer: '#userGroupEditFormPanel #usersListContainer',
             // User :: Groups :: Create
             userGroupAddFormPanel: '#userGroupAddFormPanel',
             userGroupCreateSubmitButton: '#userGroupAddFormPanel #submitButton'
@@ -232,9 +234,7 @@ Ext.define('X.controller.Groups', {
         Ext.getStore('GroupsStore').
                 waitWhileLoadingAndCallbackOnLoad({
                     fn: function() {
-                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow({
-                            hideAllWindows: true
-                        });
+                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow();
                         me.addGroupsListToGroupsFeedTab();
                     }
                 });
@@ -255,30 +255,11 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showFeedUiForGivenGroupId(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-//        if (Ext.browser.is.PhoneGap) {
-//            navigator.contacts.find(
-//                    [
-//                        'id', 'displayName', 'name', 'nickname', 'emails'
-//                    ],
-//                    function(contacts) {
-//                        console.log(me.getFormattedContactFromGivenDeviceContacts());
-//                    },
-//                    function() {
-//                        console.log('failure!');
-//                    },
-//                    {
-//                        filter: '',
-//                        multiple: true
-//                    }
-//            );
-//        }
         Ext.getStore('GroupsStore').
                 waitWhileLoadingAndCallbackOnLoad({
                     fn: function() {
-                        // Preload all UIs that go underneath this edit group UI but don't show them
-                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow({
-                            hideAllWindows: false
-                        });
+                        // Preload all UIs that go underneath this edit group UI
+                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow();
                         me.addGroupsListToGroupsFeedTab();
                         // Actually show group feed UI
                         me.generateAndFillViewportWithGroupDataWindow({
@@ -299,10 +280,8 @@ Ext.define('X.controller.Groups', {
         Ext.getStore('GroupsStore').
                 waitWhileLoadingAndCallbackOnLoad({
                     fn: function() {
-                        // Preload all UIs that go underneath this edit group UI but don't show them
-                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow({
-                            hideAllWindows: false
-                        });
+                        // Preload all UIs that go underneath this edit group UI
+                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow();
                         me.addGroupsListToGroupsFeedTab();
                         var group = Ext.getStore('GroupsStore').
                                 getById(groupId);
@@ -311,12 +290,82 @@ Ext.define('X.controller.Groups', {
                             showcontainer: false
                         });
                         // Actually show edit group UI
-                        me.generateAndFillViewportWithGroupEditFormPanel({
+                        if (me.generateAndFillViewportWithGroupEditFormPanel({
                             group: group,
                             showcontainer: true
-                        });
+                        })) {
+                            // Retrieve contacts and fill list
+                            me.getContactsFromDeviceAndCallback({
+                                refreshDeviceContactsStore: true,
+                                successCallback: {
+                                    fn: function() {
+                                        // var args = arguments[0];
+                                        // if(Ext.isObject(args) && 'contacts' in args && Ext.isArray(args.contacts)) {
+                                        //     me.resetUserGroupEditFormPanelWithDeviceContactsCheckboxes();
+                                        // }
+                                        me.resetUserGroupEditFormPanelWithDeviceContactsCheckboxes();
+                                    },
+                                    scope: me
+                                },
+                                failureCallback: {
+                                    fn: function() {
+                                        console.log('failed!');
+                                    },
+                                    scope: me
+                                }
+                            });
+                        }
                     }
                 });
+        return me;
+    },
+    // This assumes that the DeviceContactsStore has the latest contacts
+    resetUserGroupEditFormPanelWithDeviceContactsCheckboxes: function() {
+        var me = this;
+//        var groupEditMembersFormFieldSet = me.getUserEditGroupContainer().down('#groupEditMembersFormFieldSet');
+        var deviceContactsStore = Ext.getStore('DeviceContactStore');
+        //groupEditMembersFormFieldSet.removeAll();
+//        deviceContactsStore.each(function(thisContact, index, length) {
+////            console.log(thisContact);
+////            groupEditMembersFormFieldSet.add({
+////                label: thisContact.get('formattedName'),
+////                checked: false
+////            });
+//            groupEditMembersFormFieldSet.add({
+//                xtype: 'container',
+//                html: thisContact.get('formattedName')
+//            });
+//        });
+//        groupEditMembersFormFieldSet.add({
+//            xtype: 'list',
+//            height: 800,
+//            width: '100%',
+//            store: deviceContactsStore,
+//            itemTpl: '{formattedName}',
+//            grouped: false
+//        });
+//        me.getUserEditGroupContainer().
+//                down('#usersList').
+//                setStore(Ext.getStore('GroupsStore'));
+//        console.log(deviceContactsStore);
+//        me.getUserGroupEditFormPanel().
+//                down('#usersList').
+//                setStore(deviceContactsStore);
+        var usersList = {
+            xtype: 'userslist',
+            store: deviceContactsStore
+        };
+        if (Ext.isObject(me.getUserGroupEditFormPanelUsersListContainer().
+                down('userslist'))) {
+            me.getUserGroupEditFormPanelUsersListContainer().
+                    down('userslist').
+                    setStore(deviceContactsStore);
+        }
+        else {
+            me.getUserGroupEditFormPanelUsersListContainer().
+                    add(usersList);
+        }
+
         return me;
     },
     doUpdateGroup: function(options) {
@@ -324,7 +373,7 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.doUpdateGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if(!me.saveGivenGroup(options)) {
+        if (!me.saveGivenGroup(options)) {
             var group = (Ext.isObject(options) && Ext.isObject(options.group)) ? options.group : false;
         }
         return me;
@@ -342,9 +391,7 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showCreate(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        me.generateAndFillUserRootGroupsWindowWithUserAddGroupWindow({
-            hideAllWindows: true
-        });
+        me.generateAndFillUserRootGroupsWindowWithUserAddGroupWindow();
         return me;
     },
     doCreateGroup: function(button) {

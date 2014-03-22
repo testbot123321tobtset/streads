@@ -11,6 +11,15 @@ $container-border-visible-edge-width: $default-border-width;
 $container-border-visible-edge-style: $default-border-style;
 $container-border-visible-edge-color: $default-border-color;
 
+.blurred-background {
+    
+    /* http://codepen.io/rikschennink/pen/zvcgx */
+    @include filter(blur(10px));
+    opacity: 0.35;
+    
+    @include single-transition;
+}
+
 .user-group-container, .user-edit-group-container {
     
     @include no-border;
@@ -20,18 +29,23 @@ $container-border-visible-edge-color: $default-border-color;
     @include no-background;
     background-color: $container-background-color !important;
     
-    @include mini-box-shadow;
-}
+    @include box-shadow;
+    
+    .user-group-container-feed-container {
+        
+        @include full-transparency;
+        
+        .x-scroll-view {
 
-/*Error while sencha app build: 0.5 is not a color for `grayscale'*/
-.blurred-background {
-    /*This does not work:*/
-    /*@include filter(grayscale(0.5));*/
-    /*Workaround: https://github.com/chriseppstein/compass/issues/811*/
-    $percent: 50%;
-    -webkit-filter: unquote('grayscale(#{$percent})');
+            padding-top: $default-toolbar-height !important;
+        }
+    }
     
-    @include filter(blur(10px));
-    
-    opacity: 0.3;
+    .users-list {
+        
+        .x-scroll-view {
+
+            padding-top: 0 !important;
+        }
+    }
 }

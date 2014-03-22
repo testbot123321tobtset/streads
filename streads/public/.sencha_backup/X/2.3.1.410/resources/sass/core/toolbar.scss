@@ -2,57 +2,138 @@
 @import '_variables';
 @import '_mixins';
 
+$toolbar-background-color: rgba(255, 255, 255, $default-theme-transparency-opacity);
+$toolbar-border-width: 0;
+$toolbar-border-style: solid;
+$toolbar-border-color: transparent;
+$toolbar-border-visible-edge-width: $default-border-width;
+$toolbar-border-visible-edge-style: $default-border-style;
+$toolbar-border-visible-edge-color: $default-border-color;
+$toolbar-title-color: $default-color-active;
+$toolbar-button-color: $default-color-active;
+$toolbar-button-pressing-color: lighten($toolbar-button-color, $default-color-variance);
+
 .x-toolbar {
-    background-color: #f8f9f9;
-    min-height: 2.85em;
     
-    background-color: transparent;
+    @include no-background;
+    background-color: $toolbar-background-color !important;
+    
+    height: $default-toolbar-height !important;
+    min-height: $default-toolbar-height !important;
+    
+    .x-container {
+        
+        @include no-background;
+    }
 
     &.x-docked-bottom {
-        border-top: 1px solid #ccc;
-        border-top-width: 0px;
+        
+        @include no-background;
+        background-color: $toolbar-background-color !important;
+        
+        @include no-border;
+        border: $toolbar-border-width $toolbar-border-style $toolbar-border-color !important;
+        border-top: $toolbar-border-visible-edge-width $toolbar-border-visible-edge-style $toolbar-border-visible-edge-color !important;
     }
 
     &.x-docked-top {
-        border-bottom: 1px solid #ccc;
-        .x-button {
-            padding-top: 0em;
-        }
+        
+        @include no-background;
+        background-color: $toolbar-background-color !important;
+        
+        @include no-border;
+        border: $toolbar-border-width $toolbar-border-style $toolbar-border-color !important;
+        border-bottom: $toolbar-border-visible-edge-width $toolbar-border-visible-edge-style $toolbar-border-visible-edge-color !important;
     }
 
-    &.x-docked-left {
-        border-right: 1px solid #ccc;
-    }
+    &.x-full-width {
 
-    &.x-docked-right {
-        border-left: 1px solid #ccc;
+        @include full-width;
     }
 
     .x-title {
-        font-weight: 200;
-        font-size: 1em;
-        padding-top: 0em;
-        color: $ios7-blue;
+
+        color: $toolbar-title-color !important;
     }
 
-    .x-button {
-        border: 0;
-        margin: 0;
+    .x-toolbar-inner > .x-container {
+
+    }
+
+    .button-stacked {
         
-        &.x-button-pressing {
-            border-color: transparent;
+        @include no-background;
+        
+        @include no-margin;
+        margin: 0 0.2em !important;
+        
+        @include no-padding;
+        padding-top: .4em !important;
+        
+        @include no-border;
+        
+        -webkit-box-orient: vertical;
+        -ms-flex-direction: column;
+        flex-direction: column;
 
-            // My addition
-            background-color: transparent;
+        height: $default-toolbar-height !important;
+        min-height: $default-toolbar-height !important;
+        
+        min-width: 3.2em !important;
 
-            .x-button-label {
-                color: $steel;
-            }
+        .x-button-icon {
+
+            margin: 0 auto;
+
+            height: 1.6em !important;
+            width: 1.6em !important;
+
+            font-size: 1.1em !important;
+            line-height: 1.5em !important;
+        }
+
+        .x-button-label {
+
+            display: block;
+            
+            @include no-margin;
+            
+            @include no-padding;
+            padding: 0.1em 0 0.2em 0;
+            
+            font-size: 0.65em !important;
+            line-height: 1em !important;
+            
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            
+            color: $toolbar-title-color !important;
         }
     }
 
-    .x-button-label {
-        font-size: 1.1em;
-        color: $steel;
+    .x-button {
+        
+        @include no-background;
+        
+        @include no-border;
+        
+        .x-button-icon {
+            
+            &:before {
+                
+                color: $toolbar-button-color !important;
+            }
+        }
+        
+        &.x-button-pressing {
+            
+            .x-button-icon {
+
+                &:before {
+
+                    color: $toolbar-button-pressing-color !important;
+                }
+            }
+        }
     }
 }

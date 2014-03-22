@@ -1,1 +1,1 @@
-{"id":"2f9bfa45-a94c-4fa0-bc33-fc73179e1d28","js":[{"path":"phonegap.js","remote":true},{"path":"app.js","update":"full"}],"css":[{"path":"resources/css/app.css","update":"delta"}]}
+{"id":"2f9bfa45-a94c-4fa0-bc33-fc73179e1d28","js":[{"path":"phonegap.js","remote":true},{"path":"phonegap.js","remote":true},{"path":"app.js","update":"delta"}],"css":[{"path":"resources/css/app.css","update":"delta"}]}

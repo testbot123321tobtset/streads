@@ -18,7 +18,8 @@ Ext.define('X.controller.mixin.Util', {
             var callbackFn = Ext.isFunction(callback.fn) ? callback.fn : false;
             if (callbackFn) {
                 var callbackScope = Ext.isObject(callback.scope) ? callback.scope : me;
-                return callbackFn.call(callbackScope);
+                var callbackArguments = Ext.isObject(callback.arguments) ? callback.arguments : false;
+                return callbackFn.call(callbackScope, callbackArguments);
             }
         }
         return false;
@@ -95,7 +96,7 @@ Ext.define('X.controller.mixin.Util', {
                 return cache[i];
             }
         }
-
+        
         if (ln >= limit) {
             for (i = 0, j = 0; i < ln; i++) {
                 oldView = cache[i];
@@ -107,9 +108,9 @@ Ext.define('X.controller.mixin.Util', {
             }
             cache.length = j;
         }
-
+        
         if (X.config.Config.getDEBUG()) {
-            console.log('Debug: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: INTENSIVE OPERATION WARNING: X.controller.mixin.Util.createView(): View not found in view cache. Will create now. Requested xtype - ' + xtype + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         view = Ext.create('widget.' + xtype);
         cache.push(view);
@@ -123,6 +124,130 @@ Ext.define('X.controller.mixin.Util', {
 
         return view;
     },
+    destroyGivenView: function(options) {
+        var me = this;
+        
+        var cache = X.viewCache;
+        var cacheLength = cache.length;
+        if(Ext.isObject(options) && Ext.isArray(cache) && cacheLength > 0) {
+            var view = Ext.isObject(options.view) ? options.view : false;
+            if (Ext.isObject(view)) {
+                var id = view.getId();
+                var cacheCounter = 0;
+                while(cacheCounter < cacheLength) {
+                    var thisViewFromCache = cache[cacheCounter];
+                    if(id === thisViewFromCache.getId()) {
+                        if (X.config.Config.getDEBUG()) {
+                            console.log('Debug: X.controller.mixin.Util.destroyGivenView(): View with id: ' + id + ' will be removed from cache and destroyed: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                        }
+                        cache = Ext.Array.remove(cache, thisViewFromCache);
+                        X.viewCache = cache;
+                        thisViewFromCache.destroy();
+                        break;
+                    }
+                    cacheCounter++;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+        
+        return me;
+    },
+    /*
+     * Performance optimization: http://moduscreate.com/sencha-touch-2-0-expert-tip-how-to-increase-the-speed-of-your-app-rotation-by-temporarily-removing-dom/
+     * var mainViewEl = this.mainView.renderElement.dom
+     * this.mainViewParentNode = mainViewEl.parentNode; (Save the parentNode in memory)
+     * mainViewEl.parentNode.removeChild(mainViewEl); (Remove the node from DOM)
+     * this.mainViewParentNode.appendChild(mainViewEl); (Inject it back into DOM on demand)
+     */
+    createOptimizedLayeredEffect: function(visibleComponent) {
+        var me = this;
+        var layerUnderneathItemId = Ext.isString(visibleComponent.getLayerUnderneathItemId()) ? visibleComponent.getLayerUnderneathItemId() : false;
+        if(Ext.isString(layerUnderneathItemId)) {
+            var componentUnderneath = Ext.Viewport.down('#' + layerUnderneathItemId);
+            if(Ext.isObject(componentUnderneath)) {
+                componentUnderneath.addCls('blurred-background');
+                me.hideAllVisibleComponentsExceptVisibleAndBlurredComponents({
+                    visibleComponent: visibleComponent,
+                    componentUnderneath: componentUnderneath
+                });
+                return me;
+            }
+        }
+        return false;
+    },
+    createOptimizedLayeredEffectNew: function(visibleComponent) {
+        var me = this;
+        var querySelectorsForComponentsToBeHidden = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
+        var querySelectorsForComponentsToBeBlurred = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
+        var viewport = Ext.Viewport;
+        if (Ext.isArray(querySelectorsForComponentsToBeHidden) && !Ext.isEmpty(querySelectorsForComponentsToBeHidden)) {
+            Ext.each(querySelectorsForComponentsToBeHidden, function(thisComponentQuerySelector) {
+                console.log('????????? ' + thisComponentQuerySelector);
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    console.log('????????? ' + thisComponent.getItemId());
+                    thisComponent.hide();
+                });
+            });
+        }
+        if (Ext.isArray(querySelectorsForComponentsToBeBlurred) && !Ext.isEmpty(querySelectorsForComponentsToBeBlurred)) {
+            Ext.each(querySelectorsForComponentsToBeBlurred, function(thisComponentQuerySelector) {
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    thisComponent.addCls('blurred-background');
+                });
+            });
+        }
+        return me;
+    },
+    revertOptimizedLayeredEffect: function(visibleComponent) {
+        var me = this;
+        var querySelectorsForComponentsToBeShown = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
+        var querySelectorsForComponentsToBeUnblurred = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
+        var viewport = Ext.Viewport;
+        if (Ext.isArray(querySelectorsForComponentsToBeShown) && !Ext.isEmpty(querySelectorsForComponentsToBeShown)) {
+            Ext.each(querySelectorsForComponentsToBeShown, function(thisComponentQuerySelector) {
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    thisComponent.show();
+                });
+            });
+        }
+        if (Ext.isArray(querySelectorsForComponentsToBeUnblurred) && !Ext.isEmpty(querySelectorsForComponentsToBeUnblurred)) {
+            Ext.each(querySelectorsForComponentsToBeUnblurred, function(thisComponentQuerySelector) {
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    thisComponent.removeCls('blurred-background');
+                });
+            });
+        }
+        return me;
+    },
+    hideAllVisibleComponentsExceptVisibleAndBlurredComponents: function(options) {
+        var me = this;
+        if(Ext.isObject(options) && Ext.isObject(options.visibleComponent) && Ext.isObject(options.componentUnderneath)) {
+            var componentsToHide = Ext.Viewport.query('corecontainer, tabpanel');
+            Ext.each(componentsToHide, function(thisComponent) {
+                if(thisComponent.getId() !== options.visibleComponent.getId() && thisComponent.getId() !== options.componentUnderneath.getId()) {
+                    me.removeComponentFromDomAndSaveInMemory(thisComponent);
+                }
+            });
+        }
+        return false;
+    },
+    removeComponentFromDomAndSaveInMemory: function(component) {
+        var me = this;
+        component.hide();
+        return false;
+    },
+    restoreComponentFromDomAndEraseFromMemory: function(component) {
+        var me = this;
+        component.show();
+        return false;
+    },
+    
     /*
      * Iterate over all of the floating sheet components and make sure they're hidden when we
      * navigate to a new view. This stops things like Picker overlays staying visible when you hit
@@ -152,7 +277,7 @@ Ext.define('X.controller.mixin.Util', {
                     if (X.config.Config.getDEBUG()) {
                         console.log('Debug: X.controller.mixin.Util.hideAllWindows(): Hiding: ' + thisUi.getXTypes() + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                     }
-                    thisUi.hide(X.config.Config.getHideAnimationConfig());
+                    thisUi.hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
                 }
             }
         });
@@ -169,5 +294,12 @@ Ext.define('X.controller.mixin.Util', {
             return true;
         }
         return false;
+    },
+    /**
+     * Returns a random integer between min and max
+     * Using Math.round() will give a non-uniform distribution!
+     */
+    getRandomInt: function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 });

@@ -4,7 +4,8 @@
 Ext.define('X.view.plugandplay.UserEditGroupContainer', {
     extend: 'X.view.core.Container',
     requires: [
-        'X.view.plugandplay.UserGroupEditFormPanel'
+        'X.view.plugandplay.UserGroupEditFormPanel',
+        'X.view.plugandplay.UserGroupsList'
     ],
     xtype: 'usereditgroupcontainer',
     id: 'userEditGroupContainer',
@@ -15,74 +16,81 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         // of such windows
         isWindow: true,
         layout: {
-            type: 'fit'
+            type: 'vbox',
+            pack: 'center',
+            align: 'stretch'
         },
         cls: 'user-edit-group-container',
+        floating: true,
         centered: true,
         fullscreen: true,
+        layer: 2,
+        layerUnderneathItemId: 'userGroupContainer',
+        depthBasedOnOffset: true,
+        modal: true,
+        querySelectorsForComponentsToBeHiddenToOptimizeLayer: [
+            '#pageUserRoot'
+        ],
+        querySelectorsForComponentsToBeBlurredToOptimizeLayer: [
+            '#userGroupContainer'
+        ],
         items: [
             {
-                xtype: 'toolbar',
+                xtype: 'titlebar',
                 itemId: 'userEditGroupContainerToolbar',
-                cls: 'user-edit-group-container-toolbar',
                 docked: 'top',
-                height: X.config.Config.getDefaultToolbarHeight(),
-                defaults: {
-                    height: X.config.Config.getDefaultToolbarHeight()
-                },
+                top: 0,
+                cls: 'x-stretched x-docked-top x-full-width user-edit-group-container-toolbar',
                 title: 'Edit',
                 items: [
                     {
                         xtype: 'button',
                         itemId: 'backButton',
-                        cls: 'back-button',
-                        ui: 'back',
+                        cls: 'button-stacked back-button',
+                        iconCls: 'arrowdown',
+                        text: 'Close',
                         listeners: {
                             tap: function(button, e, eOpts) {
-                                button.up('#userEditGroupContainer').onBackButtonTap();
+                                button.up('#userEditGroupContainer').onBackButtonTap(button, e, eOpts);
+                            }
+                        }
+                    },
+                    {
+                        xtype: 'button',
+                        itemId: 'deleteButton',
+                        cls: 'button-stacked delete-button',
+                        align: 'right',
+                        iconCls: 'minus',
+                        text: 'Delete',
+                        listeners: {
+                            tap: function(button, e, eOpts) {
+                                button.up('#userEditGroupContainer').onDeleteButtonTap(button, e, eOpts);
                             }
                         }
                     }
                 ]
             },
             {
-                xtype: 'usergroupeditformpanel'
-            }
-        ],
-        listeners: [
-            {
-                fn: 'onInitialize',
-                event: 'initialize'
-            },
-            {
-                fn: 'onShow',
-                event: 'show'
-            },
-            {
-                fn: 'onUpdateData',
-                event: 'updatedata'
+                xtype: 'usergroupeditformpanel',
+                flex: 1,
+                scrollable: true
             }
         ]
     },
-//    onInitialize: function() {
-//        var me = this;
-//        var element = me.element;
-//        element.on('swipe', function(event, node, options, eOpts) {
-//            me.fireEvent('elementswipe', event, node, options, eOpts);
-//        });
-//    },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
-        me.hide(X.config.Config.getHideAnimationConfig());
+        me.callParent(arguments);
         return me;
     },
     onShow: function() {
         var me = this;
         me.setTitleToGroupTitle();
+        me.callParent(arguments);
     },
     onUpdateData: function() {
         var me = this;
         me.setTitleToGroupTitle();
+        me.callParent(arguments);
     },
     getBackButton: function() {
         var me = this;

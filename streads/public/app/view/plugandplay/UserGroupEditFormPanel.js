@@ -1,7 +1,9 @@
 Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
     extend: 'X.view.core.FormPanel',
     requires: [
-        'Ext.form.FieldSet'
+        'Ext.form.FieldSet',
+        'Ext.dataview.List',
+        'X.view.plugandplay.UserGroupsList'
     ],
     xtype: 'usergroupeditformpanel',
     id: 'userGroupEditFormPanel',
@@ -35,29 +37,28 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
                     }
                 ]
             },
+//            {
+//                xtype: 'container',
+//                itemId: 'groupEditMembersFormFieldSet',
+//                cls: 'group-edit-members-form-fieldset',
+//                defaults: {
+//                    xtype: 'checkboxfield'
+//                }
+//            },
             {
                 xtype: 'fieldset',
-                itemId: 'groupEditMembersFormFieldSet',
-                cls: 'group-edit-members-form-fieldset',
-                defaults: {
-                    xtype: 'textfield'
-                },
-                items: [
-                    {
-                        itemId: 'titleXTextfield',
-                        cls: 'title-textfield',
-                        placeHolder: 'List all contacts here',
-                        name: 'titleX'
-                    }
-                ]
-            },
-            {
-                xtype: 'button',
-                itemId: 'deleteButton',
-                cls: 'delete-button',
-                text: 'Delete',
-                ui: 'decline'
+                itemId: 'usersListContainer',
+                flex: 1,
+                layout: 'fit'
             }
+//            ,
+//            {
+//                xtype: 'button',
+//                itemId: 'deleteButton',
+//                cls: 'delete-button',
+//                text: 'Delete',
+//                ui: 'decline'
+//            }
         ],
         listeners: [
             {

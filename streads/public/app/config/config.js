@@ -54,10 +54,11 @@ Ext.define('X.config.Config', {
             'usergroupcontainer',
             'usereditgroupcontainer'
         ],
+        // Should depth be represented by offset either vertically or horizontally
+        LAYER_DEPTH_BASED_ON_OFFSET: false,
         // Every new window-like floating container will reduce in dimensions by this much pixels
         LAYER_HORIZONTAL_OFFSET: 0,
-        LAYER_VERTICAL_OFFSET: 6,
-        
+        LAYER_VERTICAL_OFFSET: 0,
         // Animations
         // When you change animations, check overrides.TitleBar for consistency
         // Animation types: 'fade', 'fadeOut', 'flip', 'pop', 'popOut', 'slide', 'slideOut' (http://docs.sencha.com/touch/2.3.1/#!/api/Ext.fx.Animation-cfg-type)
@@ -90,7 +91,21 @@ Ext.define('X.config.Config', {
             direction: 'down',
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
+<<<<<<< Updated upstream
         }
+=======
+        },
+        
+        // Phonegap
+        // Contact (http://docs.phonegap.com/en/3.3.0/cordova_contacts_contacts.md.html#Contacts)
+        PG_FIELDS_REQUIRED_TO_IMPORT_DEVICE_CONTACT: [
+            // 'emails',
+            'phoneNumbers'
+        ],
+        PG_READ_DEVICE_CONTACT_FIELDS: [
+            'id', 'displayName', 'name', 'nickname', 'phoneNumbers', 'emails', 'photos'
+        ]
+>>>>>>> Stashed changes
     },
     constructor: function(config) {
         this.initConfig(config);

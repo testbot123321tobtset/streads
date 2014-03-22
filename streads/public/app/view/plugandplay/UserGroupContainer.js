@@ -24,8 +24,14 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
         centered: true,
         fullscreen: true,
         layer: 1,
+        layerUnderneathItemId: 'userGroupContainer',
         depthBasedOnOffset: true,
         modal: true,
+        querySelectorsForComponentsToBeHiddenToOptimizeLayer: [
+        ],
+        querySelectorsForComponentsToBeBlurredToOptimizeLayer: [
+            '#pageUserRoot'
+        ],
         items: [
             {
                 xtype: 'titlebar',
@@ -42,8 +48,9 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                 items: [
                     {
                         itemId: 'backButton',
-                        cls: 'back-button',
-                        iconCls: 'close',
+                        cls: 'button-stacked back-button',
+                        iconCls: 'arrowdown',
+                        text: 'Close',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userGroupContainer').onBackButtonTap();
@@ -53,14 +60,16 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                     },
                     {
                         itemId: 'storiesButton',
-                        cls: 'stories-button',
+                        cls: 'button-stacked stories-button',
                         iconCls: 'albumsfilled',
+                        text: 'Stories',
                         align: 'right'
                     },
                     {
                         itemId: 'moreButton',
-                        cls: 'more-button',
-                        iconCls: 'morefilled',
+                        cls: 'button-stacked more-button',
+                        iconCls: 'dotdotdotfilled',
+                        text: 'Edit',
                         align: 'right'
                     }
                 ]
@@ -77,7 +86,7 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
-        me.hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+        me.callParent(arguments);
         return me;
     },
     onShow: function() {

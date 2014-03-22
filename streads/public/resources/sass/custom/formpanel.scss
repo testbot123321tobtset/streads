@@ -9,6 +9,24 @@
         
         margin-top: $default-toolbar-height + $default-margin-for-fieldsets !important;
     }
+    
+    .submit-button {
+        
+        margin-bottom: $default-toolbar-height + $default-margin-for-fieldsets !important;
+    }
+}
+
+.user-group-edit-form-panel {
+    
+    .x-form-fieldset:first-child {
+        
+        margin-top: $default-toolbar-height + $default-margin-for-fieldsets !important;
+    }
+    
+    .delete-button {
+        
+        margin-bottom: $default-toolbar-height + $default-margin-for-fieldsets !important;
+    }
 }
 
 

@@ -4,7 +4,8 @@
 Ext.define('X.view.plugandplay.UserEditGroupContainer', {
     extend: 'X.view.core.Container',
     requires: [
-        'X.view.plugandplay.UserGroupEditFormPanel'
+        'X.view.plugandplay.UserGroupEditFormPanel',
+        'X.view.plugandplay.UserGroupsList'
     ],
     xtype: 'usereditgroupcontainer',
     id: 'userEditGroupContainer',
@@ -24,8 +25,15 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         centered: true,
         fullscreen: true,
         layer: 2,
+        layerUnderneathItemId: 'userGroupContainer',
         depthBasedOnOffset: true,
         modal: true,
+        querySelectorsForComponentsToBeHiddenToOptimizeLayer: [
+            '#pageUserRoot'
+        ],
+        querySelectorsForComponentsToBeBlurredToOptimizeLayer: [
+            '#userGroupContainer'
+        ],
         items: [
             {
                 xtype: 'titlebar',
@@ -38,11 +46,25 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                     {
                         xtype: 'button',
                         itemId: 'backButton',
-                        cls: 'back-button',
-                        iconCls: 'close',
+                        cls: 'button-stacked back-button',
+                        iconCls: 'arrowdown',
+                        text: 'Close',
                         listeners: {
                             tap: function(button, e, eOpts) {
-                                button.up('#userEditGroupContainer').onBackButtonTap();
+                                button.up('#userEditGroupContainer').onBackButtonTap(button, e, eOpts);
+                            }
+                        }
+                    },
+                    {
+                        xtype: 'button',
+                        itemId: 'deleteButton',
+                        cls: 'button-stacked delete-button',
+                        align: 'right',
+                        iconCls: 'minus',
+                        text: 'Delete',
+                        listeners: {
+                            tap: function(button, e, eOpts) {
+                                button.up('#userEditGroupContainer').onDeleteButtonTap(button, e, eOpts);
                             }
                         }
                     }
@@ -57,7 +79,7 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
-        me.hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+        me.callParent(arguments);
         return me;
     },
     onShow: function() {

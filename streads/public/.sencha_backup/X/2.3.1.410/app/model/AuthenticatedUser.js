@@ -57,8 +57,7 @@ Ext.define('X.model.AuthenticatedUser', {
             type: 'rest',
             idParam: 'id',
             appendId: false,
-            url: '/user',
-//            url: 'http://deepakkghosh.streads.nodejitsu.com//user',
+            url: X.config.Config.getAPI_ENDPOINT() + 'user',
             batchActions: true,
             reader: {
                 type: 'json',

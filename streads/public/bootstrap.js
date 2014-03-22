@@ -18,7 +18,6 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js",
   "X": "app",
-  "X.config.Config": "app/config/config.js",
   "overrides": "app/overrides"
 });
 Ext.ClassManager.addNameAlternateMappings({
@@ -746,6 +745,7 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "X.config.Config": [],
+  "X.config.DummyData": [],
   "X.controller.Boot": [],
   "X.controller.Groups": [],
   "X.controller.Main": [],
@@ -791,6 +791,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.plugandplay.UserLoginFormPanel": [],
   "X.view.plugandplay.UserMoreTabPanel": [],
   "X.view.plugandplay.UserSignupFormPanel": [],
+  "X.view.plugandplay.UsersList": [],
   "X.view.ux.FullScreenTextArea": [],
   "X.view.ux.ToggleableButton": [],
   "X.view.ux.plugin.SlideToRemove": [],
@@ -1744,6 +1745,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "X.config.Config": [],
+  "X.config.DummyData": [],
   "X.controller.Boot": [],
   "X.controller.Groups": [],
   "X.controller.Main": [],
@@ -1826,6 +1828,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "X.view.plugandplay.UserSignupFormPanel": [
     "widget.usersignupformpanel"
+  ],
+  "X.view.plugandplay.UsersList": [
+    "widget.userslist"
   ],
   "X.view.ux.FullScreenTextArea": [
     "widget.fullscreentextarea"

@@ -36,7 +36,8 @@ Ext.define('X.controller.Users', {
         },
         control: {
             viewport: {
-                authenticatedUserDataEdit: 'onAuthenticatedUserDataEdit'
+                authenticateduserdataedit: 'onAuthenticatedUserDataEdit',
+                cameratriggerbuttontap: 'onCameraTriggerButtonTap'
             },
             // Login
             pageLogin: {
@@ -47,6 +48,9 @@ Ext.define('X.controller.Users', {
             },
             userLoginFormSubmitButton: {
                 tap: 'doLogin'
+            },
+            userFriendSubmitButton: {
+                tap: 'doAddFriend'
             },
             // User profile root page - this comes after authentication
             pageUserRoot: {
@@ -67,6 +71,9 @@ Ext.define('X.controller.Users', {
             userSignupFormSubmitButton: '#userSignupFormPanel #submitButton',
             userLoginFormPanel: '#userLoginFormPanel',
             userLoginFormSubmitButton: '#userLoginFormPanel #submitButton',
+            // User Friend Form Panel - for adding friends
+            userFriendFormPanel: '#userFriendFormPanel',
+            userFriendSubmitButton: '#userFriendFormPanel #submitButton',
             // User profile root page - this comes after authentication
             pageUserRoot: '#pageUserRoot',
             // User :: More
@@ -82,43 +89,49 @@ Ext.define('X.controller.Users', {
     // DIRECT EVENT HANDLERS
     onPageLoginTabPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        var urlHash = me.getUrlHash();
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onPageLoginTabPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        if (activeItem.getItemId() === 'userLogin' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_LOGIN_PAGE()) {
-            me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
-        }
-        else if (activeItem.getItemId() === 'userSignup' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_SIGNUP_PAGE()) {
-            me.redirectTo(X.XConfig.getDEFAULT_USER_SIGNUP_PAGE());
+        if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
+            var urlHash = me.getUrlHash();
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.onPageLoginTabPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            if (activeItem.getItemId() === 'userLogin' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_LOGIN_PAGE()) {
+                me.redirectTo(X.XConfig.getDEFAULT_USER_LOGIN_PAGE());
+            }
+            else if (activeItem.getItemId() === 'userSignup' && me.getUrlHash() !== X.XConfig.getDEFAULT_USER_SIGNUP_PAGE()) {
+                me.redirectTo(X.XConfig.getDEFAULT_USER_SIGNUP_PAGE());
+            }
         }
         return me;
     },
     onPageUserRootTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        var urlHash = me.getUrlHash();
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feeds') {
-            me.redirectTo('user/profile/groups/feeds');
-        }
-        else if (activeItem.getItemId() === 'userMore' && urlHash !== 'user/profile/more/account') {
-            me.redirectTo('user/profile/more/account');
+        if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
+            var urlHash = me.getUrlHash();
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.onPageUserRootTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            if (activeItem.getItemId() === 'userGroups' && urlHash !== 'user/profile/groups/feeds') {
+                me.redirectTo('user/profile/groups/feeds');
+            }
+            else if (activeItem.getItemId() === 'userMore' && urlHash !== 'user/profile/more/account') {
+                me.redirectTo('user/profile/more/account');
+            }
         }
         return me;
     },
     onUserMoreTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
-        var urlHash = me.getUrlHash();
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onUserMoreTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        if (activeItem.getItemId() === 'userAccount' && urlHash !== 'user/profile/more/account') {
-            me.redirectTo('user/profile/more/account');
-        }
-        else if (activeItem.getItemId() === 'userLogout' && urlHash !== 'user/profile/more/logout') {
-            me.redirectTo('user/profile/more/logout');
+        if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
+            var urlHash = me.getUrlHash();
+            if (me.getDebug()) {
+                console.log('Debug: X.controller.Users.onUserMoreTabPanelPanelActiveItemChange(): activeItem - ' + activeItem.getItemId() + ', previousActiveItem - ' + previousActiveItem.getItemId() + ', urlHash - ' + urlHash + ': Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            }
+            if (activeItem.getItemId() === 'userAccount' && urlHash !== 'user/profile/more/account') {
+                me.redirectTo('user/profile/more/account');
+            }
+            else if (activeItem.getItemId() === 'userLogout' && urlHash !== 'user/profile/more/logout') {
+                me.redirectTo('user/profile/more/logout');
+            }
         }
         return me;
     },
@@ -308,6 +321,9 @@ Ext.define('X.controller.Users', {
                         me.resetAuthenticatedEntity();
                         Ext.create('Ext.util.DelayedTask', function() {
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+//                            me.destroyGivenView({
+//                                view: me.getPageLogin()
+//                            });
                         }).
                                 delay(500);
                     },
@@ -375,6 +391,38 @@ Ext.define('X.controller.Users', {
         });
         return me;
     },
+    doAddFriend: function(button, e, eOpts) {
+      var me = this;
+      if (me.getDebug()) {
+        console.log('Debug: X.controller.Users.doAddFriend()');
+      }
+      var formPanel = button.up('coreformpanel');
+      var formData = formPanel.getValues();
+      me.xhrAddFriend(formPanel);
+    },
+    xhrAddFriend: function(form) {
+      var me = this;
+      form.submit({
+        url: '/friendships',
+        method: 'POST',
+        success: function(form, action, serverResponse) {
+          if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.xhrAddFriend(): Successful');
+          }
+          form.reset();
+          me.generateFriendshipSuccessfullyCreatedWindow({
+            message: "Successfully friended this user!"
+          });
+        },
+        failure: function(form, serverResponse) {
+          form.reset();
+          var serverResponseMessage = (Ext.isObject(serverResponse) && Ext.isString(serverResponse.message)) ? serverResponse.message : false;
+          me.generateFailedWindow({
+            message: serverResponseMessage
+          });
+        }
+      });
+    },
     show: function(id) {
         var me = this;
         if (X.XConfig.getDEBUG()) {
@@ -421,7 +469,7 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.doLogout()');
         }
         Ext.Ajax.request({
-            url: X.XConfig.getDEFAULT_USER_LOGOUT_PAGE(),
+            url: X.XConfig.getAPI_ENDPOINT() + X.XConfig.getDEFAULT_USER_LOGOUT_PAGE(),
             success: function(response) {
                 if (me.getDebug()) {
                     console.log('Debug: X.controller.Users.doLogout(): User successfully logged out. Will redirect to X.XConfig.getDEFAULT_USER_LOGIN_PAGE(). Response received from server:');
@@ -439,6 +487,43 @@ Ext.define('X.controller.Users', {
                         delay(500);
             }
         });
+        return me;
+    },
+    /*
+     * Camera: Photo related functions
+     */
+    onCameraTriggerButtonTap: function(cameraTriggerPanel, cameraTriggerButton) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log("Debug: X.controller.Main.onCameraTriggerButtonDoubleTap()");
+        }
+        if (Ext.browser.is.PhoneGap) {
+            if (me.getDebug()) {
+                console.log("Debug: PHONEGAP: X.controller.Main.onCameraTriggerButtonTap()");
+            }
+            navigator.camera.getPicture(
+                    function() {
+                        console.log('success!');
+                    },
+                    function() {
+                        console.log('failure!');
+                    },
+                    {
+                        quality: 100,
+                        destinationType: 1,
+                        sourceType: 1,
+                        saveToPhotoAlbum: true,
+                        allowEdit: true,
+                        encodingType: 0,
+                        mediaType: 0
+                    }
+            );
+        }
+        else {
+            if (me.getDebug()) {
+                console.log("Debug: This is not a Phonegap application");
+            }
+        }
         return me;
     },
     init: function() {
