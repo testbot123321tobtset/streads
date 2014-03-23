@@ -7,7 +7,8 @@ Ext.define('X.store.DeviceContacts', {
         autoSync: false,
         mustBeEmptiedOnApplicationShutDown: false,
         sorters: 'familyName',
-        groupField: 'familyName'
+        groupField: 'familyName',
+        // This is only a test for commit
     },
     getEmails: function() {
         var me = this;
