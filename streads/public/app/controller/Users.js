@@ -428,20 +428,19 @@ Ext.define('X.controller.Users', {
         var deviceContactsStore = Ext.getStore('DeviceContactStore');
         var deviceContactsStoreCount = deviceContactsStore.getCount();
         if (deviceContactsStoreCount > 0) {
-            console.log(deviceContactsStore.getEmails());
-//            Ext.Ajax.request({
-//                url: '/friendships/usingemails',
-//                method: 'POST',
-//                params: {
-//                    emails: [
-//                        
-//                    ]
-//                },
-//                success: function(response) {
-//                    var text = response.responseText;
-//                    // process server response here
-//                }
-//            });
+            var emails = deviceContactsStore.getEmails();
+            if(Ext.isArray(emails) && !Ext.isEmpty(emails)) {
+                Ext.Ajax.request({
+                    url: '/friendships/usingemails',
+                    method: 'POST',
+                    params: {
+                        emails: emails
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
         }
         return me;
     },
