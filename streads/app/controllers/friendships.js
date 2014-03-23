@@ -55,49 +55,79 @@ var Friendships = function() {
         var self = this,
                 Friendship = geddy.model.Friendship,
                 User = geddy.model.User,
-                frienderId = self.session.get("userId");
-        var friendId;
-        User.first({
-            usernameEmail: params['friendEmailField']
-        }, function(err, user) {
-            if (!__.isObject(user) || err) {
-                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('noUserFoundForEmail')));
-            } else {
-                // here we gets the user to make friend with
-                friendId = user.id;
-                // checks whether frienship already exists or not
-                Friendship.first({
-                    frienderUserId: frienderId,
-                    friendUserId: friendId
-                }, function(err, data) {
-                    if (data) {
-                        self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('friendshipAlreadyExists')));
-                    } else { // create new friendship if there's no friendship yet
-                        Friendship.first({
-                            frienderUserId: friendId,
-                            friendUserId: frienderId
-                        }, function(err, data) {
-                            if (data) {
-                                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('friendshipAlreadyExists')));
-                            } else {
-                                var friendship = Friendship.create({
-                                    frienderUserId: frienderId,
-                                    friendUserId: friendId
-                                });
-                                friendship.save(function(err, data) {
-                                    if (err) {
-                                        self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('failedToSaveFriendship')));
-                                    } else {
-                                        self.respond(AH.getSuccessResponseObject(params, data));
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-            }
+                frienderId = self.session.get("userId"),
+                emails = params['emails'];
+        // Start loop through all emails
+        emails.forEach(function(emailId){
+            var friendId;
+            User.first({
+                usernameEmail: emailId
+            }, function(userFromEmailIdErr, userFromEmailId) {
+                if (!__.isObject(userFromEmailId) || userFromEmailIdErr) {
+                       console.log("User doesnt exist");
+                } else {
+                    friendId = userFromEmailId.id;
+                    // checks whether friendship already exists
+                    Friendship.first({
+                        frienderUserId: frienderId,
+                        friendUserId: friendId
+                    }, function(frienderAssociationErr, frienderAssociation) {
+                        if (!frienderAssociationErr || __.isObject(frienderAssociation)) {
+                            console.log("Friendship already exists");
+                        } else { 
+                            Friendship.first({
+                                frienderUserId: friendId,
+                                friendUserId: frienderId
+                            }, function(friendAssociationErr, friendAssociation) {
+                                if (!friendAssociationErr || __.isObject(friendAssociation)) {
+                                    console.log("Friendship already exists");
+                                } else {
+                                    //create a friendship object and set to approved
+                                    var friendship = Friendship.create({
+                                        frienderUserId: frienderId,
+                                        friendUserId: friendId,
+                                        approved: true
+                                    });
+                                    var loggedInUser = geddy.model.User;
+                                    loggedInUser.first({
+                                        id:frienderId
+                                    },function(frienderUserErr, frienderUser){
+                                       if(!frienderUserErr && __.isObject(frienderUser)) {
+                                           //add new Friend association for the user
+                                           frienderUser.addFriend(friendship);
+                                           frienderUser.save(function(saveErr, savedFriendObject){
+                                               if(saveErr){
+                                                   console.log("error saving friendship");
+                                               }else{
+                                                   if(__.isObject(savedFriendObject))
+                                                    console.log("success saving friendship");
+                                               }
+                                           });
+                                       }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }); 
+        // End loop through all emails
+        
+        //Return Authenticted user back to client
+        var returnAuthenticatedUser = geddy.model.User;
+        returnAuthenticatedUser.first({
+            id:frienderId
+        },function(userDataErr,userData){
+            if(userDataErr){
+                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('userNotRetrievedAfterAddingFriends')));
+            }else{
+                console.log(userData);
+                 me.authenticatedUser = userData;
+                 self.respond(AH.getSuccessResponseObject(params, userData));
+            }            
         });
-        // Save the resource, then display index page
+        
     };
 
     me.show = function(req, resp, params) {
