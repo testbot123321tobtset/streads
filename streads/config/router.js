@@ -142,7 +142,13 @@ router.match('/user/groups/:id(.:format)','DELETE').
          
 
 // routing for creating/destroying friendhips
+<<<<<<< HEAD
 router.post('/friendships/usingemails(.:format)').
+=======
+//test code
+//router.post('/friendships/email(.:format)')
+router.post('/friendships(.:format)').
+>>>>>>> testBranch
         to({
             controller:'Friendships',
             action:'create'

@@ -7,6 +7,7 @@ Ext.define('X.view.plugandplay.UsersList', {
         itemTpl: '{formattedName}',
         deselectOnContainerClick: true,
         onItemDisclosure: true,
-        infinite: true
+        infinite: true,
+        grouped: true
     }
 });
