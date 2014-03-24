@@ -153,7 +153,7 @@ router.del('/friendships/:id(.:format)').
             action: 'destroy'
         });
 router.resource('users');
-
+//test code
 //router.resource('friendships');
 //router.resource('groupships');
 //router.resource('groups');
