@@ -142,6 +142,8 @@ router.match('/user/groups/:id(.:format)','DELETE').
          
 
 // routing for creating/destroying friendhips
+//test code
+//router.post('/friendships/email(.:format)')
 router.post('/friendships(.:format)').
         to({
             controller:'Friendships',
