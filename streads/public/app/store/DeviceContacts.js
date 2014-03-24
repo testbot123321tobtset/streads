@@ -6,8 +6,12 @@ Ext.define('X.store.DeviceContacts', {
         autoLoad: false,
         autoSync: false,
         mustBeEmptiedOnApplicationShutDown: false,
-        sorters: 'familyName',
-        groupField: 'familyName'
+        sorters: 'formattedName',
+        grouper: {
+            groupFn: function(record) {
+                return Ext.isString(record.get('formattedName')) ? record.get('formattedName')[0] : false;
+            }
+        }
     },
     getEmails: function() {
         var me = this;

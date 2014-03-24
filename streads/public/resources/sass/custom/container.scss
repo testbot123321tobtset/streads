@@ -22,6 +22,8 @@ $container-border-visible-edge-color: $default-border-color;
 
 .user-group-container, .user-edit-group-container {
     
+    @include single-transition;
+    
     @include no-border;
     border: $container-border-width $container-border-style $container-border-color !important;
     border-top: $container-border-visible-edge-width $container-border-visible-edge-style $container-border-visible-edge-color !important;

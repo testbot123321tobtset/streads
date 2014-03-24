@@ -297,7 +297,7 @@ Ext.define('X.controller.mixin.Factory', {
                 else {
                     userGroupContainer.setDimensionsToFillScreen();
                 }
-                me.createOptimizedLayeredEffectNew(userGroupContainer);
+                me.createOptimizedLayeredEffect(userGroupContainer);
                 Ext.Viewport.add(userGroupContainer);
                 userGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userGroupContainer.setRecordRecursive(group);
@@ -325,7 +325,7 @@ Ext.define('X.controller.mixin.Factory', {
                 else {
                     userEditGroupContainer.setDimensionsToFillScreen();
                 }
-                me.createOptimizedLayeredEffectNew(userEditGroupContainer);
+                me.createOptimizedLayeredEffect(userEditGroupContainer);
                 Ext.Viewport.add(userEditGroupContainer);
                 userEditGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userEditGroupContainer.setRecordRecursive(group);

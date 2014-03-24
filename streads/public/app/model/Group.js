@@ -30,6 +30,15 @@ Ext.define('X.model.Group', {
                 type: 'string'
             }
         ],
+        hasMany: [
+            {
+                model: 'X.model.User',
+                name: 'users',
+                primaryKey: 'id',
+                foreignKey: 'userId',
+                foreignStore: 'Users'
+            }
+        ],
         validations: [
             {
                 type: 'presence',
