@@ -295,8 +295,8 @@ Ext.define('X.controller.Groups', {
                             showcontainer: true
                         })) {
                             // Retrieve contacts and fill list
-                            me.getContactsFromDeviceAndCallback({
-                                refreshDeviceContactsStore: true,
+                            me.refreshDeviceContactsStoreAndCallback({
+                                refresh: false,
                                 successCallback: {
                                     fn: function() {
                                         // var args = arguments[0];

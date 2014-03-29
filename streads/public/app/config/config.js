@@ -14,6 +14,7 @@ Ext.define('X.config.Config', {
         MESSAGES: {
             // Bad news
             ALERT: 'Something seems to be wrong!',
+            CONFIRM: 'We need your permission',
             INVALID_LOGIN: 'Hmm, we couldn\'t log you in. Email us if the problem persists.',
             FAILED_AUTHENTICATION: 'Hmm, we couldn\'t find you in our system. Email us if the problem persists.',
             FAILED_SAVE: 'The data you requested could not be saved. Let us know if the problem persists.',
@@ -42,7 +43,11 @@ Ext.define('X.config.Config', {
             GROUP_FAILED_UPDATED: 'This group failed to update.',
             GROUP_SUCCESSFULLY_DESTROYED: 'This group was successfully destroyed.',
             
-            FRIENDSHIP_SUCCESSFULLY_CREATED: 'This friendship was successfully created.'
+            FRIENDSHIP_SUCCESSFULLY_CREATED: 'This friendship was successfully created.',
+            
+            DEVICE_CONTACTS_ACCESS_REQUEST: 'Giving us access to your device\'s address book will help us automatically find all ' +
+                    'your friends whom you can start sharing with right away.<br /><br />We promise we will not contact them on your behalf or otherwise bug you ' +
+                    'guys in any way!<br /><br />Do you want to go ahead with it?'
         },
         CUSTOMER_SERVICE_EMAIL_ADDRESS: 'test@test.com',
         DEBUG: true,

@@ -8,40 +8,34 @@ $messagebox-border-color: transparent;
 $messagebox-border-visible-edge-width: $default-border-width;
 $messagebox-border-visible-edge-style: $default-border-style;
 $messagebox-border-visible-edge-color: $default-border-color;
-$messagebox-background-color: rgba(255, 255, 255, $default-theme-minimum-transparency-opacity);
+$messagebox-background-color: white;
 $messagebox-button-background-color: $default-darker-background-color; 
 $messagebox-button-pressing-background-color: lighten($messagebox-button-background-color, $default-color-variance);
-$messagebox-layer-percent: 100% - $layer-reduction-percent;
+$messagebox-layer-percent: 100%;
 
 .x-msgbox {
+    
     width: $messagebox-layer-percent !important;
     min-width: $messagebox-layer-percent !important;
     height: $messagebox-layer-percent !important;
     min-height: $messagebox-layer-percent !important;
     
-    @include mini-box-shadow;
-    
     @include no-background;
-    background-color: $messagebox-background-color !important;
+    background: $messagebox-background-color !important;
     
     @include no-border;
     @include no-border-radius;
-/*    border: $messagebox-border-width $messagebox-border-style $messagebox-border-color !important;
-    border-top: $messagebox-border-visible-edge-width $messagebox-border-visible-edge-style $messagebox-border-visible-edge-color !important;
-    border-bottom: $messagebox-border-visible-edge-width $messagebox-border-visible-edge-style $messagebox-border-visible-edge-color !important;*/
+    border: $messagebox-border-width $messagebox-border-style $messagebox-border-color !important;
     
     .x-msgbox-title {
+        
+        @include no-margin;
         
         .x-title {
             font-size: 0.8em !important;
             text-transform: uppercase !important;
             color: $default-theme-color !important;
         }
-    }
-    
-    .x-toolbar.x-docked-top {
-        @include no-border;
-        border-bottom-width: 0px !important;
     }
     
     .x-toolbar.x-msgbox-buttons {

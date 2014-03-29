@@ -8,6 +8,7 @@ Ext.define('X.view.plugandplay.UsersList', {
         deselectOnContainerClick: true,
         onItemDisclosure: true,
         infinite: true,
-        grouped: true
+        grouped: true,
+        mode: 'MULTI'
     }
 });

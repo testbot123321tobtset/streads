@@ -37,7 +37,8 @@ Ext.define('X.controller.Users', {
         control: {
             viewport: {
                 authenticateduserdataedit: 'onAuthenticatedUserDataEdit',
-                cameratriggerbuttontap: 'onCameraTriggerButtonTap'
+                cameratriggerbuttontap: 'onCameraTriggerButtonTap',
+                devicecontactsstorerefreshuserrequest: 'onDeviceContactsStoreRefreshUserRequest'
             },
             // Login
             pageLogin: {
@@ -61,7 +62,7 @@ Ext.define('X.controller.Users', {
             },
             // User account info panel
             importFriendsFromDeviceContactsButton: {
-                tap: 'doImportFriendsFromDeviceContactsButton'
+                tap: 'addFriendsFromDeviceContacts'
             },
             // Logout
             logoutButton: {
@@ -146,6 +147,13 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.onAuthenticatedUserDataEdit(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         return me.doUpdateAuthenticatedUser(options);
+    },
+    onDeviceContactsStoreRefreshUserRequest: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onDeviceContactsStoreRefreshUserRequest(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.addFriendsFromDeviceContacts();
     },
     // Show sign up form
     showSignup: function() {
@@ -325,6 +333,7 @@ Ext.define('X.controller.Users', {
                         authenticatedUserStore.setAutoSync(true);
                         me.resetAuthenticatedEntity();
                         Ext.create('Ext.util.DelayedTask', function() {
+                            me.generateUserDeviceContactsAccessRequestWindow();
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
 //                            me.destroyGivenView({
 //                                view: me.getPageLogin()
@@ -396,16 +405,13 @@ Ext.define('X.controller.Users', {
         });
         return me;
     },
-    doImportFriendsFromDeviceContactsButton: function(button, e, eOpts) {
+    addFriendsFromDeviceContacts: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.doImportFriendsFromDeviceContactsButton()');
+            console.log('Debug: X.controller.Users.addFriendsFromDeviceContacts()');
         }
-        var formPanel = button.up('coreformpanel');
-        var formData = formPanel.getValues();
-        // Retrieve contacts and fill list
-        me.getContactsFromDeviceAndCallback({
-            refreshDeviceContactsStore: true,
+        me.refreshDeviceContactsStoreAndCallback({
+            refresh: true,
             successCallback: {
                 fn: function() {
                     // var args = arguments[0];
@@ -416,7 +422,7 @@ Ext.define('X.controller.Users', {
             },
             failureCallback: {
                 fn: function() {
-                    console.log('failed!');
+                    console.log('Debug: X.controller.Users.addFriendsFromDeviceContacts(): Failed to retrieve contacts from device\'s address book');
                 },
                 scope: me
             }
@@ -434,7 +440,7 @@ Ext.define('X.controller.Users', {
                     url: '/friendships/usingemails',
                     method: 'POST',
                     params: {
-                        emails: emails
+                        emails: emails.join(';')
                     },
                     success: function(response) {
                         console.log(response);

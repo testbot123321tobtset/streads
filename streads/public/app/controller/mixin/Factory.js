@@ -112,6 +112,38 @@ Ext.define('X.controller.mixin.Factory', {
         }));
         cameraTriggerPanel.show();
     },
+    generateUserDeviceContactsAccessRequestWindow: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generateUserDeviceContactsAccessRequestWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        Ext.Msg.confirm(X.XConfig.getMESSAGES().CONFIRM, X.XConfig.getMESSAGES().DEVICE_CONTACTS_ACCESS_REQUEST, function(buttonId) {
+            if (buttonId === 'yes') {
+                Ext.Viewport.fireEvent('devicecontactsstorerefreshuserrequest')
+                
+                
+                me.refreshDeviceContactsStoreAndCallback({
+                    successCallback: {
+                        fn: function() {
+                            if (me.getDebug()) {
+                                console.log('Debug: X.controller.mixin.Factory: generateUserDeviceContactsAccessRequestWindow(): Device contacts store successfully refreshed: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                            }
+                        },
+                        scope: me
+                    },
+                    failureCallback: {
+                        fn: function() {
+                            if (me.getDebug()) {
+                                console.log('Debug: X.controller.mixin.Factory: generateUserDeviceContactsAccessRequestWindow(): Device contacts store failed to refresh: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                            }
+                        },
+                        scope: me
+                    }
+                });
+            }
+        });
+        return me;
+    },
     generateAndFillViewportWithUserSignupWindow: function() {
         var me = this;
         if (me.getDebug()) {
