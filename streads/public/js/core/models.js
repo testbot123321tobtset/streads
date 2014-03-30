@@ -162,4 +162,26 @@ User.includeGroups = function(callback) {
     });
 };
 
+User.includeFriends = function(callback) {
+    var me = this;
+    me.friendsList = [
+    ];
+    me.getFriends(function(err, friends) {
+        if (!err) {
+            friends.forEach(function(friend){
+                me.friendsList.push(friend.id); 
+            });     
+        }
+        me.getFrienders(function(err, frienders) {
+            if (!err) {
+                frienders.forEach(function(friender){
+                  me.friendsList.push(frienders.id); 
+                });     
+               }
+               console.log("friendsList[] " + me.friendsList);
+            AH.executeCallback(callback);
+        });
+    });
+};
+
 exports.User = User;}());

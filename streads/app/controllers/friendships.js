@@ -55,11 +55,14 @@ var Friendships = function() {
         var self = this,
                 Friendship = geddy.model.Friendship,
                 User = geddy.model.User,
-                frienderId = self.session.get("userId"),
-                emails = params['emails'];
+                frienderId = self.session.get("userId"),                
+                emailsStr = params['emails'];
+        var emails = emailsStr.split(';');
+        console.log("emails: "+emails);
         // Start loop through all emails
         emails.forEach(function(emailId){
             var friendId;
+            console.log("emailId: "+emailId);
             User.first({
                 usernameEmail: emailId
             }, function(userFromEmailIdErr, userFromEmailId) {
@@ -72,15 +75,15 @@ var Friendships = function() {
                         frienderUserId: frienderId,
                         friendUserId: friendId
                     }, function(frienderAssociationErr, frienderAssociation) {
-                        if (!frienderAssociationErr || __.isObject(frienderAssociation)) {
-                            console.log("Friendship already exists");
+                        if (!frienderAssociationErr && __.isObject(frienderAssociation)) {
+                            console.log("Friender Friendship already exists");
                         } else { 
                             Friendship.first({
                                 frienderUserId: friendId,
                                 friendUserId: frienderId
                             }, function(friendAssociationErr, friendAssociation) {
-                                if (!friendAssociationErr || __.isObject(friendAssociation)) {
-                                    console.log("Friendship already exists");
+                                if (!friendAssociationErr && __.isObject(friendAssociation)) {
+                                    console.log("Friend Friendship already exists");
                                 } else {
                                     //create a friendship object and set to approved
                                     var friendship = Friendship.create({
@@ -88,23 +91,31 @@ var Friendships = function() {
                                         friendUserId: friendId,
                                         approved: true
                                     });
-                                    var loggedInUser = geddy.model.User;
-                                    loggedInUser.first({
-                                        id:frienderId
-                                    },function(frienderUserErr, frienderUser){
-                                       if(!frienderUserErr && __.isObject(frienderUser)) {
-                                           //add new Friend association for the user
-                                           frienderUser.addFriend(friendship);
-                                           frienderUser.save(function(saveErr, savedFriendObject){
-                                               if(saveErr){
-                                                   console.log("error saving friendship");
-                                               }else{
-                                                   if(__.isObject(savedFriendObject))
-                                                    console.log("success saving friendship");
-                                               }
-                                           });
-                                       }
+                                    friendship.save(function (saveErr, friendshipObj) {
+                                        if(saveErr){
+                                            console.log("error saving friendship");
+                                        }else{
+                                            if(__.isObject(friendshipObj))
+                                                console.log("success saving friendship");
+                                        }
                                     });
+//                                    var loggedInUser = geddy.model.User;
+//                                    loggedInUser.first({
+//                                        id:frienderId
+//                                    },function(frienderUserErr, frienderUser){
+//                                       if(!frienderUserErr && __.isObject(frienderUser)) {
+//                                           //add new Friend association for the user
+//                                           frienderUser.addFriend(friendship);
+//                                           frienderUser.save(function(saveErr, savedFriendObject){
+//                                               if(saveErr){
+//                                                   console.log("error saving friendship");
+//                                               }else{
+//                                                   if(__.isObject(savedFriendObject))
+//                                                    console.log("success saving friendship");
+//                                               }
+//                                           });
+//                                       }
+//                                    });
                                 }
                             });
                         }
@@ -122,9 +133,14 @@ var Friendships = function() {
             if(userDataErr){
                 self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('userNotRetrievedAfterAddingFriends')));
             }else{
-                console.log(userData);
-                 me.authenticatedUser = userData;
-                 self.respond(AH.getSuccessResponseObject(params, userData));
+                
+                userData.includeFriends({
+                    fn: function(){
+                        me.authenticatedUser = userData;
+                        //console.log(me.authenticatedUser);
+                        self.respond(AH.getSuccessResponseObject(params, me.authenticatedUser));
+                    }
+                });
             }            
         });
         
