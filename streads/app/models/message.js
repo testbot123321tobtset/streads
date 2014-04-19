@@ -1,7 +1,7 @@
 var Message =  function () {
    var me = this; 
    me.defineProperties ({
-        messageType: {
+        messageType: { //text or image
             type: 'string',
             required: true
         },
