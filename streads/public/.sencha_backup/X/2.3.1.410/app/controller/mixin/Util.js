@@ -167,30 +167,12 @@ Ext.define('X.controller.mixin.Util', {
      */
     createOptimizedLayeredEffect: function(visibleComponent) {
         var me = this;
-        var layerUnderneathItemId = Ext.isString(visibleComponent.getLayerUnderneathItemId()) ? visibleComponent.getLayerUnderneathItemId() : false;
-        if(Ext.isString(layerUnderneathItemId)) {
-            var componentUnderneath = Ext.Viewport.down('#' + layerUnderneathItemId);
-            if(Ext.isObject(componentUnderneath)) {
-                componentUnderneath.addCls('blurred-background');
-                me.hideAllVisibleComponentsExceptVisibleAndBlurredComponents({
-                    visibleComponent: visibleComponent,
-                    componentUnderneath: componentUnderneath
-                });
-                return me;
-            }
-        }
-        return false;
-    },
-    createOptimizedLayeredEffectNew: function(visibleComponent) {
-        var me = this;
         var querySelectorsForComponentsToBeHidden = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
         var querySelectorsForComponentsToBeBlurred = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
         var viewport = Ext.Viewport;
         if (Ext.isArray(querySelectorsForComponentsToBeHidden) && !Ext.isEmpty(querySelectorsForComponentsToBeHidden)) {
             Ext.each(querySelectorsForComponentsToBeHidden, function(thisComponentQuerySelector) {
-                console.log('????????? ' + thisComponentQuerySelector);
                 Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
-                    console.log('????????? ' + thisComponent.getItemId());
                     thisComponent.hide();
                 });
             });

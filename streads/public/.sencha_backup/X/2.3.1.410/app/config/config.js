@@ -2,8 +2,8 @@ Ext.define('X.config.Config', {
     singleton: true,
     config: {
         // Server Config
-        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
-//        API_ENDPOINT: 'http://localhost:4000/',
+//        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
+        API_ENDPOINT: 'http://localhost:4000/',
         
         // TO DO: Update these URLs when you have the UIs
         DEFAULT_LOGIN_PAGE: 'user/login',
@@ -14,6 +14,7 @@ Ext.define('X.config.Config', {
         MESSAGES: {
             // Bad news
             ALERT: 'Something seems to be wrong!',
+            CONFIRM: 'We need your permission',
             INVALID_LOGIN: 'Hmm, we couldn\'t log you in. Email us if the problem persists.',
             FAILED_AUTHENTICATION: 'Hmm, we couldn\'t find you in our system. Email us if the problem persists.',
             FAILED_SAVE: 'The data you requested could not be saved. Let us know if the problem persists.',
@@ -42,7 +43,11 @@ Ext.define('X.config.Config', {
             GROUP_FAILED_UPDATED: 'This group failed to update.',
             GROUP_SUCCESSFULLY_DESTROYED: 'This group was successfully destroyed.',
             
-            FRIENDSHIP_SUCCESSFULLY_CREATED: 'This friendship was successfully created.'
+            FRIENDSHIP_SUCCESSFULLY_CREATED: 'This friendship was successfully created.',
+            
+            DEVICE_CONTACTS_ACCESS_REQUEST: 'Giving us access to your device\'s address book will help us automatically find all ' +
+                    'your friends whom you can start sharing with right away.<br /><br />We promise we will not contact them on your behalf or otherwise bug you ' +
+                    'guys in any way!<br /><br />Do you want to go ahead with it?'
         },
         CUSTOMER_SERVICE_EMAIL_ADDRESS: 'test@test.com',
         DEBUG: true,
@@ -51,8 +56,8 @@ Ext.define('X.config.Config', {
         
         // UI
         EAGERGENERATECOMPONENTS: [
-            'usergroupcontainer',
-            'usereditgroupcontainer'
+            //            'usergroupcontainer',
+            //            'usereditgroupcontainer'
         ],
         // Should depth be represented by offset either vertically or horizontally
         LAYER_DEPTH_BASED_ON_OFFSET: false,
@@ -96,8 +101,8 @@ Ext.define('X.config.Config', {
         // Phonegap
         // Contact (http://docs.phonegap.com/en/3.3.0/cordova_contacts_contacts.md.html#Contacts)
         PG_FIELDS_REQUIRED_TO_IMPORT_DEVICE_CONTACT: [
-            // 'emails',
-            'phoneNumbers'
+            'emails'
+            //            'phoneNumbers'
         ],
         PG_READ_DEVICE_CONTACT_FIELDS: [
             'id', 'displayName', 'name', 'nickname', 'phoneNumbers', 'emails', 'photos'

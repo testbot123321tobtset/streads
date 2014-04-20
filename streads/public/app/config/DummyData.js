@@ -10,7 +10,7 @@ Ext.define('X.config.DummyData', {
                     {"familyName": "Family257", "formattedName": "Given Family Formatted218", "givenName": "Given446", "phoneNumbers": [
                             {"type": "mobile", "value": "(762) 775-638"}
                         ], "emails": [
-                            {"type": "home", "value": "email257@streads.com"}
+                            {"type": "home", "value": "test123@test.com"}
                         ]}, {"familyName": "Family300", "formattedName": "Given Family Formatted459", "givenName": "Given124", "phoneNumbers": [
                             {"type": "mobile", "value": "(424) 998-460"}
                         ]}, {"familyName": "Family58", "formattedName": "Given Family Formatted747", "givenName": "Given838", "phoneNumbers": [

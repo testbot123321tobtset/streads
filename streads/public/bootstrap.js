@@ -18,6 +18,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js",
   "X": "app",
+  "X.config.Config": "app/config/config.js",
   "overrides": "app/overrides"
 });
 Ext.ClassManager.addNameAlternateMappings({
@@ -761,6 +762,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.model.Application": [],
   "X.model.AuthenticatedUser": [],
   "X.model.DeviceContact": [],
+  "X.model.Friend": [],
   "X.model.Group": [],
   "X.model.User": [],
   "X.model.validation.UserLogin": [],
@@ -769,6 +771,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.store.Application": [],
   "X.store.AuthenticatedUser": [],
   "X.store.DeviceContacts": [],
+  "X.store.Friends": [],
   "X.store.Groups": [],
   "X.store.Users": [],
   "X.view.Main": [],
@@ -779,6 +782,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.page.user.Root": [],
   "X.view.phone.Main": [],
   "X.view.plugandplay.CameraTriggerPanel": [],
+  "X.view.plugandplay.PhotoMessageInputContainer": [],
   "X.view.plugandplay.UserAccountFormPanel": [],
   "X.view.plugandplay.UserAccountInfoPanel": [],
   "X.view.plugandplay.UserEditGroupContainer": [],
@@ -1761,6 +1765,7 @@ Ext.ClassManager.addNameAliasMappings({
   "X.model.Application": [],
   "X.model.AuthenticatedUser": [],
   "X.model.DeviceContact": [],
+  "X.model.Friend": [],
   "X.model.Group": [],
   "X.model.User": [],
   "X.model.validation.UserLogin": [],
@@ -1769,6 +1774,7 @@ Ext.ClassManager.addNameAliasMappings({
   "X.store.Application": [],
   "X.store.AuthenticatedUser": [],
   "X.store.DeviceContacts": [],
+  "X.store.Friends": [],
   "X.store.Groups": [],
   "X.store.Users": [],
   "X.view.Main": [
@@ -1792,6 +1798,9 @@ Ext.ClassManager.addNameAliasMappings({
   "X.view.phone.Main": [],
   "X.view.plugandplay.CameraTriggerPanel": [
     "widget.cameratriggerpanel"
+  ],
+  "X.view.plugandplay.PhotoMessageInputContainer": [
+    "widget.photomessageinputcontainer"
   ],
   "X.view.plugandplay.UserAccountFormPanel": [
     "widget.useraccountformpanel"

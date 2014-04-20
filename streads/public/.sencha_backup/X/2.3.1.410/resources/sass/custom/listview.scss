@@ -3,11 +3,36 @@
 @import '_mixins';
 @import 'core/listview';
 
-.user-groups-list {
-/*    .x-list-item-first {
-        margin-top: $tabbar-height !important;
+.users-list {
+
+    .x-list-item {
+
+        .x-list-disclosure {
+
+            &:before {
+
+                font-family: $list-disclosure-icon-font-family;
+                font-size: $list-disclosure-icon-font-size;
+                line-height: $list-disclosure-icon-font-line-height;
+                content: '\f170';
+
+            }
+        }
+
+        &.x-item-selected {
+            
+            .x-list-disclosure {
+                
+                &:before {
+
+                    font-family: $list-disclosure-icon-font-family;
+                    font-size: $list-disclosure-icon-font-size;
+                    line-height: $list-disclosure-icon-font-line-height;
+                    content: '\f16f';
+                    
+                    color: $list-active-color;
+                }
+            }
+        }
     }
-    .x-list-item-last {
-        margin-bottom: $tabbar-height !important;
-    }*/
 }

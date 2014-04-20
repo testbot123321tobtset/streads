@@ -79,7 +79,13 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
-
+    
+    <!-- 
+        This is to fix the app not taking full height on iPhone 5, 5S 
+        URL: http://www.position-absolute.com/articles/phonegap-build-6-frustrating-issues-explained/
+    -->
+    <gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="640" height="1136" />
+    
     <!--
         Define access to external domains.
 

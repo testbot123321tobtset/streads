@@ -106,9 +106,9 @@ var User = function() {
 //    });
 
     me.hasMany('Passports');
-    /*
-     me.hasMany('Groupships');
-     me.hasMany('Groups', {through: 'Groupships'});*/
+    
+//    me.hasMany('Groupships');
+//    me.hasMany('Groups', {through: 'Groupships'});
 
 //    Named associations (http://geddyjs.org/guide#models)
 //    
@@ -159,6 +159,29 @@ User.includeGroups = function(callback) {
             me.groups = groups;
         }
         AH.executeCallback(callback);
+    });
+};
+
+User.includeFriends = function(callback) {
+    var me = this;
+    me.friendsList = [
+    ];
+    me.getFriends(function(err, friends) {
+        if (!err) {
+            friends.forEach(function(friend){
+                delete friend['password'];
+                me.friendsList.push(friend); 
+            });     
+        }
+        me.getFrienders(function(err, frienders) {
+            if (!err) {
+                frienders.forEach(function(friender){
+                    delete friender['password'];
+                    me.friendsList.push(friender); 
+                });     
+               }
+            AH.executeCallback(callback);
+        });
     });
 };
 

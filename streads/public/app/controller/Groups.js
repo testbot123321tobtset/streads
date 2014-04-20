@@ -40,6 +40,7 @@ Ext.define('X.controller.Groups', {
             viewport: {
                 editgroup: 'onEditGroup',
                 editgroupvalidationfailed: 'onEditGroupValidationFailed',
+                destroygroupmessageshow: 'onDestroyGroupMessageShow',
                 destroygroup: 'onDestroyGroup',
                 destroyedgroup: 'onDestroyedGroup'
             },
@@ -95,6 +96,7 @@ Ext.define('X.controller.Groups', {
             userEditGroupContainerBackButton: '#userEditGroupContainer #userEditGroupContainerToolbar #backButton',
             userGroupEditFormPanel: '#userGroupEditFormPanel',
             userGroupEditFormPanelUsersListContainer: '#userGroupEditFormPanel #usersListContainer',
+            userGroupEditFormPanelUsersList: '#userGroupEditFormPanel #usersListContainer #usersList',
             // User :: Groups :: Create
             userGroupAddFormPanel: '#userGroupAddFormPanel',
             userGroupCreateSubmitButton: '#userGroupAddFormPanel #submitButton'
@@ -180,6 +182,13 @@ Ext.define('X.controller.Groups', {
         me.redirectTo('user/profile/groups/feeds/' + userEditGroupContainer.
                 getRecord().
                 getId());
+        return me;
+    },
+    onDestroyGroupMessageShow: function(options) {
+        var me = this;
+        if(Ext.isObject(options) && !Ext.isEmpty(options) && 'containerToBeBlurred' in options && Ext.isObject(options.containerToBeBlurred)) {
+            me.createOptimizedLayeredEffect(options.containerToBeBlurred);
+        }
         return me;
     },
     // OTHER EVENT HANDLERS
@@ -322,50 +331,20 @@ Ext.define('X.controller.Groups', {
     // This assumes that the DeviceContactsStore has the latest contacts
     resetUserGroupEditFormPanelWithDeviceContactsCheckboxes: function() {
         var me = this;
-//        var groupEditMembersFormFieldSet = me.getUserEditGroupContainer().down('#groupEditMembersFormFieldSet');
         var deviceContactsStore = Ext.getStore('DeviceContactStore');
-        //groupEditMembersFormFieldSet.removeAll();
-//        deviceContactsStore.each(function(thisContact, index, length) {
-////            console.log(thisContact);
-////            groupEditMembersFormFieldSet.add({
-////                label: thisContact.get('formattedName'),
-////                checked: false
-////            });
-//            groupEditMembersFormFieldSet.add({
-//                xtype: 'container',
-//                html: thisContact.get('formattedName')
-//            });
-//        });
-//        groupEditMembersFormFieldSet.add({
-//            xtype: 'list',
-//            height: 800,
-//            width: '100%',
-//            store: deviceContactsStore,
-//            itemTpl: '{formattedName}',
-//            grouped: false
-//        });
-//        me.getUserEditGroupContainer().
-//                down('#usersList').
-//                setStore(Ext.getStore('GroupsStore'));
-//        console.log(deviceContactsStore);
-//        me.getUserGroupEditFormPanel().
-//                down('#usersList').
-//                setStore(deviceContactsStore);
-        var usersList = {
-            xtype: 'userslist',
-            store: deviceContactsStore
-        };
-        if (Ext.isObject(me.getUserGroupEditFormPanelUsersListContainer().
-                down('userslist'))) {
-            me.getUserGroupEditFormPanelUsersListContainer().
-                    down('userslist').
-                    setStore(deviceContactsStore);
+        var userGroupEditFormPanelUsersListContainer = me.getUserGroupEditFormPanelUsersListContainer();
+        var userGroupEditFormPanelUsersList = me.getUserGroupEditFormPanelUsersList();
+        if(Ext.isObject(userGroupEditFormPanelUsersList)) {
+            userGroupEditFormPanelUsersList.setStore(deviceContactsStore);
         }
-        else {
-            me.getUserGroupEditFormPanelUsersListContainer().
+        else if (Ext.isObject(userGroupEditFormPanelUsersListContainer)) {
+            var usersList = {
+                xtype: 'userslist',
+                store: deviceContactsStore
+            };
+            userGroupEditFormPanelUsersListContainer.
                     add(usersList);
         }
-
         return me;
     },
     doUpdateGroup: function(options) {

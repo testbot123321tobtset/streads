@@ -24,7 +24,6 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
         centered: true,
         fullscreen: true,
         layer: 1,
-        layerUnderneathItemId: 'userGroupContainer',
         depthBasedOnOffset: true,
         modal: true,
         querySelectorsForComponentsToBeHiddenToOptimizeLayer: [

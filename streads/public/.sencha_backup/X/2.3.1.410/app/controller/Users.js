@@ -37,7 +37,8 @@ Ext.define('X.controller.Users', {
         control: {
             viewport: {
                 authenticateduserdataedit: 'onAuthenticatedUserDataEdit',
-                cameratriggerbuttontap: 'onCameraTriggerButtonTap'
+                cameratriggerbuttontap: 'onCameraTriggerButtonTap',
+                devicecontactsstorerefreshuserrequest: 'onDeviceContactsStoreRefreshUserRequest'
             },
             // Login
             pageLogin: {
@@ -59,7 +60,11 @@ Ext.define('X.controller.Users', {
             userMoreTabPanel: {
                 activeitemchange: 'onUserMoreTabPanelPanelActiveItemChange'
             },
-            //Logout
+            // User account info panel
+            importFriendsFromDeviceContactsButton: {
+                tap: 'addFriendsFromDeviceContacts'
+            },
+            // Logout
             logoutButton: {
                 tap: 'doLogout'
             }
@@ -80,6 +85,7 @@ Ext.define('X.controller.Users', {
             userMoreTabPanel: '#userMoreTabPanel',
             userAccountInfoPanel: '#userMoreTabPanel #userAccountInfoPanel',
             userAccountFormPanel: '#userMoreTabPanel #userAccountFormPanel',
+            importFriendsFromDeviceContactsButton: '#userMoreTabPanel #userAccountFormPanel #importFriendsFromDeviceContactsButton',
             // User :: Logout
             logoutButton: '#userAccountFormPanel #logoutButton'
 //            userLogoutPanel: '#userMoreTabPanel #userLogout',
@@ -141,6 +147,13 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.onAuthenticatedUserDataEdit(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         return me.doUpdateAuthenticatedUser(options);
+    },
+    onDeviceContactsStoreRefreshUserRequest: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onDeviceContactsStoreRefreshUserRequest(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.addFriendsFromDeviceContacts();
     },
     // Show sign up form
     showSignup: function() {
@@ -320,6 +333,7 @@ Ext.define('X.controller.Users', {
                         authenticatedUserStore.setAutoSync(true);
                         me.resetAuthenticatedEntity();
                         Ext.create('Ext.util.DelayedTask', function() {
+                            me.generateUserDeviceContactsAccessRequestWindow();
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
 //                            me.destroyGivenView({
 //                                view: me.getPageLogin()
@@ -389,6 +403,51 @@ Ext.define('X.controller.Users', {
                 }
             }
         });
+        return me;
+    },
+    addFriendsFromDeviceContacts: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.addFriendsFromDeviceContacts()');
+        }
+        me.refreshDeviceContactsStoreAndCallback({
+            refresh: true,
+            successCallback: {
+                fn: function() {
+                    // var args = arguments[0];
+                    // args.contacts should have all contacts
+                    me.xhrAddFriendsFromDeviceContacts();
+                },
+                scope: me
+            },
+            failureCallback: {
+                fn: function() {
+                    console.log('Debug: X.controller.Users.addFriendsFromDeviceContacts(): Failed to retrieve contacts from device\'s address book');
+                },
+                scope: me
+            }
+        });
+        return me;
+    },
+    xhrAddFriendsFromDeviceContacts: function() {
+        var me = this;
+        var deviceContactsStore = Ext.getStore('DeviceContactStore');
+        var deviceContactsStoreCount = deviceContactsStore.getCount();
+        if (deviceContactsStoreCount > 0) {
+            var emails = deviceContactsStore.getEmails();
+            if(Ext.isArray(emails) && !Ext.isEmpty(emails)) {
+                Ext.Ajax.request({
+                    url: '/friendships/usingemails',
+                    method: 'POST',
+                    params: {
+                        emails: emails.join(';')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
+        }
         return me;
     },
     doAddFriend: function(button, e, eOpts) {

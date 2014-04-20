@@ -1,7 +1,8 @@
 Ext.define('X.controller.Users', {
     extend: 'X.controller.Main',
     requires: [
-        'X.model.validation.UserLogin'
+        'X.model.validation.UserLogin',
+        'X.view.plugandplay.PhotoMessageInputContainer'
     ],
     config: {
         models: [
@@ -325,13 +326,15 @@ Ext.define('X.controller.Users', {
                 }
                 form.reset();
                 me.loadAuthenticatedUserStore({
-                    // Callback if authenticated user exists
+//                    Callback if authenticated user exists
                     fn: function() {
-                        var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
-                        authenticatedUserStore.setAutoSync(false);
-                        authenticatedUserStore.removeAll();
-                        authenticatedUserStore.setAutoSync(true);
-                        me.resetAuthenticatedEntity();
+//                        Don\'t remember why we reset authenticated entitiy
+//                        Update this comment when you find out
+//                        var authenticatedUserStore = Ext.getStore('AuthenticatedUserStore');
+//                        authenticatedUserStore.setAutoSync(false);
+//                        authenticatedUserStore.removeAll();
+//                        authenticatedUserStore.setAutoSync(true);
+//                        me.resetAuthenticatedEntity();
                         Ext.create('Ext.util.DelayedTask', function() {
                             me.generateUserDeviceContactsAccessRequestWindow();
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
@@ -414,8 +417,8 @@ Ext.define('X.controller.Users', {
             refresh: true,
             successCallback: {
                 fn: function() {
-                    // var args = arguments[0];
-                    // args.contacts should have all contacts
+//                    var args = arguments[0];
+//                    args.contacts should have all contacts
                     me.xhrAddFriendsFromDeviceContacts();
                 },
                 scope: me
@@ -443,6 +446,12 @@ Ext.define('X.controller.Users', {
                         emails: emails.join(';')
                     },
                     success: function(response) {
+//                        When you get this response, either refresh authenticated user store
+//                        that should now give you the authenticated user with all of the contacts
+//                        whom he/she can see or have POST to /friendships/usingemails send back the
+//                        this data and update authenticated user store locally
+//                        See: http://www.sencha.com/forum/showthread.php?284514-How-to-mimic-store.load()-with-local-data&p=1040738#post1040738
+                        console.log('>>>>>>>>>>>>>>>');
                         console.log(response);
                     }
                 });
@@ -456,7 +465,6 @@ Ext.define('X.controller.Users', {
         console.log('Debug: X.controller.Users.doAddFriend()');
       }
       var formPanel = button.up('coreformpanel');
-      var formData = formPanel.getValues();
       me.xhrAddFriend(formPanel);
     },
     xhrAddFriend: function(form) {
@@ -554,27 +562,30 @@ Ext.define('X.controller.Users', {
     onCameraTriggerButtonTap: function(cameraTriggerPanel, cameraTriggerButton) {
         var me = this;
         if (me.getDebug()) {
-            console.log("Debug: X.controller.Main.onCameraTriggerButtonDoubleTap()");
+            console.log("Debug: X.controller.Main.onCameraTriggerButtonTap()");
         }
         if (Ext.browser.is.PhoneGap) {
             if (me.getDebug()) {
                 console.log("Debug: PHONEGAP: X.controller.Main.onCameraTriggerButtonTap()");
             }
             navigator.camera.getPicture(
-                    function() {
+                    function(imageData) {
                         console.log('success!');
+                        me.generateAndFillViewportWithPhotoMessageInputContainerWindow({
+                            imageData: imageData
+                        });
                     },
                     function() {
                         console.log('failure!');
                     },
                     {
                         quality: 100,
-                        destinationType: 1,
-                        sourceType: 1,
-                        saveToPhotoAlbum: true,
-                        allowEdit: true,
-                        encodingType: 0,
-                        mediaType: 0
+                        encodingType: Camera.EncodingType.JPEG,
+                        sourceType: Camera.PictureSourceType.CAMERA,
+                        destinationType: Camera.DestinationType.DATA_URL,
+                        mediaType: Camera.MediaType.ALLMEDIA,
+                        saveToPhotoAlbum: false,
+                        allowEdit: false
                     }
             );
         }

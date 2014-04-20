@@ -61,7 +61,7 @@ Ext.define('X.controller.mixin.DeviceContact', {
     refreshDeviceContactsStoreAndCallback: function(options) {
         var me = this;
         if(Ext.isObject(options)) {
-            options.refresh = true;
+//            options.refresh = true;
             return me.setDeviceContactsStoreAndCallback(options);
         }
         return false;

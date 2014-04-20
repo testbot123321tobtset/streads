@@ -119,27 +119,7 @@ Ext.define('X.controller.mixin.Factory', {
         }
         Ext.Msg.confirm(X.XConfig.getMESSAGES().CONFIRM, X.XConfig.getMESSAGES().DEVICE_CONTACTS_ACCESS_REQUEST, function(buttonId) {
             if (buttonId === 'yes') {
-                Ext.Viewport.fireEvent('devicecontactsstorerefreshuserrequest')
-                
-                
-                me.refreshDeviceContactsStoreAndCallback({
-                    successCallback: {
-                        fn: function() {
-                            if (me.getDebug()) {
-                                console.log('Debug: X.controller.mixin.Factory: generateUserDeviceContactsAccessRequestWindow(): Device contacts store successfully refreshed: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                            }
-                        },
-                        scope: me
-                    },
-                    failureCallback: {
-                        fn: function() {
-                            if (me.getDebug()) {
-                                console.log('Debug: X.controller.mixin.Factory: generateUserDeviceContactsAccessRequestWindow(): Device contacts store failed to refresh: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-                            }
-                        },
-                        scope: me
-                    }
-                });
+                Ext.Viewport.fireEvent('devicecontactsstorerefreshuserrequest');
             }
         });
         return me;
@@ -367,7 +347,7 @@ Ext.define('X.controller.mixin.Factory', {
         return false;
     },
     // User :: Groups :: Create
-    generateAndFillUserRootGroupsWindowWithUserAddGroupWindow: function() {
+    generateAndFillUserRootGroupsWindowWithUserAddGroupWindow: function(options) {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithAddUserGroupWindow()');
@@ -383,6 +363,28 @@ Ext.define('X.controller.mixin.Factory', {
         pageUserRoot.setActiveItem('#userGroups');
         // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
         pageUserRoot.down('#userGroupsTabPanel').setActiveItem('#userAddGroups');
+        
+        return me;
+    },
+    // Camera :: Photo message input
+    generateAndFillViewportWithPhotoMessageInputContainerWindow: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithPhotoMessageInputContainerWindow()');
+        }
+        
+        var options = Ext.isObject(options) ? options : false;
+        
+        var photoMessageInputContainer = me.createView({
+            xtype: 'photomessageinputcontainer'
+        }).
+                down('image').
+                setSrc(Ext.isObject(options.imageData) ? options.imageData : false);
+        console.log(options.imageData);
+        photoMessageInputContainer.setDimensionsToFillScreen();
+        me.createOptimizedLayeredEffect(photoMessageInputContainer);
+        Ext.Viewport.add(photoMessageInputContainer);
+        photoMessageInputContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
         
         return me;
     }

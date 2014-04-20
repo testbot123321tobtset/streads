@@ -20,7 +20,13 @@ $container-border-visible-edge-color: $default-border-color;
     @include single-transition;
 }
 
+.page-user-root {
+    @include single-transition;
+}
+
 .user-group-container, .user-edit-group-container {
+    
+    @include single-transition;
     
     @include no-border;
     border: $container-border-width $container-border-style $container-border-color !important;
@@ -28,8 +34,6 @@ $container-border-visible-edge-color: $default-border-color;
 
     @include no-background;
     background-color: $container-background-color !important;
-    
-    @include box-shadow;
     
     .user-group-container-feed-container {
         

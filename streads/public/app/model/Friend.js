@@ -1,4 +1,4 @@
-Ext.define('X.model.Group', {
+Ext.define('X.model.Friend', {
     extend: 'X.model.Application',
     config: {
         fields: [
@@ -18,25 +18,30 @@ Ext.define('X.model.Group', {
                 persist: false
             },
             {
-                name: 'title',
+                name: 'usernameEmail',
                 type: 'string'
             },
             {
-                name: 'createdById',
+                name: 'firstName',
                 type: 'string'
             },
             {
-                name: 'description',
+                name: 'lastName',
                 type: 'string'
+            },
+            {
+                name: 'fullName',
+                type: 'string',
+                convert: function(value, record) {
+                    return record.get('firstName') + ' ' + record.get('lastName');
+                },
+                persist: false
             }
         ],
-        hasMany: [
+        belongsTo: [
             {
-                model: 'X.model.User',
-                name: 'users',
-                primaryKey: 'id',
-                foreignKey: 'userId',
-                foreignStore: 'Users'
+                model: 'X.model.AuthenticatedUser',
+                foreignKey: 'friendedId'
             }
         ],
         validations: [
@@ -45,25 +50,26 @@ Ext.define('X.model.Group', {
                 field: 'id'
             },
             {
-                type: 'presence',
-                field: 'title',
-                message: 'We need you to, at the very least, give this group a title.'
-            },
-            {
-                type: 'presence',
-                field: 'createdById',
-                message: ''
+                type: 'email',
+                field: 'usernameEmail'
             }
         ],
         proxy: {
             type: 'rest',
             idParam: 'id',
-            appendId: true,
-            url: X.config.Config.getAPI_ENDPOINT() + 'user/groups',
+            appendId: false,
+            url: X.config.Config.getAPI_ENDPOINT() + 'user/friends',
             batchActions: true,
             reader: {
                 type: 'json',
                 rootProperty: 'result'
+            },
+            exception: function(proxy, response, operation, eOpts) {
+                Ext.Viewport.fireEvent('friendproxyexception', {
+                    proxy: proxy,
+                    response: response,
+                    operation: operation
+                });
             }
         }
     }

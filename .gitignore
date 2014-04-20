@@ -49,6 +49,8 @@ streads/public/buildlog.txt
 streads/public/.sencha/
 streads/public/.sencha_backup/
 streads/public/resources/.sass-cache
+streads/public/resources/sass/.sass-cache
+streads/public/resources/css
 # build folder is dynamically generated on running sencha build app
 streads/public/build/
 # Ignore generated phonegap folder – this folder gets dynamically generated when you initialize Phonegap inside of Sencha Touch
