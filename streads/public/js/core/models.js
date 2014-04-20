@@ -169,16 +169,17 @@ User.includeFriends = function(callback) {
     me.getFriends(function(err, friends) {
         if (!err) {
             friends.forEach(function(friend){
-                me.friendsList.push(friend.id); 
+                delete friend['password'];
+                me.friendsList.push(friend); 
             });     
         }
         me.getFrienders(function(err, frienders) {
             if (!err) {
                 frienders.forEach(function(friender){
-                  me.friendsList.push(frienders.id); 
+                    delete friender['password'];
+                    me.friendsList.push(friender); 
                 });     
                }
-               console.log("friendsList[] " + me.friendsList);
             AH.executeCallback(callback);
         });
     });

@@ -137,7 +137,7 @@ var Friendships = function() {
                 userData.includeFriends({
                     fn: function(){
                         me.authenticatedUser = userData;
-                        //console.log(me.authenticatedUser);
+                       // console.log(me.authenticatedUser);
                         self.respond(AH.getSuccessResponseObject(params, me.authenticatedUser));
                     }
                 });
