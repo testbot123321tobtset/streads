@@ -4,6 +4,7 @@ Ext.define('X.view.plugandplay.UsersList', {
     config: {
         itemId: 'usersList',
         cls: 'users-list',
+//        itemTpl: '{fullName}',
         itemTpl: '{formattedName}',
         deselectOnContainerClick: true,
         onItemDisclosure: true,

@@ -1,6 +1,8 @@
 Ext.define('overrides.dataview.List', {
     override: 'Ext.dataview.List',
     config: {
+        minimumBufferDistance: 5,
+        bufferSize: 10,
         listeners: [
             {
                 fn: 'onDisclose',

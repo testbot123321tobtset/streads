@@ -302,7 +302,12 @@ Ext.define('X.controller.Groups', {
                             group: group,
                             showcontainer: true
                         })) {
-//                            Retrieve contacts and fill list
+//                            Retrieve all of the friends of the authenticated user
+//                            and display them here in a list
+//                            me.resetUserGroupEditFormPanelWithFriendsCheckboxes();
+//                            
+//                            For now, we show contacts list – once we are ready with friends API, 
+//                            we'll switch to me.resetUserGroupEditFormPanelWithFriendsCheckboxes();
                             me.setDeviceContactsStoreAndCallback({
                                 successCallback: {
                                     fn: function() {
@@ -320,6 +325,42 @@ Ext.define('X.controller.Groups', {
                         }
                     }
                 });
+        return me;
+    },
+    resetUserGroupEditFormPanelWithFriendsCheckboxes: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.showFeedUiForGivenGroupId(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        Ext.getStore('AuthenticatedUserStore').
+                waitWhileLoadingAndCallbackOnLoad({
+                    fn: function() {
+                        // Preload all UIs that go underneath this edit group UI
+                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow();
+                        me.addGroupsListToGroupsFeedTab();
+                        // Actually show group feed UI
+                        me.generateAndFillViewportWithGroupDataWindow({
+                            group: Ext.getStore('GroupsStore').
+                                    getById(groupId),
+                            showcontainer: true
+                        });
+                    }
+                });
+        
+        var friendsStore = X.authenticatedEntity.friends();
+        var userGroupEditFormPanelUsersListContainer = me.getUserGroupEditFormPanelUsersListContainer();
+        var userGroupEditFormPanelUsersList = me.getUserGroupEditFormPanelUsersList();
+        if(Ext.isObject(userGroupEditFormPanelUsersList)) {
+            userGroupEditFormPanelUsersList.setStore(friendsStore);
+        }
+        else if (Ext.isObject(userGroupEditFormPanelUsersListContainer)) {
+            var userGroupEditFormPanelUsersList = {
+                xtype: 'userslist',
+                store: friendsStore
+            };
+            userGroupEditFormPanelUsersListContainer.
+                    add(userGroupEditFormPanelUsersList);
+        }
         return me;
     },
     // This assumes that the DeviceContactsStore has the latest contacts

@@ -784,6 +784,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.page.user.Root": [],
   "X.view.phone.Main": [],
   "X.view.plugandplay.CameraTriggerPanel": [],
+  "X.view.plugandplay.DeviceContactsUsersList": [],
   "X.view.plugandplay.PhotoMessageInputContainer": [],
   "X.view.plugandplay.UserAccountFormPanel": [],
   "X.view.plugandplay.UserAccountInfoPanel": [],
@@ -1804,6 +1805,9 @@ Ext.ClassManager.addNameAliasMappings({
   "X.view.phone.Main": [],
   "X.view.plugandplay.CameraTriggerPanel": [
     "widget.cameratriggerpanel"
+  ],
+  "X.view.plugandplay.DeviceContactsUsersList": [
+    "widget.devicecontactsuserslist"
   ],
   "X.view.plugandplay.PhotoMessageInputContainer": [
     "widget.photomessageinputcontainer"

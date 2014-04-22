@@ -451,9 +451,8 @@ Ext.define('X.controller.Users', {
 //                        When you get this response, either refresh authenticated user store
 //                        that should now give you the authenticated user with all of the contacts
 //                        whom he/she can see or have POST to /friendships/usingemails send back the
-//                        this data and update authenticated user store locally
+//                        this data and update authenticated user store locally, so we get all friends back
 //                        See: http://www.sencha.com/forum/showthread.php?284514-How-to-mimic-store.load()-with-local-data&p=1040738#post1040738
-                        console.log('>>>>>>>>>>>>>>>');
                         console.log(response);
                     }
                 });
