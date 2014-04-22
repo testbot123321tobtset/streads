@@ -29,8 +29,6 @@ $container-border-visible-edge-color: $default-border-color;
     @include single-transition;
     
     @include no-border;
-    border: $container-border-width $container-border-style $container-border-color !important;
-    border-top: $container-border-visible-edge-width $container-border-visible-edge-style $container-border-visible-edge-color !important;
 
     @include no-background;
     background-color: $container-background-color !important;

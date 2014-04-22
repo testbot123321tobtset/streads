@@ -335,32 +335,22 @@ Ext.define('X.controller.Groups', {
         Ext.getStore('AuthenticatedUserStore').
                 waitWhileLoadingAndCallbackOnLoad({
                     fn: function() {
-                        // Preload all UIs that go underneath this edit group UI
-                        me.generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow();
-                        me.addGroupsListToGroupsFeedTab();
-                        // Actually show group feed UI
-                        me.generateAndFillViewportWithGroupDataWindow({
-                            group: Ext.getStore('GroupsStore').
-                                    getById(groupId),
-                            showcontainer: true
-                        });
+                        var friendsStore = X.authenticatedEntity.friends();
+                        var userGroupEditFormPanelUsersListContainer = me.getUserGroupEditFormPanelUsersListContainer();
+                        var userGroupEditFormPanelUsersList = me.getUserGroupEditFormPanelUsersList();
+                        if (Ext.isObject(userGroupEditFormPanelUsersList)) {
+                            userGroupEditFormPanelUsersList.setStore(friendsStore);
+                        }
+                        else if (Ext.isObject(userGroupEditFormPanelUsersListContainer)) {
+                            var userGroupEditFormPanelUsersList = {
+                                xtype: 'userslist',
+                                store: friendsStore
+                            };
+                            userGroupEditFormPanelUsersListContainer.
+                                    add(userGroupEditFormPanelUsersList);
+                        }
                     }
                 });
-        
-        var friendsStore = X.authenticatedEntity.friends();
-        var userGroupEditFormPanelUsersListContainer = me.getUserGroupEditFormPanelUsersListContainer();
-        var userGroupEditFormPanelUsersList = me.getUserGroupEditFormPanelUsersList();
-        if(Ext.isObject(userGroupEditFormPanelUsersList)) {
-            userGroupEditFormPanelUsersList.setStore(friendsStore);
-        }
-        else if (Ext.isObject(userGroupEditFormPanelUsersListContainer)) {
-            var userGroupEditFormPanelUsersList = {
-                xtype: 'userslist',
-                store: friendsStore
-            };
-            userGroupEditFormPanelUsersListContainer.
-                    add(userGroupEditFormPanelUsersList);
-        }
         return me;
     },
     // This assumes that the DeviceContactsStore has the latest contacts

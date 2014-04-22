@@ -142,7 +142,13 @@ Ext.application({
         if (X.XConfig.getDEBUG() && X.XConfig.getBOOTUP_DEBUG()) {
             console.log('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        // Destroy the #appLoadingIndicator element
+        
+        if (Ext.os.is.MacOS || (Ext.os.is.iOS && Ext.os.version.major >= 7)) {
+            console.log( Ext.os.version);
+            document.body.style.paddingTop = '20px';
+        }
+
+//        Destroy the #appLoadingIndicator element
         Ext.fly('circleG').destroy();
 
         Ext.apply(String.prototype, (function() {
