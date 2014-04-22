@@ -230,7 +230,6 @@ Ext.define('X.controller.Groups', {
             console.log(options);
             console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        me.redirectTo('user/profile/groups/feeds');
         return me;
     },
     // HELPERS
@@ -303,15 +302,10 @@ Ext.define('X.controller.Groups', {
                             group: group,
                             showcontainer: true
                         })) {
-                            // Retrieve contacts and fill list
-                            me.refreshDeviceContactsStoreAndCallback({
-                                refresh: false,
+//                            Retrieve contacts and fill list
+                            me.setDeviceContactsStoreAndCallback({
                                 successCallback: {
                                     fn: function() {
-                                        // var args = arguments[0];
-                                        // if(Ext.isObject(args) && 'contacts' in args && Ext.isArray(args.contacts)) {
-                                        //     me.resetUserGroupEditFormPanelWithDeviceContactsCheckboxes();
-                                        // }
                                         me.resetUserGroupEditFormPanelWithDeviceContactsCheckboxes();
                                     },
                                     scope: me
@@ -338,12 +332,12 @@ Ext.define('X.controller.Groups', {
             userGroupEditFormPanelUsersList.setStore(deviceContactsStore);
         }
         else if (Ext.isObject(userGroupEditFormPanelUsersListContainer)) {
-            var usersList = {
+            var userGroupEditFormPanelUsersList = {
                 xtype: 'userslist',
                 store: deviceContactsStore
             };
             userGroupEditFormPanelUsersListContainer.
-                    add(usersList);
+                    add(userGroupEditFormPanelUsersList);
         }
         return me;
     },

@@ -25,8 +25,6 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         centered: true,
         fullscreen: true,
         layer: 2,
-        layerUnderneathItemId: 'userGroupContainer',
-        depthBasedOnOffset: true,
         modal: true,
         querySelectorsForComponentsToBeHiddenToOptimizeLayer: [
             '#pageUserRoot'
@@ -79,6 +77,12 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
+        me.callParent(arguments);
+        return me;
+    },
+    onDeleteButtonTap: function(button, e, eOpts) {
+        var me = this;
+        me.down('usergroupeditformpanel').fireEvent('deletebuttontap', button, e);
         me.callParent(arguments);
         return me;
     },

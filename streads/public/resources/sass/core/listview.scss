@@ -6,14 +6,6 @@
     
     @include no-background;
     
-    .x-list-header {
-        
-        .x-innerhtml {
-            
-            
-        }
-    }
-    
     .x-list-disclosure {
         
         &:before {
@@ -21,7 +13,7 @@
             font-family: $list-disclosure-icon-font-family;
             font-size: $list-disclosure-icon-font-size;
             line-height: $list-disclosure-icon-font-line-height;
-            content: '\f154'
+            content: ''
                 
         }
     }
@@ -47,11 +39,20 @@
                     
                     border-bottom: 1px solid $default-border-color-for-fieldsets;
                 }
+                
                 &:last-child {
                     
                     &:before {
                         
                         @include no-border;
+                    }
+                }
+                
+                .x-list-disclosure {
+                    
+                    &:before {
+
+                        color: $list-active-color;
                     }
                 }
             }
@@ -73,6 +74,7 @@
                     
                     border-bottom: 1px solid $default-border-color-for-fieldsets;
                 }
+                
                 &:last-child {
                     
                     &:before {
@@ -80,7 +82,27 @@
                         @include no-border;
                     }
                 }
+                
+                .x-list-disclosure {
+                    
+                    &:before {
+
+                        color: $list-active-color;
+                    }
+                }
             }
+        }
+    }
+    
+    .x-list-header {
+    
+        @include no-border;
+        border-top: $default-border-width $default-border-style $default-border-color !important;
+        border-bottom: $default-border-width $default-border-style $default-border-color !important;
+        
+        .x-innerhtml {
+            
+            
         }
     }
 }

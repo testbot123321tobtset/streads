@@ -27,6 +27,7 @@ Ext.define('X.controller.mixin.Group', {
                             console.log(operation.getResponse());
                             console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
+                        me.loadGroupsStore();
                         if (Ext.isString(operation.getResponse().responseText)) {
                             var serverResponse = Ext.decode(operation.getResponse().responseText);
                             var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
@@ -50,9 +51,6 @@ Ext.define('X.controller.mixin.Group', {
                                 }
                             }
                         }
-                        if(operation.wasSuccessful()) {
-                            me.loadGroupsStore();
-                        }
                         me.commitOrRejectModelAndGenerateUserFeedbackOnSavingModel({
                             operation: operation,
                             model: group,
@@ -62,6 +60,7 @@ Ext.define('X.controller.mixin.Group', {
                             // what happens when user feedback is shown and when the user
                             // reacts to it
                             fn: function() {
+                                me.hideAllWindows();
                                 me.redirectTo('user/profile/groups/feeds');
                             }
                         });
@@ -72,6 +71,7 @@ Ext.define('X.controller.mixin.Group', {
                             console.log(operation.getResponse());
                             console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
+                        me.loadGroupsStore();
                         if (Ext.isString(operation.getResponse().responseText)) {
                             var serverResponse = Ext.decode(operation.getResponse().responseText);
                             var serverResponseSuccess = Ext.isBoolean(serverResponse.success) ? serverResponse.success : false;
@@ -104,6 +104,7 @@ Ext.define('X.controller.mixin.Group', {
                             // what happens when user feedback is shown and when the user
                             // reacts to it
                             fn: function() {
+                                me.hideAllWindows();
                                 me.redirectTo('user/profile/groups/feeds');
                             }
                         });

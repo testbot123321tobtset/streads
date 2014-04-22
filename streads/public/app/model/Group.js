@@ -30,15 +30,6 @@ Ext.define('X.model.Group', {
                 type: 'string'
             }
         ],
-        hasMany: [
-            {
-                model: 'X.model.User',
-                name: 'users',
-                primaryKey: 'id',
-                foreignKey: 'userId',
-                foreignStore: 'Users'
-            }
-        ],
         validations: [
             {
                 type: 'presence',
@@ -64,6 +55,13 @@ Ext.define('X.model.Group', {
             reader: {
                 type: 'json',
                 rootProperty: 'result'
+            },
+            exception: function(proxy, response, operation, eOpts) {
+                Ext.Viewport.fireEvent('groupproxyexception', {
+                    proxy: proxy,
+                    response: response,
+                    operation: operation
+                });
             }
         }
     }

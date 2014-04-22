@@ -58,14 +58,7 @@ Ext.define('X.controller.mixin.DeviceContact', {
             ]
         }
      */
-    refreshDeviceContactsStoreAndCallback: function(options) {
-        var me = this;
-        if(Ext.isObject(options)) {
-//            options.refresh = true;
-            return me.setDeviceContactsStoreAndCallback(options);
-        }
-        return false;
-    },
+//    This always refreshes the store
     setDeviceContactsStoreAndCallback: function(options) {
         var me = this;
         if(Ext.isObject(options) && 'successCallback' in options && Ext.isObject(options.successCallback)) {
@@ -74,11 +67,8 @@ Ext.define('X.controller.mixin.DeviceContact', {
                         X.config.Config.getPG_READ_DEVICE_CONTACT_FIELDS(),
                         function(contacts) {
                             var formattedContacts = me.getFormattedContactFromGivenDeviceContacts(contacts);
-                            var refreshDeviceContactsStore = Ext.isBoolean(options.refresh) ? options.refresh : false;
-                            if (refreshDeviceContactsStore) {
-                                var deviceContactsStore = Ext.getStore('DeviceContactStore');
-                                deviceContactsStore.setData(formattedContacts);
-                            }
+                            var deviceContactsStore = Ext.getStore('DeviceContactStore');
+                            deviceContactsStore.setData(formattedContacts);
                             options.successCallback.arguments = {
                                 contacts: formattedContacts
                             };
@@ -86,7 +76,7 @@ Ext.define('X.controller.mixin.DeviceContact', {
                         },
                         function() {
                             if (me.getDebug()) {
-                                console.log('Debug: X.controller.mixin.DeviceContact.refreshDeviceContactsStoreAndCallback(): navigator.contacts.find() Failed!: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                                console.log('Debug: X.controller.mixin.DeviceContact.setDeviceContactsStoreAndCallback(): navigator.contacts.find() Failed!: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                             }
                         },
                         {
@@ -98,16 +88,13 @@ Ext.define('X.controller.mixin.DeviceContact', {
             }
             else {
                 if (me.getDebug()) {
-                    console.log('Debug: X.controller.mixin.DeviceContact.refreshDeviceContactsStoreAndCallback(): Dummy data for device contacts: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                    console.log('Debug: X.controller.mixin.DeviceContact.setDeviceContactsStoreAndCallback(): Dummy data for device contacts: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                 }
                 var formattedContacts = X.config.DummyData.getDEVICE_FORMATTED_CONTACTS();
-                var refreshDeviceContactsStore = Ext.isBoolean(options.refresh) ? options.refresh : false;
-                if (refreshDeviceContactsStore) {
-                    var deviceContactsStore = Ext.getStore('DeviceContactStore');
-                    deviceContactsStore.setData({
-                        result: formattedContacts
-                    });
-                }
+                var deviceContactsStore = Ext.getStore('DeviceContactStore');
+                deviceContactsStore.setData({
+                    result: formattedContacts
+                });
                 options.successCallback.arguments = {
                     contacts: formattedContacts
                 };

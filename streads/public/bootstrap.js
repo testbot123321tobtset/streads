@@ -723,6 +723,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.ContextMenu": [],
   "Ext.ux.MenuButton": [],
   "Ext.ux.TabMenuButton": [],
+  "Ext.ux.WebWorker": [],
+  "Ext.ux.WebWorkerManager": [],
   "Ext.ux.device.Analytics": [],
   "Ext.ux.device.Twitter": [],
   "Ext.ux.device.analytics.Abstract": [],
@@ -1720,6 +1722,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.ContextMenu": [],
   "Ext.ux.MenuButton": [],
   "Ext.ux.TabMenuButton": [],
+  "Ext.ux.WebWorker": [
+    "widget.webworker"
+  ],
+  "Ext.ux.WebWorkerManager": [],
   "Ext.ux.device.Analytics": [],
   "Ext.ux.device.Twitter": [],
   "Ext.ux.device.analytics.Abstract": [],

@@ -49,7 +49,8 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
                 xtype: 'fieldset',
                 itemId: 'usersListContainer',
                 flex: 1,
-                layout: 'fit'
+                layout: 'fit',
+                title: 'Choose friends to add'
             }
 //            ,
 //            {
@@ -74,9 +75,9 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
                 buffer: 1
             },
             {
+                // This is fired from X.view.plugandplay.UserEditGroupContainer
                 fn: 'onGroupDataDestroy',
-                event: 'tap',
-                delegate: '#deleteButton',
+                event: 'deletebuttontap',
                 buffer: 1
             }
         ]
@@ -139,9 +140,6 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
                             silent: false,
                             typeOfSave: 'destroy'
                         });
-                    }
-                    else {
-                        
                     }
                 }
         );

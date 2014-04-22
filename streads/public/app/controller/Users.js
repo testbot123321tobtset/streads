@@ -338,6 +338,9 @@ Ext.define('X.controller.Users', {
                         Ext.create('Ext.util.DelayedTask', function() {
                             me.generateUserDeviceContactsAccessRequestWindow();
                             me.redirectTo(X.XConfig.getDEFAULT_USER_PAGE());
+//                            This destruction seems to be permanent i.e. if the 
+//                            view gets destroyed and the user logs out, the view
+//                            isn't being regenerated successfully
 //                            me.destroyGivenView({
 //                                view: me.getPageLogin()
 //                            });
@@ -413,8 +416,7 @@ Ext.define('X.controller.Users', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Users.addFriendsFromDeviceContacts()');
         }
-        me.refreshDeviceContactsStoreAndCallback({
-            refresh: true,
+        me.setDeviceContactsStoreAndCallback({
             successCallback: {
                 fn: function() {
 //                    var args = arguments[0];

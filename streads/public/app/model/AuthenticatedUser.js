@@ -33,14 +33,14 @@ Ext.define('X.model.AuthenticatedUser', {
                 name: 'fullName',
                 type: 'string',
                 convert: function(value, record) {
-                    return (Ext.isString(record.get('firstName')) && Ext.isString(record.get('lasttName'))) ? record.get('firstName') + ' ' + record.get('lastName') : null;
+                    return (Ext.isString(record.get('firstName')) && Ext.isString(record.get('lastName'))) ? record.get('firstName') + ' ' + record.get('lastName') : null;
                 },
                 persist: false
-            },
+            }
+        ],
+        hasMany: [
             {
-                name: 'groups',
-                type: 'auto',
-                persist: false
+                model: 'X.model.Friend'
             }
         ],
         validations: [

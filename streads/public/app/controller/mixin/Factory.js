@@ -1,4 +1,11 @@
 Ext.define('X.controller.mixin.Factory', {
+    generateComponentsOnViewportPainted: function() {
+        var me = this;
+//        We haven\'t figured out eager generaton yet, but here is the hook
+//        me.generateEagerComponents();
+        me.generateCameraTriggerPanel();
+        return me;
+    },
     generateEagerComponents: function() {
         var me = this;
         var xTypesOfComponentsToBeEagerGenerated = X.config.Config.getEAGERGENERATECOMPONENTS();
@@ -22,6 +29,14 @@ Ext.define('X.controller.mixin.Factory', {
         var me = this;
         var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().GROUP_SUCCESSFULLY_CREATED;
         Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
+    },
+    generateGroupFailedCreatedWindow: function(callback) {
+        var me = this;
+        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().GROUP_SUCCESSFULLY_CREATED;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().ALERT, message, function() {
             me.executeCallback(callback);
         });
         return me;

@@ -5,6 +5,10 @@ Ext.define('X.view.core.Container', {
     config: {
         listeners: [
             {
+                fn: 'onPainted',
+                event: 'painted'
+            },
+            {
                 fn: 'onShow',
                 event: 'show'
             },
@@ -22,11 +26,17 @@ Ext.define('X.view.core.Container', {
             }
         ]
     },
+    onPainted: function() {
+        var me = this;
+        return me;
+    },
     onShow: function() {
-        return this;
+        var me = this;
+        return me;
     },
     onHide: function() {
-        return this;
+        var me = this;
+        return me;
     },
     onSwipeDown: function(me, e) {
         me.revertOptimizedLayeredEffect().

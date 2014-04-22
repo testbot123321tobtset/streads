@@ -44,16 +44,23 @@ Ext.define('X.controller.Main', {
                 fn: 'onViewportPainted',
                 scope: me,
                 single: true
-            },
-            orientationchange: {
-                fn: 'onOrientationchange',
-                scope: me
             }
+//            We are not using this just yet
+//            orientationchange: {
+//                fn: 'onOrientationchange',
+//                scope: me
+//            }
         });
     },
     onViewportPainted: function(viewportElement, eOpts) {
         var me = this;
-        me.generateCameraTriggerPanel();
+        if (me.getDebug()) {
+            console.log("Debug: X.controller.Main.onViewportPainted()");
+        }
+        Ext.Viewport.fireEvent('viewportpainted', {
+            element: viewportElement
+        });
+        me.generateComponentsOnViewportPainted();
         return me;
     },
     onOrientationchange: function() {
