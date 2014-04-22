@@ -388,16 +388,23 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithPhotoMessageInputContainerWindow()');
         }
         
-        var options = Ext.isObject(options) ? options : false;
-        
         var photoMessageInputContainer = me.createView({
             xtype: 'photomessageinputcontainer'
-        }).
-                down('image').
-                setSrc(Ext.isObject(options.imageData) ? options.imageData : false);
-        console.log(options.imageData);
+        });
+        
+        var options = Ext.isObject(options) ? options : false;
+        var imageData = false;
+        if(options) {
+            imageData = (Ext.Object.getKey(options, 'imageData') && Ext.isObject(options.imageData)) ? options.imageData : false;
+            if(imageData) {
+                photoMessageInputContainer.down('image').
+                        setSrc(imageData);
+            }
+        }
+        
         photoMessageInputContainer.setDimensionsToFillScreen();
         me.createOptimizedLayeredEffect(photoMessageInputContainer);
+        
         Ext.Viewport.add(photoMessageInputContainer);
         photoMessageInputContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
         

@@ -5,12 +5,20 @@ Ext.define('X.view.core.Container', {
     config: {
         listeners: [
             {
+                fn: 'onInitialize',
+                event: 'initialize'
+            },
+            {
                 fn: 'onPainted',
                 event: 'painted'
             },
             {
                 fn: 'onShow',
                 event: 'show'
+            },
+            {
+                fn: 'onBeforeHide',
+                event: 'beforehide'
             },
             {
                 fn: 'onHide',
@@ -26,11 +34,22 @@ Ext.define('X.view.core.Container', {
             }
         ]
     },
+    onInitialize: function() {
+        var me = this;
+        me.onBefore('hide', function() {
+            me.fireEvent('beforehide', me);
+        });
+        return me;
+    },
     onPainted: function() {
         var me = this;
         return me;
     },
     onShow: function() {
+        var me = this;
+        return me;
+    },
+    onBeforeHide: function() {
         var me = this;
         return me;
     },

@@ -24,7 +24,7 @@ $container-border-visible-edge-color: $default-border-color;
     @include single-transition;
 }
 
-.user-group-container, .user-edit-group-container {
+.user-group-container, .user-edit-group-container, .photo-message-input-container {
     
     @include single-transition;
     

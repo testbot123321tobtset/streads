@@ -68,6 +68,11 @@ Ext.define('X.controller.Users', {
             // Logout
             logoutButton: {
                 tap: 'doLogout'
+            },
+            
+//            Messaging
+            photoMessageInputContainerSubmitButton: {
+                tap: 'onPhotoMessageInputContainerSubmitButtonTap'
             }
         },
         refs: {
@@ -88,9 +93,15 @@ Ext.define('X.controller.Users', {
             userAccountFormPanel: '#userMoreTabPanel #userAccountFormPanel',
             importFriendsFromDeviceContactsButton: '#userMoreTabPanel #userAccountFormPanel #importFriendsFromDeviceContactsButton',
             // User :: Logout
-            logoutButton: '#userAccountFormPanel #logoutButton'
+            logoutButton: '#userAccountFormPanel #logoutButton',
 //            userLogoutPanel: '#userMoreTabPanel #userLogout',
 //            logoutButton: '#userMoreTabPanel #userLogout #logoutButton'
+
+//            Messaging
+            photoMessageInputContainer: '#photoMessageInputContainer',
+            photoMessageInputContainerFormPanel: '#photoMessageInputContainer #messageFormPanel',
+            photoMessageInputContainerTextMessageField: '#photoMessageInputContainer #messageFormPanel #messageTextareaField',
+            photoMessageInputContainerSubmitButton:  '#photoMessageInputContainer #messageFormPanel #submitButton'
         }
     },
     // DIRECT EVENT HANDLERS
@@ -155,6 +166,14 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.onDeviceContactsStoreRefreshUserRequest(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         return me.addFriendsFromDeviceContacts();
+    },
+    onPhotoMessageInputContainerSubmitButtonTap: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onPhotoMessageInputContainerSubmitButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        // Trigger display of groups and stories so the user can pick where to post
+        return me;
     },
     // Show sign up form
     showSignup: function() {
@@ -571,7 +590,6 @@ Ext.define('X.controller.Users', {
             }
             navigator.camera.getPicture(
                     function(imageData) {
-                        console.log('success!');
                         me.generateAndFillViewportWithPhotoMessageInputContainerWindow({
                             imageData: imageData
                         });
@@ -591,6 +609,7 @@ Ext.define('X.controller.Users', {
             );
         }
         else {
+            me.generateAndFillViewportWithPhotoMessageInputContainerWindow();
             if (me.getDebug()) {
                 console.log("Debug: This is not a Phonegap application");
             }

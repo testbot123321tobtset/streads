@@ -1,13 +1,13 @@
 // This is meant to be displayed as a window. This means that any other 
 // component can call this component and this component should just fill up
 // the screen. This is essentially an independent and quasi-floating window
-Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
+Ext.define('X.view.plugandplay.PhotoMessageInputFormPanel', {
     extend: 'X.view.core.Container',
     requires: [
         'Ext.Img'
     ],
-    xtype: 'photomessageinputcontainer',
-    id: 'photoMessageInputContainer',
+    xtype: 'photomessageinputformpanel',
+    id: 'photoMessageInputFormPanel',
     config: {
         // isWindow config just means what is explained in the beginning
         // This is an easy way to query for any and all windows and do
@@ -16,10 +16,10 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
         isWindow: true,
         layout: {
             type: 'vbox',
-            pack: 'center',
+            pack: 'start',
             align: 'stretch'
         },
-        cls: 'photo-message-input-container',
+        cls: 'photo-message-input-form-panel',
         floating: true,
         centered: true,
         fullscreen: true,
@@ -35,14 +35,32 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
             {
                 xtype: 'image',
                 width: '100%',
-                flex: 4,
-                src: 'http://placehold.it/250x400'
+                flex: 1,
+                src: ''
             },
             {
-                xtype: 'container',
-                flex: 1,
-                html: 'Haha'
+                xtype: 'textareafield',
+                maxRows: 4,
+                maxLength: X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS(),
+                placeHolder: 'Haha'
+            },
+            {
+                xtype: 'button',
+                text: 'Find friends from your device\'s address book',
+                ui: 'confirm'
             }
         ]
+    },
+    onShow: function() {
+        var me = this;
+        Ext.getCmp('cameraTriggerPanel').
+                hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+        me.callParent(arguments);
+    },
+    onHide: function() {
+        var me = this;
+        Ext.getCmp('cameraTriggerPanel').
+                show(X.config.Config.getSHOW_ANIMATION_CONFIG());
+        me.callParent(arguments);
     }
 });

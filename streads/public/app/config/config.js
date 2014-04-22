@@ -106,7 +106,10 @@ Ext.define('X.config.Config', {
         ],
         PG_READ_DEVICE_CONTACT_FIELDS: [
             'id', 'displayName', 'name', 'nickname', 'phoneNumbers', 'emails', 'photos'
-        ]
+        ],
+        
+//        Messaging
+        TEXT_MESSAGE_MAXIMUM_CHARACTERS: 140
     },
     constructor: function(config) {
         this.initConfig(config);
