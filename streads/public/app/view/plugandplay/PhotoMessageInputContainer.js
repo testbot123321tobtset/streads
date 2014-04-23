@@ -26,6 +26,7 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
         layer: 1,
         depthBasedOnOffset: true,
         modal: true,
+        hidden: true,
         querySelectorsForComponentsToBeHiddenToOptimizeLayer: [
         ],
         querySelectorsForComponentsToBeBlurredToOptimizeLayer: [
@@ -38,8 +39,9 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                 xtype: 'image',
                 itemId: 'photoToBePosted',
                 cls: 'photo-to-be-posted',
+//                This should really have a set width and height
                 width: '100%',
-                flex: 1,
+                flex: 2,
                 src: ''
             },
             {
@@ -57,21 +59,46 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                         xtype: 'textareafield',
                         itemId: 'messageTextareaField',
                         cls: 'message-textarea-field',
-                        maxRows: 4,
+                        flex: 1,
                         maxLength: X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS(),
                         placeHolder: 'Haha'
-                    },
+                    }
+                ]
+            },
+            {
+                xtype: 'toolbar',
+                itemId: '',
+                docked: 'bottom',
+                layout: {
+                    type: 'hbox',
+                    pack: 'justify',
+                    align: 'stretch'
+                },
+                defaults: {
+                    flex: 1
+                },
+                items: [
                     {
-                        xtype: 'button',
-                        itemId: 'submitButton',
-                        cls: 'submit-button',
+                        itemId: '',
+                        cls: 'messagebox-button',
                         text: 'Post',
-                        ui: 'confirm',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#photoMessageInputContainer').
                                         revertOptimizedLayeredEffect().
-                                        hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+                                        hide(X.config.Config.getHIDE_ANIMATION_WITHOUT_EASING_CONFIG());
+                            }
+                        }
+                    },
+                    {
+                        itemId: '',
+                        cls: 'messagebox-button',
+                        text: 'Cancel',
+                        listeners: {
+                            tap: function(button, e, eOpts) {
+                                button.up('#photoMessageInputContainer').
+                                        revertOptimizedLayeredEffect().
+                                        hide(X.config.Config.getHIDE_ANIMATION_WITHOUT_EASING_CONFIG());
                             }
                         }
                     }
@@ -81,8 +108,9 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
     },
     onShow: function() {
         var me = this;
+//        Easing doesn't seem to work
         Ext.getCmp('cameraTriggerPanel').
-                hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+                hide(X.config.Config.getHIDE_ANIMATION_WITHOUT_EASING_CONFIG());
         me.callParent(arguments);
     },
     onHide: function() {

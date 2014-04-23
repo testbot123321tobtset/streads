@@ -22,3 +22,9 @@ Ext.define('overrides.dataview.List', {
         }
     }
 });
+
+
+//For infinite list and list paging:
+//http://stackoverflow.com/questions/14750337/implement-sencha-touch-listpaging-plugin
+//http://www.enovision.net/listpaging-plugin-sencha-touch/
+//http://www.sencha.com/blog/whats-new-in-sencha-touch-21/

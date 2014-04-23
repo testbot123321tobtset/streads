@@ -91,10 +91,20 @@ Ext.define('X.config.Config', {
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
         },
+        SHOW_ANIMATION_WITHOUT_EASING_CONFIG: {
+            type: 'slide',
+            direction: 'up',
+            duration: 800
+        },
         HIDE_ANIMATION_CONFIG: {
             type: 'slideOut',
             direction: 'down',
             easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        HIDE_ANIMATION_WITHOUT_EASING_CONFIG: {
+            type: 'slideOut',
+            direction: 'down',
             duration: 800
         },
         

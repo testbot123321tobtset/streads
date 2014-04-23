@@ -73,6 +73,9 @@ Ext.define('X.controller.Users', {
 //            Messaging
             photoMessageInputContainerSubmitButton: {
                 tap: 'onPhotoMessageInputContainerSubmitButtonTap'
+            },
+            photoMessageInputContainerCancelButton: {
+                tap: 'onPhotoMessageInputContainerCancelButtonTap'
             }
         },
         refs: {
@@ -101,7 +104,8 @@ Ext.define('X.controller.Users', {
             photoMessageInputContainer: '#photoMessageInputContainer',
             photoMessageInputContainerFormPanel: '#photoMessageInputContainer #messageFormPanel',
             photoMessageInputContainerTextMessageField: '#photoMessageInputContainer #messageFormPanel #messageTextareaField',
-            photoMessageInputContainerSubmitButton:  '#photoMessageInputContainer #messageFormPanel #submitButton'
+            photoMessageInputContainerSubmitButton:  '#photoMessageInputContainer #messageFormPanel #submitButton',
+            photoMessageInputContainerCancelButton:  '#photoMessageInputContainer #messageFormPanel #cancelButton'
         }
     },
     // DIRECT EVENT HANDLERS
@@ -172,7 +176,15 @@ Ext.define('X.controller.Users', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Users.onPhotoMessageInputContainerSubmitButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        // Trigger display of groups and stories so the user can pick where to post
+//        Trigger display of groups and stories so the user can pick where to post
+        return me;
+    },
+    onPhotoMessageInputContainerCancelButtonTap: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onPhotoMessageInputContainerCancelButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+//        Reset photo message input container – reset photo and message form panel
         return me;
     },
     // Show sign up form
