@@ -788,7 +788,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.plugandplay.PhotoMessageInputContainer": [],
   "X.view.plugandplay.PhotoMessageInputFormPanel": [],
   "X.view.plugandplay.UserAccountFormPanel": [],
-  "X.view.plugandplay.UserAccountInfoPanel": [],
   "X.view.plugandplay.UserEditGroupContainer": [],
   "X.view.plugandplay.UserFriendFormPanel": [],
   "X.view.plugandplay.UserGroupAddFormPanel": [],
@@ -1818,9 +1817,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "X.view.plugandplay.UserAccountFormPanel": [
     "widget.useraccountformpanel"
-  ],
-  "X.view.plugandplay.UserAccountInfoPanel": [
-    "widget.useraccountinfopanel"
   ],
   "X.view.plugandplay.UserEditGroupContainer": [
     "widget.usereditgroupcontainer"

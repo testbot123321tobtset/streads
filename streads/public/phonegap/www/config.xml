@@ -79,7 +79,13 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
-
+    
+    <!-- 
+        This is to fix the app not taking full height on iPhone 5, 5S 
+        URL: http://www.position-absolute.com/articles/phonegap-build-6-frustrating-issues-explained/
+    -->
+    <gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="640" height="1136" />
+    
     <!--
         Define access to external domains.
 
@@ -99,6 +105,24 @@
     -->
     
     <!--Plugins--> 
+    <!-- https://github.com/phonegap-build/StatusBarPlugin -->
+    <gap:plugin name="com.phonegap.plugin.statusbar" />
+    <!--Permissions-->
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+    <!--
+        These preferences are not yet supported by Phonegap build
+        <preference name="StatusBarOverlaysWebView" value="true" />
+        <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
+    -->
+    <gap:config-file platform="ios" parent="UIStatusBarHidden">
+        <true/>
+    </gap:config-file>
+    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+        <false/>
+    </gap:config-file>
+    
     <gap:plugin name="org.apache.cordova.camera" /> 
     <gap:plugin name="org.apache.cordova.contacts" />
     

@@ -105,6 +105,24 @@
     -->
     
     <!--Plugins--> 
+    <!-- https://github.com/phonegap-build/StatusBarPlugin -->
+    <gap:plugin name="com.phonegap.plugin.statusbar" />
+    <!--Permissions-->
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+    <!--
+        These preferences are not yet supported by Phonegap build
+        <preference name="StatusBarOverlaysWebView" value="true" />
+        <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
+    -->
+    <gap:config-file platform="ios" parent="UIStatusBarHidden">
+        <true/>
+    </gap:config-file>
+    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+        <false/>
+    </gap:config-file>
+    
     <gap:plugin name="org.apache.cordova.camera" /> 
     <gap:plugin name="org.apache.cordova.contacts" />
     

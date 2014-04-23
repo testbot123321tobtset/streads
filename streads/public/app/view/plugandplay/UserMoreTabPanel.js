@@ -1,7 +1,7 @@
 Ext.define('X.view.plugandplay.UserMoreTabPanel', {
     extend: 'Ext.tab.Panel',
     requires: [
-        'X.view.plugandplay.UserAccountInfoPanel'
+        'X.view.plugandplay.UserAccountFormPanel'
     ],
     xtype: 'usermoretabpanel',
     id: 'userMoreTabPanel',
@@ -29,7 +29,7 @@ Ext.define('X.view.plugandplay.UserMoreTabPanel', {
                 title: 'Account',
                 items: [
                     {
-                        xtype: 'useraccountinfopanel',
+                        xtype: 'useraccountformpanel',
                         flex: 1
                     }
                 ]

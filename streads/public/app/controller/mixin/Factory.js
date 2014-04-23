@@ -147,12 +147,12 @@ Ext.define('X.controller.mixin.Factory', {
         if (!Ext.isObject(me.getPageLogin())) {
             Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pagelogin'
-            }).setActiveItem('#userSignup'));
+            }).setDimensionsToFillScreen().setActiveItem('#userSignup'));
         }
         else {
             if(me.getPageLogin().isHidden()) {
                 Ext.Viewport.removeAll(false, false).add(me.getPageLogin());
-                me.getPageLogin().show();
+                me.getPageLogin().setDimensionsToFillScreen().show();
                 me.getPageLogin().setActiveItem('#userSignup');
             }
             else {
@@ -169,12 +169,12 @@ Ext.define('X.controller.mixin.Factory', {
         if (!Ext.isObject(me.getPageLogin())) {
             Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pagelogin'
-            }).setActiveItem('#userLogin'));
+            }).setDimensionsToFillScreen().setActiveItem('#userLogin'));
         }
         else {
             if(me.getPageLogin().isHidden()) {
                 Ext.Viewport.removeAll(false, false).add(me.getPageLogin());
-                me.getPageLogin().show();
+                me.getPageLogin().setDimensionsToFillScreen().show();
                 me.getPageLogin().setActiveItem('#userLogin');
             }
             else {
@@ -191,13 +191,13 @@ Ext.define('X.controller.mixin.Factory', {
         if (!Ext.isObject(me.getPageUserRoot())) {
             Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
-            }).setActiveItem('#userMore'));
+            }).setDimensionsToFillScreen().setActiveItem('#userMore'));
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
                 Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.show();
+                pageUserRoot.setDimensionsToFillScreen().show();
                 pageUserRoot.setActiveItem('#userMore');
             }
             else {
@@ -215,14 +215,14 @@ Ext.define('X.controller.mixin.Factory', {
             var pageUserRoot = Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
             }));
-            pageUserRoot.setActiveItem('#userMore');
+            pageUserRoot.setDimensionsToFillScreen().setActiveItem('#userMore');
             pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userAccount');
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
                 Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.show();
+                pageUserRoot.setDimensionsToFillScreen().show();
                 pageUserRoot.setActiveItem('#userMore');
                 pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userAccount');
             }
@@ -242,14 +242,14 @@ Ext.define('X.controller.mixin.Factory', {
             var pageUserRoot = Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
             }));
-            pageUserRoot.setActiveItem('#userMore');
+            pageUserRoot.setDimensionsToFillScreen().setActiveItem('#userMore');
             pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userLogout');
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
                 Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.show();
+                pageUserRoot.setDimensionsToFillScreen().show();
                 pageUserRoot.setActiveItem('#userMore');
                 pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userLogout');
             }
@@ -270,13 +270,13 @@ Ext.define('X.controller.mixin.Factory', {
         if (!Ext.isObject(me.getPageUserRoot())) {
             Ext.Viewport.removeAll(false, false).add(me.createView({
                 xtype: 'pageuserroot'
-            }).setActiveItem('#userGroups'));
+            }).setDimensionsToFillScreen().setActiveItem('#userGroups'));
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
             if(pageUserRoot.isHidden()) {
                 Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.show();
+                pageUserRoot.setDimensionsToFillScreen().show();
                 pageUserRoot.setActiveItem('#userGroups');
             }
             else {
@@ -395,10 +395,15 @@ Ext.define('X.controller.mixin.Factory', {
         var options = Ext.isObject(options) ? options : false;
         var imageData = false;
         if(options) {
-            imageData = (Ext.Object.getKey(options, 'imageData') && Ext.isObject(options.imageData)) ? options.imageData : false;
+            imageData = ('imageData' in options) ? options.imageData : false;
+            console.log(options);
+            console.log('imageData' in options);
+            console.log(Ext.isObject(options.imageData));
+            console.log(options.imageData);
             if(imageData) {
+                console.log('>>>>>>>>>>>');
                 photoMessageInputContainer.down('image').
-                        setSrc(imageData);
+                        setSrc('data:image/jpeg;base64,' + imageData);
             }
         }
         

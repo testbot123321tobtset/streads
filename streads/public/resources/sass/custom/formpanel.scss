@@ -3,6 +3,19 @@
 @import '_mixins';
 @import 'core/formpanel';
 
+.user-account-form-panel {
+    
+    .x-form-fieldset:first-child {
+        
+        margin-top: $default-toolbar-height + $default-margin-for-fieldsets !important;
+    }
+    
+    .logout-button {
+        
+        margin-bottom: $default-toolbar-height + $default-margin-for-fieldsets !important;
+    }
+}
+
 .user-group-add-form-panel {
     
     .x-form-fieldset:first-child {

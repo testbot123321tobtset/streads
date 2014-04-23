@@ -94,7 +94,7 @@ Ext.define('X.config.Config', {
         SHOW_ANIMATION_WITHOUT_EASING_CONFIG: {
             type: 'slide',
             direction: 'up',
-            duration: 800
+            duration: 700
         },
         HIDE_ANIMATION_CONFIG: {
             type: 'slideOut',
@@ -105,7 +105,7 @@ Ext.define('X.config.Config', {
         HIDE_ANIMATION_WITHOUT_EASING_CONFIG: {
             type: 'slideOut',
             direction: 'down',
-            duration: 800
+            duration: 700
         },
         
         // Phonegap

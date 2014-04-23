@@ -142,16 +142,6 @@ Ext.application({
         if (X.XConfig.getDEBUG() && X.XConfig.getBOOTUP_DEBUG()) {
             console.log('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        
-//        http://druckit.wordpress.com/2013/09/24/about-sencha-touch-2-x-phonegapcordova-and-ios-7/
-        if (Ext.os.is.MacOS || (Ext.os.is.iOS && Ext.os.version.major >= 7)) {
-            console.log( Ext.os.version);
-//            document.body.style.marginTop = '20px';
-            console.log(Ext.Viewport.getWindowHeight());
-            console.log(Ext.Viewport.getWindowHeight() - 20);
-//            Ext.Viewport.setStyle('height: ' + (Ext.Viewport.getWindowHeight() - 20) + 'px !important;');
-            console.log(Ext.Viewport.getWindowHeight());
-        }
 
 //        Destroy the #appLoadingIndicator element
         Ext.fly('circleG').destroy();

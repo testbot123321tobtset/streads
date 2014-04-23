@@ -12,7 +12,6 @@ $toolbar-border-visible-edge-color: $default-border-color;
 $toolbar-title-color: $default-color-active;
 $toolbar-button-color: $default-color-active;
 $toolbar-button-pressing-color: lighten($toolbar-button-color, $default-color-variance);
-$toolbar-background-color: white;
 $toolbar-button-background-color: $default-darker-background-color; 
 $toolbar-button-pressing-background-color: lighten($toolbar-button-background-color, $default-color-variance);
 

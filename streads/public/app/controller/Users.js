@@ -92,7 +92,6 @@ Ext.define('X.controller.Users', {
             pageUserRoot: '#pageUserRoot',
             // User :: More
             userMoreTabPanel: '#userMoreTabPanel',
-            userAccountInfoPanel: '#userMoreTabPanel #userAccountInfoPanel',
             userAccountFormPanel: '#userMoreTabPanel #userAccountFormPanel',
             importFriendsFromDeviceContactsButton: '#userMoreTabPanel #userAccountFormPanel #importFriendsFromDeviceContactsButton',
             // User :: Logout
@@ -543,8 +542,8 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.showAuthenticatedMoreAccountInformation(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         me.generateAndFillViewportWithUserRootMoreAccountWindow();
-        var userAccountInfoPanel = me.getUserAccountInfoPanel();
-        userAccountInfoPanel.setRecordRecursive(X.authenticatedEntity);
+        var userMoreTabPanel = me.getUserMoreTabPanel();
+        userMoreTabPanel.setRecordRecursive(X.authenticatedEntity);
         return me;
     },
     showAuthenticatedMoreLogoutInformation: function() {
