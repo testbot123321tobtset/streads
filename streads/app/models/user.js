@@ -89,7 +89,8 @@ User.includeGroups = function(callback) {
     });
 };
 
-User.includeFriends = function(callback) {
+//function to get list of friends. Return friendslist array
+User.includeFriends = function() {
     var me = this;
     me.friendsList = [
     ];
@@ -107,9 +108,10 @@ User.includeFriends = function(callback) {
                     me.friendsList.push(friender); 
                 });     
                }
-            AH.executeCallback(callback);
+            return me.friendsList;
         });
     });
+    
 };
 
 exports.User = User;

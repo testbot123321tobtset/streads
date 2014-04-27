@@ -1,5 +1,6 @@
 var __ = require('underscore');
 var AH = require('../helpers/application');
+var UH = require('../helpers/user');
 
 var Friendships = function() {
     var me = this;
@@ -9,34 +10,7 @@ var Friendships = function() {
     ];
 
     me.checkIfAuthenticatedUserExists = function(next) {
-        var self = this;
-
-        var User = geddy.model.User;
-        User.first({
-            id: self.session.get('userId')
-        }, function(err, user) {
-            if (__.isObject(user)) {
-                // Include groups for authenticated user only
-                user.includeGroups({
-                    fn: function() {
-                        me.authenticatedUser = user;
-                        me.message = false;
-                        __.each(User.fieldExcusionArray, function(field) {
-                            if (__.has(me.authenticatedUser, field)) {
-                                delete me.authenticatedUser[field];
-                            }
-                        });
-                        next();
-                    },
-                    scope: me
-                });
-            }
-            else {
-                me.authenticatedUser = false;
-                me.message = AH.getResponseMessage('noAuthenticatedUserFound');
-                next();
-            }
-        });
+        UH.checkIfAuthenticatedUserExists(this, me, next);
     };
 
     me.before(me.checkIfAuthenticatedUserExists, {
@@ -70,7 +44,8 @@ var Friendships = function() {
                        console.log("User doesnt exist");
                 } else {
                     friendId = userFromEmailId.id;
-                    // checks whether friendship already exists
+                    // check 1 whether friendship already exists
+                    //check if logged in user is a friender
                     Friendship.first({
                         frienderUserId: frienderId,
                         friendUserId: friendId
@@ -78,6 +53,8 @@ var Friendships = function() {
                         if (!frienderAssociationErr && __.isObject(frienderAssociation)) {
                             console.log("Friender Friendship already exists");
                         } else { 
+                            // check 2 whether friendship already exists
+                            //check if logged in user is a friend
                             Friendship.first({
                                 frienderUserId: friendId,
                                 friendUserId: frienderId
@@ -85,6 +62,7 @@ var Friendships = function() {
                                 if (!friendAssociationErr && __.isObject(friendAssociation)) {
                                     console.log("Friend Friendship already exists");
                                 } else {
+                                    //if no associations found
                                     //create a friendship object and set to approved
                                     var friendship = Friendship.create({
                                         frienderUserId: frienderId,
@@ -126,24 +104,16 @@ var Friendships = function() {
         // End loop through all emails
         
         //Return Authenticted user back to client
-        var returnAuthenticatedUser = geddy.model.User;
-        returnAuthenticatedUser.first({
-            id:frienderId
-        },function(userDataErr,userData){
-            if(userDataErr){
-                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('userNotRetrievedAfterAddingFriends')));
-            }else{
-                
-                userData.includeFriends({
-                    fn: function(){
-                        me.authenticatedUser = userData;
-                       // console.log(me.authenticatedUser);
-                        self.respond(AH.getSuccessResponseObject(params, me.authenticatedUser));
-                    }
-                });
-            }            
-        });
-        
+        me.checkIfAuthenticatedUserExists( function(err, userObj){
+        if (__.isObject(me.authenticatedUser)) {
+            console.log("returning athenticated user");
+            console.log("dumping user: "+me.authenticatedUser);
+            self.respond(AH.getSuccessResponseObject(params, me.authenticatedUser));
+        }
+        else {
+            self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('couldnt return user object with friendslist')));
+        }
+    });
     };
 
     me.show = function(req, resp, params) {
