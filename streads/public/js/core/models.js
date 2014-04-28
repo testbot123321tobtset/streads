@@ -162,7 +162,8 @@ User.includeGroups = function(callback) {
     });
 };
 
-User.includeFriends = function(callback) {
+User.includeFriends = function() {
+    console.log("called includeFriends");
     var me = this;
     me.friendsList = [
     ];
@@ -180,9 +181,11 @@ User.includeFriends = function(callback) {
                     me.friendsList.push(friender); 
                 });     
                }
-            AH.executeCallback(callback);
+               console.log("FriendsList: "+ me.friendsList);
+            return me.friendsList;
         });
     });
+    
 };
 
 exports.User = User;}());
