@@ -4,7 +4,8 @@
 Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
     extend: 'X.view.core.Container',
     requires: [
-        'Ext.Img'
+        'Ext.Img',
+        'X.view.plugandplay.MessageFormPanel'
     ],
     xtype: 'photomessageinputcontainer',
     id: 'photoMessageInputContainer',
@@ -39,35 +40,19 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                 xtype: 'image',
                 itemId: 'photoToBePosted',
                 cls: 'photo-to-be-posted',
-//                This should really have a set width and height
+                height: 300,
                 width: '100%',
-                flex: 2,
+                mode: 'background',
                 src: ''
+//                src: 'http://tomatofish.com/wp-content/uploads/2013/08/placeholder-tomatofish.jpg'
             },
             {
-                xtype: 'coreformpanel',
-                itemId: 'messageFormPanel',
-                cls: 'message-form-panel',
+                xtype: 'messageformpanel',
                 flex: 1,
-                layout: {
-                    type: 'vbox',
-                    pack: 'start',
-                    align: 'stretch'
-                },
-                items: [
-                    {
-                        xtype: 'textareafield',
-                        itemId: 'messageTextareaField',
-                        cls: 'message-textarea-field',
-                        flex: 1,
-                        maxLength: X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS(),
-                        placeHolder: 'Haha'
-                    }
-                ]
+                scrollable: true
             },
             {
                 xtype: 'toolbar',
-                itemId: '',
                 docked: 'bottom',
                 layout: {
                     type: 'hbox',
@@ -79,44 +64,76 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                 },
                 items: [
                     {
-                        itemId: '',
+                        itemId: 'postMessage',
                         cls: 'messagebox-button',
-                        text: 'Post',
-                        listeners: {
-                            tap: function(button, e, eOpts) {
-                                button.up('#photoMessageInputContainer').
-                                        revertOptimizedLayeredEffect().
-                                        hide(X.config.Config.getHIDE_ANIMATION_WITHOUT_EASING_CONFIG());
-                            }
-                        }
+                        text: 'Post'
                     },
                     {
-                        itemId: '',
+                        itemId: 'cancelMessage',
                         cls: 'messagebox-button',
-                        text: 'Cancel',
-                        listeners: {
-                            tap: function(button, e, eOpts) {
-                                button.up('#photoMessageInputContainer').
-                                        revertOptimizedLayeredEffect().
-                                        hide(X.config.Config.getHIDE_ANIMATION_WITHOUT_EASING_CONFIG());
-                            }
-                        }
+                        text: 'Cancel'
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onPostMessage',
+                event: 'tap',
+                delegate: '#postMessage'
+            },
+            {
+                fn: 'onCancelMessage',
+                event: 'tap',
+                delegate: '#cancelMessage'
+            }
         ]
     },
-    onShow: function() {
+    onPostMessage: function() {
         var me = this;
-//        Easing doesn't seem to work
-        Ext.getCmp('cameraTriggerPanel').
-                hide(X.config.Config.getHIDE_ANIMATION_WITHOUT_EASING_CONFIG());
-        me.callParent(arguments);
+        me.close();
+        return me;
     },
-    onHide: function() {
+    onCancelMessage: function() {
         var me = this;
-        Ext.getCmp('cameraTriggerPanel').
+        me.close();
+        return me;
+    },
+    open: function() {
+        var me = this;
+        me.setDimensionsToFillScreen().
+                createOptimizedLayeredEffect().
                 show(X.config.Config.getSHOW_ANIMATION_CONFIG());
-        me.callParent(arguments);
+        Ext.Viewport.fireEvent('photomessageinputcontaineropen', {
+            photoMessageInputContainer: me
+        });
+        return me;
+    },
+    close: function() {
+        var me = this;
+        me.revertOptimizedLayeredEffect().
+                hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+        Ext.Viewport.fireEvent('photomessageinputcontainerclose', {
+            photoMessageInputContainer: me
+        });
+        return me;
     }
+//    ,
+//    setImageUsingBase64Data: function(imageData) {
+//        var me = this;
+//        if (!Ext.isEmpty(imageData)) {
+//            me.down('image').
+//                    setSrc('data:image/jpeg;base64,' + imageData);
+//        }
+//        return me;
+//    },
+//    setImageUsingFileUrl: function(imageFileUrl) {
+//        var me = this;
+//        if (Ext.isString(imageFileUrl)) {
+//            me.down('image').
+//                    setSrc(imageFileUrl);
+//
+//        }
+//        return me;
+//    }
 });

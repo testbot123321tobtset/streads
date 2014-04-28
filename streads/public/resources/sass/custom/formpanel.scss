@@ -42,6 +42,15 @@
     }
 }
 
+.message-form-panel {
+    
+    .x-form-fieldset {
+        
+        @include no-margin;
+        margin-bottom: $default-toolbar-height + $default-margin-for-fieldsets !important;
+    }
+}
+
 
 .user-signup-form-panel, .user-login-form-panel {
     

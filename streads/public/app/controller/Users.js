@@ -38,7 +38,6 @@ Ext.define('X.controller.Users', {
         control: {
             viewport: {
                 authenticateduserdataedit: 'onAuthenticatedUserDataEdit',
-                cameratriggerbuttontap: 'onCameraTriggerButtonTap',
                 devicecontactsstorerefreshuserrequest: 'onDeviceContactsStoreRefreshUserRequest'
             },
             // Login
@@ -564,7 +563,7 @@ Ext.define('X.controller.Users', {
     doLogout: function(button, e, eOpts) {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.doLogout()');
+            console.log('Debug: X.controller.Users.doLogout(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         Ext.Ajax.request({
             url: X.XConfig.getAPI_ENDPOINT() + X.XConfig.getDEFAULT_USER_LOGOUT_PAGE(),
@@ -585,46 +584,6 @@ Ext.define('X.controller.Users', {
                         delay(500);
             }
         });
-        return me;
-    },
-    /*
-     * Camera: Photo related functions
-     */
-    onCameraTriggerButtonTap: function(cameraTriggerPanel, cameraTriggerButton) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log("Debug: X.controller.Main.onCameraTriggerButtonTap()");
-        }
-        if (Ext.browser.is.PhoneGap) {
-            if (me.getDebug()) {
-                console.log("Debug: PHONEGAP: X.controller.Main.onCameraTriggerButtonTap()");
-            }
-            navigator.camera.getPicture(
-                    function(imageData) {
-                        me.generateAndFillViewportWithPhotoMessageInputContainerWindow({
-                            imageData: imageData
-                        });
-                    },
-                    function() {
-                        console.log('failure!');
-                    },
-                    {
-                        quality: 100,
-                        encodingType: Camera.EncodingType.JPEG,
-                        sourceType: Camera.PictureSourceType.CAMERA,
-                        destinationType: Camera.DestinationType.DATA_URL,
-                        mediaType: Camera.MediaType.ALLMEDIA,
-                        saveToPhotoAlbum: false,
-                        allowEdit: false
-                    }
-            );
-        }
-        else {
-            me.generateAndFillViewportWithPhotoMessageInputContainerWindow();
-            if (me.getDebug()) {
-                console.log("Debug: This is not a Phonegap application");
-            }
-        }
         return me;
     },
     init: function() {

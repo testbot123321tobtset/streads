@@ -115,7 +115,8 @@ Ext.application({
         'phone.Main',
         'Boot',
         'Users',
-        'Groups'
+        'Groups',
+        'Messages'
     ],
     views: [
         'page.Login',

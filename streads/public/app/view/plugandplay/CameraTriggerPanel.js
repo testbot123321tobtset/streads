@@ -24,24 +24,50 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
                 xtype: 'button',
                 itemId: 'cameraTriggerButton',
                 cls: 'rounded-button camera-trigger-button',
-                iconCls: 'camerafilled',
-                listeners: {
-                    initialize: function(button, eOpts) {
-                        button.element.on('doubletap', function(event, node, options, eOpts) {
-                            Ext.Viewport.fireEvent('cameratriggerbuttondoubletap', {
-                                cameraTriggerPanel: button.up('#cameraTriggerPanel'),
-                                cameraTriggerButton: button
-                            });
-                        });
-                    },
-                    tap: function(button, eOpts) {
-                        Ext.Viewport.fireEvent('cameratriggerbuttontap', {
-                            cameraTriggerPanel: button.up('#cameraTriggerPanel'),
-                            cameraTriggerButton: button
-                        });
-                    }
-                }
+                iconCls: 'camerafilled'
+//                ,
+//                listeners: {
+//                    This doesn't work inside of the delegate listeners
+//                    initialize: function(button, eOpts) {
+//                        button.up('#cameraTriggerPanel').onCameraTriggerButtonInitialize(button, eOpts);
+//                    }
+//                }
+            }
+        ],
+        listeners: [
+            {
+                fn: 'onCameraTriggerButtonTap',
+                event: 'tap',
+                delegate: '#cameraTriggerButton'
             }
         ]
+    },
+    onCameraTriggerButtonInitialize: function(button, eOpts) {
+        var me = this;
+        me.element.on('doubletap', function(event, node, options, eOpts) {
+            me.fireEvent('doubletap', me, event, node, options, eOpts);
+        });
+        return me;
+    },
+    onCameraTriggerButtonTap: function() {
+        var me = this;
+        me.close();
+        return me;
+    },
+    open: function() {
+        var me = this;
+        me.show(X.config.Config.getSHOW_BY_POP_ANIMATION_CONFIG());
+        Ext.Viewport.fireEvent('cameratriggerpanelopen', {
+            photoMessageInputContainer: me
+        });
+        return me;
+    },
+    close: function() {
+        var me = this;
+        me.hide(X.config.Config.getHIDE_BY_POP_ANIMATION_CONFIG());
+        Ext.Viewport.fireEvent('cameratriggerpanelclose', {
+            photoMessageInputContainer: me
+        });
+        return me;
     }
 });

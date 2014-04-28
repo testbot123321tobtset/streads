@@ -752,6 +752,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.controller.Boot": [],
   "X.controller.Groups": [],
   "X.controller.Main": [],
+  "X.controller.Messages": [],
   "X.controller.Users": [],
   "X.controller.mixin.Common": [],
   "X.controller.mixin.DeviceContact": [],
@@ -785,6 +786,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.phone.Main": [],
   "X.view.plugandplay.CameraTriggerPanel": [],
   "X.view.plugandplay.DeviceContactsUsersList": [],
+  "X.view.plugandplay.MessageFormPanel": [],
   "X.view.plugandplay.PhotoMessageInputContainer": [],
   "X.view.plugandplay.PhotoMessageInputFormPanel": [],
   "X.view.plugandplay.UserAccountFormPanel": [],
@@ -1760,6 +1762,7 @@ Ext.ClassManager.addNameAliasMappings({
   "X.controller.Boot": [],
   "X.controller.Groups": [],
   "X.controller.Main": [],
+  "X.controller.Messages": [],
   "X.controller.Users": [],
   "X.controller.mixin.Common": [],
   "X.controller.mixin.DeviceContact": [],
@@ -1808,6 +1811,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "X.view.plugandplay.DeviceContactsUsersList": [
     "widget.devicecontactsuserslist"
+  ],
+  "X.view.plugandplay.MessageFormPanel": [
+    "widget.messageformpanel"
   ],
   "X.view.plugandplay.PhotoMessageInputContainer": [
     "widget.photomessageinputcontainer"

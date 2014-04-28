@@ -73,26 +73,5 @@ Ext.define('X.view.core.Container', {
     },
     onDeleteButtonTap: function(button, e, eOpts) {
         return this;
-    },
-    revertOptimizedLayeredEffect: function() {
-        var me = this;
-        var querySelectorsForComponentsToBeShown = Ext.isFunction(me.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? me.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
-        var querySelectorsForComponentsToBeUnblurred = Ext.isFunction(me.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? me.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
-        var viewport = Ext.Viewport;
-        if (Ext.isArray(querySelectorsForComponentsToBeShown) && !Ext.isEmpty(querySelectorsForComponentsToBeShown)) {
-            Ext.each(querySelectorsForComponentsToBeShown, function(thisComponentQuerySelector) {
-                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
-                    thisComponent.show();
-                });
-            });
-        }
-        if (Ext.isArray(querySelectorsForComponentsToBeUnblurred) && !Ext.isEmpty(querySelectorsForComponentsToBeUnblurred)) {
-            Ext.each(querySelectorsForComponentsToBeUnblurred, function(thisComponentQuerySelector) {
-                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
-                    thisComponent.removeCls('blurred-background');
-                });
-            });
-        }
-        return me;
     }
 });

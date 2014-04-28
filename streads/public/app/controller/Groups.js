@@ -187,7 +187,8 @@ Ext.define('X.controller.Groups', {
     onDestroyGroupMessageShow: function(options) {
         var me = this;
         if(Ext.isObject(options) && !Ext.isEmpty(options) && 'containerToBeBlurred' in options && Ext.isObject(options.containerToBeBlurred)) {
-            me.createOptimizedLayeredEffect(options.containerToBeBlurred);
+//            me.createOptimizedLayeredEffect(options.containerToBeBlurred);
+            options.containerToBeBlurred.createOptimizedLayeredEffect();
         }
         return me;
     },
@@ -295,7 +296,8 @@ Ext.define('X.controller.Groups', {
                                 getById(groupId);
                         me.generateAndFillViewportWithGroupDataWindow({
                             group: group,
-                            showcontainer: false
+                            showcontainer: true,
+                            createOptimizedLayeredEffect: true
                         });
                         // Actually show edit group UI
                         if (me.generateAndFillViewportWithGroupEditFormPanel({
@@ -395,7 +397,7 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.showCreate(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        me.generateAndFillUserRootGroupsWindowWithUserAddGroupWindow();
+        me.activateUserAddGroupFormPanel();
         return me;
     },
     doCreateGroup: function(button) {

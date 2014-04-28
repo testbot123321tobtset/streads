@@ -13,17 +13,18 @@ Ext.define('X.controller.mixin.Factory', {
             me.createView({
                 xtype: thisXtype,
                 hidden: true
-            }).hide();
+            }).
+                    hide();
         });
         return me;
     },
     generateFriendshipSuccessfullyCreatedWindow: function(callback) {
-      var me = this;
-      var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().FRIENDSHIP_SUCCESSFULLY_CREATED;
-      Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
-        me.executeCallback(callback);
-      });
-      return me;
+        var me = this;
+        var message = (Ext.isObject(callback) && Ext.isString(callback.message)) ? callback.message : X.XConfig.getMESSAGES().FRIENDSHIP_SUCCESSFULLY_CREATED;
+        Ext.Msg.alert(X.XConfig.getMESSAGES().SUCCESS, message, function() {
+            me.executeCallback(callback);
+        });
+        return me;
     },
     generateGroupSuccessfullyCreatedWindow: function(callback) {
         var me = this;
@@ -145,18 +146,27 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserSignupWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageLogin())) {
-            Ext.Viewport.removeAll(false, false).add(me.createView({
-                xtype: 'pagelogin'
-            }).setDimensionsToFillScreen().setActiveItem('#userSignup'));
+            Ext.Viewport.removeAll(false, false).
+                    add(me.createView({
+                        xtype: 'pagelogin'
+                    }).
+                            setDimensionsToFillScreen().
+                            setActiveItem('#userSignup'));
         }
         else {
-            if(me.getPageLogin().isHidden()) {
-                Ext.Viewport.removeAll(false, false).add(me.getPageLogin());
-                me.getPageLogin().setDimensionsToFillScreen().show();
-                me.getPageLogin().setActiveItem('#userSignup');
+            if (me.getPageLogin().
+                    isHidden()) {
+                Ext.Viewport.removeAll(false, false).
+                        add(me.getPageLogin());
+                me.getPageLogin().
+                        setDimensionsToFillScreen().
+                        show();
+                me.getPageLogin().
+                        setActiveItem('#userSignup');
             }
             else {
-                me.getPageLogin().setActiveItem('#userSignup');
+                me.getPageLogin().
+                        setActiveItem('#userSignup');
             }
         }
         return me;
@@ -167,18 +177,27 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserLoginWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageLogin())) {
-            Ext.Viewport.removeAll(false, false).add(me.createView({
-                xtype: 'pagelogin'
-            }).setDimensionsToFillScreen().setActiveItem('#userLogin'));
+            Ext.Viewport.removeAll(false, false).
+                    add(me.createView({
+                        xtype: 'pagelogin'
+                    }).
+                            setDimensionsToFillScreen().
+                            setActiveItem('#userLogin'));
         }
         else {
-            if(me.getPageLogin().isHidden()) {
-                Ext.Viewport.removeAll(false, false).add(me.getPageLogin());
-                me.getPageLogin().setDimensionsToFillScreen().show();
-                me.getPageLogin().setActiveItem('#userLogin');
+            if (me.getPageLogin().
+                    isHidden()) {
+                Ext.Viewport.removeAll(false, false).
+                        add(me.getPageLogin());
+                me.getPageLogin().
+                        setDimensionsToFillScreen().
+                        show();
+                me.getPageLogin().
+                        setActiveItem('#userLogin');
             }
             else {
-                me.getPageLogin().setActiveItem('#userLogin');
+                me.getPageLogin().
+                        setActiveItem('#userLogin');
             }
         }
         return me;
@@ -189,15 +208,20 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            Ext.Viewport.removeAll(false, false).add(me.createView({
-                xtype: 'pageuserroot'
-            }).setDimensionsToFillScreen().setActiveItem('#userMore'));
+            Ext.Viewport.removeAll(false, false).
+                    add(me.createView({
+                        xtype: 'pageuserroot'
+                    }).
+                            setDimensionsToFillScreen().
+                            setActiveItem('#userMore'));
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
-            if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().show();
+            if (pageUserRoot.isHidden()) {
+                Ext.Viewport.removeAll(false, false).
+                        add(pageUserRoot);
+                pageUserRoot.setDimensionsToFillScreen().
+                        show();
                 pageUserRoot.setActiveItem('#userMore');
             }
             else {
@@ -212,23 +236,30 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreAccountWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            var pageUserRoot = Ext.Viewport.removeAll(false, false).add(me.createView({
-                xtype: 'pageuserroot'
-            }));
-            pageUserRoot.setDimensionsToFillScreen().setActiveItem('#userMore');
-            pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userAccount');
+            var pageUserRoot = Ext.Viewport.removeAll(false, false).
+                    add(me.createView({
+                        xtype: 'pageuserroot'
+                    }));
+            pageUserRoot.setDimensionsToFillScreen().
+                    setActiveItem('#userMore');
+            pageUserRoot.down('#userMoreTabPanel').
+                    setActiveItem('#userAccount');
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
-            if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().show();
+            if (pageUserRoot.isHidden()) {
+                Ext.Viewport.removeAll(false, false).
+                        add(pageUserRoot);
+                pageUserRoot.setDimensionsToFillScreen().
+                        show();
                 pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userAccount');
+                pageUserRoot.down('#userMoreTabPanel').
+                        setActiveItem('#userAccount');
             }
             else {
                 pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userAccount');
+                pageUserRoot.down('#userMoreTabPanel').
+                        setActiveItem('#userAccount');
             }
         }
         return me;
@@ -239,28 +270,34 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreLogoutWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            var pageUserRoot = Ext.Viewport.removeAll(false, false).add(me.createView({
-                xtype: 'pageuserroot'
-            }));
-            pageUserRoot.setDimensionsToFillScreen().setActiveItem('#userMore');
-            pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userLogout');
+            var pageUserRoot = Ext.Viewport.removeAll(false, false).
+                    add(me.createView({
+                        xtype: 'pageuserroot'
+                    }));
+            pageUserRoot.setDimensionsToFillScreen().
+                    setActiveItem('#userMore');
+            pageUserRoot.down('#userMoreTabPanel').
+                    setActiveItem('#userLogout');
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
-            if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().show();
+            if (pageUserRoot.isHidden()) {
+                Ext.Viewport.removeAll(false, false).
+                        add(pageUserRoot);
+                pageUserRoot.setDimensionsToFillScreen().
+                        show();
                 pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userLogout');
+                pageUserRoot.down('#userMoreTabPanel').
+                        setActiveItem('#userLogout');
             }
             else {
                 pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').setActiveItem('#userLogout');
+                pageUserRoot.down('#userMoreTabPanel').
+                        setActiveItem('#userLogout');
             }
         }
         return me;
     },
-    
     // User :: Groups
     generateAndFillViewportWithUserRootGroupsWindow: function() {
         var me = this;
@@ -268,15 +305,20 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootGroupsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         if (!Ext.isObject(me.getPageUserRoot())) {
-            Ext.Viewport.removeAll(false, false).add(me.createView({
-                xtype: 'pageuserroot'
-            }).setDimensionsToFillScreen().setActiveItem('#userGroups'));
+            Ext.Viewport.removeAll(false, false).
+                    add(me.createView({
+                        xtype: 'pageuserroot'
+                    }).
+                            setDimensionsToFillScreen().
+                            setActiveItem('#userGroups'));
         }
         else {
             var pageUserRoot = me.getPageUserRoot();
-            if(pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().show();
+            if (pageUserRoot.isHidden()) {
+                Ext.Viewport.removeAll(false, false).
+                        add(pageUserRoot);
+                pageUserRoot.setDimensionsToFillScreen().
+                        show();
                 pageUserRoot.setActiveItem('#userGroups');
             }
             else {
@@ -291,18 +333,20 @@ Ext.define('X.controller.mixin.Factory', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        
+
         var options = Ext.isObject(options) ? options : false;
-        
+
         // Make sure pageUserRoot exists
         var pageUserRoot = me.getPageUserRoot();
-        if(!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
-            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().getPageUserRoot();
+        if (!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
+            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().
+                    getPageUserRoot();
         }
         pageUserRoot.setActiveItem('#userGroups');
         // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
-        pageUserRoot.down('#userGroupsTabPanel').setActiveItem('#userGroupFeeds');
-        
+        pageUserRoot.down('#userGroupsTabPanel').
+                setActiveItem('#userGroupFeeds');
+
         return me;
     },
     // User :: Groups :: Feed data
@@ -311,21 +355,25 @@ Ext.define('X.controller.mixin.Factory', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupDataWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (Ext.isObject(options) && Ext.isObject(options.group)) {
-            var group = options.group;
-            var showContainer = Ext.isBoolean(options.showContainer) ? options.showContainer : true;
-            var userGroupContainer = me.createView({
+        options = Ext.isObject(options) ? options : false;
+        if (options) {
+            var group = ('group' in options && Ext.isObject(options.group)) ? options.group : false;
+            var showContainer = ('showContainer' in options && Ext.isBoolean(options.showContainer)) ? options.showContainer : true;
+            var createOptimizedLayeredEffect = ('createOptimizedLayeredEffect' in options && Ext.isBoolean(options.createOptimizedLayeredEffect)) ? options.createOptimizedLayeredEffect : true;
+            var userGroupContainer = Ext.isObject(me.getUserGroupContainer()) ? me.getUserGroupContainer() : me.createView({
                 xtype: 'usergroupcontainer'
             });
             if (showContainer) {
-                if(X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userGroupContainer.getDepthBasedOnOffset()) {
+                if (X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userGroupContainer.getDepthBasedOnOffset()) {
                     userGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
                 }
                 else {
                     userGroupContainer.setDimensionsToFillScreen();
                 }
-                me.createOptimizedLayeredEffect(userGroupContainer);
                 Ext.Viewport.add(userGroupContainer);
+                if (createOptimizedLayeredEffect) {
+                    userGroupContainer.createOptimizedLayeredEffect();
+                }
                 userGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userGroupContainer.setRecordRecursive(group);
             }
@@ -346,39 +394,52 @@ Ext.define('X.controller.mixin.Factory', {
                 xtype: 'usereditgroupcontainer'
             });
             if (showContainer) {
-                if(X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userEditGroupContainer.getDepthBasedOnOffset()) {
+                if (X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userEditGroupContainer.getDepthBasedOnOffset()) {
                     userEditGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
                 }
                 else {
                     userEditGroupContainer.setDimensionsToFillScreen();
                 }
-                me.createOptimizedLayeredEffect(userEditGroupContainer);
+                userEditGroupContainer.createOptimizedLayeredEffect();
                 Ext.Viewport.add(userEditGroupContainer);
                 userEditGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
                 userEditGroupContainer.setRecordRecursive(group);
             }
-            return me;
         }
-        return false;
+        return me;
     },
     // User :: Groups :: Create
-    generateAndFillUserRootGroupsWindowWithUserAddGroupWindow: function(options) {
+    activateUserAddGroupFormPanel: function(options) {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithAddUserGroupWindow()');
+            console.log('Debug: X.controller.mixin.Factory: activateUserAddGroupFormPanel()');
         }
-        
+
+        var pageUserRootExists = Ext.isObject(me.getPageUserRoot());
+        if (pageUserRootExists) {
+            var photoMessageInputContainer = me.getPhotoMessageInputContainer();
+            photoMessageInputContainer.open();
+        }
+        else {
+            var photoMessageInputContainer = Ext.Viewport.add(me.createView({
+                xtype: 'photomessageinputcontainer'
+            }));
+            photoMessageInputContainer.open();
+        }
+
         var options = Ext.isObject(options) ? options : false;
-        
+
         // Make sure pageUserRoot exists
         var pageUserRoot = me.getPageUserRoot();
-        if(!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
-            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().getPageUserRoot();
+        if (!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
+            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().
+                    getPageUserRoot();
         }
         pageUserRoot.setActiveItem('#userGroups');
         // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
-        pageUserRoot.down('#userGroupsTabPanel').setActiveItem('#userAddGroups');
-        
+        pageUserRoot.down('#userGroupsTabPanel').
+                setActiveItem('#userAddGroups');
+
         return me;
     },
     // Camera :: Photo message input
@@ -387,32 +448,30 @@ Ext.define('X.controller.mixin.Factory', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithPhotoMessageInputContainerWindow()');
         }
-        
-        var photoMessageInputContainer = me.createView({
-            xtype: 'photomessageinputcontainer'
-        });
-        
-        var options = Ext.isObject(options) ? options : false;
-        var imageData = false;
-        if(options) {
-            imageData = ('imageData' in options) ? options.imageData : false;
-            console.log(options);
-            console.log('imageData' in options);
-            console.log(Ext.isObject(options.imageData));
-            console.log(options.imageData);
-            if(imageData) {
-                console.log('>>>>>>>>>>>');
-                photoMessageInputContainer.down('image').
-                        setSrc('data:image/jpeg;base64,' + imageData);
-            }
+
+        var photoMessageInputContainer = false;
+        var photoMessageInputContainerExists = Ext.isObject(me.getPhotoMessageInputContainer());
+        if (photoMessageInputContainerExists) {
+            photoMessageInputContainer = me.getPhotoMessageInputContainer();
+            photoMessageInputContainer.open();
         }
-        
-        photoMessageInputContainer.setDimensionsToFillScreen();
-        me.createOptimizedLayeredEffect(photoMessageInputContainer);
-        
-        Ext.Viewport.add(photoMessageInputContainer);
-        photoMessageInputContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
-        
+        else {
+            photoMessageInputContainer = Ext.Viewport.add(me.createView({
+                xtype: 'photomessageinputcontainer'
+            }));
+            photoMessageInputContainer.open();
+            photoMessageInputContainerExists = true;
+        }
+//        if (photoMessageInputContainerExists) {
+//            var options = Ext.isObject(options) ? options : false;
+//            if (options) {
+//                var imageData = ('imageData' in options) ? options.imageData : false;
+//                if (imageData) {
+//                    photoMessageInputContainer.setImageUsingFileUrl(imageData);
+//                }
+//            }
+//        }
+
         return me;
     }
 });

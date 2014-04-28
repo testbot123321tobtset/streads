@@ -71,6 +71,7 @@ var Passport = function() {
 exports.Passport = Passport;}());
 
 (function () {
+var __ = require('underscore');
 var AH = require('../helpers/application');
 
 var User = function() {
@@ -134,6 +135,30 @@ var User = function() {
     me.hasMany('Groups', {
         through: 'Groupships'
     });
+    
+//    Instance methods
+//    me.includeFriends = function() {
+//        me.friendsList = [
+//        ];
+//        me.getFriends(function(err, friends) {
+//            if (!err) {
+//                friends.forEach(function(friend) {
+//                    delete friend['password'];
+//                    me.friendsList.push(friend);
+//                });
+//            }
+//            me.getFrienders(function(err, frienders) {
+//                if (!err) {
+//                    frienders.forEach(function(friender) {
+//                        delete friender['password'];
+//                        me.friendsList.push(friender);
+//                    });
+//                }
+//                return me.friendsList;
+//            });
+//            console.log(me.friendsList);
+//        });
+//    };
 };
 
 User.fieldShowExclusionArray = [
@@ -162,30 +187,42 @@ User.includeGroups = function(callback) {
     });
 };
 
-User.includeFriends = function() {
-    console.log("called includeFriends");
+//function to get list of friends. Return friendslist array
+User.includeFriends = function(user) {
     var me = this;
-    me.friendsList = [
+    user.friendsList = [
     ];
-    me.getFriends(function(err, friends) {
-        if (!err) {
-            friends.forEach(function(friend){
+    console.log('@@@@@@' + user.usernameEmail);
+    user.getFriends(function(friendsErr, friends) {
+        if (!__.isObject(friendsErr)) {
+            friends.forEach(function(friend) {
+                console.log('>>>>>>>' + friend.usernameEmail);
                 delete friend['password'];
-                me.friendsList.push(friend); 
-            });     
+                user.friendsList.push(friend);
+            });
         }
-        me.getFrienders(function(err, frienders) {
-            if (!err) {
-                frienders.forEach(function(friender){
-                    delete friender['password'];
-                    me.friendsList.push(friender); 
-                });     
-               }
-               console.log("FriendsList: "+ me.friendsList);
-            return me.friendsList;
-        });
+//        user.getFrienders(function(friendersErr, frienders) {
+//            if (!err) {
+//                frienders.forEach(function(friender) {
+//                    delete friender['password'];
+//                    user.friendsList.push(friender);
+//                });
+//            }
+//            console.log(user);
+//            return user.friendsList;
+//        });
     });
-    
+    user.getFrienders(function(friendersErr, frienders) {
+        if (!__.isObject(friendersErr)) {
+            frienders.forEach(function(friender) {
+                console.log('########' + friender.usernameEmail);
+                delete friender['password'];
+                user.friendsList.push(friender);
+            });
+        }
+        return user.friendsList;
+    });
+    return me;
 };
 
 exports.User = User;}());

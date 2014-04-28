@@ -165,48 +165,6 @@ Ext.define('X.controller.mixin.Util', {
      * mainViewEl.parentNode.removeChild(mainViewEl); (Remove the node from DOM)
      * this.mainViewParentNode.appendChild(mainViewEl); (Inject it back into DOM on demand)
      */
-    createOptimizedLayeredEffect: function(visibleComponent) {
-        var me = this;
-        var querySelectorsForComponentsToBeHidden = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
-        var querySelectorsForComponentsToBeBlurred = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
-        var viewport = Ext.Viewport;
-        if (Ext.isArray(querySelectorsForComponentsToBeHidden) && !Ext.isEmpty(querySelectorsForComponentsToBeHidden)) {
-            Ext.each(querySelectorsForComponentsToBeHidden, function(thisComponentQuerySelector) {
-                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
-                    thisComponent.hide();
-                });
-            });
-        }
-        if (Ext.isArray(querySelectorsForComponentsToBeBlurred) && !Ext.isEmpty(querySelectorsForComponentsToBeBlurred)) {
-            Ext.each(querySelectorsForComponentsToBeBlurred, function(thisComponentQuerySelector) {
-                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
-                    thisComponent.addCls('blurred-background');
-                });
-            });
-        }
-        return me;
-    },
-    revertOptimizedLayeredEffect: function(visibleComponent) {
-        var me = this;
-        var querySelectorsForComponentsToBeShown = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
-        var querySelectorsForComponentsToBeUnblurred = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
-        var viewport = Ext.Viewport;
-        if (Ext.isArray(querySelectorsForComponentsToBeShown) && !Ext.isEmpty(querySelectorsForComponentsToBeShown)) {
-            Ext.each(querySelectorsForComponentsToBeShown, function(thisComponentQuerySelector) {
-                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
-                    thisComponent.show();
-                });
-            });
-        }
-        if (Ext.isArray(querySelectorsForComponentsToBeUnblurred) && !Ext.isEmpty(querySelectorsForComponentsToBeUnblurred)) {
-            Ext.each(querySelectorsForComponentsToBeUnblurred, function(thisComponentQuerySelector) {
-                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
-                    thisComponent.removeCls('blurred-background');
-                });
-            });
-        }
-        return me;
-    },
     hideAllVisibleComponentsExceptVisibleAndBlurredComponents: function(options) {
         var me = this;
         if(Ext.isObject(options) && Ext.isObject(options.visibleComponent) && Ext.isObject(options.componentUnderneath)) {

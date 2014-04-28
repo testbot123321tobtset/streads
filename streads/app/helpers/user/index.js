@@ -23,8 +23,10 @@ exports.checkIfAuthenticatedUserExists = function(myScope, controller, next) {
                         delete user[field];
                     }
                 });
+                User.includeFriends(user);
+//                console.log(user);
                 //include friendsList for the authenticated user only
-                user.put(user.includeFriends());
+//                user.put(user.includeFriends());
                 controller.authenticatedUser = user;
                 console.log("controller.authenticatedUser: "+controller.authenticatedUser);
                 controller.message = false;

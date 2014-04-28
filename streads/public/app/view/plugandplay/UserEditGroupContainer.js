@@ -26,10 +26,11 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         fullscreen: true,
         layer: 2,
         modal: true,
+        hidden: true,
         querySelectorsForComponentsToBeHiddenToOptimizeLayer: [
-            '#pageUserRoot'
         ],
         querySelectorsForComponentsToBeBlurredToOptimizeLayer: [
+            '#pageUserRoot',
             '#userGroupContainer'
         ],
         items: [

@@ -25,9 +25,8 @@ Ext.define('overrides.Component', {
             
             me.setWidth(referenceComponentWidth);
             me.setHeight(referenceComponentHeight);
-            return me;
         }
-        return false;
+        return me;
     },
     //    This is not being used right now. If used, this will have every window-like element 
     //    render with an offset from the sides and the window itself with a drop shadow to
@@ -49,10 +48,8 @@ Ext.define('overrides.Component', {
             
             me.setHeight(referenceComponentHeight - (myLayer * layerVerticalOffset));
             me.setTop(myLayer * layerVerticalOffset);
-            
-            return me;
         }
-        return false;
+        return me;
     },
     //    This is not being used right now
     setBlurredBackgroundForDepth: function() {
@@ -77,6 +74,79 @@ Ext.define('overrides.Component', {
         Ext.each(Ext.Viewport.query('tabpanel'), function(thisTabPanel) {
             thisTabPanel.removeCls('blurred-background');
         });
+        return me;
+    },
+    /*
+     * Performance optimization: http://moduscreate.com/sencha-touch-2-0-expert-tip-how-to-increase-the-speed-of-your-app-rotation-by-temporarily-removing-dom/
+     * var mainViewEl = this.mainView.renderElement.dom
+     * this.mainViewParentNode = mainViewEl.parentNode; (Save the parentNode in memory)
+     * mainViewEl.parentNode.removeChild(mainViewEl); (Remove the node from DOM)
+     * this.mainViewParentNode.appendChild(mainViewEl); (Inject it back into DOM on demand)
+     */
+    createOptimizedLayeredEffect: function() {
+        var me = this;
+        var visibleComponent = me;
+        var querySelectorsForComponentsToBeHidden = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
+        var querySelectorsForComponentsToBeBlurred = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
+        var viewport = Ext.Viewport;
+        if (Ext.isArray(querySelectorsForComponentsToBeHidden) && !Ext.isEmpty(querySelectorsForComponentsToBeHidden)) {
+            Ext.each(querySelectorsForComponentsToBeHidden, function(thisComponentQuerySelector) {
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    thisComponent.hide();
+                });
+            });
+        }
+        if (Ext.isArray(querySelectorsForComponentsToBeBlurred) && !Ext.isEmpty(querySelectorsForComponentsToBeBlurred)) {
+            Ext.each(querySelectorsForComponentsToBeBlurred, function(thisComponentQuerySelector) {
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    thisComponent.addCls('blurred-background');
+                });
+            });
+        }
+        return me;
+    },
+    revertOptimizedLayeredEffect: function() {
+        var me = this;
+        var visibleComponent = me;
+        var querySelectorsForComponentsToBeShown = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeHiddenToOptimizeLayer() : false;
+        var querySelectorsForComponentsToBeUnblurred = Ext.isFunction(visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer) ? visibleComponent.getQuerySelectorsForComponentsToBeBlurredToOptimizeLayer() : false;
+        var viewport = Ext.Viewport;
+        if (Ext.isArray(querySelectorsForComponentsToBeShown) && !Ext.isEmpty(querySelectorsForComponentsToBeShown)) {
+            Ext.each(querySelectorsForComponentsToBeShown, function(thisComponentQuerySelector) {
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    thisComponent.show();
+                });
+            });
+        }
+        if (Ext.isArray(querySelectorsForComponentsToBeUnblurred) && !Ext.isEmpty(querySelectorsForComponentsToBeUnblurred)) {
+            var layerOfComponentToBeUnblurred = false;
+            var componentToBeUnblurred = false;
+            Ext.each(querySelectorsForComponentsToBeUnblurred, function(thisComponentQuerySelector) {
+                Ext.each(viewport.query(thisComponentQuerySelector), function(thisComponent) {
+                    if (!thisComponent.isHidden()) {
+//                        Unblur only the topmost layer that is not hidden
+                        var layerOfThisComponent = ('getLayer' in thisComponent && Ext.isFunction(thisComponent.getLayer)) ? thisComponent.getLayer() : 0;
+                        if (Ext.isNumeric(layerOfComponentToBeUnblurred)) {
+                            if (layerOfComponentToBeUnblurred < layerOfThisComponent) {
+                                layerOfComponentToBeUnblurred = layerOfThisComponent;
+                                componentToBeUnblurred = thisComponent;
+                            }
+                        }
+                        else {
+                            layerOfComponentToBeUnblurred = layerOfThisComponent;
+                            componentToBeUnblurred = thisComponent;
+                        }
+                    }
+                    else {
+//                        Unblur all hidden layer10
+                        thisComponent.removeCls('blurred-background');
+                    }
+                });
+            });
+            if (Ext.isObject(componentToBeUnblurred)) {
+                componentToBeUnblurred.removeCls('blurred-background');
+            }
+        }
         return me;
     }
 });

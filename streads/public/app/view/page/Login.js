@@ -19,6 +19,7 @@ Ext.define('X.view.page.Login', {
                 itemId: 'userLogin',
                 cls: 'user-login',
                 iconCls: 'arrowright',
+                title: 'Log in',
                 items: [
                     {
                         flex: 1,
@@ -41,6 +42,7 @@ Ext.define('X.view.page.Login', {
                 itemId: 'userSignup',
                 cls: 'user-signup',
                 iconCls: 'add',
+                title: 'Sign up',
                 items: [
                     {
                         flex: 1,
