@@ -37,7 +37,6 @@ Ext.define('X.controller.Messages', {
             if (me.getDebug()) {
                 console.log('Debug: PHONEGAP: X.controller.Messages.onCameraTriggerButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
             }
-            me.generateAndFillViewportWithPhotoMessageInputContainerWindow();
             navigator.camera.getPicture(
                     function(imageData) {
                         if (me.getDebug()) {
@@ -53,12 +52,12 @@ Ext.define('X.controller.Messages', {
                         }
                     },
                     {
-                        quality: 100,
-                        encodingType: Camera.EncodingType.JPEG,
-                        sourceType: Camera.PictureSourceType.CAMERA,
+                        encodingType: X.config.Config.getPG_CAMERA().ENCODING_TYPE,
+                        sourceType: X.config.Config.getPG_CAMERA().PICTURE_SOURCE_TYPE,
 //                        If you use DATA_URL here then use setSrc('data:image/jpeg;base64,' + imageData)
-                        destinationType: Camera.DestinationType.FILE_URL,
-                        mediaType: Camera.MediaType.ALLMEDIA,
+                        destinationType: X.config.Config.getPG_CAMERA().DESTINATION_TYPE,
+                        mediaType: X.config.Config.getPG_CAMERA().MEDIA_TYPE,
+                        quality: 100,
                         saveToPhotoAlbum: false,
                         allowEdit: false,
                         correctOrientation: true
@@ -67,12 +66,10 @@ Ext.define('X.controller.Messages', {
         }
         else {
             if (me.getDebug()) {
+                console.log("Debug: This is not a Phonegap application");
                 console.log('Debug: X.controller.Messages.onCameraTriggerButtonTap(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
             }
             me.generateAndFillViewportWithPhotoMessageInputContainerWindow();
-            if (me.getDebug()) {
-                console.log("Debug: This is not a Phonegap application");
-            }
         }
         return me;
     },

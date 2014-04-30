@@ -202,101 +202,60 @@ Ext.define('X.controller.mixin.Factory', {
         }
         return me;
     },
+    // User
+    generatePageUserRoot: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.mixin.Factory: generatePageUserRoot(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        
+        var pageUserRoot = me.getPageUserRoot();
+        if (!Ext.isObject(pageUserRoot)) {
+            pageUserRoot = Ext.Viewport.removeAll(false, false).
+                    add(me.createView({
+                        xtype: 'pageuserroot'
+                    }));
+        }
+        
+        return pageUserRoot.open();
+    },
+    // User :: More
     generateAndFillViewportWithUserRootMoreWindow: function() {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (!Ext.isObject(me.getPageUserRoot())) {
-            Ext.Viewport.removeAll(false, false).
-                    add(me.createView({
-                        xtype: 'pageuserroot'
-                    }).
-                            setDimensionsToFillScreen().
-                            setActiveItem('#userMore'));
-        }
-        else {
-            var pageUserRoot = me.getPageUserRoot();
-            if (pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).
-                        add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().
-                        show();
-                pageUserRoot.setActiveItem('#userMore');
-            }
-            else {
-                pageUserRoot.setActiveItem('#userMore');
-            }
-        }
-        return me;
+        
+        var pageUserRoot = me.generatePageUserRoot();
+        pageUserRoot.setActiveItem('#userMore');
+        
+        return pageUserRoot;
     },
+    // User :: More :: Account
     generateAndFillViewportWithUserRootMoreAccountWindow: function() {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreAccountWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (!Ext.isObject(me.getPageUserRoot())) {
-            var pageUserRoot = Ext.Viewport.removeAll(false, false).
-                    add(me.createView({
-                        xtype: 'pageuserroot'
-                    }));
-            pageUserRoot.setDimensionsToFillScreen().
-                    setActiveItem('#userMore');
-            pageUserRoot.down('#userMoreTabPanel').
-                    setActiveItem('#userAccount');
-        }
-        else {
-            var pageUserRoot = me.getPageUserRoot();
-            if (pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).
-                        add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().
-                        show();
-                pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').
-                        setActiveItem('#userAccount');
-            }
-            else {
-                pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').
-                        setActiveItem('#userAccount');
-            }
-        }
-        return me;
+        
+        var pageUserRoot = me.generateAndFillViewportWithUserRootMoreWindow();
+        pageUserRoot.down('#userMoreTabPanel').
+                setActiveItem('#userAccount');
+        
+        return pageUserRoot;
     },
+    // User :: More :: Logout
     generateAndFillViewportWithUserRootMoreLogoutWindow: function() {
         var me = this;
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreLogoutWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (!Ext.isObject(me.getPageUserRoot())) {
-            var pageUserRoot = Ext.Viewport.removeAll(false, false).
-                    add(me.createView({
-                        xtype: 'pageuserroot'
-                    }));
-            pageUserRoot.setDimensionsToFillScreen().
-                    setActiveItem('#userMore');
-            pageUserRoot.down('#userMoreTabPanel').
-                    setActiveItem('#userLogout');
-        }
-        else {
-            var pageUserRoot = me.getPageUserRoot();
-            if (pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).
-                        add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().
-                        show();
-                pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').
-                        setActiveItem('#userLogout');
-            }
-            else {
-                pageUserRoot.setActiveItem('#userMore');
-                pageUserRoot.down('#userMoreTabPanel').
-                        setActiveItem('#userLogout');
-            }
-        }
-        return me;
+        
+        var pageUserRoot = me.generateAndFillViewportWithUserRootMoreWindow();
+        pageUserRoot.down('#userMoreTabPanel').
+                setActiveItem('#userLogout');
+        
+        return pageUserRoot;
     },
     // User :: Groups
     generateAndFillViewportWithUserRootGroupsWindow: function() {
@@ -304,28 +263,11 @@ Ext.define('X.controller.mixin.Factory', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootGroupsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (!Ext.isObject(me.getPageUserRoot())) {
-            Ext.Viewport.removeAll(false, false).
-                    add(me.createView({
-                        xtype: 'pageuserroot'
-                    }).
-                            setDimensionsToFillScreen().
-                            setActiveItem('#userGroups'));
-        }
-        else {
-            var pageUserRoot = me.getPageUserRoot();
-            if (pageUserRoot.isHidden()) {
-                Ext.Viewport.removeAll(false, false).
-                        add(pageUserRoot);
-                pageUserRoot.setDimensionsToFillScreen().
-                        show();
-                pageUserRoot.setActiveItem('#userGroups');
-            }
-            else {
-                pageUserRoot.setActiveItem('#userGroups');
-            }
-        }
-        return me;
+        
+        var pageUserRoot = me.generatePageUserRoot();
+        pageUserRoot.setActiveItem('#userGroups');
+        
+        return pageUserRoot;
     },
     // User :: Groups :: Feeds
     generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow: function(options) {
@@ -333,23 +275,14 @@ Ext.define('X.controller.mixin.Factory', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-
-        var options = Ext.isObject(options) ? options : false;
-
-        // Make sure pageUserRoot exists
-        var pageUserRoot = me.getPageUserRoot();
-        if (!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
-            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().
-                    getPageUserRoot();
-        }
-        pageUserRoot.setActiveItem('#userGroups');
-        // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
+        
+        var pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow();
         pageUserRoot.down('#userGroupsTabPanel').
                 setActiveItem('#userGroupFeeds');
 
         return me;
     },
-    // User :: Groups :: Feed data
+    // User :: Groups :: Feed :: Data window
     generateAndFillViewportWithGroupDataWindow: function(options) {
         var me = this;
         if (me.getDebug()) {
@@ -415,18 +348,6 @@ Ext.define('X.controller.mixin.Factory', {
             console.log('Debug: X.controller.mixin.Factory: activateUserAddGroupFormPanel()');
         }
 
-        var pageUserRootExists = Ext.isObject(me.getPageUserRoot());
-        if (pageUserRootExists) {
-            var photoMessageInputContainer = me.getPhotoMessageInputContainer();
-            photoMessageInputContainer.open();
-        }
-        else {
-            var photoMessageInputContainer = Ext.Viewport.add(me.createView({
-                xtype: 'photomessageinputcontainer'
-            }));
-            photoMessageInputContainer.open();
-        }
-
         var options = Ext.isObject(options) ? options : false;
 
         // Make sure pageUserRoot exists
@@ -462,15 +383,21 @@ Ext.define('X.controller.mixin.Factory', {
             photoMessageInputContainer.open();
             photoMessageInputContainerExists = true;
         }
-//        if (photoMessageInputContainerExists) {
-//            var options = Ext.isObject(options) ? options : false;
-//            if (options) {
-//                var imageData = ('imageData' in options) ? options.imageData : false;
-//                if (imageData) {
-//                    photoMessageInputContainer.setImageUsingFileUrl(imageData);
-//                }
-//            }
-//        }
+        if (photoMessageInputContainerExists) {
+            var options = Ext.isObject(options) ? options : false;
+            if (options) {
+                var imageData = ('imageData' in options) ? options.imageData : false;
+                if (imageData) {
+                    var destinationType = X.config.Config.getPG_CAMERA().DESTINATION_TYPE;
+                    if (destinationType === 1 || destinationType === 2) {
+                        photoMessageInputContainer.setImageUsingFileUrl(imageData);
+                    }
+                    else if (destinationType === 0) {
+                        photoMessageInputContainer.setImageUsingBase64Data(imageData);
+                    }
+                }
+            }
+        }
 
         return me;
     }

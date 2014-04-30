@@ -8,8 +8,13 @@ $image-margin: 1em auto;
 
 .photo-to-be-posted {
     
-    background-size: contain !important;
+    /*background-size: contain !important;*/
     background-color: $image-background-color !important;
+    /*background-position: center !important;*/
     
     @include no-margin;
+    
+    img {
+         @include mini-box-shadow;
+    }
 }

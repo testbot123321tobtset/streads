@@ -1,7 +1,6 @@
 Ext.define('X.view.plugandplay.CameraTriggerPanel', {
     extend: 'X.view.core.Panel',
     requires: [
-        'X.view.plugandplay.PhotoMessageInputContainer'
     ],
     xtype: 'cameratriggerpanel',
     id: 'cameraTriggerPanel',
@@ -21,17 +20,20 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
         zIndex: 20,
         items: [
             {
-                xtype: 'button',
-                itemId: 'cameraTriggerButton',
-                cls: 'rounded-button camera-trigger-button',
-                iconCls: 'camerafilled'
-//                ,
-//                listeners: {
-//                    This doesn't work inside of the delegate listeners
-//                    initialize: function(button, eOpts) {
-//                        button.up('#cameraTriggerPanel').onCameraTriggerButtonInitialize(button, eOpts);
-//                    }
-//                }
+                xtype: 'tabbar',
+                docked: 'bottom',
+                layout: {
+                    pack: 'center',
+                    align: 'center'
+                },
+                items: [
+                    {
+                        itemId: 'cameraTriggerButton',
+                        cls: 'camera-trigger-button',
+                        iconCls: 'camerafilled',
+                        title: 'Shoot'
+                    }
+                ]
             }
         ],
         listeners: [

@@ -2,6 +2,7 @@
 @import '_variables';
 @import '_mixins';
 @import 'core/panel';
+@import 'core/tabpanel';
 
 .camera-trigger-panel {
     
@@ -14,6 +15,37 @@
     min-width: $default-toolbar-height !important;
     width: $default-toolbar-height !important;
     
+    .x-tabbar {
+        
+        @include no-background;
+        background-color: $tabbar-background-color !important;
+        
+        &.x-docked-bottom {
+            
+            @include no-border;
+        }
+        
+        .x-tab {
+
+            .x-button-icon {
+
+                &:before {
+                    
+                    color: $default-color-active !important;
+                }
+            }
+
+            .x-button-label {
+                
+                color: $default-color-active !important;
+            }
+        }
+    }
+    
+/*  
+    This will make it a text-less button when you set 'cls' in
+    CameraTriggerPanel to: cls: 'rounded-button camera-trigger-button'
+
     .x-panel-inner {
         
         @include no-border;
@@ -55,4 +87,5 @@
             }
         }
     }
+*/
 }

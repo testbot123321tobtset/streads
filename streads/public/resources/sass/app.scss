@@ -56,6 +56,11 @@ $include-default-icons: false;
 @include icon('arrowforward', '\f154', 'ionicons');
 @include icon('circlefilled', '\f16f', 'ionicons');
 @include icon('circle', '\f170', 'ionicons');
+@include icon('composefilled', '\f17e', 'ionicons');
+@include icon('compose', '\f17d', 'ionicons');
+@include icon('checkmark', '\f16c', 'ionicons');
+@include icon('circledcheckmark', '\f16d', 'ionicons');
+@include icon('circledcheckmarkfilled', '\f16e', 'ionicons');
 
 @import 'shell';
 

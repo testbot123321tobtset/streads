@@ -74,5 +74,15 @@ Ext.define('X.view.page.user.Root', {
                 ]
             }
         ]
+    },
+    open: function() {
+        var me = this;
+        me.setDimensionsToFillScreen().show();
+        return me;
+    },
+    close: function() {
+        var me = this;
+        me.hide();
+        return me;
     }
 });

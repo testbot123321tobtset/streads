@@ -2,6 +2,7 @@
 @import '_variables';
 @import '_mixins';
 @import 'core/container';
+@import 'core/tabpanel';
 
 $container-background-color: rgba(255, 255, 255, $default-theme-transparency-opacity);
 $container-border-width: 0;
@@ -48,6 +49,31 @@ $container-border-visible-edge-color: $default-border-color;
         .x-scroll-view {
 
             padding-top: 0 !important;
+        }
+    }
+}
+
+.photo-message-input-container {
+
+    .x-tabbar {
+        
+        @include no-background;
+        background-color: $tabbar-background-color !important;
+
+        .x-tab {
+
+            .x-button-icon {
+
+                &:before {
+                    
+                    color: $default-color-active !important;
+                }
+            }
+
+            .x-button-label {
+                
+                color: $default-color-active !important;
+            }
         }
     }
 }

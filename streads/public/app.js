@@ -143,6 +143,11 @@ Ext.application({
         if (X.XConfig.getDEBUG() && X.XConfig.getBOOTUP_DEBUG()) {
             console.log('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        
+        Ext.Msg.onBefore('show', function() {
+            var me = this;
+            console.log(this.buttonsToolbar);
+        });
 
 //        Destroy the #appLoadingIndicator element
         Ext.fly('circleG').destroy();

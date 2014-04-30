@@ -17,7 +17,7 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
         isWindow: true,
         layout: {
             type: 'vbox',
-            pack: 'start',
+            pack: 'center',
             align: 'stretch'
         },
         cls: 'photo-message-input-container',
@@ -40,11 +40,35 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                 xtype: 'image',
                 itemId: 'photoToBePosted',
                 cls: 'photo-to-be-posted',
-                height: 300,
-                width: '100%',
-                mode: 'background',
-                src: ''
-//                src: 'http://tomatofish.com/wp-content/uploads/2013/08/placeholder-tomatofish.jpg'
+                flex: 1,
+                mode: false,
+                src: 'http://placehold.it/100x200',
+                listeners: {
+                    painted: function(me) {
+                        var mySize = me.getSize(),
+                                myHeight = mySize.height,
+                                myWidth = mySize.width;
+
+                        var imgDom = me.down('img'),
+                                imgDomHeight = imgDom.dom.naturalHeight,
+                                imgDomWidth = imgDom.dom.naturalWidth,
+                                imgDomHeightToWidth = imgDomHeight/imgDomWidth;
+                        
+                        if (imgDomHeight > myHeight) {
+                            imgDomHeight = 0.9 * myHeight;
+                            imgDomWidth = imgDomHeight/imgDomHeightToWidth;
+                        }
+                        if (imgDomWidth > myWidth) {
+                            imgDomWidth = 0.9 * myWidth;
+                        }
+                        
+                        imgDom.setHeight(imgDomHeight);
+                        imgDom.setWidth(imgDomWidth);
+                        
+                        imgDom.setStyle('margin-top', (myHeight - imgDomHeight)/2 + 'px');
+                        imgDom.setStyle('margin-left', (myWidth - imgDomWidth)/2 + 'px');
+                    }
+                }
             },
             {
                 xtype: 'messageformpanel',
@@ -52,40 +76,36 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                 scrollable: true
             },
             {
-                xtype: 'toolbar',
+                xtype: 'tabbar',
                 docked: 'bottom',
                 layout: {
-                    type: 'hbox',
-                    pack: 'justify',
-                    align: 'stretch'
-                },
-                defaults: {
-                    flex: 1
+                    pack: 'center',
+                    align: 'center'
                 },
                 items: [
                     {
                         itemId: 'postMessage',
                         cls: 'messagebox-button',
-                        text: 'Post'
+                        iconCls: 'circledcheckmarkfilled',
+                        title: 'Post',
+                        listeners: {
+                            tap: function(button, e, eOpts) {
+                                button.up('#photoMessageInputContainer').onPostMessage();
+                            }
+                        }
                     },
                     {
                         itemId: 'cancelMessage',
                         cls: 'messagebox-button',
-                        text: 'Cancel'
+                        iconCls: 'circledclosefilled',
+                        title: 'Cancel',
+                        listeners: {
+                            tap: function(button, e, eOpts) {
+                                button.up('#photoMessageInputContainer').onCancelMessage();
+                            }
+                        }
                     }
                 ]
-            }
-        ],
-        listeners: [
-            {
-                fn: 'onPostMessage',
-                event: 'tap',
-                delegate: '#postMessage'
-            },
-            {
-                fn: 'onCancelMessage',
-                event: 'tap',
-                delegate: '#cancelMessage'
             }
         ]
     },
@@ -103,7 +123,7 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
         var me = this;
         me.setDimensionsToFillScreen().
                 createOptimizedLayeredEffect().
-                show(X.config.Config.getSHOW_ANIMATION_CONFIG());
+                show(X.config.Config.getSHOW_BY_POP_ANIMATION_CONFIG());
         Ext.Viewport.fireEvent('photomessageinputcontaineropen', {
             photoMessageInputContainer: me
         });
@@ -111,29 +131,38 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
     },
     close: function() {
         var me = this;
+        
         me.revertOptimizedLayeredEffect().
-                hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+                hide(X.config.Config.getHIDE_BY_POP_ANIMATION_CONFIG());
         Ext.Viewport.fireEvent('photomessageinputcontainerclose', {
             photoMessageInputContainer: me
         });
+        
+//        Delay this a bit so the UI doesn't abruptly show the text's disappearance
+//        Delaying this will reset the form panel after it hides
+        Ext.create('Ext.util.DelayedTask', function() {
+            me.down('messageformpanel').
+                    reset();
+        }).
+                delay(1);
+                        
+        return me;
+    },
+    setImageUsingBase64Data: function(imageData) {
+        var me = this;
+        if (!Ext.isEmpty(imageData)) {
+            me.down('image').
+                    setSrc('data:image/jpeg;base64,' + imageData);
+        }
+        return me;
+    },
+    setImageUsingFileUrl: function(imageFileUrl) {
+        var me = this;
+        if (Ext.isString(imageFileUrl)) {
+            me.down('image').
+                    setSrc(imageFileUrl);
+
+        }
         return me;
     }
-//    ,
-//    setImageUsingBase64Data: function(imageData) {
-//        var me = this;
-//        if (!Ext.isEmpty(imageData)) {
-//            me.down('image').
-//                    setSrc('data:image/jpeg;base64,' + imageData);
-//        }
-//        return me;
-//    },
-//    setImageUsingFileUrl: function(imageFileUrl) {
-//        var me = this;
-//        if (Ext.isString(imageFileUrl)) {
-//            me.down('image').
-//                    setSrc(imageFileUrl);
-//
-//        }
-//        return me;
-//    }
 });

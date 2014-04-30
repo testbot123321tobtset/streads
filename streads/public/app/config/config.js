@@ -2,8 +2,8 @@ Ext.define('X.config.Config', {
     singleton: true,
     config: {
         // Server Config
-//        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
-        API_ENDPOINT: 'http://localhost:4000/',
+        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
+//        API_ENDPOINT: 'http://localhost:4000/',
         
         // TO DO: Update these URLs when you have the UIs
         DEFAULT_LOGIN_PAGE: 'user/login',
@@ -117,6 +117,13 @@ Ext.define('X.config.Config', {
         PG_READ_DEVICE_CONTACT_FIELDS: [
             'id', 'displayName', 'name', 'nickname', 'phoneNumbers', 'emails', 'photos'
         ],
+//        https://github.com/apache/cordova-plugin-camera/blob/master/doc/index.md
+        PG_CAMERA: {
+            ENCODING_TYPE: 0,
+            PICTURE_SOURCE_TYPE: 1,
+            DESTINATION_TYPE: 1,
+            MEDIA_TYPE: 2
+        },
         
 //        Messaging
         TEXT_MESSAGE_MAXIMUM_CHARACTERS: 140
