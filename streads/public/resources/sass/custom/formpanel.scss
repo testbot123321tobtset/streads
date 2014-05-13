@@ -51,20 +51,10 @@
         
         .message-textarea-field {
             
-            textarea {
-                
-                text-align: center !important;
-            }
-            
             &:before {
                 
                 @include no-border;
             }
-        }
-        
-        .message-textarea-maximum-characters-left-label {
-            
-            text-align: center;
         }
     }
 }

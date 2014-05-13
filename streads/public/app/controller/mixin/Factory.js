@@ -203,84 +203,70 @@ Ext.define('X.controller.mixin.Factory', {
         return me;
     },
     // User
-    generatePageUserRoot: function() {
+    generateUserRootPageTabPanel: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generatePageUserRoot(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.controller.mixin.Factory: generateUserRootPageTabPanel(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         
-        var pageUserRoot = me.getPageUserRoot();
-        if (!Ext.isObject(pageUserRoot)) {
-            pageUserRoot = Ext.Viewport.removeAll(false, false).
-                    add(me.createView({
-                        xtype: 'pageuserroot'
-                    }));
-        }
+        var pageUserRoot = Ext.isObject(me.getPageUserRoot()) ? me.getPageUserRoot() : Ext.Viewport.removeAll(false, false).
+                add(me.createView({
+                    xtype: 'pageuserroot'
+                }));
         
         return pageUserRoot.open();
     },
     // User :: More
-    generateAndFillViewportWithUserRootMoreWindow: function() {
+    generateUserRootPageTabPanelAndActivateUserMoreTab: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.controller.mixin.Factory: generateUserRootPageTabPanelAndActivateUserMoreTab(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         
-        var pageUserRoot = me.generatePageUserRoot();
+        var pageUserRoot = me.generateUserRootPageTabPanel();
         pageUserRoot.setActiveItem('#userMore');
         
         return pageUserRoot;
     },
     // User :: More :: Account
-    generateAndFillViewportWithUserRootMoreAccountWindow: function() {
+    generateUserMoreTabPanelAndActivateUserAccountTab: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreAccountWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.controller.mixin.Factory: generateUserMoreTabPanelAndActivateUserAccountTab(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         
-        var pageUserRoot = me.generateAndFillViewportWithUserRootMoreWindow();
-        pageUserRoot.down('#userMoreTabPanel').
+        var userMoreTabPanel = me.generateUserRootPageTabPanelAndActivateUserMoreTab().
+                down('#userMoreTabPanel');
+        userMoreTabPanel.
                 setActiveItem('#userAccount');
         
-        return pageUserRoot;
-    },
-    // User :: More :: Logout
-    generateAndFillViewportWithUserRootMoreLogoutWindow: function() {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootMoreLogoutWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        
-        var pageUserRoot = me.generateAndFillViewportWithUserRootMoreWindow();
-        pageUserRoot.down('#userMoreTabPanel').
-                setActiveItem('#userLogout');
-        
-        return pageUserRoot;
+        return userMoreTabPanel;
     },
     // User :: Groups
-    generateAndFillViewportWithUserRootGroupsWindow: function() {
+    generateUserRootPageTabPanelAndActivateUserGroupsTab: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithUserRootGroupsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.controller.mixin.Factory: generateUserRootPageTabPanelAndActivateUserGroupsTab(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         
-        var pageUserRoot = me.generatePageUserRoot();
+        var pageUserRoot = me.generateUserRootPageTabPanel();
         pageUserRoot.setActiveItem('#userGroups');
         
         return pageUserRoot;
     },
     // User :: Groups :: Feeds
-    generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow: function(options) {
+    generateUserGroupsTabPanelAndActivateUserGroupFeedsTab: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillUserRootGroupsWindowWithUserGroupFeedsWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.controller.mixin.Factory: generateUserGroupsTabPanelAndActivateUserGroupFeedsTab(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         
-        var pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow();
-        pageUserRoot.down('#userGroupsTabPanel').
+        var userGroupsTabPanel = me.generateUserRootPageTabPanelAndActivateUserGroupsTab().
+                down('#userGroupsTabPanel');
+        userGroupsTabPanel.
                 setActiveItem('#userGroupFeeds');
 
-        return me;
+        return userGroupsTabPanel;
     },
     // User :: Groups :: Feed :: Data window
     generateAndFillViewportWithGroupDataWindow: function(options) {
@@ -288,80 +274,58 @@ Ext.define('X.controller.mixin.Factory', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupDataWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        
         options = Ext.isObject(options) ? options : false;
         if (options) {
             var group = ('group' in options && Ext.isObject(options.group)) ? options.group : false;
-            var showContainer = ('showContainer' in options && Ext.isBoolean(options.showContainer)) ? options.showContainer : true;
-            var createOptimizedLayeredEffect = ('createOptimizedLayeredEffect' in options && Ext.isBoolean(options.createOptimizedLayeredEffect)) ? options.createOptimizedLayeredEffect : true;
-            var userGroupContainer = Ext.isObject(me.getUserGroupContainer()) ? me.getUserGroupContainer() : me.createView({
+            var userGroupContainer = Ext.isObject(me.getUserGroupContainer()) ? me.getUserGroupContainer() : Ext.Viewport.add(me.createView({
                 xtype: 'usergroupcontainer'
-            });
-            if (showContainer) {
-                if (X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userGroupContainer.getDepthBasedOnOffset()) {
-                    userGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
-                }
-                else {
-                    userGroupContainer.setDimensionsToFillScreen();
-                }
-                Ext.Viewport.add(userGroupContainer);
-                if (createOptimizedLayeredEffect) {
-                    userGroupContainer.createOptimizedLayeredEffect();
-                }
-                userGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
-                userGroupContainer.setRecordRecursive(group);
-            }
-            return me;
+            }));
+            userGroupContainer.setDimensions().
+                    open().
+                    setRecordRecursive(group);
+            
+            return userGroupContainer;
         }
+        
         return false;
     },
     // User :: Groups :: Feed edit
-    generateAndFillViewportWithGroupEditFormPanel: function(options) {
+    generateAndFillViewportWithEditGroupWindow: function(options) {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithGroupEditFormPanel(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.controller.mixin.Factory: generateAndFillViewportWithEditGroupWindow(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (Ext.isObject(options) && Ext.isObject(options.group)) {
-            var group = options.group;
-            var showContainer = Ext.isBoolean(options.showContainer) ? options.showContainer : true;
-            var userEditGroupContainer = me.createView({
+        
+        options = Ext.isObject(options) ? options : false;
+        if (options) {
+            var group = ('group' in options && Ext.isObject(options.group)) ? options.group : false;
+            var userEditGroupContainer = Ext.isObject(me.getUserEditGroupContainer()) ? me.getUserEditGroupContainer() : Ext.Viewport.add(me.createView({
                 xtype: 'usereditgroupcontainer'
-            });
-            if (showContainer) {
-                if (X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && userEditGroupContainer.getDepthBasedOnOffset()) {
-                    userEditGroupContainer.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(Ext.Viewport);
-                }
-                else {
-                    userEditGroupContainer.setDimensionsToFillScreen();
-                }
-                userEditGroupContainer.createOptimizedLayeredEffect();
-                Ext.Viewport.add(userEditGroupContainer);
-                userEditGroupContainer.show(X.config.Config.getSHOW_ANIMATION_CONFIG());
-                userEditGroupContainer.setRecordRecursive(group);
-            }
+            }));
+            userEditGroupContainer.setDimensions().
+                    open().
+                    setRecordRecursive(group).
+                    setReadOnly(!group.isCreatedByMe());
+            
+            return userEditGroupContainer;
         }
+        
         return me;
     },
     // User :: Groups :: Create
-    activateUserAddGroupFormPanel: function(options) {
+    generateUserGroupsTabPanelAndActivateUserAddGroupTab: function() {
         var me = this;
         if (me.getDebug()) {
-            console.log('Debug: X.controller.mixin.Factory: activateUserAddGroupFormPanel()');
+            console.log('Debug: X.controller.mixin.Factory: generateUserGroupsTabPanelAndActivateUserAddGroupTab()');
         }
-
-        var options = Ext.isObject(options) ? options : false;
-
-        // Make sure pageUserRoot exists
-        var pageUserRoot = me.getPageUserRoot();
-        if (!Ext.isObject(pageUserRoot) || (Ext.isObject(pageUserRoot) && pageUserRoot.isHidden())) {
-            pageUserRoot = me.generateAndFillViewportWithUserRootGroupsWindow().
-                    getPageUserRoot();
-        }
-        pageUserRoot.setActiveItem('#userGroups');
-        // If userGroups exists, then userGroupsTabPanel/usergroupstabpanel is guaranteed to exist
-        pageUserRoot.down('#userGroupsTabPanel').
+        
+        var userGroupsTabPanel = me.generateUserRootPageTabPanelAndActivateUserGroupsTab().
+                down('#userGroupsTabPanel');
+        userGroupsTabPanel.
                 setActiveItem('#userAddGroups');
 
-        return me;
+        return userGroupsTabPanel;
     },
     // Camera :: Photo message input
     generateAndFillViewportWithPhotoMessageInputContainerWindow: function(options) {

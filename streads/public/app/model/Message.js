@@ -1,4 +1,4 @@
-Ext.define('X.model.AuthenticatedUser', {
+Ext.define('X.model.Message', {
     extend: 'X.model.Application',
     config: {
         fields: [
@@ -18,34 +18,17 @@ Ext.define('X.model.AuthenticatedUser', {
                 persist: false
             },
             {
-                name: 'usernameEmail',
-                type: 'string'
+                name: 'createdBy'
             },
             {
-                name: 'firstName',
-                type: 'string'
-            },
-            {
-                name: 'lastName',
-                type: 'string'
-            },
-            {
-                name: 'fullName',
-                type: 'string',
-                convert: function(value, record) {
-                    return (Ext.isString(record.get('firstName')) && Ext.isString(record.get('lastName'))) ? record.get('firstName') + ' ' + record.get('lastName') : null;
-                },
-                persist: false
+                name: 'groupId'
             }
+            
         ],
-        hasMany: [
+        belongsTo: [
             {
-//                This is a list of groups that the authenticated user has created
-//                There can also be groups that the authenticated user had not created but is a part of
-                model: 'X.model.Group'
-            },
-            {
-                model: 'X.model.Friend'
+                model: 'X.model.Group',
+                foreignKey: 'groupId'
             }
         ],
         validations: [
@@ -54,22 +37,26 @@ Ext.define('X.model.AuthenticatedUser', {
                 field: 'id'
             },
             {
-                type: 'email',
-                field: 'usernameEmail'
+                type: 'presence',
+                field: 'createdBy'
+            },
+            {
+                type: 'presence',
+                field: 'groupId'
             }
         ],
         proxy: {
             type: 'rest',
             idParam: 'id',
             appendId: false,
-            url: X.config.Config.getAPI_ENDPOINT() + 'user',
+            url: X.config.Config.getAPI_ENDPOINT() + 'user/groups/',
             batchActions: true,
             reader: {
                 type: 'json',
                 rootProperty: 'result'
             },
             exception: function(proxy, response, operation, eOpts) {
-                Ext.Viewport.fireEvent('authenticateduserproxyexception', {
+                Ext.Viewport.fireEvent('friendproxyexception', {
                     proxy: proxy,
                     response: response,
                     operation: operation

@@ -18,6 +18,9 @@ Ext.define('X.model.Friend', {
                 persist: false
             },
             {
+                name: 'friendedId'
+            },
+            {
                 name: 'usernameEmail',
                 type: 'string'
             },
@@ -38,6 +41,15 @@ Ext.define('X.model.Friend', {
                 persist: false
             }
         ],
+        hasMany: [
+            {
+//                We only show groups that are either created by the authenticated user
+//                or ones that the authenticated user is a member of. But, authenticated user
+//                can only be part of groups that are either created by the authenticated user
+//                himself/herself or created by his/her friends. So a friend can have groups as well
+                model: 'X.model.Group'
+            }
+        ],
         belongsTo: [
             {
                 model: 'X.model.AuthenticatedUser',
@@ -48,6 +60,10 @@ Ext.define('X.model.Friend', {
             {
                 type: 'presence',
                 field: 'id'
+            },
+            {
+                type: 'presence',
+                field: 'friendedId'
             },
             {
                 type: 'email',

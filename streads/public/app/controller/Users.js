@@ -23,7 +23,7 @@ Ext.define('X.controller.Users', {
             showAuthenticatedMoreAccountInformation: [
                 'checkLoginAndResumeIfExistsOrRedirectIfNotExists'
             ],
-            showAuthenticatedMoreLogoutInformation: [
+            doLogout: [
                 'checkLoginAndResumeIfExistsOrRedirectIfNotExists'
             ]
         },
@@ -33,7 +33,7 @@ Ext.define('X.controller.Users', {
             'user/login': 'showLogin',
             // Authenticated
             'user/profile/more/account': 'showAuthenticatedMoreAccountInformation',
-            'user/profile/more/logout': 'showAuthenticatedMoreLogoutInformation'
+            'user/profile/more/logout': 'doLogout'
         },
         control: {
             viewport: {
@@ -540,17 +540,10 @@ Ext.define('X.controller.Users', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Users.showAuthenticatedMoreAccountInformation(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        me.generateAndFillViewportWithUserRootMoreAccountWindow();
+        me.generateUserMoreTabPanelAndActivateUserAccountTab();
         var userMoreTabPanel = me.getUserMoreTabPanel();
         userMoreTabPanel.setRecordRecursive(X.authenticatedEntity);
         return me;
-    },
-    showAuthenticatedMoreLogoutInformation: function() {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.showAuthenticatedMoreLogoutInformation(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        return me.generateAndFillViewportWithUserRootMoreLogoutWindow();
     },
     doUpdateAuthenticatedUser: function(options) {
         var me = this;

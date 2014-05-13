@@ -102,7 +102,9 @@ Ext.application({
     models: [
         'User',
         'AuthenticatedUser',
+        'Friend',
         'Group',
+        'Message',
         'DeviceContact'
     ],
     stores: [
@@ -118,7 +120,8 @@ Ext.application({
         'Groups',
         'Messages'
     ],
-    views: [
+    views: [,
+        'core.Msg',
         'page.Login',
         'page.user.Root'
     ],
@@ -144,9 +147,12 @@ Ext.application({
             console.log('Debug: Ext.application.launch(): ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         
-        Ext.Msg.onBefore('show', function() {
-            var me = this;
-            console.log(this.buttonsToolbar);
+//        Ext.Msg customizations
+        Ext.Msg.defaultAllowedConfig.bottom = 0;
+        Ext.Msg.defaultAllowedConfig.showAnimation = X.config.Config.getSHOW_ANIMATION_FROM_UP_CONFIG();
+        Ext.Msg.defaultAllowedConfig.hideAnimation = X.config.Config.getHIDE_ANIMATION_FROM_DOWN_CONFIG();
+        Ext.Msg.on('painted', function() {
+            Ext.Msg.setZIndex(X.config.Config.getZINDEX_LEVEL_5());
         });
 
 //        Destroy the #appLoadingIndicator element

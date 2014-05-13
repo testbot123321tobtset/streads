@@ -40,13 +40,18 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                 docked: 'top',
                 top: 0,
                 cls: 'x-stretched x-docked-top x-full-width user-edit-group-container-toolbar',
+                layout: {
+                    type: 'hbox',
+                    align: 'center',
+                    pack: 'center'
+                },
                 title: 'Edit',
                 items: [
                     {
                         xtype: 'button',
                         itemId: 'backButton',
                         cls: 'button-stacked back-button',
-                        iconCls: 'arrowdown',
+                        iconCls: 'close',
                         text: 'Close',
                         listeners: {
                             tap: function(button, e, eOpts) {
@@ -67,6 +72,33 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                             }
                         }
                     }
+//                    ,
+//                    {
+//                        xtype: 'button',
+//                        itemId: 'removeMeSetButton',
+//                        cls: 'button-stacked delete-button',
+//                        align: 'right',
+//                        iconCls: 'close',
+//                        text: 'RO',
+//                        listeners: {
+//                            tap: function(button, e, eOpts) {
+//                                button.up('#userEditGroupContainer').setReadOnly(true);
+//                            }
+//                        }
+//                    },
+//                    {
+//                        xtype: 'button',
+//                        itemId: 'removeMeResetButton',
+//                        cls: 'button-stacked delete-button',
+//                        align: 'right',
+//                        iconCls: 'close',
+//                        text: 'Reset RO',
+//                        listeners: {
+//                            tap: function(button, e, eOpts) {
+//                                button.up('#userEditGroupContainer').setReadOnly(false);
+//                            }
+//                        }
+//                    }
                 ]
             },
             {
@@ -75,6 +107,11 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
                 scrollable: true
             }
         ]
+    },
+    onShow: function() {
+        var me = this;
+        me.setTitleToGroupTitle();
+        me.callParent(arguments);
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
@@ -86,11 +123,6 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
         me.down('usergroupeditformpanel').fireEvent('deletebuttontap', button, e);
         me.callParent(arguments);
         return me;
-    },
-    onShow: function() {
-        var me = this;
-        me.setTitleToGroupTitle();
-        me.callParent(arguments);
     },
     onUpdateData: function() {
         var me = this;
@@ -104,5 +136,23 @@ Ext.define('X.view.plugandplay.UserEditGroupContainer', {
     setTitleToGroupTitle: function() {
         var me = this;
         me.down('#userEditGroupContainerToolbar').setTitle(me.getRecord().get('title'));
+        return me;
+    },
+    setReadOnly: function(isReadOnly) {
+        var me = this;
+
+        isReadOnly = Ext.isBoolean(isReadOnly) ? isReadOnly : false;
+        if (isReadOnly) {
+            me.down('#deleteButton').
+                    hide();
+        }
+        else {
+            me.down('#deleteButton').
+                    show();
+        }
+        me.down('usergroupeditformpanel').
+                setReadOnly(isReadOnly);
+
+        return me;
     }
 });

@@ -767,6 +767,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.model.DeviceContact": [],
   "X.model.Friend": [],
   "X.model.Group": [],
+  "X.model.Message": [],
   "X.model.User": [],
   "X.model.validation.UserLogin": [],
   "X.profile.Base": [],
@@ -774,12 +775,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.store.Application": [],
   "X.store.AuthenticatedUser": [],
   "X.store.DeviceContacts": [],
-  "X.store.Friends": [],
   "X.store.Groups": [],
   "X.store.Users": [],
   "X.view.Main": [],
   "X.view.core.Container": [],
   "X.view.core.FormPanel": [],
+  "X.view.core.Msg": [],
   "X.view.core.Panel": [],
   "X.view.page.Login": [],
   "X.view.page.user.Root": [],
@@ -788,8 +789,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "X.view.plugandplay.DeviceContactsUsersList": [],
   "X.view.plugandplay.MessageFormPanel": [],
   "X.view.plugandplay.PhotoMessageInputContainer": [],
-  "X.view.plugandplay.PhotoMessageInputFormPanel": [],
-  "X.view.plugandplay.TextTriggerPanel": [],
   "X.view.plugandplay.UserAccountFormPanel": [],
   "X.view.plugandplay.UserEditGroupContainer": [],
   "X.view.plugandplay.UserFriendFormPanel": [],
@@ -1778,6 +1777,7 @@ Ext.ClassManager.addNameAliasMappings({
   "X.model.DeviceContact": [],
   "X.model.Friend": [],
   "X.model.Group": [],
+  "X.model.Message": [],
   "X.model.User": [],
   "X.model.validation.UserLogin": [],
   "X.profile.Base": [],
@@ -1785,7 +1785,6 @@ Ext.ClassManager.addNameAliasMappings({
   "X.store.Application": [],
   "X.store.AuthenticatedUser": [],
   "X.store.DeviceContacts": [],
-  "X.store.Friends": [],
   "X.store.Groups": [],
   "X.store.Users": [],
   "X.view.Main": [
@@ -1796,6 +1795,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "X.view.core.FormPanel": [
     "widget.coreformpanel"
+  ],
+  "X.view.core.Msg": [
+    "widget.coremsg"
   ],
   "X.view.core.Panel": [
     "widget.corepanel"
@@ -1818,12 +1820,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "X.view.plugandplay.PhotoMessageInputContainer": [
     "widget.photomessageinputcontainer"
-  ],
-  "X.view.plugandplay.PhotoMessageInputFormPanel": [
-    "widget.photomessageinputformpanel"
-  ],
-  "X.view.plugandplay.TextTriggerPanel": [
-    "widget.texttriggerpanel"
   ],
   "X.view.plugandplay.UserAccountFormPanel": [
     "widget.useraccountformpanel"

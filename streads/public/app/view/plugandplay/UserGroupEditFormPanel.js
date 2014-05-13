@@ -1,6 +1,7 @@
 Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
     extend: 'X.view.core.FormPanel',
     requires: [
+        'X.view.core.Msg',
         'Ext.form.FieldSet',
         'Ext.dataview.List',
         'X.view.plugandplay.UserGroupsList'
@@ -50,7 +51,7 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
                 itemId: 'usersListContainer',
                 flex: 1,
                 layout: 'fit',
-                title: 'Choose friends to add'
+                title: X.config.Config.getLABELS().SELECT_FRIENDS_TO_ADD_TO_GROUP
             }
 //            ,
 //            {
@@ -84,17 +85,20 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
     },
     resetAllFields: function() {
         var me = this;
-        me.resetTitleField().resetDescriptionField();
+        me.resetTitleField().
+                resetDescriptionField();
         return me;
     },
     resetTitleField: function() {
         var me = this;
-        me.down('#titleTextfield').setValue('');
+        me.down('#titleTextfield').
+                setValue('');
         return me;
     },
     resetDescriptionField: function() {
         var me = this;
-        me.down('#descriptionTextfield').setValue('');
+        me.down('#descriptionTextfield').
+                setValue('');
         return me;
     },
     onGroupDataEdit: function(field, newValue, oldValue, eOpts) {
@@ -132,7 +136,8 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
         var me = this;
         Ext.Msg.confirm(
                 X.XConfig.getMESSAGES().MESSAGE_BOX_CONFIRM_TITLE,
-                'Do you really want to delete ' + me.getRecord().get('title') + '?',
+                'Do you really want to delete ' + me.getRecord().
+                get('title') + '?',
                 function(buttonId, value) {
                     if (buttonId === 'yes') {
                         Ext.Viewport.fireEvent('destroygroup', {
@@ -143,6 +148,29 @@ Ext.define('X.view.plugandplay.UserGroupEditFormPanel', {
                     }
                 }
         );
+        return me;
+    },
+    setReadOnly: function(isReadOnly) {
+        var me = this;
+        
+        isReadOnly = Ext.isBoolean(isReadOnly) ? isReadOnly : true;
+        var fields = me.query('field');
+        var noOfFieldsWithReadOnlyAttribute = fields.length;
+        if (noOfFieldsWithReadOnlyAttribute > 0) {
+            var fieldIndex = 0;
+            for (; fieldIndex < noOfFieldsWithReadOnlyAttribute; fieldIndex++) {
+                var thisField = fields[fieldIndex];
+                if ('setReadOnly' in thisField) {
+                    thisField.setReadOnly(isReadOnly);
+                }
+            }
+        }
+        var usersListContainer = me.down('#usersListContainer');
+        if (Ext.isObject(usersListContainer)) {
+            var listLabel = isReadOnly ? X.config.Config.getLABELS().SEE_FRIENDS_IN_THE_GROUP : X.config.Config.getLABELS().SELECT_FRIENDS_TO_ADD_TO_GROUP;
+            usersListContainer.setTitle(listLabel);
+        }
+        
         return me;
     }
 });

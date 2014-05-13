@@ -13,6 +13,10 @@ Ext.define('X.view.core.Container', {
                 event: 'painted'
             },
             {
+                fn: 'onBeforeShow',
+                event: 'beforeshow'
+            },
+            {
                 fn: 'onShow',
                 event: 'show'
             },
@@ -24,10 +28,10 @@ Ext.define('X.view.core.Container', {
                 fn: 'onHide',
                 event: 'hide'
             },
-            {
-                fn: 'onSwipeDown',
-                event: 'swipedown'
-            },
+//            {
+//                fn: 'onSwipeDown',
+//                event: 'swipedown'
+//            },
             {
                 fn: 'onUpdateData',
                 event: 'updatedata'
@@ -39,9 +43,16 @@ Ext.define('X.view.core.Container', {
         me.onBefore('hide', function() {
             me.fireEvent('beforehide', me);
         });
+        me.onBefore('show', function() {
+            me.fireEvent('beforeshow', me);
+        });
         return me;
     },
     onPainted: function() {
+        var me = this;
+        return me;
+    },
+    onBeforeShow: function() {
         var me = this;
         return me;
     },
@@ -58,20 +69,30 @@ Ext.define('X.view.core.Container', {
         return me;
     },
     onSwipeDown: function(me, e) {
-        me.revertOptimizedLayeredEffect().
-                hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+        me.close();
         return me;
-    },
-    onUpdateData: function() {
-        return this;
     },
     onBackButtonTap: function(button, e, eOpts) {
         var me = this;
-        me.revertOptimizedLayeredEffect().
-                hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+        me.close();
         return me;
     },
     onDeleteButtonTap: function(button, e, eOpts) {
         return this;
+    },
+    onUpdateData: function() {
+        return this;
+    },
+    open: function() {
+        var me = this;
+        me.createOptimizedLayeredEffect().
+                show(X.config.Config.getSHOW_ANIMATION_CONFIG());
+        return me;
+    },
+    close: function() {
+        var me = this;
+        me.revertOptimizedLayeredEffect().
+                hide(X.config.Config.getHIDE_ANIMATION_CONFIG());
+        return me;
     }
 });

@@ -86,7 +86,7 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                     {
                         itemId: 'postMessage',
                         cls: 'messagebox-button',
-                        iconCls: 'circledcheckmarkfilled',
+                        iconCls: 'checkmark',
                         title: 'Post',
                         listeners: {
                             tap: function(button, e, eOpts) {
@@ -97,7 +97,7 @@ Ext.define('X.view.plugandplay.PhotoMessageInputContainer', {
                     {
                         itemId: 'cancelMessage',
                         cls: 'messagebox-button',
-                        iconCls: 'circledclosefilled',
+                        iconCls: 'close',
                         title: 'Cancel',
                         listeners: {
                             tap: function(button, e, eOpts) {

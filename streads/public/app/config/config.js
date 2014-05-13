@@ -2,8 +2,8 @@ Ext.define('X.config.Config', {
     singleton: true,
     config: {
         // Server Config
-        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
-//        API_ENDPOINT: 'http://localhost:4000/',
+//        API_ENDPOINT: 'http://deepakkghosh.streads.jit.su/',
+        API_ENDPOINT: 'http://localhost:4000/',
         
         // TO DO: Update these URLs when you have the UIs
         DEFAULT_LOGIN_PAGE: 'user/login',
@@ -59,6 +59,12 @@ Ext.define('X.config.Config', {
             //            'usergroupcontainer',
             //            'usereditgroupcontainer'
         ],
+        // Z indices
+        ZINDEX_LEVEL_5: 50,
+        ZINDEX_LEVEL_4: 49,
+        ZINDEX_LEVEL_3: 48,
+        ZINDEX_LEVEL_2: 47,
+        ZINDEX_LEVEL_1: 46,
         // Should depth be represented by offset either vertically or horizontally
         LAYER_DEPTH_BASED_ON_OFFSET: false,
         // Every new window-like floating container will reduce in dimensions by this much pixels
@@ -86,14 +92,24 @@ Ext.define('X.config.Config', {
             duration: 800
         },
         SHOW_ANIMATION_CONFIG: {
+            type: 'pop',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        SHOW_ANIMATION_FROM_UP_CONFIG: {
             type: 'slide',
-            direction: 'up',
+            direction: 'down',
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
         },
         HIDE_ANIMATION_CONFIG: {
+            type: 'popOut',
+            easing: 'cubic-bezier(0,.23,0,1)',
+            duration: 800
+        },
+        HIDE_ANIMATION_FROM_DOWN_CONFIG: {
             type: 'slideOut',
-            direction: 'down',
+            direction: 'up',
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
         },
@@ -126,7 +142,15 @@ Ext.define('X.config.Config', {
         },
         
 //        Messaging
-        TEXT_MESSAGE_MAXIMUM_CHARACTERS: 140
+        TEXT_MESSAGE_MAXIMUM_CHARACTERS: 140,
+        TEXT_MESSAGE_MAXIMUM_CHARACTERS_MESSAGE_POSTFIX: ' characters left',
+        TEXT_MESSAGE_PLACEHOLDER: 'Hoho',
+        
+//        Labels
+        LABELS: {
+            SELECT_FRIENDS_TO_ADD_TO_GROUP: 'Choose friends to add',
+            SEE_FRIENDS_IN_THE_GROUP: 'Members'
+        }
     },
     constructor: function(config) {
         this.initConfig(config);

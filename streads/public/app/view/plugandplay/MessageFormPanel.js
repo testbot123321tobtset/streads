@@ -25,7 +25,7 @@ Ext.define('X.view.plugandplay.MessageFormPanel', {
                         cls: 'message-textarea-field',
                         flex: 1,
                         maxLength: X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS(),
-                        placeHolder: 'Haha',
+                        placeHolder: X.config.Config.getTEXT_MESSAGE_PLACEHOLDER(),
                         listeners: {
                             keyup: function(button, e, eOpts) {
                                 button.up('#messageFormPanel').onMessageTextareaFieldKeyup(button, e, eOpts);
@@ -39,7 +39,7 @@ Ext.define('X.view.plugandplay.MessageFormPanel', {
                         xtype: 'label',
                         itemId: 'messageTextareaMaximumCharactersLeftLabel',
                         cls: 'message-textarea-maximum-characters-left-label',
-                        html: X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS(),
+                        html: X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS() + X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS_MESSAGE_POSTFIX(),
                         flex: 1
                     }
                 ]
@@ -58,7 +58,7 @@ Ext.define('X.view.plugandplay.MessageFormPanel', {
     },
     updateMaximumCharactersLeftLabel: function(field, e, eOpts) {
         var me = this;
-        me.down('#messageTextareaMaximumCharactersLeftLabel').setHtml(X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS() - field.getValue().length);
+        me.down('#messageTextareaMaximumCharactersLeftLabel').setHtml(X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS() - field.getValue().length + X.config.Config.getTEXT_MESSAGE_MAXIMUM_CHARACTERS_MESSAGE_POSTFIX());
         return me;
     }
 });

@@ -2,6 +2,11 @@
 @import '_variables';
 @import '_mixins';
 
+$field-label-font-size: 0.8em;
+$field-label-font-color: $default-font-color;
+$field-label-font-style: italic;
+$field-label-padding: .7em .4em .4em .4em;
+
 .x-panel.x-select-overlay {
     
     padding: 0px;
@@ -54,4 +59,15 @@
         
         color: lighten($default-theme-color, $default-color-variance);
     }
+}
+
+.x-label {
+    
+    color: $field-label-font-color !important;
+    
+    font-size: $field-label-font-size !important;
+    
+    font-style: $field-label-font-style !important;
+    
+    padding: $field-label-padding !important;
 }

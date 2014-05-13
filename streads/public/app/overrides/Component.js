@@ -3,26 +3,29 @@ Ext.define('overrides.Component', {
     // http://docs.sencha.com/touch/2.3.0/#!/api/Ext.Component-method-setRecord
     setRecordRecursive: function(record) {
         var me = this;
-        if (typeof me.setRecord === 'function') {
-            me.setRecord(record);
+        if (Ext.isObject(record)) {
+            if ('setRecord' in me && Ext.isFunction(me.setRecord)) {
+                me.setRecord(record);
+            }
+            if ('getItems' in me && Ext.isFunction(me.getItems)) {
+                me.getItems().
+                        each(function(item) {
+                            me.setRecordRecursive.apply(item, [
+                                record
+                            ]);
+                        });
+            }
         }
-        if (typeof me.getItems === 'function') {
-            me.getItems().
-                    each(function(item) {
-                        me.setRecordRecursive.apply(item, [
-                            record
-                        ]);
-                    });
-        }
+        return me;
     },
     setDimensionsToFillScreen: function() {
         var me = this;
         var referenceComponent = Ext.Viewport;
-        if(Ext.isObject(referenceComponent)) {
+        if (Ext.isObject(referenceComponent)) {
             var referenceComponentSize = referenceComponent.getSize();
             var referenceComponentWidth = referenceComponentSize.width;
             var referenceComponentHeight = referenceComponentSize.height;
-            
+
             me.setWidth(referenceComponentWidth);
             me.setHeight(referenceComponentHeight);
         }
@@ -34,20 +37,31 @@ Ext.define('overrides.Component', {
     setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer: function(referenceComponent) {
         var me = this;
         referenceComponent = Ext.isObject(referenceComponent) ? referenceComponent : Ext.Viewport;
-        if(Ext.isObject(referenceComponent) && Ext.isNumber(me.getLayer())) {
+        if (Ext.isObject(referenceComponent) && Ext.isNumber(me.getLayer())) {
             var myLayer = me.getLayer();
             var referenceComponentSize = referenceComponent.getSize();
             var referenceComponentWidth = referenceComponentSize.width;
             var referenceComponentHeight = referenceComponentSize.height;
             var layerHorizontalOffset = X.config.Config.getLAYER_HORIZONTAL_OFFSET();
             var layerVerticalOffset = X.config.Config.getLAYER_VERTICAL_OFFSET();
-            
+
             me.setWidth(referenceComponentWidth - (2 * myLayer * layerHorizontalOffset));
             me.setLeft(myLayer * layerHorizontalOffset);
             me.setRight(myLayer * layerHorizontalOffset);
-            
+
             me.setHeight(referenceComponentHeight - (myLayer * layerVerticalOffset));
             me.setTop(myLayer * layerVerticalOffset);
+        }
+        return me;
+    },
+    setDimensions: function(referenceComponent) {
+        var me = this;
+        referenceComponent = Ext.isObject(referenceComponent) ? referenceComponent : Ext.Viewport;
+        if (X.config.Config.getLAYER_DEPTH_BASED_ON_OFFSET() && me.getDepthBasedOnOffset()) {
+            me.setDimensionsBasedOnDepthOffsetRelativeToGivenComponentAdjustingForLayer(referenceComponent);
+        }
+        else {
+            me.setDimensionsToFillScreen();
         }
         return me;
     },
@@ -145,6 +159,34 @@ Ext.define('overrides.Component', {
             });
             if (Ext.isObject(componentToBeUnblurred)) {
                 componentToBeUnblurred.removeCls('blurred-background');
+            }
+        }
+        return me;
+    },
+    open: function() {
+        return this.setDimensionsToFillScreen().
+                createOptimizedLayeredEffect().
+                show(X.config.Config.getSHOW_BY_POP_ANIMATION_CONFIG());
+    },
+    close: function() {
+        return this.revertOptimizedLayeredEffect().
+                hide(X.config.Config.getHIDE_BY_POP_ANIMATION_CONFIG());
+    },
+    closeEverythingAboveMe: function() {
+        var me = this;
+        if ('getZIndex' in me) {
+            var myZIndex = me.getZIndex();
+            var viewportItems = Ext.Viewport.query('corecontainer, corepanel');
+            var noOfViewportItems = viewportItems.length;
+            var viewportItemsIndex = 0;
+            for (; viewportItemsIndex < noOfViewportItems; viewportItemsIndex++) {
+                var thisViewportItem = viewportItems[viewportItemsIndex];
+                if ('getZIndex' in thisViewportItem) {
+                    var thisViewportItemZIndex = thisViewportItem.getZIndex();
+                    if (Ext.isNumeric(thisViewportItemZIndex) && thisViewportItemZIndex > myZIndex && thisViewportItem.getItemId() !== 'cameraTriggerPanel' && !thisViewportItem.isHidden()) {
+                        thisViewportItem.close();
+                    }
+                }
             }
         }
         return me;

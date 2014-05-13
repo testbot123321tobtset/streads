@@ -15,7 +15,7 @@ $container-border-visible-edge-color: $default-border-color;
 .blurred-background {
     
     /* http://codepen.io/rikschennink/pen/zvcgx */
-    @include filter(blur(10px));
+    @include filter(blur(15px));
     opacity: 0.35;
     
     @include single-transition;
@@ -65,6 +65,9 @@ $container-border-visible-edge-color: $default-border-color;
             .x-button-icon {
 
                 &:before {
+                    
+                    font-size: 1.9em !important;
+                    line-height: 1.25em !important;
                     
                     color: $default-color-active !important;
                 }

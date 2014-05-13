@@ -19,6 +19,8 @@ Ext.define('X.controller.Messages', {
         },
         control: {
             viewport: {
+                phonegapcameragetpicturesuccess: 'onPhonegapCameraGetPictureSuccess',
+                phonegapcameragetpicturefailure: 'onPhonegapCameraGetPictureFailure',
                 photomessageinputcontainerclose: 'onPhotoMessageInputContainerClose'
             },
             cameraTriggerButton: {
@@ -42,14 +44,16 @@ Ext.define('X.controller.Messages', {
                         if (me.getDebug()) {
                             console.log('Debug: PHONEGAP: X.controller.Messages.onCameraTriggerButtonTap(): navigator.camera.getPicture: Success: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
+                        Ext.Viewport.fireEvent('phonegapcameragetpicturesuccess');
                         me.generateAndFillViewportWithPhotoMessageInputContainerWindow({
                             imageData: imageData
                         });
                     },
                     function() {
                         if (me.getDebug()) {
-                            console.log('Debug: PHONEGAP: X.controller.Messages.onCameraTriggerButtonTap(): navigator.camera.getPicture: Failed: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+                            console.log('Debug: PHONEGAP: X.controller.Messages.onCameraTriggerButtonTap(): navigator.camera.getPicture: Failed (This happens when the user taps on "Cancel" from the camera UI): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
                         }
+                        Ext.Viewport.fireEvent('phonegapcameragetpicturefailure');
                     },
                     {
                         encodingType: X.config.Config.getPG_CAMERA().ENCODING_TYPE,
@@ -73,10 +77,19 @@ Ext.define('X.controller.Messages', {
         }
         return me;
     },
+    onPhonegapCameraGetPictureSuccess: function() {
+        return this;
+    },
+    onPhonegapCameraGetPictureFailure: function() {
+        var me = this;
+        me.getCameraTriggerPanel().
+                open();
+        return me;
+    },
     onPhotoMessageInputContainerClose: function() {
         var me = this;
         me.getCameraTriggerPanel().
-                show(X.config.Config.getSHOW_BY_POP_ANIMATION_CONFIG());
+                open();
         return me;
     },
     init: function() {

@@ -18,9 +18,10 @@
     .x-tabbar {
         
         @include no-background;
-        background-color: $tabbar-background-color !important;
         
         &.x-docked-bottom {
+        
+            @include no-background;
             
             @include no-border;
         }

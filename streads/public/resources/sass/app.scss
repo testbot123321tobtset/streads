@@ -47,7 +47,8 @@ $include-default-icons: false;
 @include icon('personaddfilled', '\f1c4', 'ionicons');
 @include icon('personadd', '\f1c3', 'ionicons');
 @include icon('plusfilled', '\f1cb', 'ionicons');
-@include icon('plusoutline', '\f1ca', 'ionicons');
+@include icon('circledplus', '\f1ca', 'ionicons');
+@include icon('circledplusfilled', '\f1cb', 'ionicons');
 @include icon('plus', '\f1c9', 'ionicons');
 @include icon('minusfilled', '\f1ae', 'ionicons');
 @include icon('minusoutline', '\f1ad', 'ionicons');
@@ -61,6 +62,9 @@ $include-default-icons: false;
 @include icon('checkmark', '\f16c', 'ionicons');
 @include icon('circledcheckmark', '\f16d', 'ionicons');
 @include icon('circledcheckmarkfilled', '\f16e', 'ionicons');
+@include icon('mic', '\f1aa', 'ionicons');
+@include icon('micfilled', '\f1ab', 'ionicons');
+@include icon('micmuted', '\f1a9', 'ionicons');
 
 @import 'shell';
 

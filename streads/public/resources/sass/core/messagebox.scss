@@ -11,21 +11,24 @@ $messagebox-border-visible-edge-color: $default-border-color;
 $messagebox-background-color: white;
 $messagebox-button-background-color: $default-darker-background-color; 
 $messagebox-button-pressing-background-color: lighten($messagebox-button-background-color, $default-color-variance);
-$messagebox-layer-percent: 100%;
+$messagebox-height-percent: 70%;
+$messagebox-width-percent: 100%;
 
 .x-msgbox {
     
-    width: $messagebox-layer-percent !important;
-    min-width: $messagebox-layer-percent !important;
-    height: $messagebox-layer-percent !important;
-    min-height: $messagebox-layer-percent !important;
+    width: $messagebox-width-percent !important;
+    min-width: $messagebox-width-percent !important;
+    height: $messagebox-height-percent !important;
+    min-height: $messagebox-height-percent !important;
     
     @include no-background;
     background: $messagebox-background-color !important;
     
     @include no-border;
     @include no-border-radius;
-    border: $messagebox-border-width $messagebox-border-style $messagebox-border-color !important;
+    border: $messagebox-border-visible-edge-width $messagebox-border-visible-edge-style $messagebox-border-visible-edge-color !important;
+    
+    @include mega-box-shadow-with-no-offset;
     
     .x-msgbox-title {
         

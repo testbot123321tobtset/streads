@@ -49,14 +49,13 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                     {
                         itemId: 'backButton',
                         cls: 'button-stacked back-button',
-                        iconCls: 'arrowdown',
+                        iconCls: 'close',
                         text: 'Close',
                         listeners: {
                             tap: function(button, e, eOpts) {
                                 button.up('#userGroupContainer').onBackButtonTap();
                             }
-                        },
-                        align: 'left'
+                        }
                     },
                     {
                         itemId: 'storiesButton',
@@ -69,7 +68,7 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
                         itemId: 'moreButton',
                         cls: 'button-stacked more-button',
                         iconCls: 'dotdotdotfilled',
-                        text: 'Edit',
+                        text: 'More',
                         align: 'right'
                     }
                 ]
@@ -105,6 +104,6 @@ Ext.define('X.view.plugandplay.UserGroupContainer', {
     },
     setTitleToGroupTitle: function() {
         var me = this;
-        me.down('#userGroupContainerToolbar').setTitle(Ext.String.ellipsis(me.getRecord().get('title'), 10));
+        me.down('#userGroupContainerToolbar').setTitle(me.getRecord().get('title'));
     }
 });

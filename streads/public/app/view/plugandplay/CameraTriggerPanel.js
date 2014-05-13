@@ -11,13 +11,9 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
             align: 'stretch'
         },
         bottom: 0,
-        left: '0.12em',
-        // This right is not zero, because the icon we use here is not a perfect square
-        // but a rectangle, and so it appears closer to the right than to the bottom
-        // So we push it a bit toward the left, so it appears to be at an equal distance
-        // from the right and the bottom
+        left: 0,
         cls: 'camera-trigger-panel',
-        zIndex: 20,
+        zIndex: X.config.Config.getZINDEX_LEVEL_4(),
         items: [
             {
                 xtype: 'tabbar',
@@ -31,16 +27,14 @@ Ext.define('X.view.plugandplay.CameraTriggerPanel', {
                         itemId: 'cameraTriggerButton',
                         cls: 'camera-trigger-button',
                         iconCls: 'camerafilled',
-                        title: 'Shoot'
+                        title: 'Shoot',
+                        listeners: {
+                            tap: function(button, e, eOpts) {
+                                button.up('#cameraTriggerPanel').onCameraTriggerButtonTap(button, e, eOpts);
+                            }
+                        }
                     }
                 ]
-            }
-        ],
-        listeners: [
-            {
-                fn: 'onCameraTriggerButtonTap',
-                event: 'tap',
-                delegate: '#cameraTriggerButton'
             }
         ]
     },

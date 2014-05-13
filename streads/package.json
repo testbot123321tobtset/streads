@@ -1,6 +1,6 @@
 {
     "name": "Streads",
-    "version": "0.0.1-66",
+    "version": "0.0.1-67",
     "author": "Deepak Ghosh",
     "dependencies": {
         "bcrypt": "0.7.7",
@@ -20,7 +20,7 @@
     "scripts": {
         "predeploy": "npm install",
         "start": "app.js",
-        "postdeploy": "cd public && sencha app build -run native"
+        "postdeploy": "cd public && sencha app build native"
     },
     "engines": {
         "node": "0.10.x"

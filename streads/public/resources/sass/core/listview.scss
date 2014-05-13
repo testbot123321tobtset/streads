@@ -6,6 +6,8 @@
     
     @include no-background;
     
+    border-bottom: 1px solid $default-border-color-for-fieldsets !important;
+    
     .x-list-disclosure {
         
         &:before {
@@ -22,6 +24,11 @@
         
         @include no-background;
         background-color: $list-background-color !important;
+        
+        &:before {
+
+            border-bottom: 1px solid $default-border-color-for-fieldsets;
+        }
 
         &.x-item-pressed {
             
@@ -43,7 +50,7 @@
                 &:last-child {
                     
                     &:before {
-                        
+                    
                         @include no-border;
                     }
                 }
@@ -78,7 +85,7 @@
                 &:last-child {
                     
                     &:before {
-                        
+                    
                         @include no-border;
                     }
                 }
