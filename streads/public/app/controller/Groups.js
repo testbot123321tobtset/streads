@@ -276,7 +276,7 @@ Ext.define('X.controller.Groups', {
         if(Ext.isObject(data) && 'groupId' in data && Ext.isString(data.groupId)) {
             X.model.Group.load(data.groupId, {
                 success: function(record, operation) {
-                    me.updatedViewsBoundToGivenRecord({
+                    me.updateViewsBoundToGivenRecord({
                         modelName: 'Group',
                         record: record,
                         store: Ext.getStore('GroupsStore')

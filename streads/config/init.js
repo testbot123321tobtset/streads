@@ -18,8 +18,8 @@ var init = function(cb) {
     geddy.on('started', function() {
         geddy.io.sockets.on('connection', function(socket) {
             geddy.log.info('Websocket connected with id: ' + socket.id);
-            socket.on('disconnect', function(socket) {
-                geddy.log.notice('Websocket disconnected with id: ' + socket.id);
+            socket.on('disconnect', function() {
+                geddy.log.notice('Websocket disconnected');
             });
             socket.on('enterRoom', function(data) {
                 socket.join(data.roomName);

@@ -44,7 +44,7 @@ Ext.define('X.controller.mixin.Common', {
         }
         return me;
     },
-    updatedViewsBoundToGivenRecord: function(options) {
+    updateViewsBoundToGivenRecord: function(options) {
         var me = this;
         
         options = Ext.isObject(options) ? options : false;
