@@ -83,5 +83,20 @@ Ext.define('X.model.Group', {
     },
     isCreatedByMe: function() {
         return this.get('createdById') === X.authenticatedEntity.get('id');
+    },
+//    Websocket
+    joinRoom: function(xSocket) {
+        var me = this;
+        console.log('Debug: X.store.Groups.joinRoom(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        
+        xSocket = Ext.isObject(xSocket) ? xSocket : X.Socket;
+        if(Ext.isObject(xSocket)) {
+            xSocket.emit('enterRoom', {
+                roomName: me.get('id')
+            });
+            return me;
+        }
+        
+        return false;
     }
 });

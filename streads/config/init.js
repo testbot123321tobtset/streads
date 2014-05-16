@@ -12,12 +12,18 @@ var init = function(cb) {
             geddy.log.error(msg);
         });
     }
+    
+//    Websocket
 //    Geddy's lifecycle events: http://geddyjs.org/reference#global
     geddy.on('started', function() {
         geddy.io.sockets.on('connection', function(socket) {
-            geddy.log.info('Websocket connected');
+            geddy.log.info('Websocket connected with id: ' + socket.id);
             socket.on('disconnect', function(socket) {
-                geddy.log.notice('Websocket disconnected');
+                geddy.log.notice('Websocket disconnected with id: ' + socket.id);
+            });
+            socket.on('enterRoom', function(data) {
+                socket.join(data.roomName);
+//                geddy.log.notice("Someone joined the room: " + data.roomName);
             });
         });
     });

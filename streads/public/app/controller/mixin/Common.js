@@ -43,5 +43,45 @@ Ext.define('X.controller.mixin.Common', {
             !silent && me[generateWindowFunctionName].call(me, options);
         }
         return me;
+    },
+    updatedViewsBoundToGivenRecord: function(options) {
+        var me = this;
+        
+        options = Ext.isObject(options) ? options : false;
+        if(Ext.isObject(options)) {
+            var modelName = ('modelName' in options && Ext.isString(options.modelName)) ? options.modelName : false;
+            var record = ('record' in options && Ext.isObject(options.record)) ? options.record : false;
+            var store = ('store' in options && Ext.isObject(options.store)) ? options.store : false;
+//            Update views that have records bound to them
+            if((Ext.isString(modelName) && Ext.isObject(record))) {
+                var model = Ext.isString(modelName) ? X.model[modelName] : false;
+                var recordId = Ext.isObject(record) ? record.getId() : false;
+                var updateModel = model && recordId;
+                var allComponentsToBeQueriedForModelUpdates = Ext.ComponentQuery.query('corecontainer, corepanel, tabpanel, coreformpanel');
+                if (updateModel) {
+                    Ext.each(allComponentsToBeQueriedForModelUpdates, function(thisComponent) {
+                        if ('getRecord' in thisComponent && Ext.isFunction(thisComponent.getRecord) && Ext.isObject(thisComponent.getRecord())) {
+                            var thisRecord = thisComponent.getRecord();
+                            var thisRecordId = thisRecord.getId();
+                            if (thisRecord instanceof model && thisRecordId === recordId) {
+                                thisComponent.setRecordRecursive(thisRecord);
+                                thisComponent.updateRecordDataRecursive(thisRecord);
+                            }
+                        }
+                    });
+                }
+            }
+//            When a record loads, views with stores that have that record in them must also update
+            if (store) {
+                var allComponentsToBeQueriedForStoreUpdates = Ext.ComponentQuery.query('list, dataview');
+                Ext.each(allComponentsToBeQueriedForStoreUpdates, function(thisComponent) {
+                    if ('getStore' in thisComponent && Ext.isFunction(thisComponent.getStore) && Ext.isObject(thisComponent.getStore()) && 'refresh' in thisComponent && Ext.isFunction(thisComponent.refresh) && thisComponent.getStore() === store) {
+                        thisComponent.refresh();
+                    }
+                });
+            }
+        }
+        
+        return me;
     }
 });

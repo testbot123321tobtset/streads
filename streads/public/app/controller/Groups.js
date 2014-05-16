@@ -42,7 +42,10 @@ Ext.define('X.controller.Groups', {
                 editgroupvalidationfailed: 'onEditGroupValidationFailed',
                 destroygroupmessageshow: 'onDestroyGroupMessageShow',
                 destroygroup: 'onDestroyGroup',
-                destroyedgroup: 'onDestroyedGroup'
+                destroyedgroup: 'onDestroyedGroup',
+//                WebSockets
+//                xsocketconnection: 'onXSocketConnection'
+                xsocketupdategroup: 'onXSocketUpdateGroup'
             },
             // User :: Groups
             userGroupsTabPanel: {
@@ -105,7 +108,6 @@ Ext.define('X.controller.Groups', {
             userGroupCreateSubmitButton: '#userGroupAddFormPanel #submitButton'
         }
     },
-    // UI EVENT HANDLERS
 //    onOrientationchange: function(viewport, newOrientation, width, height, eOpts) {
 //        var me = this;
 //        var windows = [
@@ -120,6 +122,7 @@ Ext.define('X.controller.Groups', {
 //        });
 //        return me;
 //    },
+    // UI EVENT HANDLERS
     onUserGroupsTabPanelPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
         if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
@@ -246,6 +249,42 @@ Ext.define('X.controller.Groups', {
             console.log(options);
             console.log('Debug: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        return me;
+    },
+//    WEBSOCKET EVENT HANDLERS
+    onXSocketConnection: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.onXSocketConnection(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        
+        return me;
+    },
+    onXSocketUpdateGroup: function(data) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.onXSocketUpdateGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        
+//        var groupsStore = Ext.getStore('GroupsStore');
+//        groupsStore.
+//                waitWhileLoadingAndCallbackOnLoad({
+//                    fn: function() {
+//                        me.loadGroupsStore();
+//                    }
+//                });
+        if(Ext.isObject(data) && 'groupId' in data && Ext.isString(data.groupId)) {
+            X.model.Group.load(data.groupId, {
+                success: function(record, operation) {
+                    me.updatedViewsBoundToGivenRecord({
+                        modelName: 'Group',
+                        record: record,
+                        store: Ext.getStore('GroupsStore')
+                    });
+                }
+            });
+        }
+        
         return me;
     },
     // HELPERS
@@ -436,10 +475,7 @@ Ext.define('X.controller.Groups', {
         if (me.getDebug()) {
             console.log('Debug: X.controller.Groups.doUpdateGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
-        if (!me.saveGivenGroup(options)) {
-            var group = (Ext.isObject(options) && Ext.isObject(options.group)) ? options.group : false;
-        }
-        return me;
+        return me.saveGivenGroup(options);
     },
     doDestroyGroup: function(options) {
         var me = this;

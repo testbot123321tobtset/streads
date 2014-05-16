@@ -18,6 +18,23 @@ Ext.define('overrides.Component', {
         }
         return me;
     },
+    updateRecordDataRecursive: function(record) {
+        var me = this;
+        if (Ext.isObject(record)) {
+            if ('updateData' in me && Ext.isFunction(me.updateData)) {
+                me.updateData(record.getData(true));
+            }
+            if ('getItems' in me && Ext.isFunction(me.getItems)) {
+                me.getItems().
+                        each(function(item) {
+                            me.updateRecordDataRecursive.apply(item, [
+                                record
+                            ]);
+                        });
+            }
+        }
+        return me;
+    },
     setDimensionsToFillScreen: function() {
         var me = this;
         var referenceComponent = Ext.Viewport;

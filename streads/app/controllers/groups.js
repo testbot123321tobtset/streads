@@ -87,6 +87,7 @@ var Groups = function() {
                     self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupsFoundForAuthenticatedUser')));
                 }
                 else {
+//                    Success
                     self.respond(AH.getSuccessResponseObject(params, groups));
                 }
             });
@@ -108,6 +109,7 @@ var Groups = function() {
                         groups.forEach(function(thisGroup) {
                             if (thisGroup.id === id) {
                                 found = true;
+//                                Success
                                 self.respond(AH.getSuccessResponseObject(params, thisGroup));
                             }
                         });
@@ -157,7 +159,17 @@ var Groups = function() {
                                 self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('groupForAuthenticatedUserCouldNotBeUpdated')));
                             }
                             else {
+//                                Success
                                 self.respond(AH.getSuccessResponseObject(params, savedGroup));
+//                                Websocket
+//                                geddy.io.sockets.in(givenGroupId).emit('update', data)
+                                var websocketIdThatRequested = params.websocketId;
+                                var websocketThatRequested = geddy.io.sockets.socket(websocketIdThatRequested);
+//                                Broadcast to every socket in this group except the socket that just updated the group
+                                websocketThatRequested.broadcast.to(givenGroupId).emit('updategroup', {
+                                    groupId: givenGroupId,
+                                    updaterId: me.authenticatedUser.id
+                                });
                             }
                         });
                     }

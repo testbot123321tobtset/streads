@@ -7,6 +7,8 @@ Ext.define('X.store.Application', {
         autoLoad: false,
         mustBeEmptiedOnApplicationShutDown: true,
         useDefaultXhrHeader: false,
+        idsOfRecordsBeforeLoad: [],
+        isFirstLoad: null,
         listeners: {
             beforeload: function(store, operation, options) {
                 this.onBeforeLoad(store, operation, options);
@@ -14,6 +16,10 @@ Ext.define('X.store.Application', {
             load: function(store, records, successful, options) {
                 this.onLoad(store, records, successful, options);
             }
+//            ,
+//            updaterecord: function(store, record, newIndex, oldIndex, modifiedFieldNames, modifiedValues, eOpts) {
+//                this.onUpdateRecord(store, record, newIndex, oldIndex, modifiedFieldNames, modifiedValues, eOpts);
+//            }
         }
     },
     onBeforeLoad: function() {
@@ -21,6 +27,15 @@ Ext.define('X.store.Application', {
         if (X.config.Config.getDEBUG()) {
             console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onBeforeLoad(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        
+        if (me.getAllCount() > 0) {
+            var idsOfRecordsBeforeLoad = [];
+            me.each(function(thisRecord) {
+                idsOfRecordsBeforeLoad.push(thisRecord.get('id'));
+            });
+            me.setIdsOfRecordsBeforeLoad(idsOfRecordsBeforeLoad);
+        }
+        
         return me;
     },
     onLoad: function() {
@@ -28,9 +43,26 @@ Ext.define('X.store.Application', {
         if (X.config.Config.getDEBUG()) {
             console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onLoad(): Found ' + (me.getAllCount() || 'no') + ' records: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        
+        if(!Ext.isBoolean(me.getIsFirstLoad())) {
+            me.setIsFirstLoad(true);
+        }
+        else if(me.getIsFirstLoad()) {
+            me.setIsFirstLoad(false);
+        }
+        
         if (me.mustBeEmptiedOnApplicationShutDown && !me.isLoaded()) {
             X.storesToBeEmptiedOnApplicationShutdown.push(me);
         }
+        
+        return me;
+    },
+    onUpdateRecord: function(store, record, newIndex, oldIndex, modifiedFieldNames, modifiedValues, eOpts) {
+        var me = this;
+        if (X.config.Config.getDEBUG()) {
+            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onUpdateRecord(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        
         return me;
     },
     // Assumes that the store is either loading or has already loaded
@@ -73,6 +105,7 @@ Ext.define('X.store.Application', {
                 var callbackScope = Ext.isObject(callback.scope) ? callback.scope : me;
                 return callbackFn.call(callbackScope);
             }
+            
         }
         return false;
     },
@@ -81,7 +114,8 @@ Ext.define('X.store.Application', {
      * {
      *      fn: function,
      *      scope: object,
-     *      delay: number
+     *      delay: number,
+     *      runLimit: number
      * }
      */
     runTask: function(task) {
@@ -93,19 +127,24 @@ Ext.define('X.store.Application', {
             if (taskFn && taskCondition) {
                 var taskScope = Ext.isObject(task.scope) ? task.scope : me;
                 var taskDelay = Ext.isNumber(task.delay) ? task.delay : 100;
+                var taskRunLimit = Ext.isNumber(task.runLimit) ? task.runLimit : 200;
+                var taskRunCount = 0;
                 Ext.create('Ext.util.DelayedTask', function() {
-                    if (!taskCondition()) {
-                        if (X.config.Config.getDEBUG()) {
-                            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': runTask(): Is running');
+                    if (taskRunCount < taskRunLimit) {
+                        if (!taskCondition()) {
+                            if (X.config.Config.getDEBUG()) {
+                                console.log('Debug: X.store.Application: ' + me.getStoreId() + ': runTask(): Is running');
+                            }
+                            me.runTask(task);
                         }
-                        me.runTask(task);
-                    }
-                    else {
-                        if (X.config.Config.getDEBUG()) {
-                            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': runTask(): Has stopped running');
+                        else {
+                            if (X.config.Config.getDEBUG()) {
+                                console.log('Debug: X.store.Application: ' + me.getStoreId() + ': runTask(): Has stopped running');
+                            }
+                            taskFn.call(taskScope);
                         }
-                        taskFn.call(taskScope);
                     }
+                    taskRunCount++;
                 }, taskScope).delay(taskDelay);
             }
         }

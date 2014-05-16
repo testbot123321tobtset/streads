@@ -224,6 +224,17 @@ Ext.define('X.controller.mixin.Util', {
         });
         return me;
     },
+    getByXType: function(xtype) {
+        var me = this;
+        var result = [
+        ];
+        Ext.Object.each(Ext.ComponentMgr.map, function(key, value) {
+            if (value.isXType(xtype)) {
+                result.push(value);
+            }
+        });
+        return result;
+    },
     /*
      * Utilities
      */
