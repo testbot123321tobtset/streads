@@ -40,6 +40,10 @@
      */
     "js": [
 	{
+            "path": "/socket.io/socket.io.js",
+            "remote": true
+        },
+	{
             "path": "phonegap.js",
             "remote": true
         },

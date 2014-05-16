@@ -113,6 +113,12 @@ Ext.define('X.config.Config', {
             easing: 'cubic-bezier(0,.23,0,1)',
             duration: 800
         },
+        HIDE_ANIMATION_FROM_DOWN_SLOW_AT_FIRST_CONFIG: {
+            type: 'slideOut',
+            direction: 'up',
+            easing: 'cubic-bezier(.7,0,.7,1)',
+            duration: 800
+        },
         SHOW_BY_POP_ANIMATION_CONFIG: {
             type: 'pop',
             easing: 'cubic-bezier(0,.23,0,1)',

@@ -73,15 +73,19 @@
 /*
  * Boot up sequence
  * 
+ * X.controller.WebSocket.init()             WebSocket.js
  * X.controller.Main.init()                  Main.js
  * X.controller.Boot.init()                  Boot.js
  * X.controller.Users.init()                 Users.js
  * X.controller.Groups.init()                Groups.js
+ * X.controller.Messages.init()              Messages.js
  * Ext.application.launch()                  app.js
+ * X.controller.WebSocket.launch()           WebSocket.js
  * X.controller.phone.Main.launch()          Main.js
  * X.controller.Boot.launch()                Boot.js
  * X.controller.Users.launch()               Users.js
  * X.controller.Groups.launch()              Groups.js
+ * X.controller.WebSocket.launch()           WebSocket.js
  * X.controller.Boot.onNoBookmarkFound()
  */
 
@@ -114,6 +118,7 @@ Ext.application({
         'DeviceContacts'
     ],
     controllers: [
+        'WebSocket',
         'phone.Main',
         'Boot',
         'Users',
@@ -141,6 +146,7 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
     launch: function() {
+        
         // Easy access to config object
         X.XConfig = X.config.Config;
         if (X.XConfig.getDEBUG() && X.XConfig.getBOOTUP_DEBUG()) {
@@ -150,7 +156,7 @@ Ext.application({
 //        Ext.Msg customizations
         Ext.Msg.defaultAllowedConfig.bottom = 0;
         Ext.Msg.defaultAllowedConfig.showAnimation = X.config.Config.getSHOW_ANIMATION_FROM_UP_CONFIG();
-        Ext.Msg.defaultAllowedConfig.hideAnimation = X.config.Config.getHIDE_ANIMATION_FROM_DOWN_CONFIG();
+        Ext.Msg.defaultAllowedConfig.hideAnimation = X.config.Config.getHIDE_ANIMATION_FROM_DOWN_SLOW_AT_FIRST_CONFIG();
         Ext.Msg.on('painted', function() {
             Ext.Msg.setZIndex(X.config.Config.getZINDEX_LEVEL_5());
         });

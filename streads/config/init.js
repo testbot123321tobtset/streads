@@ -12,6 +12,15 @@ var init = function(cb) {
             geddy.log.error(msg);
         });
     }
+//    Geddy's lifecycle events: http://geddyjs.org/reference#global
+    geddy.on('started', function() {
+        geddy.io.sockets.on('connection', function(socket) {
+            geddy.log.info('Websocket connected');
+            socket.on('disconnect', function(socket) {
+                geddy.log.notice('Websocket disconnected');
+            });
+        });
+    });
     cb();
 };
 
