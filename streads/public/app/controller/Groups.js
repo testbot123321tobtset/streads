@@ -45,7 +45,8 @@ Ext.define('X.controller.Groups', {
                 destroyedgroup: 'onDestroyedGroup',
 //                WebSockets
 //                xsocketconnection: 'onXSocketConnection'
-                xsocketupdategroup: 'onXSocketUpdateGroup'
+                xsocketupdategroup: 'onXSocketUpdateGroup',
+                xsocketdeletegroup: 'onXSocketDeleteGroup'
             },
             // User :: Groups
             userGroupsTabPanel: {
@@ -284,6 +285,43 @@ Ext.define('X.controller.Groups', {
                 }
             });
         }
+        
+        return me;
+    },
+    onXSocketDeleteGroup: function(data) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Groups.onXSocketDeleteGroup(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        
+        var groupsStore = Ext.getStore('GroupsStore');
+        if(Ext.isObject(groupsStore)) {
+            groupsStore.
+                    waitWhileLoadingAndCallbackOnLoad({
+                        fn: function() {
+                            me.loadGroupsStore({
+                                fn: function() {
+//                                    console.log('***********');
+//                                    me.updateViewsBoundToGivenRecord({
+//                                        store: groupsStore
+//                                    });
+                                },
+                                scope: me
+                            });
+                        }
+                    });
+        }
+//        if(Ext.isObject(data) && 'groupId' in data && Ext.isString(data.groupId)) {
+//            X.model.Group.load(data.groupId, {
+//                success: function(record, operation) {
+//                    me.updateViewsBoundToGivenRecord({
+//                        modelName: 'Group',
+//                        record: record,
+//                        store: Ext.getStore('GroupsStore')
+//                    });
+//                }
+//            });
+//        }
         
         return me;
     },

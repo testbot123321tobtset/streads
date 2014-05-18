@@ -30,9 +30,11 @@ Ext.define('X.controller.mixin.Util', {
      *      fn: function,
      *      condition: function,
      *      scope: object,
-     *      delay: number
+     *      delay: number,
+     *      limit: number // total time you want this task to keep trying
      * }
      */
+    runTaskCount: 0,
     runTask: function(task) {
         var me = this;
         task = Ext.isObject(task) ? task : false;
@@ -42,23 +44,23 @@ Ext.define('X.controller.mixin.Util', {
             if (taskFn && taskCondition) {
                 var taskScope = Ext.isObject(task.scope) ? task.scope : me;
                 var taskDelay = Ext.isNumber(task.delay) ? task.delay : 100;
-                var taskLimit = Ext.isNumber(task.limit) ? task.limit : 10000;
+                var taskLimit = Ext.isNumber(task.limit) ? task.limit : 500;
                 var noOfTimesToBeRun = taskLimit / taskDelay;
-                var count = 0;
                 Ext.create('Ext.util.DelayedTask', function() {
-                    if (!taskCondition() && count < noOfTimesToBeRun) {
+                    if (!taskCondition() && me.runTaskCount < noOfTimesToBeRun) {
                         if (X.config.Config.getDEBUG()) {
-                            console.log('Debug: X.store.Application: runTask(): Is running: Run # - ' + count + ', Runs left - ' + (noOfTimesToBeRun - count));
+                            console.log('Debug: X.store.Application: runTask(): Is running: Run # - ' + me.runTaskCount + ', Runs left - ' + (noOfTimesToBeRun - me.runTaskCount));
                         }
                         me.runTask(task);
                     }
                     else {
                         if (X.config.Config.getDEBUG()) {
-                            console.log('Debug: X.store.Application: runTask(): Has stopped running: Run # - ' + count + ', Runs left - ' + (noOfTimesToBeRun - count));
+                            console.log('Debug: X.store.Application: runTask(): Has stopped running: Run # - ' + me.runTaskCount + ', Runs left - ' + (noOfTimesToBeRun - me.runTaskCount));
                         }
-                        taskFn.call(taskScope)
+                        me.runTaskCount = 0;
+                        taskFn.call(taskScope);
                     }
-                    count++;
+                    me.runTaskCount++;
                 }, taskScope).delay(taskDelay);
             }
         }

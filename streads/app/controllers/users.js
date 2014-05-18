@@ -108,10 +108,12 @@ var Users = function() {
     // Authenticated: display me
     me.showMe = function(req, resp, params) {
         var self = this;
+        
         if (!__.isObject(me.authenticatedUser)) {
             self.respond(AH.getFailureResponseObject(params, me.error, me.message));
         }
         else {
+//            Success
             self.respond(AH.getSuccessResponseObject(params, me.authenticatedUser));
         }
     };
@@ -197,47 +199,9 @@ var Users = function() {
         }
     };
 
-    // Authenticated: update authenticated and in-session user
+//    Authenticated: destroy in-session user
     me.destroy = function(req, resp, params) {
-        var self = this;
-
-        var User = geddy.model.User;
-        User.remove(params.id, function(err, user) {
-            if (err) {
-                self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('authenticatedUserCouldNotBeDeleted')));
-            }
-            else {
-                user.getGroups(function(err, groups) {
-                    if (!err) {
-                        var Group = geddy.model.Group;
-                        var found = false;
-                        groups.forEach(function(thisGroup) {
-                            Group.destroyGivenGroupAndAllThroughAssociations({
-                                params: params,
-                                group: thisGroup,
-                                groupship: groupshipToBeDeletedData
-                            });
-                            if (thisGroup.id === id) {
-                                found = true;
-                                self.respond(AH.getSuccessResponseObject(params, thisGroup));
-                            }
-                        });
-                        if(!found) {
-                            self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
-                        }
-                    }
-                    else {
-                        self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noGroupsFoundForAuthenticatedUser')));
-                    }
-                });
-                __.each(User.fieldShowExclusionArray, function(field) {
-                    if (__.has(user, field)) {
-                        delete user[field];
-                    }
-                });
-                self.respond(AH.getSuccessResponseObject(params, user));
-            }
-        });
+//        Implement me
     };
 };
 

@@ -76,5 +76,22 @@ Ext.define('X.model.AuthenticatedUser', {
                 });
             }
         }
+    },
+//    Websocket
+    joinRoom: function(xSocket) {
+        var me = this;
+        if(X.config.Config.getDEBUG()) {
+            console.log('Debug: X.model.AuthenticatedUser.joinRoom(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        
+        xSocket = Ext.isObject(xSocket) ? xSocket : X.Socket;
+        if(Ext.isObject(xSocket)) {
+            xSocket.emit('enterRoom', {
+                roomName: me.get('id')
+            });
+            return me;
+        }
+        
+        return false;
     }
 });

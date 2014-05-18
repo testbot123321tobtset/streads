@@ -103,12 +103,12 @@ router.match('/user', 'PUT').
             controller: 'Users',
             action: 'update'
         });
-router.match('/logout', 'GET').
+router.match('/logout', 'POST').
         to({
             controller: 'Users',
             action: 'logout'
         });
-router.match('/user/logout', 'GET').
+router.match('/user/logout', 'POST').
         to({
             controller: 'Users',
             action: 'logout'

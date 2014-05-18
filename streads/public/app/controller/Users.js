@@ -37,6 +37,7 @@ Ext.define('X.controller.Users', {
         },
         control: {
             viewport: {
+                authenticateduserloggedin: 'onAuthenticatedUserLoggedIn',
                 authenticateduserdataedit: 'onAuthenticatedUserDataEdit',
                 devicecontactsstorerefreshuserrequest: 'onDeviceContactsStoreRefreshUserRequest'
             },
@@ -106,7 +107,48 @@ Ext.define('X.controller.Users', {
             photoMessageInputContainerCancelButton:  '#photoMessageInputContainer #messageFormPanel #cancelButton'
         }
     },
-    // DIRECT EVENT HANDLERS
+//    VIEWPORT EVENT HANDLERS
+    onAuthenticatedUserLoggedIn: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onAuthenticatedUserLoggedIn(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        me.runTask({
+            fn: function() {
+                if (X.config.Config.getDEBUG()) {
+                    console.log('Debug: X.controller.Users.onAuthenticatedUserLoggedIn(): Will now execute callback function: Authenticated user will now join room');
+                }
+                me.executeCallback({
+                    fn: function() {
+                        X.authenticatedEntity.joinRoom();
+                    },
+                    scope: me
+                });
+            },
+            condition: function() {
+                return ('Socket' in X) && Ext.isObject(X.Socket);
+            },
+            delay: 100,
+            limit: 100,
+            scope: me
+        });
+        return me;
+    },
+    onAuthenticatedUserDataEdit: function(options) {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onAuthenticatedUserDataEdit(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.doUpdateAuthenticatedUser(options);
+    },
+    onDeviceContactsStoreRefreshUserRequest: function() {
+        var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.onDeviceContactsStoreRefreshUserRequest(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        return me.addFriendsFromDeviceContacts();
+    },
+//    DIRECT EVENT HANDLERS
     onPageLoginTabPanelActiveItemChange: function(tabPanel, activeItem, previousActiveItem, eOpts) {
         var me = this;
         if (Ext.isObject(tabPanel) && Ext.isObject(activeItem)) {
@@ -154,20 +196,6 @@ Ext.define('X.controller.Users', {
             }
         }
         return me;
-    },
-    onAuthenticatedUserDataEdit: function(options) {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onAuthenticatedUserDataEdit(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        return me.doUpdateAuthenticatedUser(options);
-    },
-    onDeviceContactsStoreRefreshUserRequest: function() {
-        var me = this;
-        if (me.getDebug()) {
-            console.log('Debug: X.controller.Users.onDeviceContactsStoreRefreshUserRequest(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
-        }
-        return me.addFriendsFromDeviceContacts();
     },
     onPhotoMessageInputContainerSubmitButtonTap: function() {
         var me = this;
@@ -347,6 +375,10 @@ Ext.define('X.controller.Users', {
     // Ajax login
     xhrLogin: function(form) {
         var me = this;
+        if (me.getDebug()) {
+            console.log('Debug: X.controller.Users.xhrLogin(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
+        
         form.submit({
             method: 'POST',
             success: function(form, action) {
@@ -375,6 +407,10 @@ Ext.define('X.controller.Users', {
 //                            });
                         }).
                                 delay(500);
+                        
+                        Ext.Viewport.fireEvent('authenticateduserloggedin', {
+                            silent: true
+                        });
                     },
                     scope: me
                 });
@@ -559,6 +595,7 @@ Ext.define('X.controller.Users', {
             console.log('Debug: X.controller.Users.doLogout(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         Ext.Ajax.request({
+            method: 'POST',
             url: X.XConfig.getAPI_ENDPOINT() + X.XConfig.getDEFAULT_USER_LOGOUT_PAGE(),
             success: function(response) {
                 if (me.getDebug()) {

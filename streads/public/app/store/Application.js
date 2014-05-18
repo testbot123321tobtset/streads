@@ -9,12 +9,14 @@ Ext.define('X.store.Application', {
         useDefaultXhrHeader: false,
         idsOfRecordsBeforeLoad: [],
         isFirstLoad: null,
+        countOnLoad: 0,
+        emptyOnLastLoad: true,
         listeners: {
             beforeload: function(store, operation, options) {
                 this.onBeforeLoad(store, operation, options);
             },
-            load: function(store, records, successful, options) {
-                this.onLoad(store, records, successful, options);
+            load: function(store, records, successful, operation, eOpts) {
+                this.onLoad(store, records, successful, operation, eOpts);
             }
 //            ,
 //            updaterecord: function(store, record, newIndex, oldIndex, modifiedFieldNames, modifiedValues, eOpts) {
@@ -22,10 +24,10 @@ Ext.define('X.store.Application', {
 //            }
         }
     },
-    onBeforeLoad: function() {
+    onBeforeLoad: function(store, operation, eOpts) {
         var me = this;
         if (X.config.Config.getDEBUG()) {
-            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onBeforeLoad(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+            console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onBeforeLoad(): Found ' + (me.getAllCount() || 'no') + ' records: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
         
         if (me.getAllCount() > 0) {
@@ -36,13 +38,22 @@ Ext.define('X.store.Application', {
             me.setIdsOfRecordsBeforeLoad(idsOfRecordsBeforeLoad);
         }
         
+        if(me.getCountOnLoad() === 0) {
+            me.setEmptyOnLastLoad(true);
+        }
+        else {
+            me.setEmptyOnLastLoad(false);
+        }
+        
         return me;
     },
-    onLoad: function() {
+    onLoad: function(store, records, successful, operation, eOpts) {
         var me = this;
         if (X.config.Config.getDEBUG()) {
             console.log('Debug: X.store.Application: ' + me.getStoreId() + ': onLoad(): Found ' + (me.getAllCount() || 'no') + ' records: Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
         }
+        
+        me.setCountOnLoad(me.getAllCount());
         
         if(!Ext.isBoolean(me.getIsFirstLoad())) {
             me.setIsFirstLoad(true);
@@ -83,7 +94,6 @@ Ext.define('X.store.Application', {
                 condition: function() {
                     return me.isLoaded();
                 },
-                delay: 100,
                 scope: me
             });
             return me;
@@ -113,40 +123,51 @@ Ext.define('X.store.Application', {
      * task is of the format:
      * {
      *      fn: function,
+     *      condition: function,
      *      scope: object,
      *      delay: number,
-     *      runLimit: number
+     *      limit: number // total time you want this task to keep trying
      * }
      */
     runTask: function(task) {
-        var me = this;
-        task = Ext.isObject(task) ? task : false;
-        if (task) {
-            var taskFn = Ext.isFunction(task.fn) ? task.fn : false;
-            var taskCondition = Ext.isFunction(task.condition) ? task.condition : false;
-            if (taskFn && taskCondition) {
-                var taskScope = Ext.isObject(task.scope) ? task.scope : me;
-                var taskDelay = Ext.isNumber(task.delay) ? task.delay : 100;
-                var taskRunLimit = Ext.isNumber(task.runLimit) ? task.runLimit : 200;
-                var taskRunCount = 0;
-                Ext.create('Ext.util.DelayedTask', function() {
-                    if (taskRunCount < taskRunLimit) {
-                        if (!taskCondition()) {
-                            if (X.config.Config.getDEBUG()) {
-                                console.log('Debug: X.store.Application: ' + me.getStoreId() + ': runTask(): Is running');
-                            }
-                            me.runTask(task);
-                        }
-                        else {
-                            if (X.config.Config.getDEBUG()) {
-                                console.log('Debug: X.store.Application: ' + me.getStoreId() + ': runTask(): Has stopped running');
-                            }
-                            taskFn.call(taskScope);
+        var runTaskCount = 0,
+                localRunTask = function(task) {
+                    var me = this;
+                    task = Ext.isObject(task) ? task : false;
+                    if (task) {
+                        var taskFn = Ext.isFunction(task.fn) ? task.fn : false;
+                        var taskCondition = Ext.isFunction(task.condition) ? task.condition : false;
+                        if (taskFn && taskCondition) {
+                            var taskScope = Ext.isObject(task.scope) ? task.scope : me;
+                            var taskDelay = Ext.isNumber(task.delay) ? task.delay : 100;
+                            var taskLimit = Ext.isNumber(task.limit) ? task.limit : 5000;
+                            var noOfTimesToBeRun = taskLimit / taskDelay;
+                            Ext.create('Ext.util.DelayedTask', function() {
+                                if (!taskCondition() && runTaskCount < noOfTimesToBeRun) {
+                                    if (X.config.Config.getDEBUG()) {
+                                        console.log('Debug: X.store.Application: runTask(): Is running: Run # - ' + runTaskCount + ', Runs left - ' + (noOfTimesToBeRun - runTaskCount));
+                                    }
+                                    localRunTask(task);
+                                }
+                                else if (taskCondition()) {
+                                    if (X.config.Config.getDEBUG()) {
+                                        console.log('Debug: X.store.Application: runTask(): Has stopped running: Run # - ' + runTaskCount + ', Runs left - ' + (noOfTimesToBeRun - runTaskCount) + ', Will call callback');
+                                    }
+                                    runTaskCount = 0;
+                                    taskFn.call(taskScope);
+                                }
+                                else if(!taskCondition() && runTaskCount >= noOfTimesToBeRun) {
+                                    if (X.config.Config.getDEBUG()) {
+                                        console.log('Debug: X.store.Application: runTask(): Has stopped running: Run # - ' + runTaskCount + ', Runs left - ' + (noOfTimesToBeRun - runTaskCount) + ', Will not call callback');
+                                    }
+                                    runTaskCount = 0;
+                                }
+                                runTaskCount++;
+                            }, taskScope).
+                                    delay(taskDelay);
                         }
                     }
-                    taskRunCount++;
-                }, taskScope).delay(taskDelay);
-            }
-        }
+                };
+        localRunTask(task);
     }
 });

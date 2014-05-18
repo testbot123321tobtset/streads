@@ -52,7 +52,23 @@ var Groups = function() {
                                 owner.save(function(ownerSaveErr, ownerSaveData) {
                                     if (!__.isObject(ownerSaveErr) && __.isObject(ownerSaveData)) {
                                         me.authenticatedUser = ownerSaveData;
+//                                        Success
                                         self.respond(AH.getSuccessResponseObject(params, ownerSaveData));
+//                                        Websocket
+                                        var websocketIdThatRequested = params.websocketId;
+                                        var websocketThatRequested = geddy.io.sockets.socket(websocketIdThatRequested);
+//                                        For all members of this group, identify all of their sockets and emit event
+//                                        The way to do that would be to first, have every user as they log in to join a room of their own,
+//                                        then broadcast to these rooms (that we can query by user.id as room name)
+                                        group.getUsers(function(usersForGroupErr, usersForGroup) {
+                                            usersForGroup.forEach(function(thisUserForGroup) {
+                                                websocketThatRequested.broadcast.to(thisUserForGroup.id).
+                                                        emit('creategroup', {
+                                                            groupId: group.id,
+                                                            updaterId: me.authenticatedUser.id
+                                                        });
+                                            });
+                                        });
                                     }
                                     else {
                                         self.respond(AH.getFailureResponseObject(params, err, AH.getResponseMessage('groupForAuthenticatedUserCouldNotBeCreated')));
@@ -166,10 +182,11 @@ var Groups = function() {
                                 var websocketIdThatRequested = params.websocketId;
                                 var websocketThatRequested = geddy.io.sockets.socket(websocketIdThatRequested);
 //                                Broadcast to every socket in this group except the socket that just updated the group
-                                websocketThatRequested.broadcast.to(givenGroupId).emit('updategroup', {
-                                    groupId: givenGroupId,
-                                    updaterId: me.authenticatedUser.id
-                                });
+                                websocketThatRequested.broadcast.to(givenGroupId).
+                                        emit('updategroup', {
+                                            groupId: givenGroupId,
+                                            updaterId: me.authenticatedUser.id
+                                        });
                             }
                         });
                     }
@@ -200,25 +217,34 @@ var Groups = function() {
                         self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
                     }
                     else {
-                        var Groupship = geddy.model.Groupship;
-                        Groupship.all({
-                            groupId: givenGroupId,
-                            userId: me.authenticatedUser.id
-                        }, function(groupshipToBeDeletedErr, groupshipsToBeDeletedData) {
-                            if (__.isObject(groupshipToBeDeletedErr)) {
-                                self.respond(AH.getFailureResponseObject(params, err));
+//                        Delete the group first, then on success, delete all groupships
+                        Group.remove(groupToBeDeleted.id, function(groupAfterDeleteErr) {
+                            if (__.isObject(groupAfterDeleteErr)) {
+                                self.respond(AH.getFailureResponseObject(params, groupAfterDeleteErr));
                             }
-//                            else if (!__.isObject(groupshipsToBeDeletedData)) {
-//                                self.respond(AH.getFailureResponseObject(params, false, AH.getResponseMessage('noSuchGroupFoundForAuthenticatedUser')));
-//                            }
                             else {
-                                console.log(typeof(groupshipsToBeDeletedData));
-                                groupshipsToBeDeletedData.forEach(function(thisGroupshipToBeDeletedData) {
-                                    me.destroyGivenGroupAndAllThroughAssociations({
-                                        params: params,
-                                        group: groupToBeDeleted,
-                                        groupship: thisGroupshipToBeDeletedData
-                                    });
+//                                Success
+                                self.respond(AH.getSuccessResponseObject(params));
+//                                Websocket
+                                var websocketIdThatRequested = params.websocketId;
+                                var websocketThatRequested = geddy.io.sockets.socket(websocketIdThatRequested);
+//                                Broadcast to every socket in this group except the socket that just updated the group
+                                console.log('************************');
+                                websocketThatRequested.broadcast.to(givenGroupId).
+                                        emit('deletegroup', {
+                                            groupId: givenGroupId,
+                                            deleterId: me.authenticatedUser.id
+                                        });
+//                                Delete groupships
+                                var Groupship = geddy.model.Groupship;
+                                Groupship.all({
+                                    groupId: givenGroupId
+                                }, function(groupshipToBeDeletedErr, groupshipsToBeDeleted) {
+                                    if (!__.isObject(groupshipToBeDeletedErr) && __.isObject(groupshipsToBeDeleted)) {
+                                        groupshipsToBeDeleted.forEach(function(thisGroupshipToBeDeleted) {
+                                            Groupship.remove(thisGroupshipToBeDeleted.id);
+                                        });
+                                    }
                                 });
                             }
                         });
@@ -226,31 +252,6 @@ var Groups = function() {
                 });
             }
         }
-    };
-    // No error checking done on options, so make sure it has everything the function needs
-    me.destroyGivenGroupAndAllThroughAssociations = function(options) {
-        var self = this;
-        var Group = geddy.model.Group;
-        var Groupship = geddy.model.Groupship;
-        var owner = me.authenticatedUser,
-                ownerId = owner.id;
-        var groupToBeDeleted = options.group;
-        var groupshipToBeDeleted = options.groupship;
-        Groupship.remove(groupshipToBeDeleted.id, function(groupshipToBeDeletedErr, groupshipToBeDeletedData) {
-            if (__.isObject(groupshipToBeDeletedErr)) {
-                self.respond(AH.getFailureResponseObject(options.params, groupshipToBeDeletedErr));
-            }
-            else {
-                Group.remove(groupToBeDeleted.id, function(groupToBeDeletedErr, groupToBeDeletedData) {
-                    if (__.isObject(groupToBeDeletedErr)) {
-                        self.respond(AH.getFailureResponseObject(options.params, groupToBeDeletedErr));
-                    }
-                    else {
-                        self.respond(AH.getSuccessResponseObject(options.params, false, groupToBeDeletedData));
-                    }
-                });
-            }
-        });
     };
 };
 

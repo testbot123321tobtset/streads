@@ -87,7 +87,9 @@ Ext.define('X.model.Group', {
 //    Websocket
     joinRoom: function(xSocket) {
         var me = this;
-        console.log('Debug: X.store.Groups.joinRoom(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        if(X.config.Config.getDEBUG()) {
+            console.log('Debug: X.model.Group.joinRoom(): Timestamp: ' + Ext.Date.format(new Date(), 'H:i:s'));
+        }
         
         xSocket = Ext.isObject(xSocket) ? xSocket : X.Socket;
         if(Ext.isObject(xSocket)) {

@@ -110,12 +110,14 @@ exports.getSuccessResponseObject = function(params, result, message) {
 };
 exports.executeCallback = function(callback) {
     var me = this;
+    
     callback = __.isObject(callback) ? callback : false;
     if (callback) {
         var callbackFn = __.isFunction(callback.fn) ? callback.fn : false;
         if (callbackFn) {
             var callbackScope = __.isObject(callback.scope) ? callback.scope : me;
-            return callbackFn.call(callbackScope);
+            var callbackArguments = __.isObject(callback.arguments) ? callback.arguments : false;
+            return callbackFn.call(callbackScope, callbackArguments);
         }
     }
     

@@ -1,6 +1,10 @@
 var init = function(cb) {
+    var me = this;
+    
+    var environment = geddy.config.environment;
+    
     // Add uncaught-exception handler in prod-like environments
-    if (geddy.config.environment !== 'development') {
+    if (environment !== 'development') {
         process.addListener('uncaughtException', function(err) {
             var msg = err.message;
             if (err.stack) {
@@ -13,17 +17,27 @@ var init = function(cb) {
         });
     }
     
-//    Websocket
-//    Geddy's lifecycle events: http://geddyjs.org/reference#global
+//    Websockets
     geddy.on('started', function() {
         geddy.io.sockets.on('connection', function(socket) {
-            geddy.log.info('Websocket connected with id: ' + socket.id);
+            if (environment === 'development') {
+                geddy.log.info('config.init: Websocket connected with id: ' + socket.id + ': The socket itself is as follows:');
+                console.log(socket);
+                geddy.log.info('config.init: All sockets are as follows:');
+                console.log(geddy.io.sockets);
+            }
             socket.on('disconnect', function() {
-                geddy.log.notice('Websocket disconnected');
+                if (environment === 'development') {
+                    geddy.log.notice('config.init: Websocket disconnected');
+                }
             });
             socket.on('enterRoom', function(data) {
+                if (environment === 'development') {
+                    geddy.log.notice('config.init: Someone joined the room: ' + data.roomName);
+                    geddy.log.info('config.init: All rooms are as follows:');
+                    console.log(geddy.io.sockets.manager.rooms);
+                }
                 socket.join(data.roomName);
-//                geddy.log.notice("Someone joined the room: " + data.roomName);
             });
         });
     });

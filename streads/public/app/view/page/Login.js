@@ -29,7 +29,7 @@ Ext.define('X.view.page.Login', {
                     {
                         xtype: 'userloginformpanel',
                         flex: 1,
-                        scrollable: null
+                        scrollable: true
                     }
                 ]
             },
@@ -52,7 +52,7 @@ Ext.define('X.view.page.Login', {
                     {
                         xtype: 'usersignupformpanel',
                         flex: 1,
-                        scrollable: null
+                        scrollable: true
                     }
                 ]
             }

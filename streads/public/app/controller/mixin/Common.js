@@ -46,7 +46,6 @@ Ext.define('X.controller.mixin.Common', {
     },
     updateViewsBoundToGivenRecord: function(options) {
         var me = this;
-        
         options = Ext.isObject(options) ? options : false;
         if(Ext.isObject(options)) {
             var modelName = ('modelName' in options && Ext.isString(options.modelName)) ? options.modelName : false;

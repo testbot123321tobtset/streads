@@ -123,8 +123,9 @@ var actions = new (function() {
                 if (bcrypt.compareSync(password, user.password)) {
                     self.session.set('userId', user.id);
                     self.session.set('authType', 'local');
-                    // No third-party auth tokens
+//                    No third-party auth tokens
                     self.session.set('authData', {});
+//                    Success
                     self.respond(AH.getSuccessResponseObject(params, user));
                 } else {
                     self.respond(AH.getFailureResponseObject(false, err, AH.getResponseMessage('userAuthenticationFailed')));

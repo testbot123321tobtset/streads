@@ -241,6 +241,7 @@ Ext.define('X.controller.mixin.User', {
                 X.isUser = false;
                 X.authenticated = false;
                 X.authenticatedEntity = false;
+                X.authenticatedEntityWebsocketToken = false;
                 me.executeCallback(doesNotExistCallback);
             }
             else {
@@ -271,6 +272,7 @@ Ext.define('X.controller.mixin.User', {
                     X.isUser = false;
                     X.authenticated = false;
                     X.authenticatedEntity = false;
+                    X.authenticatedEntityWebsocketToken = false;
                     me.executeCallback(doesNotExistCallback);
                 }
             }
